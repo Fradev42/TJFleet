@@ -29,12 +29,12 @@ export const site = {
     link: '+32468355064',
   },
 
-  email: '[[E-MAIL]]',
+  email: 'info@apexfleet.be',
 
   adres: {
     straat: 'Eedstraat 42a',
-    postcode: '[[POSTCODE]]',
-    gemeente: '[[GEMEENTE, regio Gent]]',
+    postcode: '9052',
+    gemeente: 'Zwijnaarde',
     land: 'België',
     /** Landcode voor schema.org. */
     landCode: 'BE',
@@ -87,12 +87,12 @@ export const plausible = {
 export const team = [
   {
     naam: 'Jasper Descamps',
-    rol: '[[Rol]]',
+    rol: 'Medeoprichter · uw vaste aanspreekpunt',
     linkedin: 'https://www.linkedin.com/in/jasper-descamps/',
   },
   {
     naam: 'Thomas Vancoillie',
-    rol: '[[Rol]]',
+    rol: 'Medeoprichter · uw vaste aanspreekpunt',
     linkedin: 'https://www.linkedin.com/in/thomas-vancoillie-a189903b1/',
   },
 ] as const;

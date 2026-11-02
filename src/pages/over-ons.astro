@@ -18,7 +18,7 @@ const partners = ['Restauratie-atelier', 'Mecanicien', 'Carrosserie', 'Bekleding
     <div class="wrap">
       <span class="bovenschrift">Over ons</span>
       <h1>Liefhebbers, met oog voor detail</h1>
-      <p class="intro">Wij zijn een kleine, persoonlijke zaak uit de regio Gent. Bewust klein, zodat u altijd met dezelfde mensen spreekt.</p>
+      <p class="intro">Wij zijn een kleine, persoonlijke zaak uit Zwijnaarde, net buiten Gent. Bewust klein, zodat u altijd met dezelfde mensen spreekt.</p>
     </div>
   </header>
 
@@ -29,7 +29,7 @@ const partners = ['Restauratie-atelier', 'Mecanicien', 'Carrosserie', 'Bekleding
         {team.map((p) => (
           <figure class="persoon">
             <div class="foto">
-              <Image src={p.foto} alt={p.alt} widths={[360, 540, 800]} sizes="(min-width: 48em) 30vw, 100vw" />
+              <Image src={p.foto} alt={p.alt} widths={[320, 480, 640, 800].filter((w) => w <= p.foto.width)} sizes="(min-width: 48em) 21rem, 100vw" />
             </div>
             <figcaption>
               <span class="persoon__naam">{p.naam}</span>
@@ -75,9 +75,10 @@ const partners = ['Restauratie-atelier', 'Mecanicien', 'Carrosserie', 'Bekleding
 </Base>
 
 <style>
-  .team { margin-top: 2rem; max-width: 56rem; }
+  .team { margin-top: 2rem; max-width: 46rem; }
   .persoon { margin: 0; }
-  .persoon .foto { aspect-ratio: 9 / 11; }
+  .persoon .foto { aspect-ratio: 1 / 1; }
+  .persoon .foto :global(img) { object-position: center top; }
   .persoon figcaption { margin-top: 1rem; display: flex; flex-direction: column; }
   .persoon__naam { font-family: var(--font-titel); font-size: 1.4rem; color: var(--kleur-accent); }
   .persoon__rol { color: var(--kleur-tekst-zacht); }

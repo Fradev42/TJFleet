@@ -1,5 +1,6 @@
 ---
 // Fictief voorbeeld van een kwartaalrapport voor één wagen.
+import { team } from '../config';
 ---
 <article class="rapport" aria-labelledby="rapport-titel">
   <header class="rapport__kop">
@@ -40,7 +41,7 @@
       </ul>
     </section>
   </div>
-  <footer class="rapport__voet">Uw contactpersoon: [[Naam]] · Vragen? Bel gerust.</footer>
+  <footer class="rapport__voet">Uw contactpersoon: {team[0].naam} · Vragen? Bel gerust.</footer>
 </article>
 
 <style>
