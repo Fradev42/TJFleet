@@ -1,12 +1,14 @@
 ---
+import { Image } from 'astro:assets';
 import { site, telHref, mailHref, adresRegels, menu } from '../config';
+import logoLicht from '../assets/logo/logo-licht.png';
 const jaar = new Date().getFullYear();
 ---
 <footer class="sitefooter">
   <div class="wrap">
     <div class="sitefooter__raster">
       <div>
-        <p class="sitefooter__naam">{site.naam}</p>
+        <Image class="sitefooter__logo" src={logoLicht} alt={site.logoAlt} height={52} densities={[1, 2]} />
         <p>{site.baseline} in {site.regio.join(' en ')}.</p>
       </div>
       <div>
@@ -42,6 +44,7 @@ const jaar = new Date().getFullYear();
   .sitefooter a:hover { color: #fff; text-decoration-thickness: 2px; }
   .sitefooter__raster { display: grid; gap: 2rem; margin-bottom: 2.5rem; }
   @media (min-width: 48em) { .sitefooter__raster { grid-template-columns: 1.3fr 1fr 1fr; } }
+  .sitefooter__logo { height: 3.25rem; width: auto; margin-bottom: 1rem; }
   .sitefooter__naam { font-family: var(--font-titel); font-size: 1.4rem; color: #fff; margin-bottom: 0.4rem; }
   .sitefooter__kop { font-family: var(--font-tekst); font-size: 0.85rem; font-weight: 650; letter-spacing: 0.12em; text-transform: uppercase; color: #e9dcc7; margin-bottom: 0.75rem; }
   address { font-style: normal; line-height: 1.9; }

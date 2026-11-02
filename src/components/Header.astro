@@ -1,12 +1,14 @@
 ---
+import { Image } from 'astro:assets';
 import { site, menu, telHref } from '../config';
+import logo from '../assets/logo/logo.png';
 const pad = Astro.url.pathname;
 const isHuidig = (href: string) => (href === '/' ? pad === '/' : pad.startsWith(href));
 ---
 <header class="sitekop">
   <div class="wrap sitekop__binnen">
     <a class="logo" href="/">
-      <span class="logo__naam">{site.naam}</span>
+      <Image class="logo__beeld" src={logo} alt={site.logoAlt} height={60} densities={[1, 2]} loading="eager" />
       <span class="logo__baseline">{site.baseline}</span>
     </a>
 
@@ -61,9 +63,10 @@ const isHuidig = (href: string) => (href === '/' ? pad === '/' : pad.startsWith(
     padding-block: 1rem;
   }
   .logo { display: flex; flex-direction: column; text-decoration: none; color: var(--kleur-accent); padding-block: 0.25rem; }
-  .logo__naam { font-family: var(--font-titel); font-size: 1.5rem; line-height: 1.15; }
+  .logo { gap: 0.35rem; }
+  .logo__beeld { height: 3.75rem; width: auto; }
   .logo__baseline { font-size: 0.9rem; color: var(--kleur-tekst-zacht); letter-spacing: 0.03em; }
-  .logo:hover .logo__naam { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+  .logo:hover .logo__baseline { text-decoration: underline; text-underline-offset: 0.2em; }
 
   .hoofdmenu ul { list-style: none; margin: 0; padding: 0; max-width: none; }
   .hoofdmenu a { text-decoration: none; color: var(--kleur-tekst); }
@@ -117,6 +120,7 @@ const isHuidig = (href: string) => (href === '/' ? pad === '/' : pad.startsWith(
   @media (max-width: 47.99em) {
     .sitekop__binnen { column-gap: 0.75rem; flex-wrap: wrap; }
     .logo { flex: 1 1 0; min-width: 0; }
+    .logo__beeld { height: 2.75rem; }
     :global(html.js) .menuknop { display: inline-flex; align-items: center; justify-content: center; }
     .hoofdmenu { flex-basis: 100%; }
     :global(html.js) .hoofdmenu { display: none; }
