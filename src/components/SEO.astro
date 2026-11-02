@@ -28,9 +28,8 @@ const schema = {
   image: ogUrl,
   address: {
     '@type': 'PostalAddress',
-    streetAddress: site.adres.straat,
-    postalCode: site.adres.postcode,
-    addressLocality: site.adres.gemeente,
+    postalCode: site.vestigingen[0].postcode,
+    addressLocality: site.vestigingen[0].gemeente,
     addressCountry: site.adres.landCode,
   },
   areaServed: site.regio.map((r) => ({ '@type': 'AdministrativeArea', name: r })),

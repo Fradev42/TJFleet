@@ -31,6 +31,18 @@ export const site = {
 
   email: 'info@apexfleet.be',
 
+  /**
+   * Vestigingen zoals ze op de site getoond worden (zonder straat en huisnummer).
+   */
+  vestigingen: [
+    { gemeente: 'Zwijnaarde', postcode: '9052', provincie: 'Oost-Vlaanderen' },
+    { gemeente: 'Sint-Eloois-Winkel', postcode: '8880', provincie: 'West-Vlaanderen' },
+  ],
+
+  /**
+   * Volledig adres van de maatschappelijke zetel. Wordt NIET op de contactpagina of in de footer getoond,
+   * enkel in de privacyverklaring (wettelijke vermelding).
+   */
   adres: {
     straat: 'Eedstraat 42a',
     postcode: '9052',
@@ -112,6 +124,7 @@ export const menu = [
 // Afgeleide waarden — hier hoeft u niets aan te passen.
 export const telHref = `tel:${site.telefoon.link}`;
 export const mailHref = `mailto:${site.email}`;
+export const vestigingRegels = site.vestigingen.map((v) => `${v.postcode} ${v.gemeente}`);
 export const adresRegels = [
   site.adres.straat,
   `${site.adres.postcode} ${site.adres.gemeente}`,

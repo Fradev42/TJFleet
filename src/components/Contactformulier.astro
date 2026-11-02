@@ -50,8 +50,18 @@ const honeypot = isNetlify ? 'bot-field' : '_gotcha';
   </div>
 
   <div class="veld">
+    <label for="moment">Wanneer bellen we u best?</label>
+    <select id="moment" name="voorkeursmoment">
+      <option value="">Geen voorkeur</option>
+      <option value="voormiddag">In de voormiddag (9 tot 12 uur)</option>
+      <option value="namiddag">In de namiddag (12 tot 18 uur)</option>
+      <option value="zaterdag">Op zaterdag</option>
+    </select>
+  </div>
+
+  <div class="veld">
     <label for="boodschap">Korte boodschap</label>
-    <span class="hint" id="boodschap-hint">Bijvoorbeeld wanneer we u best bellen, of wat u graag wilt bespreken.</span>
+    <span class="hint" id="boodschap-hint">Bijvoorbeeld wat u graag wilt bespreken.</span>
     <textarea id="boodschap" name="boodschap" rows="5" aria-describedby="boodschap-hint"></textarea>
   </div>
 
