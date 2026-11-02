@@ -22,10 +22,7 @@ const isHuidig = (href: string) => (href === '/' ? pad === '/' : pad.startsWith(
           </li>
         ))}
       </ul>
-      <a class="sitekop__tel" href={telHref}>
-        <span class="sitekop__tel-label">Bel ons</span>
-        <span class="sitekop__tel-nr">{site.telefoon.weergave}</span>
-      </a>
+      <a class="sitekop__tel" href={telHref}>Bel ons</a>
     </nav>
   </div>
 </header>
@@ -76,15 +73,14 @@ const isHuidig = (href: string) => (href === '/' ? pad === '/' : pad.startsWith(
   .hoofdmenu ul a[aria-current='page'] { border-bottom-color: var(--kleur-accent-2); color: var(--kleur-accent); font-weight: 650; }
 
   .sitekop__tel {
-    display: inline-flex; flex-direction: column; justify-content: center;
-    min-height: 3.25rem; padding: 0.4rem 1.1rem;
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 3rem; padding: 0.5rem 1.4rem;
+    font-weight: 650; text-decoration: none;
     border: 2px solid var(--kleur-accent); border-radius: var(--radius);
     color: var(--kleur-accent) !important; line-height: 1.2;
   }
   .sitekop__tel:hover { background: var(--kleur-wit); box-shadow: 0 0 0 3px var(--kleur-lijn); }
-  .sitekop__tel:hover .sitekop__tel-nr { text-decoration: underline; }
-  .sitekop__tel-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
-  .sitekop__tel-nr { font-weight: 650; font-size: 1.1rem; }
+  .sitekop__tel:hover { text-decoration: underline; text-underline-offset: 0.2em; }
 
   .menuknop {
     display: none;

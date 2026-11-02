@@ -204,7 +204,6 @@ a:hover { text-decoration-thickness: 2px; color: var(--kleur-accent-2); }
 .sectie--groen .knop--tweede:hover, .hero .knop--tweede:hover { background: rgba(255,255,255,.12); color: #fff; }
 .sectie--groen :focus-visible, .hero :focus-visible { outline-color: #fff; }
 
-.knop__label-klein { display: block; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.04em; }
 
 /* ── Kaarten en blokken ───────────────────────────────────── */
 .kaart {
