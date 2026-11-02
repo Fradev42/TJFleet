@@ -4,8 +4,8 @@ import Contactformulier from '../../components/Contactformulier.astro';
 import { site, telHref, mailHref, adresRegels } from '../../config';
 ---
 <Base
-  title="Contact"
-  description={`Bel ${site.naam} of vraag een vrijblijvend kennismakingsgesprek aan. Wij komen langs in heel ${site.regio.join(' en ')}.`}
+  title="Contact en kennismaking | APEX Fleet Management Gent"
+  description="Bel ons of vraag een vrijblijvend kennismakingsgesprek aan. Wij komen langs in Gent, Brugge, Kortrijk, Knokke en heel Oost- en West-Vlaanderen."
 >
   <header class="paginakop">
     <div class="wrap">
@@ -29,7 +29,7 @@ import { site, telHref, mailHref, adresRegels } from '../../config';
   <section class="sectie" aria-labelledby="formulier-titel">
     <div class="wrap contact">
       <div>
-        <h2 id="formulier-titel">Vraag een kennismaking aan</h2>
+        <h2 id="formulier-titel">Bel ons of laat u terugbellen</h2>
         <Contactformulier />
       </div>
       <aside class="contact__info" aria-label="Adres en bereikbaarheid">
@@ -45,6 +45,9 @@ import { site, telHref, mailHref, adresRegels } from '../../config';
           <ul>
             {site.bereikbaarheid.map((r) => <li>{r}</li>)}
           </ul>
+
+          <h2 class="contact__kop">Waar wij werken</h2>
+          <p>Heel Oost- en West-Vlaanderen, van Gent, Aalst en Oudenaarde tot Brugge, Knokke-Heist en Kortrijk. <a href="/werkgebied/">Bekijk ons werkgebied</a>.</p>
 
           <h2 class="contact__kop">Gegevens</h2>
           <p>Ondernemingsnummer {site.btwNummer}</p>

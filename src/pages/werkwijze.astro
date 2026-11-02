@@ -6,8 +6,8 @@ import AppVoorbeeld from '../components/AppVoorbeeld.astro';
 import kennismaking from '../assets/images/kennismaking.jpg';
 ---
 <Base
-  title="Werkwijze"
-  description="In drie stappen naar rustig beheer van uw klassieke wagens: kennismaking bij u thuis, een inventaris en plan per wagen, en een vaste contactpersoon, met uw collectie altijd in zicht in onze app."
+  title="Zo werken we: rustig beheer van uw oldtimers | APEX"
+  description="Kennismaking bij u thuis, een inventaris en plan per wagen, één vaste contactpersoon en uw collectie altijd in zicht in onze app. Wij regelen de rest."
 >
   <header class="paginakop">
     <div class="wrap">
@@ -22,17 +22,17 @@ import kennismaking from '../assets/images/kennismaking.jpg';
       <h2 id="stappen-titel" class="visueel-verborgen">De drie stappen</h2>
       <ol class="stappen">
         <li>
-          <h3>Kennismaking bij u thuis of in uw stalling</h3>
+          <h3>Kennismaking bij u thuis</h3>
           <p>Een eerste gesprek van ongeveer een uur, op een plek die u past. We bekijken samen de wagens en horen wat u belangrijk vindt: meer rijden, minder zorgen, een restauratie afronden of de collectie goed overdragen.</p>
           <p>Het gesprek is vrijblijvend en kosteloos.</p>
         </li>
         <li>
-          <h3>Inventaris en plan per wagen</h3>
+          <h3>Een inventaris en plan per wagen</h3>
           <p>We noteren per wagen de toestand, de papieren, de onderhoudshistoriek en de verzekering. Daarna krijgt u een helder plan: wat dringend is, wat kan wachten en wat het ongeveer kost.</p>
           <p>U beslist. Wij voeren niets uit zonder uw akkoord, en dat akkoord vragen we eenvoudig via de app.</p>
         </li>
         <li>
-          <h3>Vaste contactpersoon en uw collectie in de app</h3>
+          <h3>Eén vaste contactpersoon</h3>
           <p>Vanaf dan hebt u één vaste contactpersoon die uw wagens kent en altijd bereikbaar is. In onze app ziet u op elk moment hoe elke wagen ervoor staat: wat er gebeurd is, wat gepland staat en wat het kost.</p>
           <p>Is uw toestemming nodig, dan krijgt u een melding en keurt u goed met één tik. Liever eerst overleggen? Dan bellen we u.</p>
         </li>
@@ -43,10 +43,28 @@ import kennismaking from '../assets/images/kennismaking.jpg';
     </div>
   </section>
 
-  <section class="sectie sectie--vlak" id="app" aria-labelledby="app-titel">
+  <section class="sectie sectie--vlak" aria-labelledby="jaarplan-titel">
+    <div class="wrap raster raster--2 jaarplan">
+      <div>
+        <span class="bovenschrift">Voorbeeld</span>
+        <h2 id="jaarplan-titel">Een jaar in het kort</h2>
+        <p>Na de inventaris krijgt u een jaarplan voor uw hele collectie, met een raming per wagen. Zo weet u vooraf wat er gebeurt en wat het ongeveer kost.</p>
+        <p>Grotere werken leggen we apart aan u voor, met vergelijkbare offertes en ons advies erbij. U beslist; wij plannen en volgen op.</p>
+      </div>
+      <ol class="jaarplan__lijst" aria-label="Voorbeeld van een jaarplan">
+        <li><span class="jaarplan__maand">Maart</span> Periodieke oldtimerkeuring van de coupé</li>
+        <li><span class="jaarplan__maand">April</span> Onderhoud van drie wagens voor het seizoen</li>
+        <li><span class="jaarplan__maand">Mei</span> Transport in gesloten trailer naar een concours</li>
+        <li><span class="jaarplan__maand">September</span> Hertaxatie van twee wagens, verzekerde waarde bijgewerkt</li>
+        <li><span class="jaarplan__maand">Oktober</span> Alle wagens winterklaar maken</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sectie" id="app" aria-labelledby="app-titel">
     <div class="wrap">
       <span class="bovenschrift">Onze app</span>
-      <h2 id="app-titel">Uw collectie, altijd in zicht</h2>
+      <h2 id="app-titel">Akkoord geven met één tik in de app</h2>
       <p class="intro">Geen vakjargon en geen overbodige knoppen. U ziet in één oogopslag hoe elke wagen ervoor staat, en u beslist wanneer het u past.</p>
       <ul class="app-punten">
         <li><strong>Altijd op de hoogte.</strong> De toestand, de planning en de kosten per wagen, op het moment dat u dat wilt.</li>
@@ -56,6 +74,14 @@ import kennismaking from '../assets/images/kennismaking.jpg';
       <div class="app-voorbeeld">
         <AppVoorbeeld />
       </div>
+    </div>
+  </section>
+
+  <section class="sectie sectie--vlak" aria-labelledby="discretie-titel">
+    <div class="wrap">
+      <h2 id="discretie-titel">Discretie: wat we bewaren en wie het ziet</h2>
+      <p>We bewaren alleen wat nodig is om uw collectie te beheren: het dossier per wagen en uw contactgegevens. Alleen u en ons team zien die gegevens.</p>
+      <p>We delen niets met derden zonder uw akkoord, spreken niet over klanten en tonen geen wagens, namen of adressen, ook niet op sociale media.</p>
     </div>
   </section>
 
@@ -69,6 +95,12 @@ import kennismaking from '../assets/images/kennismaking.jpg';
     .werkwijze__foto { position: sticky; top: 2rem; }
   }
   .werkwijze .stappen { gap: 3rem; }
+  .jaarplan { align-items: start; }
+  .jaarplan__lijst { list-style: none; padding: 0; margin: 0; max-width: none; background: var(--kleur-wit); border: 1px solid var(--kleur-lijn); border-radius: var(--radius); }
+  .jaarplan__lijst li { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; padding: 0.9rem 1.25rem; border-bottom: 1px solid var(--kleur-lijn); }
+  .jaarplan__lijst li:last-child { border-bottom: 0; }
+  .jaarplan__maand { font-family: var(--font-titel); color: var(--kleur-accent); }
+  @media (max-width: 30em) { .jaarplan__lijst li { grid-template-columns: 1fr; gap: 0.1rem; } }
   .app-punten { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; gap: 1rem; max-width: 46rem; }
   .app-punten li { padding-left: 1.25rem; border-left: 3px solid var(--kleur-accent); }
   .app-voorbeeld { margin-top: 3rem; }

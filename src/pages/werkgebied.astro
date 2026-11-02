@@ -1,0 +1,74 @@
+---
+import Base from '../layouts/Base.astro';
+import BelBlok from '../components/BelBlok.astro';
+import { site } from '../config';
+
+const gebieden = [
+  {
+    provincie: 'Oost-Vlaanderen',
+    plaatsen: ['Gent', 'Sint-Martens-Latem', 'Deinze', 'Aalst', 'Oudenaarde'],
+    tekst: 'Vanuit Zwijnaarde zijn we snel in Gent en de dorpen langs de Leie, en net zo makkelijk in de Vlaamse Ardennen of rond Aalst.',
+  },
+  {
+    provincie: 'West-Vlaanderen',
+    plaatsen: ['Brugge', 'Knokke-Heist', 'Kortrijk', 'Waregem', 'Roeselare'],
+    tekst: 'Aan de kust, in het Brugse en in de streek rond Kortrijk en Waregem komen we op afspraak bij u langs.',
+  },
+];
+---
+<Base
+  title="Oldtimerbeheer in Oost- en West-Vlaanderen · APEX"
+  description="Wij beheren collecties klassieke wagens in Gent, Sint-Martens-Latem, Aalst, Brugge, Knokke, Kortrijk en Waregem. Eén vast aanspreekpunt, bij u thuis."
+>
+  <header class="paginakop">
+    <div class="wrap">
+      <span class="bovenschrift">Werkgebied</span>
+      <h1>Oldtimerbeheer in Oost- en West-Vlaanderen</h1>
+      <p class="intro">{site.naam} werkt vanuit Zwijnaarde, net buiten Gent. Wij komen naar u toe: bij u thuis of in uw eigen stalling, in heel Oost- en West-Vlaanderen.</p>
+    </div>
+  </header>
+
+  <section class="sectie" aria-label="Provincies en gemeenten">
+    <div class="wrap raster raster--2">
+      {gebieden.map((g) => (
+        <article class="kaart" aria-labelledby={`gebied-${g.provincie}`}>
+          <h2 id={`gebied-${g.provincie}`}>{g.provincie}</h2>
+          <p>{g.tekst}</p>
+          <ul class="plaatsen">
+            {g.plaatsen.map((p) => <li>{p}</li>)}
+          </ul>
+          <p class="klein">En de gemeenten daartussen.</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="sectie sectie--vlak" aria-labelledby="bezoek-titel">
+    <div class="wrap">
+      <h2 id="bezoek-titel">Hoe een kennismaking bij u thuis verloopt</h2>
+      <ol class="stappen stappen--rij" style="margin-top: 2.5rem;">
+        <li>
+          <h3>U belt of laat u terugbellen</h3>
+          <p>We spreken een moment af dat u past, overdag of op zaterdag.</p>
+        </li>
+        <li>
+          <h3>We komen langs</h3>
+          <p>Ongeveer een uur, bij u thuis of in uw stalling. We bekijken samen de wagens en horen wat u belangrijk vindt.</p>
+        </li>
+        <li>
+          <h3>U krijgt een voorstel</h3>
+          <p>Een plan op maat van uw collectie, met een duidelijke prijs. Vrijblijvend en kosteloos.</p>
+        </li>
+      </ol>
+      <p style="margin-top: 2.5rem;"><a class="knop knop--tweede" href="/werkwijze/">Lees meer over onze werkwijze</a></p>
+    </div>
+  </section>
+
+  <BelBlok />
+</Base>
+
+<style>
+  .plaatsen { list-style: none; padding: 0; margin: 0 0 0.75rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .plaatsen li { padding: 0.3rem 0.85rem; border: 1px solid var(--kleur-lijn-sterk); border-radius: 999px; background: var(--kleur-achtergrond); }
+  .klein { color: var(--kleur-tekst-zacht); font-size: 0.95rem; }
+</style>

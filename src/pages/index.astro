@@ -6,8 +6,8 @@ import { site, telHref } from '../config';
 import hero from '../assets/images/hero.jpg';
 ---
 <Base
-  title="Home"
-  description={`Onafhankelijk beheer van uw collectie klassieke wagens in ${site.regio.join(' en ')}. Eén vast aanspreekpunt voor onderhoud, keuring, verzekering en transport.`}
+  title="Beheer van uw oldtimercollectie | APEX Fleet Management"
+  description="Eén vast aanspreekpunt voor uw oldtimers in Oost- en West-Vlaanderen: onderhoud, keuring, verzekering, inschrijving en transport. Discreet geregeld."
 >
   <section class="hero" aria-labelledby="hero-titel">
     <div class="hero__beeld">
@@ -23,7 +23,7 @@ import hero from '../assets/images/hero.jpg';
     <div class="hero__tekst">
       <div class="wrap">
         <span class="bovenschrift">{site.baseline} · {site.regio.join(' & ')}</span>
-        <h1 id="hero-titel">Uw collectie in goede handen</h1>
+        <h1 id="hero-titel">Uw collectie klassieke wagens in goede handen</h1>
         <p class="hero__sub">Wij beheren uw klassieke wagens, u geniet ervan.</p>
         <div class="knoppen">
           <a class="knop knop--groot" href={telHref}>Bel ons</a>
@@ -33,10 +33,25 @@ import hero from '../assets/images/hero.jpg';
     </div>
   </section>
 
+  <section class="sectie" aria-labelledby="regelen-titel">
+    <div class="wrap">
+      <h2 id="regelen-titel">Wat wij voor uw oldtimers regelen</h2>
+      <p class="intro">Bezit u meerdere oldtimers? Wij nemen de zorg uit handen: onderhoud en keuring op tijd, verzekering en inschrijving in orde, transport naar de garage of het concours. U houdt één vast aanspreekpunt.</p>
+      <ul class="wegwijzers">
+        <li><a href="/diensten/"><span class="wegwijzers__titel">Onze diensten</span><span>Onderhoud, keuring, restauratie, verzekering, LEZ en transport.</span></a></li>
+        <li><a href="/werkwijze/"><span class="wegwijzers__titel">Onze werkwijze</span><span>Van kennismaking bij u thuis tot een plan per wagen.</span></a></li>
+        <li><a href="/werkgebied/"><span class="wegwijzers__titel">Ons werkgebied</span><span>Gent, Brugge, Kortrijk en heel Oost- en West-Vlaanderen.</span></a></li>
+        <li><a href="/contact/"><span class="wegwijzers__titel">Kennismaken</span><span>Bel ons of laat u terugbellen, vrijblijvend.</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="lijn" />
+
   <section class="sectie" aria-labelledby="beloften-titel">
     <div class="wrap">
-      <h2 id="beloften-titel" class="visueel-verborgen">Waarom eigenaars voor ons kiezen</h2>
-      <div class="raster raster--3">
+      <h2 id="beloften-titel">Onafhankelijk, aan uw kant</h2>
+      <div class="raster raster--3" style="margin-top: 2rem;">
         <div class="belofte">
           <h3>Eén aanspreekpunt</h3>
           <p>U hebt één vaste contactpersoon die uw wagens kent. Eén telefoontje volstaat; wij regelen de rest met garages, keuring en verzekeraar.</p>
@@ -80,7 +95,7 @@ import hero from '../assets/images/hero.jpg';
     <div class="wrap app-blok">
       <div>
         <span class="bovenschrift">Onze app</span>
-        <h2 id="app-titel">Altijd op de hoogte, zonder erom te moeten vragen</h2>
+        <h2 id="app-titel">Uw collectie altijd in zicht</h2>
         <p class="intro">In onze app ziet u op elk moment hoe uw wagens ervoor staan. En is uw toestemming nodig voor een herstelling of een aankoop, dan keurt u goed met één tik.</p>
         <p><a class="knop knop--tweede" href="/werkwijze/#app">Bekijk een voorbeeld van de app</a></p>
       </div>
@@ -92,7 +107,14 @@ import hero from '../assets/images/hero.jpg';
     </div>
   </section>
 
-  <hr class="lijn" />
+  <section class="sectie sectie--vlak" aria-labelledby="regio-titel">
+    <div class="wrap">
+      <span class="bovenschrift">Werkgebied</span>
+      <h2 id="regio-titel">In Gent, Brugge, Kortrijk en daartussen</h2>
+      <p class="intro">Vanuit Zwijnaarde komen we bij u langs in heel Oost- en West-Vlaanderen: van Gent, Sint-Martens-Latem, Deinze, Aalst en Oudenaarde tot Brugge, Knokke-Heist, Kortrijk, Waregem en Roeselare.</p>
+      <p><a class="knop knop--tweede" href="/werkgebied/">Meer over ons werkgebied</a></p>
+    </div>
+  </section>
 
   <section class="sectie" aria-labelledby="getuigenis-titel">
     <div class="wrap">
@@ -110,6 +132,19 @@ import hero from '../assets/images/hero.jpg';
 </Base>
 
 <style>
+  .wegwijzers { list-style: none; padding: 0; margin: 2rem 0 0; max-width: none; display: grid; gap: 1rem; }
+  @media (min-width: 48em) { .wegwijzers { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 64em) { .wegwijzers { grid-template-columns: repeat(4, 1fr); } }
+  .wegwijzers a {
+    display: flex; flex-direction: column; gap: 0.4rem; height: 100%;
+    padding: 1.25rem 1.4rem; background: var(--kleur-wit);
+    border: 1px solid var(--kleur-lijn); border-top: 3px solid var(--kleur-accent); border-radius: var(--radius);
+    color: var(--kleur-tekst); text-decoration: none;
+  }
+  .wegwijzers a:hover { box-shadow: 0 0 0 3px var(--kleur-lijn); color: var(--kleur-tekst); }
+  .wegwijzers a:hover .wegwijzers__titel { text-decoration: underline; text-decoration-thickness: 2px; }
+  .wegwijzers__titel { font-family: var(--font-titel); font-size: 1.3rem; color: var(--kleur-accent); }
+  .wegwijzers__titel::after { content: ' →'; }
   .app-blok { display: grid; gap: 2rem; align-items: center; }
   @media (min-width: 56em) { .app-blok { grid-template-columns: 1.3fr 1fr; gap: 4rem; } }
   .app-blok > div > :last-child { margin-bottom: 0; }
@@ -125,7 +160,7 @@ import hero from '../assets/images/hero.jpg';
     background: linear-gradient(90deg, rgba(21,40,31,0.9) 0%, rgba(21,40,31,0.82) 35%, rgba(21,40,31,0.35) 58%, rgba(21,40,31,0) 78%);
   }
   .hero__tekst { position: relative; padding-block: clamp(5rem, 14vw, 10rem); }
-  .hero h1 { color: #fff; max-width: 14ch; }
+  .hero h1 { color: #fff; max-width: 17ch; }
   .hero .bovenschrift { color: #e9dcc7; }
   .hero__sub { font-size: clamp(1.25rem, 2.4vw, 1.6rem); line-height: 1.45; max-width: 34ch; margin-bottom: 2.25rem; color: #f7f4ee; }
   /* Smartphone en staande tablet: foto bovenaan, tekst eronder op groen. */

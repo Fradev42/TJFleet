@@ -2,6 +2,7 @@
 import { site, team } from '../config';
 
 interface Props {
+  /** Volledige paginatitel zoals ze in Google verschijnt (maximaal ± 60 tekens). */
   title: string;
   description: string;
   /** Pad van de Open Graph-afbeelding in /public. */
@@ -11,7 +12,7 @@ interface Props {
 const { title, description, ogImage = '/og-image.jpg', noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
 const ogUrl = new URL(ogImage, Astro.site ?? site.url).href;
-const volledigeTitel = Astro.url.pathname === '/' ? `${site.naam} · ${site.baseline}` : `${title} · ${site.naam}`;
+const volledigeTitel = title;
 
 const schema = {
   '@context': 'https://schema.org',

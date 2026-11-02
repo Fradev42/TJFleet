@@ -11,20 +11,21 @@ const team = teamGegevens.map((p, i) => ({ ...p, foto: fotos[i % fotos.length], 
 const partners = ['Restauratie-atelier', 'Mecanicien', 'Carrosserie', 'Bekleding', 'Verzekeraar', 'Transport'];
 ---
 <Base
-  title="Over ons"
-  description={`Wie achter ${site.naam} staat: liefhebbers van klassieke wagens die onafhankelijk werken, aan de kant van de eigenaar.`}
+  title="Over ons: onafhankelijke oldtimerliefhebbers | APEX"
+  description={`${site.naam} werkt onafhankelijk en aan de kant van de eigenaar: geen eigen garage, geen verkoop, geen commissie. Vanuit Zwijnaarde (Gent).`}
 >
   <header class="paginakop">
     <div class="wrap">
       <span class="bovenschrift">Over ons</span>
       <h1>Liefhebbers, met oog voor detail</h1>
       <p class="intro">Wij zijn een kleine, persoonlijke zaak uit Zwijnaarde, net buiten Gent. Bewust klein, zodat u altijd met dezelfde mensen spreekt.</p>
+      <p>{site.naam} is een handelsnaam van {site.juridischeNaam}, ondernemingsnummer {site.btwNummer}.</p>
     </div>
   </header>
 
   <section class="sectie" aria-labelledby="team-titel">
     <div class="wrap">
-      <h2 id="team-titel">Met wie u te maken hebt</h2>
+      <h2 id="team-titel">Wie uw vaste aanspreekpunt is</h2>
       <div class="raster raster--2 team">
         {team.map((p) => (
           <figure class="persoon">
@@ -54,7 +55,7 @@ const partners = ['Restauratie-atelier', 'Mecanicien', 'Carrosserie', 'Bekleding
         <p>Daarom begonnen we {site.naam}: zodat u weer kunt doen waarvoor u die wagens ooit kocht. Er gewoon van genieten.</p>
       </div>
       <div>
-        <h2>Waarom we onafhankelijk werken</h2>
+        <h2>Waarom wij onafhankelijk werken</h2>
         <p>Wij verkopen geen wagens, hebben geen eigen garage en nemen geen commissie van partners. Wij worden enkel door u betaald.</p>
         <p>Zo kunnen we eerlijk adviseren: een herstelling uitstellen als dat kan, een tweede offerte vragen als de eerste te hoog lijkt, of een specialist aanraden die beter past bij uw wagen.</p>
       </div>
@@ -63,7 +64,7 @@ const partners = ['Restauratie-atelier', 'Mecanicien', 'Carrosserie', 'Bekleding
 
   <section class="sectie" aria-labelledby="partners-titel">
     <div class="wrap">
-      <h2 id="partners-titel">Vaste partners</h2>
+      <h2 id="partners-titel">Ons netwerk van specialisten</h2>
       <p class="intro">We werken met een beperkte kring van specialisten die we persoonlijk kennen en wiens werk we zelf opvolgen.</p>
       <ul class="partners">
         {partners.map((p) => <li><span class="partners__logo">Logo partner</span><span>{p}</span></li>)}

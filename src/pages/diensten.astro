@@ -6,27 +6,35 @@ import werkplaats from '../assets/images/werkplaats.jpg';
 
 const diensten = [
   {
-    id: 'opvolging',
-    titel: 'Opvolging en planning',
+    id: 'onderhoud',
+    titel: 'Onderhoud en keuring op tijd',
     tekst: [
-      'Wij houden de kalender van elke wagen bij: onderhoud, technische keuring, verzekering en inschrijving als oldtimer. U krijgt tijdig bericht in onze app, wij maken de afspraken.',
-      'Ook de regels voor lage-emissiezones in Gent, Antwerpen en Brussel volgen we op, zodat u zonder zorgen kunt rijden waar en wanneer u wilt.',
+      'Wij houden de kalender van elke wagen bij: onderhoud, oldtimerkeuring en de andere vervaldata. U krijgt tijdig bericht in onze app; wij maken de afspraken en regelen het vervoer.',
+      'Zo staat geen enkele wagen te lang stil, en mist u geen keuring, ook niet met tien wagens en tien verschillende data.',
     ],
   },
   {
-    id: 'onderhoud',
-    titel: 'Onderhoud en restauratie',
+    id: 'restauratie',
+    titel: 'Restauratie via vaste specialisten',
     tekst: [
-      'Wij werken met een vaste kring van specialisten die we goed kennen: mecaniciens, carrosseriers, bekleders en restaurateurs.',
-      'Voor grotere werken vragen we meerdere offertes, vergelijken ze voor u en volgen de werken op tot de wagen terug bij u staat.',
+      'Wij werken niet zelf aan uw wagens. Wij kiezen met u de juiste specialist uit een vaste kring die we goed kennen: mecaniciens, carrosseriers, bekleders en restaurateurs.',
+      'Voor grotere werken vragen we vergelijkbare offertes op, vergelijken ze voor u en volgen de werken op tot de wagen terug bij u staat.',
+    ],
+  },
+  {
+    id: 'papieren',
+    titel: 'Verzekering, inschrijving en LEZ',
+    tekst: [
+      'Wij zorgen dat de papieren van elke wagen in orde zijn: de inschrijving als oldtimer, de nummerplaat en de registratie voor de lage-emissiezones van Gent, Antwerpen en Brussel.',
+      'Wij verkopen zelf geen verzekeringen, maar bekijken met u en uw makelaar of de verzekerde waarde en de dekking nog kloppen. Veranderen de regels, dan hoort u het van ons.',
     ],
   },
   {
     id: 'transport',
-    titel: 'Transport en events',
+    titel: 'Transport naar garage, rally en concours',
     tekst: [
-      'Uw wagens blijven gewoon waar ze nu staan: bij u thuis of in uw eigen stalling. Moet een wagen naar de werkplaats, dan regelen wij het transport heen en terug.',
-      'Voor een rally, concours of rit met vrienden regelen we, samen met een vaste transportpartner, vervoer in een gesloten trailer en maken we de wagen vooraf rijklaar.',
+      'Uw wagens blijven gewoon waar ze nu staan: bij u thuis of in uw eigen stalling. Moet een wagen naar de garage, de keuring of de restaurateur, dan regelen wij het transport heen en terug.',
+      'Voor een rally, concours d’elegance of rit met vrienden regelen we, samen met een vaste transportpartner, vervoer in een gesloten trailer en maken we de wagen vooraf rijklaar.',
     ],
   },
   {
@@ -38,16 +46,53 @@ const diensten = [
     ],
   },
 ];
+
+const vragen = [
+  {
+    vraag: 'Hebben jullie een eigen garage of stalling?',
+    antwoord: 'Nee. Wij werken niet zelf aan uw wagens en hebben geen eigen stalling. Uw wagens blijven bij u thuis of in uw eigen stalling, en voor elk werk kiezen we met u de juiste specialist.',
+  },
+  {
+    vraag: 'Verdienen jullie aan de garages die jullie inschakelen?',
+    antwoord: 'Nee. Wij nemen geen commissie van partners en verkopen geen wagens. U betaalt alleen ons, zodat ons advies onafhankelijk blijft.',
+  },
+  {
+    vraag: 'Hoe geef ik toestemming voor een herstelling?',
+    antwoord: 'U krijgt een melding in onze app, met de uitleg en de offertes erbij, en keurt goed met één tik. Liever eerst overleggen? Dan bellen we u.',
+  },
+  {
+    vraag: 'Wie ziet de gegevens van mijn collectie?',
+    antwoord: 'Alleen u en ons team. Wij delen niets met derden zonder uw akkoord, spreken niet over klanten en tonen geen wagens of adressen.',
+  },
+  {
+    vraag: 'In welke regio werken jullie?',
+    antwoord: 'In heel Oost- en West-Vlaanderen, van Gent en Aalst tot Brugge, Knokke-Heist en Kortrijk. We komen bij u langs.',
+  },
+  {
+    vraag: 'Wat kost het?',
+    antwoord: 'Dat hangt af van het aantal wagens en wat u uit handen wilt geven. Na een vrijblijvend kennismakingsgesprek krijgt u een voorstel op maat.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: vragen.map((v) => ({
+    '@type': 'Question',
+    name: v.vraag,
+    acceptedAnswer: { '@type': 'Answer', text: v.antwoord },
+  })),
+};
 ---
 <Base
-  title="Diensten"
-  description="Opvolging en planning, onderhoud en restauratie via vaste specialisten, transport en events, en een volledig dossier per wagen. Op maat van uw collectie."
+  title="Onderhoud, keuring en restauratie van oldtimers | APEX"
+  description="Wij plannen onderhoud en keuring, vergelijken offertes voor restauratie, regelen verzekering, LEZ en transport in gesloten trailer. Voor uw hele collectie."
 >
   <header class="paginakop">
     <div class="wrap">
       <span class="bovenschrift">Diensten</span>
-      <h1>Alles rond uw collectie, op één plek geregeld</h1>
-      <p class="intro">U kiest zelf wat u uit handen geeft: één dienst of het volledige beheer. Wij werken altijd in uw naam en in uw belang.</p>
+      <h1>Alles rond uw oldtimers, op één plek geregeld</h1>
+      <p class="intro">Van onderhoud en oldtimerkeuring tot restauratie, verzekering, LEZ en transport. U kiest zelf wat u uit handen geeft: één dienst of het volledige beheer van uw collectie. Wij werken altijd in uw naam en in uw belang.</p>
     </div>
   </header>
 
@@ -59,6 +104,10 @@ const diensten = [
           {d.tekst.map((t) => <p>{t}</p>)}
         </article>
       ))}
+      <aside class="kaart niet-doen" aria-labelledby="niet-doen-titel">
+        <h2 id="niet-doen-titel" class="dienst__titel">Wat wij niet doen</h2>
+        <p>Wij hebben geen eigen garage en geen eigen stalling, verkopen geen wagens en nemen geen commissie van de specialisten die we inschakelen. Zo staan we altijd aan uw kant.</p>
+      </aside>
     </div>
   </section>
 
@@ -76,10 +125,32 @@ const diensten = [
     </div>
   </section>
 
+  <section class="sectie" aria-labelledby="faq-titel">
+    <div class="wrap">
+      <h2 id="faq-titel">Veelgestelde vragen</h2>
+      <dl class="faq">
+        {vragen.map((v) => (
+          <div class="faq__item">
+            <dt>{v.vraag}</dt>
+            <dd>{v.antwoord}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
   <BelBlok />
 </Base>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
 <style>
   .dienst__titel { font-size: clamp(1.45rem, 2.6vw, 1.8rem); }
   .prijs { align-items: center; }
+  .niet-doen { background: transparent; border-style: dashed; border-color: var(--kleur-lijn-sterk); }
+  .faq { margin: 2rem 0 0; max-width: 50rem; display: grid; gap: 0; }
+  .faq__item { padding-block: 1.25rem; border-top: 1px solid var(--kleur-lijn); }
+  .faq__item:last-child { border-bottom: 1px solid var(--kleur-lijn); }
+  .faq dt { font-family: var(--font-titel); font-size: 1.25rem; color: var(--kleur-accent); margin-bottom: 0.4rem; }
+  .faq dd { margin: 0; }
 </style>
