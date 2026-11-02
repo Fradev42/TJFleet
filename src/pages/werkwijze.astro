@@ -2,12 +2,12 @@
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import BelBlok from '../components/BelBlok.astro';
-import Kwartaalrapport from '../components/Kwartaalrapport.astro';
+import AppVoorbeeld from '../components/AppVoorbeeld.astro';
 import stalling from '../assets/images/stalling.jpg';
 ---
 <Base
   title="Werkwijze"
-  description="In drie stappen naar rustig beheer van uw klassieke wagens: kennismaking bij u thuis, een inventaris en plan per wagen, en een vaste contactpersoon met kwartaalrapport."
+  description="In drie stappen naar rustig beheer van uw klassieke wagens: kennismaking bij u thuis, een inventaris en plan per wagen, en een vaste contactpersoon, met uw collectie altijd in zicht in onze app."
 >
   <header class="paginakop">
     <div class="wrap">
@@ -29,12 +29,12 @@ import stalling from '../assets/images/stalling.jpg';
         <li>
           <h3>Inventaris en plan per wagen</h3>
           <p>We noteren per wagen de toestand, de papieren, de onderhoudshistoriek en de verzekering. Daarna krijgt u een helder plan: wat dringend is, wat kan wachten en wat het ongeveer kost.</p>
-          <p>U beslist. Wij voeren niets uit zonder uw akkoord.</p>
+          <p>U beslist. Wij voeren niets uit zonder uw akkoord, en dat akkoord vragen we eenvoudig via de app.</p>
         </li>
         <li>
-          <h3>Vaste contactpersoon en een kwartaalrapport</h3>
-          <p>Vanaf dan hebt u één vaste contactpersoon die uw wagens kent en altijd bereikbaar is. Elk kwartaal ontvangt u een kort rapport per wagen, op papier of per e-mail, naar keuze.</p>
-          <p>Bij grotere beslissingen bellen we u eerst.</p>
+          <h3>Vaste contactpersoon en uw collectie in de app</h3>
+          <p>Vanaf dan hebt u één vaste contactpersoon die uw wagens kent en altijd bereikbaar is. In onze app ziet u op elk moment hoe elke wagen ervoor staat: wat er gebeurd is, wat gepland staat en wat het kost.</p>
+          <p>Is uw toestemming nodig, dan krijgt u een melding en keurt u goed met één tik. Liever eerst overleggen? Dan bellen we u.</p>
         </li>
       </ol>
       <div class="foto werkwijze__foto">
@@ -43,15 +43,19 @@ import stalling from '../assets/images/stalling.jpg';
     </div>
   </section>
 
-  <section class="sectie sectie--vlak" aria-labelledby="rapport-sectie-titel">
+  <section class="sectie sectie--vlak" id="app" aria-labelledby="app-titel">
     <div class="wrap">
-      <span class="bovenschrift">Voorbeeld</span>
-      <h2 id="rapport-sectie-titel">Zo ziet een kwartaalrapport eruit</h2>
-      <p class="intro">Eén blad per wagen, zonder vakjargon. U ziet in één oogopslag wat er gebeurd is, wat het kostte en wat er nog komt.</p>
-      <div style="margin-top: 2.5rem;">
-        <Kwartaalrapport />
+      <span class="bovenschrift">Onze app</span>
+      <h2 id="app-titel">Uw collectie, altijd in zicht</h2>
+      <p class="intro">Geen vakjargon en geen overbodige knoppen. U ziet in één oogopslag hoe elke wagen ervoor staat, en u beslist wanneer het u past.</p>
+      <ul class="app-punten">
+        <li><strong>Altijd op de hoogte.</strong> De toestand, de planning en de kosten per wagen, op het moment dat u dat wilt.</li>
+        <li><strong>Toestemming in één tik.</strong> Is uw akkoord nodig, dan krijgt u een melding met de uitleg en de offertes erbij.</li>
+        <li><strong>Het volledige dossier bij de hand.</strong> Historiek, facturen, foto’s en documenten per wagen.</li>
+      </ul>
+      <div class="app-voorbeeld">
+        <AppVoorbeeld />
       </div>
-      <p style="margin-top: 1.5rem;"><em>Fictieve wagen en gegevens, ter illustratie.</em></p>
     </div>
   </section>
 
@@ -65,4 +69,7 @@ import stalling from '../assets/images/stalling.jpg';
     .werkwijze__foto { position: sticky; top: 2rem; }
   }
   .werkwijze .stappen { gap: 3rem; }
+  .app-punten { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; gap: 1rem; max-width: 46rem; }
+  .app-punten li { padding-left: 1.25rem; border-left: 3px solid var(--kleur-accent); }
+  .app-voorbeeld { margin-top: 3rem; }
 </style>

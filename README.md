@@ -38,7 +38,7 @@ Zoek in het hele project naar `[[` om alles te vinden wat nog ingevuld moet word
 | Home (incl. getuigenis) | `src/pages/index.astro` |
 | Diensten | `src/pages/diensten.astro` (de vier blokken staan bovenaan in een lijstje) |
 | Werkwijze | `src/pages/werkwijze.astro` |
-| Voorbeeld kwartaalrapport | `src/components/Kwartaalrapport.astro` |
+| Voorbeeld van de app (Werkwijze) | `src/components/AppVoorbeeld.astro` |
 | Over ons (tekst, partners) | `src/pages/over-ons.astro` (teamleden staan in `src/config.ts`) |
 | Contact / bedankt | `src/pages/contact/index.astro`, `src/pages/contact/bedankt.astro` |
 | Formuliervelden | `src/components/Contactformulier.astro` |

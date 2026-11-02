@@ -69,12 +69,30 @@ import hero from '../assets/images/hero.jpg';
         </li>
         <li>
           <h3>Vaste opvolging</h3>
-          <p>Eén contactpersoon volgt alles op, en elk kwartaal krijgt u een helder rapport.</p>
+          <p>Eén contactpersoon volgt alles op, en in onze app ziet u altijd hoe uw wagens ervoor staan.</p>
         </li>
       </ol>
       <p style="margin-top: 2.5rem;"><a class="knop knop--tweede" href="/werkwijze/">Lees meer over onze werkwijze</a></p>
     </div>
   </section>
+
+  <section class="sectie" aria-labelledby="app-titel">
+    <div class="wrap app-blok">
+      <div>
+        <span class="bovenschrift">Onze app</span>
+        <h2 id="app-titel">Altijd op de hoogte, zonder erom te moeten vragen</h2>
+        <p class="intro">In onze app ziet u op elk moment hoe uw wagens ervoor staan. En is uw toestemming nodig voor een herstelling of een aankoop, dan keurt u goed met één tik.</p>
+        <p><a class="knop knop--tweede" href="/werkwijze/#app">Bekijk een voorbeeld van de app</a></p>
+      </div>
+      <ul class="app-blok__punten">
+        <li><strong>Overzicht per wagen</strong>: toestand, planning en kosten.</li>
+        <li><strong>Toestemming in één tik</strong>, met de uitleg en de offertes erbij.</li>
+        <li><strong>Het volledige dossier</strong>: historiek, facturen, foto’s en documenten.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="lijn" />
 
   <section class="sectie" aria-labelledby="getuigenis-titel">
     <div class="wrap">
@@ -92,6 +110,11 @@ import hero from '../assets/images/hero.jpg';
 </Base>
 
 <style>
+  .app-blok { display: grid; gap: 2rem; align-items: center; }
+  @media (min-width: 56em) { .app-blok { grid-template-columns: 1.3fr 1fr; gap: 4rem; } }
+  .app-blok > div > :last-child { margin-bottom: 0; }
+  .app-blok__punten { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; }
+  .app-blok__punten li { padding: 1rem 1.25rem; background: var(--kleur-wit); border: 1px solid var(--kleur-lijn); border-left: 3px solid var(--kleur-accent); border-radius: var(--radius); }
   .hero { position: relative; background: var(--kleur-accent); color: #fff; overflow: hidden; }
   .hero__beeld { position: absolute; inset: 0; }
   .hero__beeld :global(img) { width: 100%; height: 100%; object-fit: cover; }

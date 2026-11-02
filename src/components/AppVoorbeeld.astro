@@ -1,0 +1,137 @@
+---
+// Visueel voorbeeld van de klanten-app, met fictieve wagens en gegevens.
+// Dit is een afbeelding in HTML: de "knoppen" zijn bewust geen echte knoppen.
+import { team } from '../config';
+
+const wagens = [
+  { naam: 'Roadster 2.8', jaar: 1969, status: 'Rijklaar', soort: 'ok', detail: 'Volgende keuring 14 maart 2027' },
+  { naam: 'Coupé 3.8', jaar: 1964, status: 'In onderhoud', soort: 'bezig', detail: 'Terug in de stalling rond 14 november' },
+  { naam: 'Berline 2.4', jaar: 1959, status: 'Uw akkoord gevraagd', soort: 'vraag', detail: 'Nieuwe kap, zie hierboven' },
+  { naam: 'Spider 1600', jaar: 1971, status: 'Rijklaar', soort: 'ok', detail: 'Winterklaar gemaakt op 28 oktober' },
+];
+const activiteit = [
+  { wanneer: 'Vandaag, 10.12 u.', wat: 'Spider 1600: batterij vervangen, 4 foto’s toegevoegd aan het dossier.' },
+  { wanneer: 'Gisteren', wat: 'Coupé 3.8: onderhoud gestart bij onze vaste specialist.' },
+  { wanneer: '28 oktober', wat: 'Spider 1600: winterklaar gemaakt, banden op spanning.' },
+];
+---
+<figure class="app" aria-labelledby="app-bijschrift">
+  <div class="app__toestel">
+    <div class="app__scherm">
+      <div class="app__balk">
+        <img src="/logo/logo.svg" alt="" width="105" height="28" />
+        <span class="app__klant">Collectie familie V. · 9 wagens</span>
+      </div>
+
+      <div class="app__inhoud">
+        <div class="app__kolom">
+          <section class="app__vraag" aria-label="Voorbeeld van een toestemmingsvraag">
+            <p class="app__label">Uw akkoord gevraagd</p>
+            <p class="app__titel">Berline 2.4 (1959): nieuwe kap</p>
+            <p>De kap is na 18 jaar uitgedroogd en lekt bij regen. We vroegen twee offertes en raden de goedkoopste aan: dezelfde stof, levertijd drie weken.</p>
+            <dl class="app__cijfers">
+              <div><dt>Offerte</dt><dd>€ 2 340</dd></div>
+              <div><dt>Tweede offerte</dt><dd>€ 2 910</dd></div>
+            </dl>
+            <div class="app__acties" aria-hidden="true">
+              <span class="app__knop app__knop--ja">Goedkeuren</span>
+              <span class="app__knop">Eerst bellen</span>
+            </div>
+          </section>
+
+          <section aria-label="Voorbeeld van recente activiteit">
+            <p class="app__kop">Recent</p>
+            <ol class="app__tijdlijn">
+              {activiteit.map((a) => (
+                <li><span class="app__wanneer">{a.wanneer}</span> {a.wat}</li>
+              ))}
+            </ol>
+          </section>
+        </div>
+
+        <section class="app__kolom app__kolom--lijst" aria-label="Voorbeeld van het overzicht per wagen">
+          <p class="app__kop">Uw wagens</p>
+          <ul class="app__wagens">
+            {wagens.map((w) => (
+              <li>
+                <span class="app__wagen">{w.naam} <span class="app__jaar">{w.jaar}</span></span>
+                <span class={`app__status app__status--${w.soort}`}>{w.status}</span>
+                <span class="app__detail">{w.detail}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="app__meer">+ 5 andere wagens · Dossier, facturen en foto’s per wagen</p>
+          <p class="app__contact">Uw contactpersoon: {team[0].naam}</p>
+        </section>
+      </div>
+    </div>
+  </div>
+  <figcaption id="app-bijschrift">Voorbeeld van de app, met fictieve wagens en gegevens.</figcaption>
+</figure>
+
+<style>
+  .app { margin: 0; max-width: 60rem; }
+  .app p, .app ul, .app ol, .app dl { max-width: none; margin: 0; }
+  .app__toestel {
+    background: #2a2a28;
+    border-radius: 1.75rem;
+    padding: clamp(0.6rem, 1.5vw, 1rem);
+    box-shadow: 0 18px 40px rgba(30, 30, 30, 0.18);
+  }
+  .app__scherm { background: var(--kleur-achtergrond); border-radius: 1.1rem; overflow: hidden; font-size: 0.95rem; }
+  .app__balk {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem;
+    padding: 0.9rem clamp(1rem, 2.5vw, 1.5rem);
+    background: var(--kleur-wit); border-bottom: 1px solid var(--kleur-lijn);
+  }
+  .app__balk img { height: 1.75rem; width: auto; }
+  .app__klant { color: var(--kleur-tekst-zacht); font-weight: 600; }
+  .app__inhoud { display: grid; gap: 1.5rem; padding: clamp(1rem, 2.5vw, 1.5rem); }
+  @media (min-width: 52em) { .app__inhoud { grid-template-columns: 1.1fr 1fr; } }
+  .app__kolom { display: grid; gap: 1.5rem; align-content: start; }
+  .app__kolom--lijst { gap: 0; }
+
+  .app__vraag {
+    display: grid; gap: 0.75rem;
+    background: var(--kleur-wit);
+    border: 1px solid var(--kleur-lijn);
+    border-left: 4px solid var(--kleur-accent-2);
+    border-radius: 0.6rem;
+    padding: 1.1rem 1.25rem;
+  }
+  .app__label { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--kleur-accent-2); }
+  .app__titel { font-family: var(--font-titel); font-size: 1.3rem; line-height: 1.25; color: var(--kleur-accent); }
+  .app__cijfers { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; }
+  .app__cijfers dt { font-size: 0.85rem; color: var(--kleur-tekst-zacht); }
+  .app__cijfers dd { margin: 0; font-weight: 700; font-size: 1.05rem; }
+  .app__acties { display: flex; flex-wrap: wrap; gap: 0.6rem; padding-top: 0.25rem; }
+  .app__knop {
+    display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0.4rem 1.1rem;
+    border: 2px solid var(--kleur-accent); border-radius: 0.5rem;
+    color: var(--kleur-accent); font-weight: 650;
+  }
+  .app__knop--ja { background: var(--kleur-accent); color: #fff; }
+
+  .app__kop { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--kleur-tekst); margin-bottom: 0.6rem !important; }
+  .app__tijdlijn { list-style: none; padding: 0; display: grid; gap: 0.65rem; }
+  .app__tijdlijn li { padding-left: 1rem; border-left: 2px solid var(--kleur-lijn); line-height: 1.45; }
+  .app__wanneer { display: block; font-size: 0.85rem; font-weight: 650; color: var(--kleur-tekst-zacht); }
+
+  .app__wagens { list-style: none; padding: 0; background: var(--kleur-wit); border: 1px solid var(--kleur-lijn); border-radius: 0.6rem; }
+  .app__wagens li {
+    display: grid; grid-template-columns: 1fr auto; gap: 0.15rem 0.75rem; align-items: center;
+    padding: 0.8rem 1rem; border-bottom: 1px solid var(--kleur-lijn);
+  }
+  .app__wagens li:last-child { border-bottom: 0; }
+  .app__wagen { font-weight: 650; }
+  .app__jaar { font-weight: 400; color: var(--kleur-tekst-zacht); }
+  .app__detail { grid-column: 1 / -1; font-size: 0.88rem; color: var(--kleur-tekst-zacht); }
+  .app__status { font-size: 0.82rem; font-weight: 650; padding: 0.15rem 0.6rem; border-radius: 999px; border: 1.5px solid; white-space: nowrap; }
+  .app__status--ok { color: var(--kleur-accent); border-color: var(--kleur-accent); }
+  .app__status--bezig { color: #4a4232; border-color: #8a8170; background: #efeae0; }
+  .app__status--vraag { color: #fff; background: var(--kleur-accent-2); border-color: var(--kleur-accent-2); }
+  .app__meer, .app__contact { font-size: 0.9rem; color: var(--kleur-tekst-zacht); margin-top: 0.75rem !important; }
+  .app__contact { margin-top: 0.25rem !important; font-weight: 600; }
+
+  figcaption { margin-top: 1rem; font-style: italic; color: var(--kleur-tekst-zacht); }
+</style>
