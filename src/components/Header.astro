@@ -63,8 +63,8 @@ const isHuidig = (href: string) => (href === '/' ? pad === '/' : pad.startsWith(
     padding-block: 1rem;
   }
   .logo { display: flex; flex-direction: column; text-decoration: none; color: var(--kleur-accent); padding-block: 0.25rem; }
-  .logo { gap: 0.35rem; }
-  .logo__beeld { height: 3.75rem; width: auto; }
+  .logo { gap: 0.35rem; align-items: flex-start; }
+  .logo__beeld { height: 3.75rem; width: auto; max-width: 100%; object-fit: contain; }
   .logo__baseline { font-size: 0.9rem; color: var(--kleur-tekst-zacht); letter-spacing: 0.03em; }
   .logo:hover .logo__baseline { text-decoration: underline; text-underline-offset: 0.2em; }
 
