@@ -61,8 +61,8 @@ De foto's staan in `src/assets/images/`. Vervang een bestand door uw eigen foto 
 Astro maakt er bij het bouwen automatisch kleinere WebP-versies van; u hoeft niets te verkleinen.
 Pas daarna de **alt-tekst** (korte beschrijving voor blinde bezoekers en Google) aan in de pagina waar de foto staat (`alt="..."`).
 
-Het **logo** staat in `public/logo/`: `logo.svg` (kop) en `logo-licht.svg` (crème versie voor de donkere footer).
-Vervang beide bestanden met dezelfde naam. De alt-tekst staat in `site.logoAlt`.
+Het **logo** staat in `public/logo/logo.svg` en wordt in de kop en de footer gebruikt.
+Vervang het bestand met dezelfde naam. De alt-tekst staat in `site.logoAlt`.
 
 De afbeelding die verschijnt als iemand de site deelt (WhatsApp, LinkedIn, e-mail) is `public/og-image.jpg` (1200 × 630 px).
 

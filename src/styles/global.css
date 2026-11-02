@@ -202,7 +202,7 @@ a:hover { text-decoration-thickness: 2px; color: var(--kleur-accent-2); }
 .sectie--groen .knop:hover, .hero .knop:hover { background: #fff; color: var(--kleur-accent); box-shadow: 0 0 0 3px rgba(255,255,255,.45); }
 .sectie--groen .knop--tweede, .hero .knop--tweede { background: transparent; color: #fff; border-color: #f7f4ee; }
 .sectie--groen .knop--tweede:hover, .hero .knop--tweede:hover { background: rgba(255,255,255,.12); color: #fff; }
-.sectie--groen :focus-visible, .hero :focus-visible, .sitefooter :focus-visible { outline-color: #fff; }
+.sectie--groen :focus-visible, .hero :focus-visible { outline-color: #fff; }
 
 .knop__label-klein { display: block; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.04em; }
 

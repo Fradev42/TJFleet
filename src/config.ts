@@ -12,7 +12,7 @@ export const site = {
 
   /**
    * Tekst van het logo, voor schermlezers en zoekmachines.
-   * Het logo zelf staat in public/logo/ (logo.svg en een lichte versie logo-licht.svg voor de footer).
+   * Het logo zelf staat in public/logo/logo.svg (kop en footer).
    */
   logoAlt: 'APEX Fleet Management',
 
