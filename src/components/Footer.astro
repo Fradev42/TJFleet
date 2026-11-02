@@ -12,6 +12,7 @@ const jaar = new Date().getFullYear();
       <div>
         <h2 class="sitefooter__kop">Contact</h2>
         <address>
+          {site.juridischeNaam}<br />
           {adresRegels.map((r) => <>{r}<br /></>)}
           <a href={telHref}>{site.telefoon.weergave}</a><br />
           <a href={mailHref}>{site.email}</a>
@@ -26,7 +27,7 @@ const jaar = new Date().getFullYear();
       </nav>
     </div>
     <p class="sitefooter__klein">
-      © {jaar} {site.naam} · Ondernemingsnummer {site.btwNummer} · <a href="/privacy/">Privacyverklaring</a> · Deze website gebruikt geen cookies.
+      © {jaar} {site.juridischeNaam} · Ondernemingsnummer {site.btwNummer} · <a href="/privacy/">Privacyverklaring</a> · Deze website gebruikt geen cookies.
     </p>
   </div>
 </footer>

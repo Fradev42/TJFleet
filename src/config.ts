@@ -40,6 +40,9 @@ export const site = {
     landCode: 'BE',
   },
 
+  /** Juridische naam van de onderneming, getoond bij het adres en het ondernemingsnummer. */
+  juridischeNaam: 'Frades BV',
+
   /** Ondernemingsnummer, bv. 'BE 0123.456.789'. */
   btwNummer: 'BE 1022.876.282',
 
