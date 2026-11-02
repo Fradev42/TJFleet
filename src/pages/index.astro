@@ -1,0 +1,112 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import BelBlok from '../components/BelBlok.astro';
+import { site, telHref } from '../config';
+import hero from '../assets/images/hero.jpg';
+---
+<Base
+  title="Home"
+  description={`Onafhankelijk beheer van uw collectie klassieke wagens in ${site.regio.join(' en ')}. Eén vast aanspreekpunt voor stalling, onderhoud, keuring, verzekering en transport.`}
+>
+  <section class="hero" aria-labelledby="hero-titel">
+    <div class="hero__beeld">
+      <Image
+        src={hero}
+        alt="Een klassieke wagen in een rustige, verlichte stalling"
+        widths={[640, 960, 1280, 1920, 2400]}
+        sizes="100vw"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+    <div class="hero__tekst">
+      <div class="wrap">
+        <span class="bovenschrift">{site.baseline} · {site.regio.join(' & ')}</span>
+        <h1 id="hero-titel">Uw collectie in goede handen</h1>
+        <p class="hero__sub">Wij beheren uw klassieke wagens, u geniet ervan.</p>
+        <div class="knoppen">
+          <a class="knop knop--groot" href={telHref}>
+            <span>Bel ons <span class="knop__label-klein">{site.telefoon.weergave}</span></span>
+          </a>
+          <a class="knop knop--groot knop--tweede" href="/contact/">Plan een kennismaking</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sectie" aria-labelledby="beloften-titel">
+    <div class="wrap">
+      <h2 id="beloften-titel" class="visueel-verborgen">Waarom eigenaars voor ons kiezen</h2>
+      <div class="raster raster--3">
+        <div class="belofte">
+          <h3>Eén aanspreekpunt</h3>
+          <p>U hebt één vaste contactpersoon die uw wagens kent. Eén telefoontje volstaat; wij regelen de rest met garages, keuring en verzekeraar.</p>
+        </div>
+        <div class="belofte">
+          <h3>Onafhankelijk advies</h3>
+          <p>Wij verkopen geen wagens en krijgen geen commissie op herstellingen. Wij staan aan uw kant en vergelijken offertes in uw belang.</p>
+        </div>
+        <div class="belofte">
+          <h3>Discretie gegarandeerd</h3>
+          <p>Uw collectie, uw adres en uw gegevens blijven vertrouwelijk. Wij spreken nooit over klanten en tonen geen wagens zonder uw akkoord.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sectie sectie--vlak" aria-labelledby="werkwijze-titel">
+    <div class="wrap">
+      <span class="bovenschrift">Werkwijze</span>
+      <h2 id="werkwijze-titel">Zo gaan we te werk</h2>
+      <p class="intro">Rustig en stap voor stap. U beslist, wij voeren uit en houden u op de hoogte.</p>
+      <ol class="stappen stappen--rij" style="margin-top: 2.5rem;">
+        <li>
+          <h3>Kennismaking</h3>
+          <p>We komen langs bij u thuis of in de stalling en luisteren naar wat u van uw collectie verwacht.</p>
+        </li>
+        <li>
+          <h3>Inventaris en plan</h3>
+          <p>Per wagen brengen we de toestand, de papieren en de planning in kaart.</p>
+        </li>
+        <li>
+          <h3>Vaste opvolging</h3>
+          <p>Eén contactpersoon volgt alles op, en elk kwartaal krijgt u een helder rapport.</p>
+        </li>
+      </ol>
+      <p style="margin-top: 2.5rem;"><a class="knop knop--tweede" href="/werkwijze/">Lees meer over onze werkwijze</a></p>
+    </div>
+  </section>
+
+  <section class="sectie" aria-labelledby="getuigenis-titel">
+    <div class="wrap">
+      <h2 id="getuigenis-titel" class="bovenschrift">Een eigenaar aan het woord</h2>
+      <figure class="citaat">
+        <blockquote>
+          <p>“[[GETUIGENIS — twee à drie zinnen van een klant, bijvoorbeeld over rust, vertrouwen en het gemak van één aanspreekpunt.]]”</p>
+        </blockquote>
+        <figcaption>[[Voornaam of initialen]], eigenaar van een collectie van [[aantal]] wagens, [[regio]]</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <BelBlok />
+</Base>
+
+<style>
+  .hero { position: relative; background: var(--kleur-accent); color: #fff; overflow: hidden; }
+  .hero__beeld { position: absolute; inset: 0; }
+  .hero__beeld :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .hero__beeld::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(21,40,31,0.92) 0%, rgba(21,40,31,0.8) 45%, rgba(21,40,31,0.35) 100%);
+  }
+  .hero__tekst { position: relative; padding-block: clamp(5rem, 14vw, 10rem); }
+  .hero h1 { color: #fff; max-width: 14ch; }
+  .hero .bovenschrift { color: #e9dcc7; }
+  .hero__sub { font-size: clamp(1.25rem, 2.4vw, 1.6rem); line-height: 1.45; max-width: 34ch; margin-bottom: 2.25rem; color: #f7f4ee; }
+  @media (max-width: 47.99em) {
+    .hero__beeld::after { background: rgba(21,40,31,0.85); }
+    .hero .knop { width: 100%; }
+  }
+</style>

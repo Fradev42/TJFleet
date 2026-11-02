@@ -1,0 +1,40 @@
+---
+import { site, telHref } from '../config';
+interface Props { titel?: string; tekst?: string; }
+const {
+  titel = 'Een gesprek is de beste start',
+  tekst = 'Vertel ons over uw collectie. Vrijblijvend, zonder verkooppraatje — en wat u ons vertelt, blijft tussen ons.',
+} = Astro.props;
+---
+<section class="sectie sectie--groen" aria-labelledby="belblok-titel">
+  <div class="wrap belblok">
+    <div>
+      <h2 id="belblok-titel">{titel}</h2>
+      <p class="intro">{tekst}</p>
+    </div>
+    <div class="belblok__acties">
+      <a class="belblok__nummer" href={telHref}>
+        <span class="belblok__label">Bel ons rechtstreeks</span>
+        <span class="belblok__nr">{site.telefoon.weergave}</span>
+      </a>
+      <a class="knop knop--tweede" href="/contact/">Of plan een kennismaking</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .belblok { display: grid; gap: 2rem; align-items: center; }
+  @media (min-width: 56em) { .belblok { grid-template-columns: 1.3fr 1fr; gap: 4rem; } }
+  .belblok > div > :last-child { margin-bottom: 0; }
+  .belblok__acties { display: flex; flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+  .belblok__nummer {
+    display: flex; flex-direction: column;
+    padding: 1rem 1.5rem; min-height: 3.5rem;
+    background: #f7f4ee; color: var(--kleur-accent) !important;
+    border-radius: var(--radius); text-decoration: none;
+  }
+  .belblok__nummer:hover { box-shadow: 0 0 0 3px rgba(255,255,255,.45); }
+  .belblok__nummer:hover .belblok__nr { text-decoration: underline; text-decoration-thickness: 2px; }
+  .belblok__label { font-size: 0.85rem; font-weight: 650; letter-spacing: 0.1em; text-transform: uppercase; }
+  .belblok__nr { font-family: var(--font-titel); font-size: clamp(1.75rem, 4vw, 2.4rem); line-height: 1.2; }
+</style>

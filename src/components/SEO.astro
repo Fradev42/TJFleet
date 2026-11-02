@@ -1,0 +1,55 @@
+---
+import { site } from '../config';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Pad van de Open Graph-afbeelding in /public. */
+  ogImage?: string;
+  noindex?: boolean;
+}
+const { title, description, ogImage = '/og-image.jpg', noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
+const ogUrl = new URL(ogImage, Astro.site ?? site.url).href;
+const volledigeTitel = Astro.url.pathname === '/' ? `${site.naam} · ${site.baseline}` : `${title} · ${site.naam}`;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `${site.url}/#bedrijf`,
+  name: site.naam,
+  description: 'Onafhankelijk beheer van collecties klassieke wagens: stalling, onderhoud, keuring, verzekering, transport en een volledig dossier per wagen.',
+  url: site.url,
+  telephone: site.telefoon.link,
+  email: site.email,
+  vatID: site.btwNummer,
+  image: ogUrl,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.adres.straat,
+    postalCode: site.adres.postcode,
+    addressLocality: site.adres.gemeente,
+    addressCountry: site.adres.landCode,
+  },
+  areaServed: site.regio.map((r) => ({ '@type': 'AdministrativeArea', name: r })),
+  knowsLanguage: ['nl', 'fr', 'en'],
+};
+---
+<title>{volledigeTitel}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex, follow" />}
+
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="nl_BE" />
+<meta property="og:site_name" content={site.naam} />
+<meta property="og:title" content={volledigeTitel} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogUrl} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={`${site.naam} — ${site.baseline}`} />
+<meta name="twitter:card" content="summary_large_image" />
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

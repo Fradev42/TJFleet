@@ -1,0 +1,134 @@
+---
+import { formulier, site, telHref } from '../config';
+const isNetlify = formulier.provider === 'netlify';
+const action = isNetlify ? formulier.bedanktPagina : formulier.fallbackEndpoint;
+const honeypot = isNetlify ? 'bot-field' : '_gotcha';
+---
+<form
+  class="formulier"
+  name={formulier.netlifyNaam}
+  method="POST"
+  action={action}
+  data-provider={formulier.provider}
+  data-netlify={isNetlify ? 'true' : undefined}
+  netlify-honeypot={isNetlify ? honeypot : undefined}
+>
+  {isNetlify && <input type="hidden" name="form-name" value={formulier.netlifyNaam} />}
+  {!isNetlify && <input type="hidden" name="_next" value={new URL(formulier.bedanktPagina, site.url).href} />}
+
+  <p class="formulier__uitleg">Velden met <strong>(verplicht)</strong> moeten ingevuld zijn. De rest mag u leeg laten.</p>
+
+  <!-- Honeypot tegen spam: onzichtbaar voor mensen, robots vullen het in. -->
+  <p class="visueel-verborgen" aria-hidden="true">
+    <label>Laat dit veld leeg <input name={honeypot} tabindex="-1" autocomplete="off" /></label>
+  </p>
+
+  <div class="veld">
+    <label for="naam">Uw naam <span class="verplicht">(verplicht)</span></label>
+    <input id="naam" name="naam" type="text" autocomplete="name" required />
+  </div>
+
+  <div class="veld">
+    <label for="telefoon">Telefoonnummer <span class="verplicht">(verplicht)</span></label>
+    <span class="hint" id="telefoon-hint">Wij bellen u terug op dit nummer.</span>
+    <input id="telefoon" name="telefoon" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="telefoon-hint" />
+  </div>
+
+  <div class="veld">
+    <label for="email">E-mailadres</label>
+    <input id="email" name="email" type="email" autocomplete="email" />
+  </div>
+
+  <div class="veld">
+    <label for="aantal">Aantal wagens in uw collectie</label>
+    <select id="aantal" name="aantal_wagens">
+      <option value="">Maak een keuze</option>
+      <option value="1-3">1 tot 3</option>
+      <option value="4-9">4 tot 9</option>
+      <option value="10+">10 of meer</option>
+    </select>
+  </div>
+
+  <div class="veld">
+    <label for="boodschap">Korte boodschap</label>
+    <span class="hint" id="boodschap-hint">Bijvoorbeeld wanneer we u best bellen, of wat u graag wilt bespreken.</span>
+    <textarea id="boodschap" name="boodschap" rows="5" aria-describedby="boodschap-hint"></textarea>
+  </div>
+
+  <p class="formulier__fout" role="alert" hidden>
+    Het verzenden is niet gelukt. Probeer het opnieuw, of bel ons gerust op <a href={telHref}>{site.telefoon.weergave}</a>.
+  </p>
+
+  <button class="knop knop--groot" type="submit">Verstuur mijn aanvraag</button>
+  <p class="formulier__privacy">Wij gebruiken uw gegevens alleen om u terug te bellen. Lees onze <a href="/privacy/">privacyverklaring</a>.</p>
+</form>
+
+<div class="bedankt kaart" tabindex="-1" hidden>
+  <h2>Hartelijk dank</h2>
+  <p class="intro">We bellen u binnen één werkdag terug.</p>
+  <p>Liever meteen iemand spreken? Bel <a href={telHref}>{site.telefoon.weergave}</a>.</p>
+</div>
+
+<script>
+  // Verstuurt het formulier zonder de pagina te verlaten en toont daarna de bedanking.
+  // Zonder JavaScript werkt het formulier gewoon via de bedankt-pagina.
+  const form = document.querySelector<HTMLFormElement>('form.formulier');
+  const bedankt = document.querySelector<HTMLElement>('.bedankt');
+  const fout = form?.querySelector<HTMLElement>('.formulier__fout');
+  if (form && bedankt && fout) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const knop = form.querySelector<HTMLButtonElement>('button[type=submit]');
+      fout.hidden = true;
+      if (knop) { knop.disabled = true; knop.textContent = 'Bezig met verzenden…'; }
+      const data = new FormData(form);
+      try {
+        const netlify = form.dataset.provider === 'netlify';
+        const res = await fetch(netlify ? '/' : form.action, {
+          method: 'POST',
+          headers: netlify
+            ? { 'Content-Type': 'application/x-www-form-urlencoded' }
+            : { Accept: 'application/json' },
+          body: netlify ? new URLSearchParams(data as unknown as Record<string, string>).toString() : data,
+        });
+        if (!res.ok) throw new Error(String(res.status));
+        form.hidden = true;
+        bedankt.hidden = false;
+        bedankt.focus();
+      } catch {
+        fout.hidden = false;
+        if (knop) { knop.disabled = false; knop.textContent = 'Verstuur mijn aanvraag'; }
+      }
+    });
+  }
+</script>
+
+<style>
+  .formulier { display: grid; gap: 1.5rem; max-width: 38rem; }
+  .formulier p { margin: 0; }
+  .formulier__uitleg { color: var(--kleur-tekst-zacht); }
+  .veld { display: flex; flex-direction: column; gap: 0.35rem; }
+  label { font-weight: 650; }
+  .verplicht { font-weight: 400; color: var(--kleur-accent-2); }
+  .hint { font-size: 0.95rem; color: var(--kleur-tekst-zacht); }
+  input, select, textarea {
+    font: inherit;
+    color: var(--kleur-tekst);
+    background: var(--kleur-wit);
+    border: 1.5px solid var(--kleur-lijn-sterk);
+    border-radius: var(--radius);
+    padding: 0.75rem 0.9rem;
+    min-height: 3.25rem;
+    width: 100%;
+  }
+  textarea { resize: vertical; min-height: 8rem; }
+  input:hover, select:hover, textarea:hover { border-color: var(--kleur-accent); }
+  input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--kleur-focus); outline-offset: 1px; border-color: var(--kleur-accent); }
+  .formulier__fout { padding: 1rem 1.25rem; border-left: 4px solid var(--kleur-accent-2); background: #f6e9e7; }
+  .formulier__privacy { font-size: 0.95rem; color: var(--kleur-tekst-zacht); }
+  .formulier .knop { justify-self: start; }
+  .formulier .knop:disabled { opacity: 0.8; cursor: wait; }
+  @media (max-width: 47.99em) { .formulier .knop { justify-self: stretch; } }
+  .bedankt { max-width: 38rem; }
+  .bedankt:focus { outline: none; }
+</style>

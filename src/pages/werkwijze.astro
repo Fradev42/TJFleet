@@ -1,0 +1,68 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import BelBlok from '../components/BelBlok.astro';
+import Kwartaalrapport from '../components/Kwartaalrapport.astro';
+import stalling from '../assets/images/stalling.jpg';
+---
+<Base
+  title="Werkwijze"
+  description="In drie stappen naar rustig beheer van uw klassieke wagens: kennismaking bij u thuis, een inventaris en plan per wagen, en een vaste contactpersoon met kwartaalrapport."
+>
+  <header class="paginakop">
+    <div class="wrap">
+      <span class="bovenschrift">Werkwijze</span>
+      <h1>Rustig, persoonlijk en stap voor stap</h1>
+      <p class="intro">U hoeft niets voor te bereiden. Wij nemen de tijd om uw collectie te leren kennen, en daarna mag u erop rekenen dat alles opgevolgd wordt.</p>
+    </div>
+  </header>
+
+  <section class="sectie" aria-labelledby="stappen-titel">
+    <div class="wrap werkwijze">
+      <h2 id="stappen-titel" class="visueel-verborgen">De drie stappen</h2>
+      <ol class="stappen">
+        <li>
+          <h3>Kennismaking bij u thuis of in de stalling</h3>
+          <p>Een eerste gesprek van ongeveer een uur, op een plek die u past. We bekijken samen de wagens en horen wat u belangrijk vindt: meer rijden, minder zorgen, een restauratie afronden of de collectie goed overdragen.</p>
+          <p>Het gesprek is vrijblijvend en kosteloos.</p>
+        </li>
+        <li>
+          <h3>Inventaris en plan per wagen</h3>
+          <p>We noteren per wagen de toestand, de papieren, de onderhoudshistoriek en de verzekering. Daarna krijgt u een helder plan: wat dringend is, wat kan wachten en wat het ongeveer kost.</p>
+          <p>U beslist. Wij voeren niets uit zonder uw akkoord.</p>
+        </li>
+        <li>
+          <h3>Vaste contactpersoon en een kwartaalrapport</h3>
+          <p>Vanaf dan hebt u één vaste contactpersoon die uw wagens kent en altijd bereikbaar is. Elk kwartaal ontvangt u een kort rapport per wagen, op papier of per e-mail, naar keuze.</p>
+          <p>Bij grotere beslissingen bellen we u eerst.</p>
+        </li>
+      </ol>
+      <div class="foto werkwijze__foto">
+        <Image src={stalling} alt="Enkele klassieke wagens onder afdekhoezen in een droge, verlichte stalling" widths={[480, 800, 1200]} sizes="(min-width: 56em) 40vw, 100vw" />
+      </div>
+    </div>
+  </section>
+
+  <section class="sectie sectie--vlak" aria-labelledby="rapport-sectie-titel">
+    <div class="wrap">
+      <span class="bovenschrift">Voorbeeld</span>
+      <h2 id="rapport-sectie-titel">Zo ziet een kwartaalrapport eruit</h2>
+      <p class="intro">Eén blad per wagen, zonder vakjargon. U ziet in één oogopslag wat er gebeurd is, wat het kostte en wat er nog komt.</p>
+      <div style="margin-top: 2.5rem;">
+        <Kwartaalrapport />
+      </div>
+      <p style="margin-top: 1.5rem;"><em>Fictieve wagen en gegevens, ter illustratie.</em></p>
+    </div>
+  </section>
+
+  <BelBlok />
+</Base>
+
+<style>
+  .werkwijze { display: grid; gap: 3rem; }
+  @media (min-width: 56em) {
+    .werkwijze { grid-template-columns: 1.3fr 1fr; gap: 4rem; align-items: start; }
+    .werkwijze__foto { position: sticky; top: 2rem; }
+  }
+  .werkwijze .stappen { gap: 3rem; }
+</style>

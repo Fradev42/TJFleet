@@ -1,0 +1,45 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, mailHref, telHref, adresRegels } from '../config';
+---
+<Base title="Privacyverklaring" description={`Hoe ${site.naam} omgaat met uw persoonsgegevens. Geen cookies, geen tracking.`}>
+  <header class="paginakop">
+    <div class="wrap">
+      <span class="bovenschrift">Privacy</span>
+      <h1>Privacyverklaring</h1>
+      <p class="intro">Discretie is de kern van ons werk. Dat geldt ook voor deze website.</p>
+    </div>
+  </header>
+  <section class="sectie">
+    <div class="wrap privacy">
+      <h2>Wie is verantwoordelijk?</h2>
+      <p>{site.naam}, {adresRegels.join(', ')}, ondernemingsnummer {site.btwNummer}. U bereikt ons op <a href={mailHref}>{site.email}</a> of <a href={telHref}>{site.telefoon.weergave}</a>.</p>
+
+      <h2>Welke gegevens verzamelen we?</h2>
+      <p>Alleen wat u zelf invult in het contactformulier: uw naam, telefoonnummer en, als u dat wilt, uw e-mailadres, het aantal wagens en een korte boodschap.</p>
+
+      <h2>Waarvoor gebruiken we ze?</h2>
+      <p>Enkel om u terug te bellen en uw vraag te beantwoorden. Wij sturen geen nieuwsbrieven en geven uw gegevens nooit door aan derden voor marketing. De rechtsgrond is uw eigen verzoek om contact (stappen vóór een eventuele overeenkomst).</p>
+
+      <h2>Hoe lang bewaren we ze?</h2>
+      <p>Wordt u geen klant, dan wissen we uw gegevens ten laatste twaalf maanden na ons laatste contact. Wordt u klant, dan bewaren we ze zo lang als nodig voor onze dienstverlening en de wettelijke boekhoudplicht.</p>
+
+      <h2>Wie verwerkt ze nog?</h2>
+      <p>Het formulier wordt technisch afgehandeld door onze webhost [[Netlify, Inc.]], die als verwerker optreedt. Netlify kan gegevens buiten de Europese Unie verwerken, met de wettelijke waarborgen (EU-standaardcontractbepalingen en het EU-VS Data Privacy Framework).</p>
+
+      <h2>Cookies en statistieken</h2>
+      <p>Deze website plaatst geen cookies en gebruikt geen trackers of advertentienetwerken. Lettertypes worden van onze eigen server geladen, niet via Google. [[Indien later ingeschakeld: wij meten anonieme bezoekersaantallen met Plausible, zonder cookies en zonder persoonsgegevens.]]</p>
+
+      <h2>Uw rechten</h2>
+      <p>U mag uw gegevens altijd inkijken, laten verbeteren of laten wissen, en u kunt bezwaar maken tegen het gebruik ervan. Stuur ons daarvoor een e-mail. Bent u niet tevreden over ons antwoord, dan kunt u klacht indienen bij de Gegevensbeschermingsautoriteit, Drukpersstraat 35, 1000 Brussel, <a href="https://www.gegevensbeschermingsautoriteit.be">www.gegevensbeschermingsautoriteit.be</a>.</p>
+
+      <p class="bijgewerkt">Laatst bijgewerkt: [[datum]].</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .privacy h2 { font-size: clamp(1.35rem, 2.4vw, 1.65rem); margin-top: 2.25rem; }
+  .privacy h2:first-child { margin-top: 0; }
+  .bijgewerkt { margin-top: 2.5rem; color: var(--kleur-tekst-zacht); }
+</style>

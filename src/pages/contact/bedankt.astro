@@ -1,0 +1,15 @@
+---
+import Base from '../../layouts/Base.astro';
+import { site, telHref } from '../../config';
+---
+<Base title="Bedankt" description="Uw aanvraag is goed ontvangen." noindex>
+  <section class="sectie">
+    <div class="wrap">
+      <span class="bovenschrift">Aanvraag ontvangen</span>
+      <h1>Hartelijk dank</h1>
+      <p class="intro">We bellen u binnen één werkdag terug.</p>
+      <p>Liever meteen iemand spreken? Bel <a href={telHref}>{site.telefoon.weergave}</a>.</p>
+      <p style="margin-top: 2rem;"><a class="knop knop--tweede" href="/">Terug naar de startpagina</a></p>
+    </div>
+  </section>
+</Base>

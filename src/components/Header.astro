@@ -1,0 +1,130 @@
+---
+import { site, menu, telHref } from '../config';
+const pad = Astro.url.pathname;
+const isHuidig = (href: string) => (href === '/' ? pad === '/' : pad.startsWith(href));
+---
+<header class="sitekop">
+  <div class="wrap sitekop__binnen">
+    <a class="logo" href="/">
+      <span class="logo__naam">{site.naam}</span>
+      <span class="logo__baseline">{site.baseline}</span>
+    </a>
+
+    <button class="menuknop" type="button" aria-expanded="false" aria-controls="hoofdmenu">
+      <span class="menuknop__open">Menu</span>
+      <span class="menuknop__dicht">Sluiten</span>
+    </button>
+
+    <nav id="hoofdmenu" class="hoofdmenu" aria-label="Hoofdmenu">
+      <ul>
+        {menu.map((item) => (
+          <li>
+            <a href={item.href} aria-current={isHuidig(item.href) ? 'page' : undefined}>{item.label}</a>
+          </li>
+        ))}
+      </ul>
+      <a class="sitekop__tel" href={telHref}>
+        <span class="sitekop__tel-label">Bel ons</span>
+        <span class="sitekop__tel-nr">{site.telefoon.weergave}</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Mobiel menu: openen en sluiten met de knop of met Escape.
+  const knop = document.querySelector<HTMLButtonElement>('.menuknop');
+  const nav = document.getElementById('hoofdmenu');
+  if (knop && nav) {
+    const zet = (open: boolean) => {
+      knop.setAttribute('aria-expanded', String(open));
+      nav.classList.toggle('is-open', open);
+    };
+    knop.addEventListener('click', () => zet(knop.getAttribute('aria-expanded') !== 'true'));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && knop.getAttribute('aria-expanded') === 'true') { zet(false); knop.focus(); }
+    });
+  }
+</script>
+
+<style>
+  .sitekop {
+    background: var(--kleur-achtergrond);
+    border-bottom: 1px solid var(--kleur-lijn);
+  }
+  .sitekop__binnen {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    padding-block: 1rem;
+  }
+  .logo { display: flex; flex-direction: column; text-decoration: none; color: var(--kleur-accent); padding-block: 0.25rem; }
+  .logo__naam { font-family: var(--font-titel); font-size: 1.5rem; line-height: 1.15; }
+  .logo__baseline { font-size: 0.9rem; color: var(--kleur-tekst-zacht); letter-spacing: 0.03em; }
+  .logo:hover .logo__naam { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+
+  .hoofdmenu ul { list-style: none; margin: 0; padding: 0; max-width: none; }
+  .hoofdmenu a { text-decoration: none; color: var(--kleur-tekst); }
+  .hoofdmenu ul a {
+    display: flex; align-items: center;
+    min-height: 3rem;
+    padding: 0.5rem 0.25rem;
+    font-weight: 500;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+  }
+  .hoofdmenu ul a:hover { border-bottom-color: var(--kleur-lijn-sterk); color: var(--kleur-accent); }
+  .hoofdmenu ul a[aria-current='page'] { border-bottom-color: var(--kleur-accent-2); color: var(--kleur-accent); font-weight: 650; }
+
+  .sitekop__tel {
+    display: inline-flex; flex-direction: column; justify-content: center;
+    min-height: 3.25rem; padding: 0.4rem 1.1rem;
+    border: 2px solid var(--kleur-accent); border-radius: var(--radius);
+    color: var(--kleur-accent) !important; line-height: 1.2;
+  }
+  .sitekop__tel:hover { background: var(--kleur-wit); box-shadow: 0 0 0 3px var(--kleur-lijn); }
+  .sitekop__tel:hover .sitekop__tel-nr { text-decoration: underline; }
+  .sitekop__tel-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+  .sitekop__tel-nr { font-weight: 650; font-size: 1.1rem; }
+
+  .menuknop {
+    display: none;
+    min-height: 3rem; min-width: 6rem;
+    padding: 0.5rem 1.1rem;
+    border: 2px solid var(--kleur-accent); border-radius: var(--radius);
+    background: var(--kleur-wit); color: var(--kleur-accent);
+    font: inherit; font-weight: 650; cursor: pointer;
+  }
+  .menuknop:hover { text-decoration: underline; box-shadow: 0 0 0 3px var(--kleur-lijn); }
+  .menuknop__dicht { display: none; }
+  .menuknop[aria-expanded='true'] .menuknop__open { display: none; }
+  .menuknop[aria-expanded='true'] .menuknop__dicht { display: inline; }
+
+  /* Tablet en desktop: menu altijd zichtbaar. */
+  @media (min-width: 48em) {
+    .hoofdmenu { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+    .hoofdmenu ul { display: flex; gap: 1.5rem; }
+  }
+  /* Staande tablet: menu op een eigen regel onder de naam. */
+  @media (min-width: 48em) and (max-width: 63.99em) {
+    .hoofdmenu { flex-basis: 100%; border-top: 1px solid var(--kleur-lijn); padding-top: 0.5rem; }
+  }
+
+  /* Smartphone: de "Menu"-knop verschijnt alleen als JavaScript werkt;
+     zonder JavaScript blijft het menu gewoon zichtbaar. */
+  @media (max-width: 47.99em) {
+    .sitekop__binnen { column-gap: 0.75rem; flex-wrap: wrap; }
+    .logo { flex: 1 1 0; min-width: 0; }
+    :global(html.js) .menuknop { display: inline-flex; align-items: center; justify-content: center; }
+    .hoofdmenu { flex-basis: 100%; }
+    :global(html.js) .hoofdmenu { display: none; }
+    :global(html.js) .hoofdmenu.is-open { display: block; }
+    .hoofdmenu ul { border-top: 1px solid var(--kleur-lijn); }
+    .hoofdmenu li { border-bottom: 1px solid var(--kleur-lijn); }
+    .hoofdmenu ul a { min-height: 3.5rem; font-size: 1.15rem; border-bottom: 0; }
+    .hoofdmenu ul a[aria-current='page'] { border-left: 3px solid var(--kleur-accent-2); padding-left: 0.85rem; }
+    .sitekop__tel { display: none; } /* op mobiel staat "Bel ons" in de vaste balk onderaan */
+  }
+</style>

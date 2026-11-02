@@ -1,0 +1,8 @@
+# Netlify leest dit bestand automatisch. Security-headers staan in public/_headers
+# (werkt zowel op Netlify als op Cloudflare Pages).
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"

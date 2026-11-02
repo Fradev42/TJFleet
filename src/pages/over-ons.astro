@@ -1,0 +1,88 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import BelBlok from '../components/BelBlok.astro';
+import { site } from '../config';
+import persoon1 from '../assets/images/persoon-1.jpg';
+import persoon2 from '../assets/images/persoon-2.jpg';
+
+const team = [
+  { foto: persoon1, naam: '[[Voornaam Naam]]', rol: 'Zaakvoerder en uw vaste contactpersoon', alt: 'Portret van [[Voornaam Naam]]' },
+  { foto: persoon2, naam: '[[Voornaam Naam]]', rol: 'Planning, dossiers en transport', alt: 'Portret van [[Voornaam Naam]]' },
+];
+const partners = ['Restauratie-atelier', 'Mecanicien', 'Carrosserie', 'Bekleding', 'Verzekeraar', 'Transport'];
+---
+<Base
+  title="Over ons"
+  description={`Wie achter ${site.naam} staat: liefhebbers van klassieke wagens die onafhankelijk werken, aan de kant van de eigenaar.`}
+>
+  <header class="paginakop">
+    <div class="wrap">
+      <span class="bovenschrift">Over ons</span>
+      <h1>Liefhebbers, met oog voor detail</h1>
+      <p class="intro">Wij zijn een kleine, persoonlijke zaak uit de regio Gent. Bewust klein, zodat u altijd met dezelfde mensen spreekt.</p>
+    </div>
+  </header>
+
+  <section class="sectie" aria-labelledby="team-titel">
+    <div class="wrap">
+      <h2 id="team-titel">Met wie u te maken hebt</h2>
+      <div class="raster raster--2 team">
+        {team.map((p) => (
+          <figure class="persoon">
+            <div class="foto">
+              <Image src={p.foto} alt={p.alt} widths={[360, 540, 800]} sizes="(min-width: 48em) 30vw, 100vw" />
+            </div>
+            <figcaption>
+              <span class="persoon__naam">{p.naam}</span>
+              <span class="persoon__rol">{p.rol}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sectie sectie--vlak" aria-labelledby="verhaal-titel">
+    <div class="wrap raster raster--2">
+      <div>
+        <h2 id="verhaal-titel">Passie voor klassieke wagens</h2>
+        <p>[[Korte persoonlijke tekst. Bijvoorbeeld:]] Klassieke wagens zijn voor ons meer dan een hobby. We groeiden op met de geur van olie en leder, reden zelf rally’s en zagen hoe veel eigenaars na een tijd meer bezig zijn met regelen dan met rijden.</p>
+        <p>Daarom begonnen we {site.naam}: zodat u weer kunt doen waarvoor u die wagens ooit kocht. Er gewoon van genieten.</p>
+      </div>
+      <div>
+        <h2>Waarom we onafhankelijk werken</h2>
+        <p>Wij verkopen geen wagens, hebben geen eigen garage en nemen geen commissie van partners. Wij worden enkel door u betaald.</p>
+        <p>Zo kunnen we eerlijk adviseren: een herstelling uitstellen als dat kan, een tweede offerte vragen als de eerste te hoog lijkt, of een specialist aanraden die beter past bij uw wagen.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sectie" aria-labelledby="partners-titel">
+    <div class="wrap">
+      <h2 id="partners-titel">Vaste partners</h2>
+      <p class="intro">We werken met een beperkte kring van specialisten die we persoonlijk kennen en wiens werk we zelf opvolgen.</p>
+      <ul class="partners">
+        {partners.map((p) => <li><span class="partners__logo">Logo partner</span><span>{p}</span></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <BelBlok />
+</Base>
+
+<style>
+  .team { margin-top: 2rem; max-width: 56rem; }
+  .persoon { margin: 0; }
+  .persoon .foto { aspect-ratio: 9 / 11; }
+  .persoon figcaption { margin-top: 1rem; display: flex; flex-direction: column; }
+  .persoon__naam { font-family: var(--font-titel); font-size: 1.4rem; color: var(--kleur-accent); }
+  .persoon__rol { color: var(--kleur-tekst-zacht); }
+  .partners { list-style: none; padding: 0; margin: 2rem 0 0; max-width: none; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); }
+  .partners li { display: flex; flex-direction: column; gap: 0.5rem; text-align: center; font-size: 0.95rem; }
+  .partners__logo {
+    display: grid; place-items: center; height: 5.5rem;
+    border: 1.5px dashed var(--kleur-lijn-sterk); border-radius: var(--radius);
+    color: var(--kleur-tekst-zacht); font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+</style>

@@ -1,0 +1,85 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import BelBlok from '../components/BelBlok.astro';
+import werkplaats from '../assets/images/werkplaats.jpg';
+
+const diensten = [
+  {
+    id: 'opvolging',
+    titel: 'Opvolging en planning',
+    tekst: [
+      'Wij houden de kalender van elke wagen bij: onderhoud, technische keuring, verzekering en inschrijving als oldtimer. U krijgt tijdig bericht, wij maken de afspraken.',
+      'Ook de regels voor lage-emissiezones in Gent, Antwerpen en Brussel volgen we op, zodat u zonder zorgen kunt rijden waar en wanneer u wilt.',
+    ],
+  },
+  {
+    id: 'onderhoud',
+    titel: 'Onderhoud en restauratie',
+    tekst: [
+      'Wij werken met een vaste kring van specialisten die we goed kennen: mecaniciens, carrosseriers, bekleders en restaurateurs.',
+      'Voor grotere werken vragen we meerdere offertes, vergelijken ze voor u en volgen de werken op tot de wagen terug in de stalling staat.',
+    ],
+  },
+  {
+    id: 'stalling',
+    titel: 'Stalling, transport en events',
+    tekst: [
+      'Uw wagens staan droog, beveiligd en onder controle van temperatuur en vochtigheid. Waar nodig houden we de batterij op peil en laten we de wagen regelmatig rijden.',
+      'Voor een rally, concours of rit met vrienden zorgen we voor transport in een gesloten trailer en maken we de wagen vooraf rijklaar.',
+    ],
+  },
+  {
+    id: 'dossier',
+    titel: 'Een volledig dossier per wagen',
+    tekst: [
+      'Per wagen bewaren we de historiek, facturen, foto’s, documenten en sleutels, overzichtelijk en veilig. Alles is meteen terug te vinden bij verkoop, expertise of schade.',
+      'We volgen ook de waarde van elke wagen op, zodat uw verzekering en uw nalatenschap steeds kloppen.',
+    ],
+  },
+];
+---
+<Base
+  title="Diensten"
+  description="Opvolging en planning, onderhoud en restauratie via vaste specialisten, stalling en transport, en een volledig dossier per wagen. Op maat van uw collectie."
+>
+  <header class="paginakop">
+    <div class="wrap">
+      <span class="bovenschrift">Diensten</span>
+      <h1>Alles rond uw collectie, op één plek geregeld</h1>
+      <p class="intro">U kiest zelf wat u uit handen geeft: één dienst of het volledige beheer. Wij werken altijd in uw naam en in uw belang.</p>
+    </div>
+  </header>
+
+  <section class="sectie" aria-label="Onze diensten">
+    <div class="wrap raster raster--2">
+      {diensten.map((d) => (
+        <article class="kaart" id={d.id} aria-labelledby={`${d.id}-titel`}>
+          <h2 id={`${d.id}-titel`} class="dienst__titel">{d.titel}</h2>
+          {d.tekst.map((t) => <p>{t}</p>)}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="sectie sectie--vlak" aria-labelledby="prijs-titel">
+    <div class="wrap raster raster--2 prijs">
+      <div class="foto">
+        <Image src={werkplaats} alt="Een specialist werkt aan de motor van een klassieke wagen in een nette werkplaats" widths={[480, 800, 1200]} sizes="(min-width: 48em) 50vw, 100vw" />
+      </div>
+      <div>
+        <h2 id="prijs-titel">Op maat van uw collectie</h2>
+        <p class="nota">Prijs na een vrijblijvend gesprek.</p>
+        <p>Geen twee collecties zijn gelijk. Daarom maken we na een eerste kennismaking een voorstel dat past bij het aantal wagens, hun toestand en wat u zelf wilt blijven doen.</p>
+        <p><a class="knop" href="/contact/">Plan een kennismaking</a></p>
+      </div>
+    </div>
+  </section>
+
+  <BelBlok />
+</Base>
+
+<style>
+  .dienst__titel { font-size: clamp(1.45rem, 2.6vw, 1.8rem); }
+  .prijs { align-items: center; }
+</style>
