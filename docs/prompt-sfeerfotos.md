@@ -1,6 +1,6 @@
 # Prompt voor Gemini: sfeerfoto's voor de website
 
-Er zijn drie foto's nodig. Plak in Gemini eerst de **basisprompt** en daarna de prompt van **één** foto.
+Er zijn drie foto's nodig (foto 1 en 2 zijn al geplaatst). Plak in Gemini eerst de **basisprompt** en daarna de prompt van **één** foto.
 Maak per foto een nieuw gesprek, of zeg tussendoor "nieuwe afbeelding, zelfde stijl".
 De prompts staan in het Engels, omdat de beeldgenerator van Gemini daar het nauwkeurigst op reageert.
 
@@ -49,15 +49,32 @@ Bestand: `src/assets/images/werkplaats.jpg` · beeldverhouding **16:10** · mins
 > Neatly arranged hand tools hang on a pegboard in the background, slightly out of focus. Warm workshop lamps
 > combine with daylight. Shallow depth of field. The feeling is meticulous craftsmanship and trust.
 
-## Foto 3: Werkwijze, stalling
+## Foto 3: Werkwijze, kennismaking
 
-Bestand: `src/assets/images/stalling.jpg` · beeldverhouding **16:10** · minstens 1600 × 1000 px
+Bestand: `src/assets/images/kennismaking.jpg` · beeldverhouding **16:10** · minstens 1600 × 1000 px
 
-> Create a 16:10 photograph of a calm, climate-controlled storage hall holding four or five classic cars of
-> different shapes (a coupé, a roadster, a saloon), all unbranded. Most are under fitted cream-coloured covers;
-> one dark-green car is uncovered. The cars stand in a neat row on a light-grey epoxy floor, each with a small
-> battery maintainer plugged in. Soft, even overhead lighting, timber roof beams, a dehumidifier unit in the
-> corner. Eye-level view along the row, with a slight perspective. The atmosphere is secure, orderly and quiet.
+Deze foto vervangt het vorige beeld van een grote stallingshal. Dat beeld liet uitschijnen dat APEX een eigen
+stalling heeft. Het nieuwe beeld toont het eerste gesprek **bij de klant thuis**.
+
+> Create a 16:10 photograph of a first meeting at a client's home in the Flemish countryside. Setting: the
+> private garage of a stylish villa, partly opened up onto the garden, with whitewashed brick walls, a terracotta
+> tiled floor and soft afternoon daylight coming through the open garage door. In the background, slightly out of
+> focus, stand one or two unbranded classic cars from the 1960s (one in dark racing green, one under a cream
+> fitted cover), parked as they would be at someone's home, not in a commercial storage hall.
+>
+> In the foreground is a simple oak table with two cups of coffee, a leather-bound notebook with a fountain pen,
+> and a tablet lying flat that shows a calm, cream-coloured app screen with abstract shapes only (no readable
+> text). Two people sit at the table, seen from behind or cropped at shoulder height, **with no faces visible**:
+> an older owner (about 65, grey hair, navy knitted jumper) and a younger advisor (about 30, dark-green jacket).
+> The advisor's hand points gently at the tablet. The mood is unhurried and trusting, a personal conversation
+> rather than a sales pitch.
+>
+> Camera at seated eye level with a shallow depth of field, so the table and hands are sharp and the cars are soft.
+> No logos, badges or number plates on the cars, no readable text anywhere.
+
+**Extra, als de wagen toch een bekend merk lijkt:** iconische vormen zoals die van een Jaguar E-Type,
+Mercedes 'Pagode' of Porsche 911 duiken vaak op. Vraag dan: "Make the classic car a generic, unrecognisable
+1960s coupé with a simple oval grille and no emblem; keep everything else identical."
 
 ---
 
@@ -79,4 +96,4 @@ dan beschreven:
 |---|---|
 | `hero.jpg` | `src/pages/index.astro` |
 | `werkplaats.jpg` | `src/pages/diensten.astro` |
-| `stalling.jpg` | `src/pages/werkwijze.astro` |
+| `kennismaking.jpg` | `src/pages/werkwijze.astro` |

@@ -55,7 +55,7 @@ De foto's staan in `src/assets/images/`. Vervang een bestand door uw eigen foto 
 |---|---|---|
 | `hero.jpg` | grote foto bovenaan Home | liggend, min. 2400 × 1350 px, onderwerp liefst rechts |
 | `werkplaats.jpg` | Diensten | liggend, min. 1600 × 1000 px |
-| `stalling.jpg` | Werkwijze | liggend, min. 1600 × 1000 px |
+| `kennismaking.jpg` | Werkwijze | liggend, min. 1600 × 1000 px |
 | `persoon-1.jpg`, `persoon-2.jpg` | Over ons (zelfde volgorde als `team` in `src/config.ts`) | vierkant, liefst min. 800 × 800 px |
 
 Astro maakt er bij het bouwen automatisch kleinere WebP-versies van; u hoeft niets te verkleinen.
