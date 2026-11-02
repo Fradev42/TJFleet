@@ -8,13 +8,13 @@
 
 export const site = {
   /** Naam van de dienst, zoals ze overal op de site verschijnt. */
-  naam: '[[NAAM]]',
+  naam: 'APEX Fleet Management',
 
   /**
    * Tekst van het logo, voor schermlezers en zoekmachines.
    * Het logo zelf staat in src/assets/logo/ (logo.png en een lichte versie logo-licht.png voor de footer).
    */
-  logoAlt: 'Apex Fleet Management',
+  logoAlt: 'APEX Fleet Management',
 
   /** Korte ondertitel bij de naam (logo-regel in de kop). */
   baseline: 'Beheer van klassieke wagens',
