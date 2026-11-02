@@ -17,7 +17,7 @@ export const site = {
   logoAlt: 'APEX Classic Car Care',
 
   /** Korte ondertitel bij de naam (logo-regel in de kop). */
-  baseline: 'Beheer van klassieke wagens',
+  baseline: 'Beheer en verzorging van klassieke en exclusieve wagens',
 
   /** Volledige adres van de website, zonder slash op het einde. Nodig voor sitemap en Open Graph. */
   url: 'https://www.example.be',

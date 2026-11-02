@@ -15,10 +15,18 @@ const diensten = [
     ],
   },
   {
+    id: 'verzorging',
+    titel: 'Verzorging en altijd rijklaar',
+    tekst: [
+      'Wij kuisen uw wagens grondig, vanbinnen en vanbuiten, en beschermen de lak naar uw wens met een wax of een coating. Zo blijven ze er op hun best uitzien en zijn ze beschermd tegen vocht, vuil en uv.',
+      'Daarnaast zorgen wij dat elke wagen te allen tijde rijklaar staat: de batterij geladen, de banden op spanning en de vloeistoffen op peil. Wilt u vertrekken, dan kan dat meteen.',
+    ],
+  },
+  {
     id: 'restauratie',
     titel: 'Restauratie via vaste specialisten',
     tekst: [
-      'Wij werken niet zelf aan uw wagens. Wij kiezen met u de juiste specialist uit een vaste kring die we goed kennen: mecaniciens, carrosseriers, bekleders en restaurateurs.',
+      'Mechanisch werk en restauraties doen wij niet zelf. Wij kiezen met u de juiste specialist uit een vaste kring die we goed kennen: mecaniciens, carrosseriers, bekleders en restaurateurs.',
       'Voor grotere werken vragen we vergelijkbare offertes op, vergelijken ze voor u en volgen de werken op tot de wagen terug bij u staat.',
     ],
   },
@@ -31,7 +39,7 @@ const diensten = [
       { href: '/gids/oldtimer-verzekeren/', label: 'Gids: een oldtimer verzekeren' },
     ],
     tekst: [
-      'Wij zorgen dat de papieren van elke wagen in orde zijn: de inschrijving als oldtimer, de nummerplaat en de registratie voor de lage-emissiezones van Gent, Antwerpen en Brussel.',
+      'Wij zorgen dat de papieren van elke wagen in orde zijn: de inschrijving en nummerplaat, voor een oldtimer ook de inschrijving met O-plaat, en de registratie voor de lage-emissiezones van Gent, Antwerpen en Brussel.',
       'Wij verkopen zelf geen verzekeringen, maar bekijken met u en uw makelaar of de verzekerde waarde en de dekking nog kloppen. Veranderen de regels, dan hoort u het van ons.',
     ],
   },
@@ -56,8 +64,16 @@ const diensten = [
 
 const vragen = [
   {
+    vraag: 'Werken jullie enkel met oldtimers?',
+    antwoord: 'Nee. Wij beheren en verzorgen zowel oldtimers en youngtimers als recente, exclusieve wagens. Veel collecties zijn gemengd, en elke wagen krijgt de zorg die past bij zijn leeftijd en gebruik.',
+  },
+  {
+    vraag: 'Kuisen jullie de wagens ook?',
+    antwoord: 'Ja. Wij kuisen uw wagens vanbinnen en vanbuiten, en beschermen de lak naar uw wens met een wax of een coating. Hoe vaak, spreken we per wagen met u af.',
+  },
+  {
     vraag: 'Hebben jullie een eigen garage of stalling?',
-    antwoord: 'Nee. Wij werken niet zelf aan uw wagens en hebben geen eigen stalling. Uw wagens blijven bij u thuis of in uw eigen stalling, en voor elk werk kiezen we met u de juiste specialist.',
+    antwoord: 'Nee. Mechanisch werk en restauraties laten we uitvoeren door vaste specialisten, en we hebben geen eigen stalling. Uw wagens blijven bij u thuis of in uw eigen stalling; kuisen en verzorgen doen we zelf.',
   },
   {
     vraag: 'Verdienen jullie aan de garages die jullie inschakelen?',
@@ -92,14 +108,14 @@ const faqSchema = {
 };
 ---
 <Base
-  title="Onderhoud, keuring en restauratie van oldtimers | APEX"
-  description="Wij plannen onderhoud en keuring, vergelijken offertes voor restauratie, regelen verzekering, LEZ en transport in gesloten trailer. Voor uw hele collectie."
+  title="Oldtimers en exclusieve wagens: onderhoud en verzorging"
+  description="Onderhoud en keuring op tijd, kuisen met wax of coating, restauratie via specialisten, verzekering, LEZ en transport. Voor oldtimers en recente wagens."
 >
   <header class="paginakop">
     <div class="wrap">
       <span class="bovenschrift">Diensten</span>
-      <h1>Alles rond uw oldtimers, op één plek geregeld</h1>
-      <p class="intro">Van onderhoud en oldtimerkeuring tot restauratie, verzekering, LEZ en transport. U kiest zelf wat u uit handen geeft: één dienst of het volledige beheer van uw collectie. Wij werken altijd in uw naam en in uw belang.</p>
+      <h1>Alles rond uw wagens, op één plek geregeld</h1>
+      <p class="intro">Voor oldtimers, youngtimers en exclusieve wagens van vandaag. Van onderhoud en keuring tot kuisen, wax of coating, restauratie, verzekering en transport. U kiest zelf wat u uit handen geeft: één dienst of het volledige beheer van uw collectie. Wij werken altijd in uw naam en in uw belang.</p>
     </div>
   </header>
 
