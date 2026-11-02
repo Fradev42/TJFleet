@@ -7,19 +7,19 @@ const jaar = new Date().getFullYear();
     <div class="sitefooter__raster">
       <div>
         <img class="sitefooter__logo" src="/logo/logo.svg" alt={site.logoAlt} width="196" height="52" loading="lazy" />
-        <p>{site.baseline} in {site.regio.join(' en ')}.</p>
+        <p>{site.baseline} in {site.regioTekst}.</p>
       </div>
       <div>
         <h2 class="sitefooter__kop">Contact</h2>
         <address>
-          {site.juridischeNaam}<br />
+          {site.naam}<br />
           {vestigingRegels.map((r) => <>{r}<br /></>)}
           <a href={telHref}>{site.telefoon.weergave}</a><br />
           <a href={mailHref}>{site.email}</a>
         </address>
       </div>
       <nav aria-label="Voettekst">
-        <h2 class="sitefooter__kop">Pagina's</h2>
+        <h2 class="sitefooter__kop">Pagina’s</h2>
         <ul>
           {menu.map((i) => <li><a href={i.href}>{i.label}</a></li>)}
           <li><a href="/werkgebied/">Werkgebied</a></li>
@@ -28,7 +28,7 @@ const jaar = new Date().getFullYear();
       </nav>
     </div>
     <p class="sitefooter__klein">
-      © {jaar} {site.juridischeNaam} · Ondernemingsnummer {site.btwNummer} · <a href="/privacy/">Privacyverklaring</a> · Deze website gebruikt geen cookies.
+      © {jaar} {site.naam} is een handelsnaam van {site.juridischeNaam} · Ondernemingsnummer {site.btwNummer} · <a href="/privacy/">Privacyverklaring</a> · Deze website gebruikt geen cookies.
     </p>
   </div>
 </footer>

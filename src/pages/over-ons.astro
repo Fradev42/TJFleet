@@ -11,21 +11,22 @@ const team = teamGegevens.map((p, i) => ({ ...p, foto: fotos[i % fotos.length], 
 const partners = ['Restauratie-atelier', 'Mecanicien', 'Carrosserie', 'Bekleding', 'Verzekeraar', 'Transport'];
 ---
 <Base
-  title="Over ons: onafhankelijke autoliefhebbers | APEX"
+  title="Over ons: onafhankelijk, aan uw kant"
   description="Wij werken onafhankelijk en aan de kant van de eigenaar: geen eigen garage, geen verkoop, geen commissie. Vanuit Zwijnaarde en Sint-Eloois-Winkel."
 >
   <header class="paginakop">
     <div class="wrap">
       <span class="bovenschrift">Over ons</span>
       <h1>Liefhebbers, met oog voor detail</h1>
-      <p class="intro">Wij zijn een kleine, persoonlijke zaak met een thuisbasis in Zwijnaarde, net buiten Gent, en in Sint-Eloois-Winkel. Bewust klein, zodat u altijd met dezelfde mensen spreekt.</p>
+      <p class="intro">Wij zijn een kleine, persoonlijke zaak met thuisbases in Zwijnaarde en Sint-Eloois-Winkel. Bewust klein, zodat u altijd met dezelfde mensen spreekt.</p>
       <p>{site.naam} is een handelsnaam van {site.juridischeNaam}, ondernemingsnummer {site.btwNummer}.</p>
     </div>
   </header>
 
   <section class="sectie" aria-labelledby="team-titel">
     <div class="wrap">
-      <h2 id="team-titel">Wie uw vaste aanspreekpunt is</h2>
+      <h2 id="team-titel">Wie uw vaste aanspreekpunt wordt</h2>
+      <p class="intro">U spreekt altijd met een van ons beiden. Na de kennismaking wordt één van ons uw vaste aanspreekpunt.</p>
       <div class="raster raster--2 team">
         {team.map((p) => (
           <figure class="persoon">
@@ -65,7 +66,7 @@ const partners = ['Restauratie-atelier', 'Mecanicien', 'Carrosserie', 'Bekleding
   <section class="sectie" aria-labelledby="partners-titel">
     <div class="wrap">
       <h2 id="partners-titel">Ons netwerk van specialisten</h2>
-      <p class="intro">We werken met een beperkte kring van specialisten die we persoonlijk kennen en wiens werk we zelf opvolgen.</p>
+      <p class="intro">We werken met een beperkte kring van specialisten die we persoonlijk kennen en van wie we het werk zelf opvolgen.</p>
       <ul class="partners">
         {partners.map((p) => <li><span class="partners__logo">Logo partner</span><span>{p}</span></li>)}
       </ul>

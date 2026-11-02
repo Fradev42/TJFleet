@@ -2,7 +2,7 @@
 import { site, team } from '../config';
 
 interface Props {
-  /** Volledige paginatitel zoals ze in Google verschijnt (maximaal ± 60 tekens). */
+  /** Onderwerp van de pagina; de merknaam wordt er automatisch achter gezet. Samen liefst ± 60 tekens. */
   title: string;
   description: string;
   /** Pad van de Open Graph-afbeelding in /public. */
@@ -12,7 +12,7 @@ interface Props {
 const { title, description, ogImage = '/og-image.jpg', noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
 const ogUrl = new URL(ogImage, Astro.site ?? site.url).href;
-const volledigeTitel = title;
+const volledigeTitel = `${title} | ${site.naam}`;
 
 const schema = {
   '@context': 'https://schema.org',
@@ -20,7 +20,7 @@ const schema = {
   '@id': `${site.url}/#bedrijf`,
   name: site.naam,
   legalName: site.juridischeNaam,
-  description: 'Onafhankelijk beheer en verzorging van oldtimers en exclusieve wagens: onderhoud, kuisen, wax of coating, keuring, verzekering, transport en een volledig dossier per wagen.',
+  description: 'Onafhankelijk beheer en verzorging van oldtimers en exclusieve wagens: onderhoud, reiniging met wax of coating, keuring, verzekering, transport en een volledig dossier per wagen.',
   url: site.url,
   telephone: site.telefoon.link,
   email: site.email,

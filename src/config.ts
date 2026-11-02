@@ -60,13 +60,16 @@ export const site = {
 
   /** Bereikbaarheid, getoond op de contactpagina. */
   bereikbaarheid: [
-    'Maandag tot vrijdag van 9 tot 18 uur',
+    'Klanten: altijd bereikbaar via hun vaste aanspreekpunt',
+    'Nieuwe aanvragen: maandag tot vrijdag van 9 tot 18 uur',
     'Zaterdag op afspraak',
     'Afspraken bij u thuis of in uw stalling, in heel Oost- en West-Vlaanderen',
   ],
 
   /** Werkgebied, voor de tekst en voor schema.org. */
   regio: ['Oost-Vlaanderen', 'West-Vlaanderen'],
+  /** Werkgebied zoals het in lopende tekst verschijnt. */
+  regioTekst: 'Oost- en West-Vlaanderen',
 } as const;
 
 /**
@@ -103,12 +106,12 @@ export const plausible = {
 export const team = [
   {
     naam: 'Thomas Vancoillie',
-    rol: 'Medeoprichter · uw vaste aanspreekpunt',
+    rol: 'Medeoprichter',
     linkedin: 'https://www.linkedin.com/in/thomas-vancoillie-a189903b1/',
   },
   {
     naam: 'Jasper Descamps',
-    rol: 'Medeoprichter · uw vaste aanspreekpunt',
+    rol: 'Medeoprichter',
     linkedin: 'https://www.linkedin.com/in/jasper-descamps/',
   },
 ] as const;

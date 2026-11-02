@@ -18,7 +18,7 @@ const diensten = [
     id: 'verzorging',
     titel: 'Verzorging en altijd rijklaar',
     tekst: [
-      'Wij kuisen uw wagens grondig, vanbinnen en vanbuiten, en beschermen de lak naar uw wens met een wax of een coating. Zo blijven ze er op hun best uitzien en zijn ze beschermd tegen vocht, vuil en uv.',
+      'Wij reinigen uw wagens grondig, vanbinnen en vanbuiten, en beschermen de lak naar uw wens met een wax of een coating. Zo blijven ze er op hun best uitzien en zijn ze beschermd tegen vocht, vuil en uv.',
       'Daarnaast zorgen wij dat elke wagen te allen tijde rijklaar staat: de batterij geladen, de banden op spanning en de vloeistoffen op peil. Wilt u vertrekken, dan kan dat meteen.',
     ],
   },
@@ -26,7 +26,7 @@ const diensten = [
     id: 'restauratie',
     titel: 'Restauratie via vaste specialisten',
     tekst: [
-      'Mechanisch werk en restauraties doen wij niet zelf. Wij kiezen met u de juiste specialist uit een vaste kring die we goed kennen: mecaniciens, carrosseriers, bekleders en restaurateurs.',
+      'Mechanisch werk en restauraties doen wij niet zelf. Wij kiezen met u de juiste specialist uit een vaste kring die we goed kennen: mecaniciens, carrossiers, bekleders en restaurateurs.',
       'Voor grotere werken vragen we vergelijkbare offertes op, vergelijken ze voor u en volgen de werken op tot de wagen terug bij u staat.',
     ],
   },
@@ -54,10 +54,10 @@ const diensten = [
   {
     id: 'dossier',
     titel: 'Een volledig dossier per wagen',
-    links: [{ href: '/gids/oldtimer-laten-taxeren/', label: 'Gids: een oldtimer laten taxeren' }],
+    links: [{ href: '/gids/oldtimer-dossier-documenten/', label: 'Gids: het dossier van een oldtimer' }],
     tekst: [
-      'Per wagen bewaren we de historiek, facturen, foto’s, documenten en sleutels, overzichtelijk en veilig. U kijkt het dossier op elk moment in via onze app, en bij verkoop, expertise of schade is alles meteen terug te vinden.',
-      'We volgen ook de waarde van elke wagen op, zodat uw verzekering en uw nalatenschap steeds kloppen.',
+      'Per wagen houden we de historiek, facturen, foto’s en documenten bij, overzichtelijk en veilig.',
+      'U kijkt het dossier op elk moment in via onze app, en bij verkoop, expertise of schade is alles meteen terug te vinden.',
     ],
   },
 ];
@@ -68,12 +68,12 @@ const vragen = [
     antwoord: 'Nee. Wij beheren en verzorgen zowel oldtimers en youngtimers als recente, exclusieve wagens. Veel collecties zijn gemengd, en elke wagen krijgt de zorg die past bij zijn leeftijd en gebruik.',
   },
   {
-    vraag: 'Kuisen jullie de wagens ook?',
-    antwoord: 'Ja. Wij kuisen uw wagens vanbinnen en vanbuiten, en beschermen de lak naar uw wens met een wax of een coating. Hoe vaak, spreken we per wagen met u af.',
+    vraag: 'Reinigen jullie de wagens ook?',
+    antwoord: 'Ja. Wij reinigen uw wagens vanbinnen en vanbuiten, en beschermen de lak naar uw wens met een wax of een coating. Hoe vaak, spreken we per wagen met u af.',
   },
   {
     vraag: 'Hebben jullie een eigen garage of stalling?',
-    antwoord: 'Nee. Mechanisch werk en restauraties laten we uitvoeren door vaste specialisten, en we hebben geen eigen stalling. Uw wagens blijven bij u thuis of in uw eigen stalling; kuisen en verzorgen doen we zelf.',
+    antwoord: 'Nee. Mechanisch werk en restauraties laten we uitvoeren door vaste specialisten, en we hebben geen eigen stalling. Uw wagens blijven bij u thuis of in uw eigen stalling; reinigen en verzorgen doen we zelf.',
   },
   {
     vraag: 'Verdienen jullie aan de garages die jullie inschakelen?',
@@ -85,7 +85,7 @@ const vragen = [
   },
   {
     vraag: 'Wie ziet de gegevens van mijn collectie?',
-    antwoord: 'Alleen u en ons team. Wij delen niets met derden zonder uw akkoord, spreken niet over klanten en tonen geen wagens of adressen.',
+    antwoord: 'Alleen u en ons team. Wij delen niets met derden zonder uw akkoord, spreken niet over klanten en tonen geen wagens, namen of adressen zonder uw akkoord.',
   },
   {
     vraag: 'In welke regio werken jullie?',
@@ -108,14 +108,14 @@ const faqSchema = {
 };
 ---
 <Base
-  title="Oldtimers en exclusieve wagens: onderhoud en verzorging"
-  description="Onderhoud en keuring op tijd, kuisen met wax of coating, restauratie via specialisten, verzekering, LEZ en transport. Voor oldtimers en recente wagens."
+  title="Onderhoud en verzorging van uw wagens"
+  description="Onderhoud en keuring op tijd, reiniging met wax of coating, restauratie via specialisten, verzekering, LEZ en transport. Voor oldtimers en recente wagens."
 >
   <header class="paginakop">
     <div class="wrap">
       <span class="bovenschrift">Diensten</span>
       <h1>Alles rond uw wagens, op één plek geregeld</h1>
-      <p class="intro">Voor oldtimers, youngtimers en exclusieve wagens van vandaag. Van onderhoud en keuring tot kuisen, wax of coating, restauratie, verzekering en transport. U kiest zelf wat u uit handen geeft: één dienst of het volledige beheer van uw collectie. Wij werken altijd in uw naam en in uw belang.</p>
+      <p class="intro">Voor oldtimers, youngtimers en exclusieve wagens van vandaag. Van onderhoud en keuring tot reiniging met wax of coating, restauratie via specialisten, verzekering en transport. U kiest zelf wat u uit handen geeft: één dienst of het volledige beheer van uw collectie. Wij werken altijd in uw belang.</p>
     </div>
   </header>
 
@@ -148,7 +148,7 @@ const faqSchema = {
         <h2 id="prijs-titel">Op maat van uw collectie</h2>
         <p class="nota">Prijs na een vrijblijvend gesprek.</p>
         <p>Geen twee collecties zijn gelijk. Daarom maken we na een eerste kennismaking een voorstel dat past bij het aantal wagens, hun toestand en wat u zelf wilt blijven doen.</p>
-        <p><a class="knop" href="/contact/">Plan een kennismaking</a></p>
+        <p><a class="knop" href="/contact/">Kennismaking aanvragen</a></p>
       </div>
     </div>
   </section>

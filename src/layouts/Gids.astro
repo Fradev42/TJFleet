@@ -15,8 +15,10 @@ interface Props {
   /** Datum waarop de inhoud het laatst gecontroleerd werd, bv. '2026-11-02'. */
   bijgewerkt: string;
   bronnen: Bron[];
+  /** Afsluitende uitnodiging, afgestemd op het onderwerp van de gids. */
+  uitnodiging: { titel: string; tekst: string };
 }
-const { title, description, h1, intro, bijgewerkt, bronnen } = Astro.props;
+const { title, description, h1, intro, bijgewerkt, bronnen, uitnodiging } = Astro.props;
 const datumTekst = new Date(bijgewerkt).toLocaleDateString('nl-BE', { day: 'numeric', month: 'long', year: 'numeric' });
 const pagina = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
 
@@ -58,21 +60,21 @@ const kruimels = {
       <slot />
 
       <aside class="gids__uitnodiging" aria-label="Hulp bij uw collectie">
-        <p class="gids__uitnodiging-titel">Liever dat iemand dit voor uw hele collectie opvolgt?</p>
-        <p>Wij houden de papieren, keuringen en registraties van al uw wagens bij, en u hoort het van ons als er iets verandert.</p>
+        <p class="gids__uitnodiging-titel">{uitnodiging.titel}</p>
+        <p>{uitnodiging.tekst}</p>
         <div class="knoppen">
           <a class="knop" href={telHref}>Bel ons</a>
-          <a class="knop knop--tweede" href="/contact/">Laat u terugbellen</a>
+          <a class="knop knop--tweede" href="/contact/">Kennismaking aanvragen</a>
         </div>
       </aside>
 
-      <section class="gids__bronnen" aria-labelledby="bronnen-titel">
+      {bronnen.length > 0 && <section class="gids__bronnen" aria-labelledby="bronnen-titel">
         <h2 id="bronnen-titel">Bronnen</h2>
         <p>Regels en tarieven veranderen regelmatig. Kijk de officiële bron na voordat u beslist.</p>
         <ul>
           {bronnen.map((b) => <li><a href={b.url} rel="noopener">{b.titel}</a></li>)}
         </ul>
-      </section>
+      </section>}
     </div></div>
   </article>
 </Base>
