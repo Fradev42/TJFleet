@@ -8,13 +8,13 @@
 
 export const site = {
   /** Naam van de dienst, zoals ze overal op de site verschijnt. */
-  naam: 'APEX Fleet Management',
+  naam: 'APEX Classic Car Care',
 
   /**
    * Tekst van het logo, voor schermlezers en zoekmachines.
    * Het logo zelf staat in public/logo/logo.svg (kop en footer).
    */
-  logoAlt: 'APEX Fleet Management',
+  logoAlt: 'APEX Classic Car Care',
 
   /** Korte ondertitel bij de naam (logo-regel in de kop). */
   baseline: 'Beheer van klassieke wagens',
