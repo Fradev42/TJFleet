@@ -47,7 +47,7 @@ export const site = {
   bereikbaarheid: [
     'Maandag tot vrijdag van 9 tot 18 uur',
     'Zaterdag op afspraak',
-    'Afspraken bij u thuis of in de stalling, in heel Oost- en West-Vlaanderen',
+    'Afspraken bij u thuis of in uw stalling, in heel Oost- en West-Vlaanderen',
   ],
 
   /** Werkgebied, voor de tekst en voor schema.org. */
