@@ -86,14 +86,14 @@ export const plausible = {
  */
 export const team = [
   {
-    naam: 'Jasper Descamps',
-    rol: 'Medeoprichter · uw vaste aanspreekpunt',
-    linkedin: 'https://www.linkedin.com/in/jasper-descamps/',
-  },
-  {
     naam: 'Thomas Vancoillie',
     rol: 'Medeoprichter · uw vaste aanspreekpunt',
     linkedin: 'https://www.linkedin.com/in/thomas-vancoillie-a189903b1/',
+  },
+  {
+    naam: 'Jasper Descamps',
+    rol: 'Medeoprichter · uw vaste aanspreekpunt',
+    linkedin: 'https://www.linkedin.com/in/jasper-descamps/',
   },
 ] as const;
 
