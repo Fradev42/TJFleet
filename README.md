@@ -24,6 +24,7 @@ npm run preview    # bekijk de gebouwde site lokaal
 | Telefoon (getoond + link) | `site.telefoon.weergave` en `site.telefoon.link` (formaat `+3292345678`) |
 | E-mail, adres, BTW-nr. | `site.email`, `site.adres`, `site.btwNummer` |
 | Openingsuren | `site.bereikbaarheid` |
+| Team (naam, rol, LinkedIn) | `team` |
 | Webadres (voor sitemap en delen) | `site.url` |
 | Formulier (Netlify of ander endpoint) | `formulier` |
 | Plausible-statistieken (standaard uit) | `plausible` |
@@ -38,7 +39,7 @@ Zoek in het hele project naar `[[` om alles te vinden wat nog ingevuld moet word
 | Diensten | `src/pages/diensten.astro` (de vier blokken staan bovenaan in een lijstje) |
 | Werkwijze | `src/pages/werkwijze.astro` |
 | Voorbeeld kwartaalrapport | `src/components/Kwartaalrapport.astro` |
-| Over ons (team, partners) | `src/pages/over-ons.astro` (lijstjes `team` en `partners` bovenaan) |
+| Over ons (tekst, partners) | `src/pages/over-ons.astro` (teamleden staan in `src/config.ts`) |
 | Contact / bedankt | `src/pages/contact/index.astro`, `src/pages/contact/bedankt.astro` |
 | Formuliervelden | `src/components/Contactformulier.astro` |
 | Groen belblok onderaan | `src/components/BelBlok.astro` |
@@ -59,6 +60,9 @@ De foto's staan in `src/assets/images/`. Vervang een bestand door uw eigen foto 
 
 Astro maakt er bij het bouwen automatisch kleinere WebP-versies van; u hoeft niets te verkleinen.
 Pas daarna de **alt-tekst** (korte beschrijving voor blinde bezoekers en Google) aan in de pagina waar de foto staat (`alt="..."`).
+
+Het **logo** staat in `public/logo/`: `logo.svg` (kop) en `logo-licht.svg` (crème versie voor de donkere footer).
+Vervang beide bestanden met dezelfde naam. De alt-tekst staat in `site.logoAlt`.
 
 De afbeelding die verschijnt als iemand de site deelt (WhatsApp, LinkedIn, e-mail) is `public/og-image.jpg` (1200 × 630 px).
 

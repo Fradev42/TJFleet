@@ -1,14 +1,12 @@
 ---
-import { Image } from 'astro:assets';
 import { site, menu, telHref } from '../config';
-import logo from '../assets/logo/logo.png';
 const pad = Astro.url.pathname;
 const isHuidig = (href: string) => (href === '/' ? pad === '/' : pad.startsWith(href));
 ---
 <header class="sitekop">
   <div class="wrap sitekop__binnen">
     <a class="logo" href="/">
-      <Image class="logo__beeld" src={logo} alt={site.logoAlt} height={60} densities={[1, 2]} loading="eager" />
+      <img class="logo__beeld" src="/logo/logo.svg" alt={site.logoAlt} width="226" height="60" />
       <span class="logo__baseline">{site.baseline}</span>
     </a>
 

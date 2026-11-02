@@ -1,14 +1,12 @@
 ---
-import { Image } from 'astro:assets';
 import { site, telHref, mailHref, adresRegels, menu } from '../config';
-import logoLicht from '../assets/logo/logo-licht.png';
 const jaar = new Date().getFullYear();
 ---
 <footer class="sitefooter">
   <div class="wrap">
     <div class="sitefooter__raster">
       <div>
-        <Image class="sitefooter__logo" src={logoLicht} alt={site.logoAlt} height={52} densities={[1, 2]} />
+        <img class="sitefooter__logo" src="/logo/logo-licht.svg" alt={site.logoAlt} width="196" height="52" loading="lazy" />
         <p>{site.baseline} in {site.regio.join(' en ')}.</p>
       </div>
       <div>

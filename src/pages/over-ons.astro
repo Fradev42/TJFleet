@@ -2,14 +2,12 @@
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import BelBlok from '../components/BelBlok.astro';
-import { site } from '../config';
+import { site, team as teamGegevens } from '../config';
 import persoon1 from '../assets/images/persoon-1.jpg';
 import persoon2 from '../assets/images/persoon-2.jpg';
 
-const team = [
-  { foto: persoon1, naam: '[[Voornaam Naam]]', rol: 'Zaakvoerder en uw vaste contactpersoon', alt: 'Portret van [[Voornaam Naam]]' },
-  { foto: persoon2, naam: '[[Voornaam Naam]]', rol: 'Planning, dossiers en transport', alt: 'Portret van [[Voornaam Naam]]' },
-];
+const fotos = [persoon1, persoon2];
+const team = teamGegevens.map((p, i) => ({ ...p, foto: fotos[i % fotos.length], alt: `Portret van ${p.naam}` }));
 const partners = ['Restauratie-atelier', 'Mecanicien', 'Carrosserie', 'Bekleding', 'Verzekeraar', 'Transport'];
 ---
 <Base
@@ -36,6 +34,11 @@ const partners = ['Restauratie-atelier', 'Mecanicien', 'Carrosserie', 'Bekleding
             <figcaption>
               <span class="persoon__naam">{p.naam}</span>
               <span class="persoon__rol">{p.rol}</span>
+              {p.linkedin && (
+                <a class="persoon__link" href={p.linkedin} rel="noopener">
+                  LinkedIn-profiel<span class="visueel-verborgen"> van {p.naam}</span>
+                </a>
+              )}
             </figcaption>
           </figure>
         ))}
@@ -78,6 +81,7 @@ const partners = ['Restauratie-atelier', 'Mecanicien', 'Carrosserie', 'Bekleding
   .persoon figcaption { margin-top: 1rem; display: flex; flex-direction: column; }
   .persoon__naam { font-family: var(--font-titel); font-size: 1.4rem; color: var(--kleur-accent); }
   .persoon__rol { color: var(--kleur-tekst-zacht); }
+  .persoon__link { display: inline-flex; align-items: center; min-height: 3rem; align-self: flex-start; font-weight: 600; }
   .partners { list-style: none; padding: 0; margin: 2rem 0 0; max-width: none; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); }
   .partners li { display: flex; flex-direction: column; gap: 0.5rem; text-align: center; font-size: 0.95rem; }
   .partners__logo {

@@ -1,5 +1,5 @@
 ---
-import { site } from '../config';
+import { site, team } from '../config';
 
 interface Props {
   title: string;
@@ -33,6 +33,7 @@ const schema = {
   },
   areaServed: site.regio.map((r) => ({ '@type': 'AdministrativeArea', name: r })),
   knowsLanguage: ['nl', 'fr', 'en'],
+  employee: team.map((p) => ({ '@type': 'Person', name: p.naam, sameAs: [p.linkedin] })),
 };
 ---
 <title>{volledigeTitel}</title>

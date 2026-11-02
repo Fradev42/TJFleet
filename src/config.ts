@@ -12,7 +12,7 @@ export const site = {
 
   /**
    * Tekst van het logo, voor schermlezers en zoekmachines.
-   * Het logo zelf staat in src/assets/logo/ (logo.png en een lichte versie logo-licht.png voor de footer).
+   * Het logo zelf staat in public/logo/ (logo.svg en een lichte versie logo-licht.svg voor de footer).
    */
   logoAlt: 'APEX Fleet Management',
 
@@ -24,15 +24,15 @@ export const site = {
 
   telefoon: {
     /** Zoals het nummer getoond wordt. */
-    weergave: '[[TELEFOON]]',
+    weergave: '0468 35 50 64',
     /** Internationaal formaat zonder spaties, voor de tel:-link. Bv. '+3292345678'. */
-    link: '+32000000000',
+    link: '+32468355064',
   },
 
   email: '[[E-MAIL]]',
 
   adres: {
-    straat: '[[STRAAT EN NUMMER]]',
+    straat: 'Eedstraat 42a',
     postcode: '[[POSTCODE]]',
     gemeente: '[[GEMEENTE, regio Gent]]',
     land: 'België',
@@ -41,7 +41,7 @@ export const site = {
   },
 
   /** Ondernemingsnummer, bv. 'BE 0123.456.789'. */
-  btwNummer: '[[BTW-NR]]',
+  btwNummer: 'BE 1022.876.282',
 
   /** Bereikbaarheid, getoond op de contactpagina. */
   bereikbaarheid: [
@@ -79,6 +79,23 @@ export const plausible = {
   domein: 'example.be',
   script: 'https://plausible.io/js/script.js',
 };
+
+/**
+ * Team, getoond op de pagina Over ons.
+ * Foto's: src/assets/images/persoon-1.jpg en persoon-2.jpg (zelfde volgorde als hieronder).
+ */
+export const team = [
+  {
+    naam: 'Jasper Descamps',
+    rol: '[[Rol]]',
+    linkedin: 'https://www.linkedin.com/in/jasper-descamps/',
+  },
+  {
+    naam: 'Thomas Vancoillie',
+    rol: '[[Rol]]',
+    linkedin: 'https://www.linkedin.com/in/thomas-vancoillie-a189903b1/',
+  },
+] as const;
 
 /** Hoofdmenu. Volgorde = volgorde in de navigatie. */
 export const menu = [
