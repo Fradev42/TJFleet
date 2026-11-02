@@ -1,0 +1,56 @@
+---
+import Base from '../../layouts/Base.astro';
+import BelBlok from '../../components/BelBlok.astro';
+
+const gidsen = [
+  { href: '/gids/oldtimer-lez-gent-antwerpen-brussel/', titel: 'Met uw oldtimer in de lage-emissiezone', tekst: 'Wanneer mag een oldtimer de LEZ van Gent, Antwerpen en Brussel in, en hoe registreert u hem?' },
+  { href: '/gids/oldtimer-inschrijven/', titel: 'Een oldtimer inschrijven in België', tekst: 'Vanaf 30 jaar: de eerste oldtimerkeuring, de O-plaat, de gebruiksregels en de voordelen.' },
+  { href: '/gids/oldtimerkeuring/', titel: 'De oldtimerkeuring in Vlaanderen', tekst: 'Hoe vaak een oldtimer naar de keuring moet, wat er gecontroleerd wordt en hoe u het overzicht houdt.' },
+  { href: '/gids/oldtimer-verzekeren/', titel: 'Een oldtimer verzekeren', tekst: 'Afgesproken waarde, omnium, rijden op events en meerdere wagens: waar u op let.' },
+  { href: '/gids/oldtimer-laten-taxeren/', titel: 'Een oldtimer laten taxeren', tekst: 'Waarom, wanneer en hoe vaak u laat taxeren, en wat u bewaart in het dossier van de wagen.' },
+];
+---
+<Base
+  title="Gidsen voor oldtimereigenaars | APEX Fleet Management"
+  description="Heldere gidsen over oldtimers in België: de LEZ in Gent, Antwerpen en Brussel, inschrijven met O-plaat, keuring, verzekeren en taxeren."
+>
+  <header class="paginakop">
+    <div class="wrap">
+      <span class="bovenschrift">Gidsen</span>
+      <h1>Gidsen voor oldtimereigenaars</h1>
+      <p class="intro">De regels rond oldtimers veranderen geregeld. In deze gidsen zetten we het belangrijkste op een rij, in gewone taal. Voor onze klanten volgen we dit allemaal op.</p>
+    </div>
+  </header>
+
+  <section class="sectie" aria-label="Alle gidsen">
+    <div class="wrap">
+      <ul class="gidsen">
+        {gidsen.map((g) => (
+          <li>
+            <a href={g.href}>
+              <span class="gidsen__titel">{g.titel}</span>
+              <span>{g.tekst}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <BelBlok />
+</Base>
+
+<style>
+  .gidsen { list-style: none; padding: 0; margin: 0; max-width: none; display: grid; gap: 1.25rem; }
+  @media (min-width: 48em) { .gidsen { grid-template-columns: repeat(2, 1fr); } }
+  .gidsen a {
+    display: flex; flex-direction: column; gap: 0.5rem; height: 100%;
+    padding: 1.5rem 1.75rem; background: var(--kleur-wit);
+    border: 1px solid var(--kleur-lijn); border-top: 3px solid var(--kleur-accent); border-radius: var(--radius);
+    color: var(--kleur-tekst); text-decoration: none;
+  }
+  .gidsen a:hover { box-shadow: 0 0 0 3px var(--kleur-lijn); color: var(--kleur-tekst); }
+  .gidsen a:hover .gidsen__titel { text-decoration: underline; text-decoration-thickness: 2px; }
+  .gidsen__titel { font-family: var(--font-titel); font-size: 1.4rem; line-height: 1.25; color: var(--kleur-accent); }
+  .gidsen__titel::after { content: ' →'; }
+</style>

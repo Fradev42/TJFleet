@@ -117,6 +117,7 @@ export const menu = [
   { href: '/', label: 'Home' },
   { href: '/diensten/', label: 'Diensten' },
   { href: '/werkwijze/', label: 'Werkwijze' },
+  { href: '/gids/', label: 'Gidsen' },
   { href: '/over-ons/', label: 'Over ons' },
   { href: '/contact/', label: 'Contact' },
 ] as const;

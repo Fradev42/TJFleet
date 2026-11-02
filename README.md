@@ -44,6 +44,7 @@ Zoek in het hele project naar `[[` om alles te vinden wat nog ingevuld moet word
 | Formuliervelden | `src/components/Contactformulier.astro` |
 | Groen belblok onderaan | `src/components/BelBlok.astro` |
 | Werkgebied | `src/pages/werkgebied.astro` |
+| Gidsen (overzicht en vijf gidsen) | `src/pages/gids/` — opmaak in `src/layouts/Gids.astro`; pas bij elke controle `bijgewerkt` aan |
 | Privacyverklaring | `src/pages/privacy.astro` |
 
 **Kleuren en lettergrootte** staan als variabelen bovenaan `src/styles/global.css`.

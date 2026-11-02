@@ -1,0 +1,103 @@
+---
+/**
+ * Opmaak voor een gids: kop met kruimelpad, lopende tekst, bronnen, en een zachte uitnodiging onderaan.
+ * Werk `bijgewerkt` bij telkens u een gids nakijkt.
+ */
+import Base from './Base.astro';
+import { site, telHref } from '../config';
+
+interface Bron { titel: string; url: string; }
+interface Props {
+  title: string;
+  description: string;
+  h1: string;
+  intro: string;
+  /** Datum waarop de inhoud het laatst gecontroleerd werd, bv. '2026-11-02'. */
+  bijgewerkt: string;
+  bronnen: Bron[];
+}
+const { title, description, h1, intro, bijgewerkt, bronnen } = Astro.props;
+const datumTekst = new Date(bijgewerkt).toLocaleDateString('nl-BE', { day: 'numeric', month: 'long', year: 'numeric' });
+const pagina = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: h1,
+  description,
+  inLanguage: 'nl-BE',
+  dateModified: bijgewerkt,
+  mainEntityOfPage: pagina,
+  author: { '@type': 'Organization', name: site.naam },
+  publisher: { '@type': 'Organization', name: site.naam, legalName: site.juridischeNaam },
+};
+const kruimels = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site ?? site.url).href },
+    { '@type': 'ListItem', position: 2, name: 'Gidsen', item: new URL('/gids/', Astro.site ?? site.url).href },
+    { '@type': 'ListItem', position: 3, name: h1, item: pagina },
+  ],
+};
+---
+<Base title={title} description={description}>
+  <header class="paginakop">
+    <div class="wrap">
+      <nav aria-label="Kruimelpad" class="kruimelpad">
+        <a href="/">Home</a> <span aria-hidden="true">›</span> <a href="/gids/">Gidsen</a>
+      </nav>
+      <h1>{h1}</h1>
+      <p class="intro">{intro}</p>
+      <p class="bijgewerkt">Laatst nagekeken op <time datetime={bijgewerkt}>{datumTekst}</time></p>
+    </div>
+  </header>
+
+  <article class="sectie">
+    <div class="wrap"><div class="gids">
+      <slot />
+
+      <aside class="gids__uitnodiging" aria-label="Hulp bij uw collectie">
+        <p class="gids__uitnodiging-titel">Liever dat iemand dit voor uw hele collectie opvolgt?</p>
+        <p>Wij houden de papieren, keuringen en registraties van al uw wagens bij, en u hoort het van ons als er iets verandert.</p>
+        <div class="knoppen">
+          <a class="knop" href={telHref}>Bel ons</a>
+          <a class="knop knop--tweede" href="/contact/">Laat u terugbellen</a>
+        </div>
+      </aside>
+
+      <section class="gids__bronnen" aria-labelledby="bronnen-titel">
+        <h2 id="bronnen-titel">Bronnen</h2>
+        <p>Regels en tarieven veranderen regelmatig. Kijk de officiële bron na voordat u beslist.</p>
+        <ul>
+          {bronnen.map((b) => <li><a href={b.url} rel="noopener">{b.titel}</a></li>)}
+        </ul>
+      </section>
+    </div></div>
+  </article>
+</Base>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+<script type="application/ld+json" set:html={JSON.stringify(kruimels)} />
+
+<style>
+  .kruimelpad { font-size: 0.95rem; margin-bottom: 1.25rem; color: var(--kleur-tekst-zacht); }
+  .kruimelpad a { display: inline-block; padding-block: 0.4rem; }
+  .bijgewerkt { font-size: 0.95rem; color: var(--kleur-tekst-zacht); margin: 0; }
+  .gids { max-width: 46rem; }
+  .gids :global(h2) { font-size: clamp(1.45rem, 2.6vw, 1.85rem); margin-top: 2.5rem; }
+  .gids :global(h2:first-child) { margin-top: 0; }
+  .gids :global(h3) { font-size: 1.25rem; margin-top: 1.75rem; }
+  .gids :global(ul), .gids :global(ol) { padding-left: 1.25rem; }
+  .gids :global(li) { margin-bottom: 0.5rem; }
+  .gids :global(.kort) { border-left: 3px solid var(--kleur-accent); padding: 0.75rem 1.25rem; background: var(--kleur-wit); }
+  .gids :global(.kort > :last-child) { margin-bottom: 0; }
+  .gids :global(table) { width: 100%; border-collapse: collapse; margin-bottom: 1.25rem; }
+  .gids :global(th), .gids :global(td) { text-align: left; vertical-align: top; padding: 0.6rem 0.75rem 0.6rem 0; border-bottom: 1px solid var(--kleur-lijn); }
+  .gids :global(th) { font-weight: 650; border-bottom: 1.5px solid var(--kleur-lijn-sterk); }
+  .gids__uitnodiging { margin-top: 3rem; padding: 1.75rem; background: var(--kleur-vlak); border-radius: var(--radius); }
+  .gids__uitnodiging-titel { font-family: var(--font-titel); font-size: 1.45rem; color: var(--kleur-accent); margin-bottom: 0.5rem; }
+  .gids__bronnen { margin-top: 3rem; font-size: 0.95rem; }
+  .gids__bronnen h2 { font-size: 1.25rem !important; }
+  .gids__bronnen a { overflow-wrap: anywhere; }
+</style>

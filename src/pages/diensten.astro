@@ -8,6 +8,7 @@ const diensten = [
   {
     id: 'onderhoud',
     titel: 'Onderhoud en keuring op tijd',
+    links: [{ href: '/gids/oldtimerkeuring/', label: 'Gids: de oldtimerkeuring' }],
     tekst: [
       'Wij houden de kalender van elke wagen bij: onderhoud, oldtimerkeuring en de andere vervaldata. U krijgt tijdig bericht in onze app; wij maken de afspraken en regelen het vervoer.',
       'Zo staat geen enkele wagen te lang stil, en mist u geen keuring, ook niet met tien wagens en tien verschillende data.',
@@ -24,6 +25,11 @@ const diensten = [
   {
     id: 'papieren',
     titel: 'Verzekering, inschrijving en LEZ',
+    links: [
+      { href: '/gids/oldtimer-inschrijven/', label: 'Gids: een oldtimer inschrijven' },
+      { href: '/gids/oldtimer-lez-gent-antwerpen-brussel/', label: 'Gids: oldtimers in de LEZ' },
+      { href: '/gids/oldtimer-verzekeren/', label: 'Gids: een oldtimer verzekeren' },
+    ],
     tekst: [
       'Wij zorgen dat de papieren van elke wagen in orde zijn: de inschrijving als oldtimer, de nummerplaat en de registratie voor de lage-emissiezones van Gent, Antwerpen en Brussel.',
       'Wij verkopen zelf geen verzekeringen, maar bekijken met u en uw makelaar of de verzekerde waarde en de dekking nog kloppen. Veranderen de regels, dan hoort u het van ons.',
@@ -40,6 +46,7 @@ const diensten = [
   {
     id: 'dossier',
     titel: 'Een volledig dossier per wagen',
+    links: [{ href: '/gids/oldtimer-laten-taxeren/', label: 'Gids: een oldtimer laten taxeren' }],
     tekst: [
       'Per wagen bewaren we de historiek, facturen, foto’s, documenten en sleutels, overzichtelijk en veilig. U kijkt het dossier op elk moment in via onze app, en bij verkoop, expertise of schade is alles meteen terug te vinden.',
       'We volgen ook de waarde van elke wagen op, zodat uw verzekering en uw nalatenschap steeds kloppen.',
@@ -102,6 +109,11 @@ const faqSchema = {
         <article class="kaart" id={d.id} aria-labelledby={`${d.id}-titel`}>
           <h2 id={`${d.id}-titel`} class="dienst__titel">{d.titel}</h2>
           {d.tekst.map((t) => <p>{t}</p>)}
+          {d.links && (
+            <ul class="dienst__links">
+              {d.links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+            </ul>
+          )}
         </article>
       ))}
       <aside class="kaart niet-doen" aria-labelledby="niet-doen-titel">
@@ -147,6 +159,8 @@ const faqSchema = {
 <style>
   .dienst__titel { font-size: clamp(1.45rem, 2.6vw, 1.8rem); }
   .prijs { align-items: center; }
+  .dienst__links { list-style: none; padding: 0; margin: 0; }
+  .dienst__links a { display: inline-block; padding-block: 0.35rem; font-weight: 600; }
   .niet-doen { background: transparent; border-style: dashed; border-color: var(--kleur-lijn-sterk); }
   .faq { margin: 2rem 0 0; max-width: 50rem; display: grid; gap: 0; }
   .faq__item { padding-block: 1.25rem; border-top: 1px solid var(--kleur-lijn); }

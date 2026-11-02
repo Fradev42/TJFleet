@@ -75,7 +75,7 @@ const isHuidig = (href: string) => (href === '/' ? pad === '/' : pad.startsWith(
   .sitekop__tel {
     display: inline-flex; align-items: center; justify-content: center;
     min-height: 3rem; padding: 0.5rem 1.4rem;
-    font-weight: 650; text-decoration: none;
+    font-weight: 650; text-decoration: none; white-space: nowrap;
     border: 2px solid var(--kleur-accent); border-radius: var(--radius);
     color: var(--kleur-accent) !important; line-height: 1.2;
   }
@@ -102,7 +102,8 @@ const isHuidig = (href: string) => (href === '/' ? pad === '/' : pad.startsWith(
   }
   /* Staande tablet: menu op een eigen regel onder de naam. */
   @media (min-width: 48em) and (max-width: 63.99em) {
-    .hoofdmenu { flex-basis: 100%; border-top: 1px solid var(--kleur-lijn); padding-top: 0.5rem; }
+    .hoofdmenu { flex-basis: 100%; border-top: 1px solid var(--kleur-lijn); padding-top: 0.5rem; gap: 1rem; }
+    .hoofdmenu ul { gap: 1.1rem; }
   }
 
   /* Smartphone: de "Menu"-knop verschijnt alleen als JavaScript werkt;

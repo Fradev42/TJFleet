@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 import { site } from '../config';
 
 // Pagina's die in de sitemap komen. Bedankt- en 404-pagina horen er niet in.
-const paginas = ['/', '/diensten/', '/werkwijze/', '/werkgebied/', '/over-ons/', '/contact/', '/privacy/'];
+const paginas = ['/', '/diensten/', '/werkwijze/', '/werkgebied/', '/gids/', '/gids/oldtimer-lez-gent-antwerpen-brussel/', '/gids/oldtimer-inschrijven/', '/gids/oldtimerkeuring/', '/gids/oldtimer-verzekeren/', '/gids/oldtimer-laten-taxeren/', '/over-ons/', '/contact/', '/privacy/'];
 
 export const GET: APIRoute = () => {
   const vandaag = new Date().toISOString().slice(0, 10);
