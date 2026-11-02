@@ -71,19 +71,44 @@ De afbeelding die verschijnt als iemand de site deelt (WhatsApp, LinkedIn, e-mai
 Partnerlogo's: zet de bestanden in `public/partners/` en vervang in `src/pages/over-ons.astro` de tekst
 `Logo partner` door bv. `<img src="/partners/naam.svg" alt="Naam partner" />`.
 
-## 4. Online zetten op Netlify
+## 4. Online zetten op Cloudflare Pages
 
-1. Zet dit project op GitHub (of GitLab/Bitbucket).
-2. Ga naar [app.netlify.com](https://app.netlify.com) → **Add new site** → **Import an existing project** en kies de repository.
-3. Netlify leest `netlify.toml` en vult zelf in: build command `npm run build`, publish directory `dist`. Klik **Deploy**.
-4. **Domeinnaam**: *Site configuration → Domain management → Add a domain*. Pas daarna `site.url` in `src/config.ts` aan.
-5. **Formulier**: na de eerste deploy verschijnt het formulier `kennismaking` onder *Forms*. Zet onder
-   *Forms → Form notifications* een e-mailmelding naar uw adres. Spam wordt via het honeypot-veld weggefilterd.
+1. Zet dit project op GitHub.
+2. Ga in het Cloudflare-dashboard naar **Workers & Pages → Create → Pages → Connect to Git** en kies de repository.
+3. Build command `npm run build`, build output directory `dist`. Klik **Save and Deploy**.
+4. **Domeinnaam**: *Custom domains → Set up a custom domain*. Pas daarna `site.url` in `src/config.ts` aan.
 
-Elke wijziging die u naar GitHub pusht, zet Netlify automatisch online.
+Elke wijziging die u naar GitHub pusht, zet Cloudflare automatisch online. Security-headers staan in `public/_headers`.
 
-**Cloudflare Pages** in plaats van Netlify? Build command `npm run build`, output `dist`. Netlify Forms werkt daar niet:
-zet in `src/config.ts` `formulier.provider` op `'endpoint'` en vul `fallbackEndpoint` in (bv. een gratis Formspree-formulier).
+### Het contactformulier activeren (Cloudflare Worker)
+
+Het formulier staat standaard **uit** (`formulier.provider: 'uit'` in `src/config.ts`): bezoekers zien dan een uitnodiging
+om te bellen of te mailen. Om het te activeren, gebruikt u de Worker in de map `worker-formulier/`. Die stuurt elke aanvraag
+als e-mail naar uw mailbox via Cloudflare Email Routing, en bewaart niets.
+
+Nodig: uw eigen domein, beheerd in Cloudflare.
+
+1. **Email Routing aanzetten**: in het dashboard van uw domein → *Email → Email Routing*. Voeg uw mailbox toe als
+   **bestemmingsadres** en bevestig het via de mail die u krijgt.
+2. **De Worker instellen**: vul in `worker-formulier/wrangler.jsonc` alle waarden tussen `[[ ]]` in:
+   uw bevestigde mailbox, een afzender op uw domein (bv. `website@uwdomein.be`) en de adressen van uw site.
+3. **De Worker online zetten**:
+   ```bash
+   cd worker-formulier
+   node test.mjs          # snelle controle van de logica
+   npx wrangler login
+   npx wrangler deploy
+   ```
+   Wrangler toont daarna het adres van de Worker, bv. `https://apex-formulier.uwaccount.workers.dev`.
+   U kunt er in het dashboard ook een eigen subdomein aan koppelen, bv. `formulier.uwdomein.be`.
+4. **De site koppelen**: zet in `src/config.ts` `formulier.provider` op `'endpoint'` en `fallbackEndpoint` op het adres van de Worker.
+   Pusht u dat naar GitHub, dan staat het formulier online.
+5. **Testen**: verstuur een aanvraag en kijk of de mail binnenkomt.
+
+### Toch Netlify?
+
+Op Netlify werkt het formulier zonder Worker: zet `formulier.provider` op `'netlify'`. Netlify leest `netlify.toml`
+(build `npm run build`, map `dist`). Pas dan ook de privacyverklaring aan, want Netlify wordt dan webhost en verwerker.
 
 ## 5. Statistieken (optioneel)
 

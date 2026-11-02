@@ -1,0 +1,23 @@
+{
+  // Cloudflare Worker die het contactformulier als e-mail doorstuurt.
+  // Vul de waarden met [[ ]] in en zet de Worker online met: npx wrangler deploy
+  "name": "apex-formulier",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-01",
+  "send_email": [
+    {
+      "name": "MAIL",
+      // Moet een bevestigd bestemmingsadres zijn in Email Routing van uw Cloudflare-account.
+      "destination_address": "[[UW-MAILBOX@VOORBEELD.BE]]"
+    }
+  ],
+  "vars": {
+    // Afzender: een adres op uw eigen domein waarop Email Routing actief is.
+    "AFZENDER": "website@[[UW-DOMEIN.BE]]",
+    "BESTEMMING": "[[UW-MAILBOX@VOORBEELD.BE]]",
+    // Sites die het formulier mogen versturen (komma-gescheiden).
+    "TOEGELATEN_HERKOMST": "https://[[UW-DOMEIN.BE]],https://www.[[UW-DOMEIN.BE]],https://[[PROJECT]].pages.dev",
+    "BEDANKT_URL": "https://www.[[UW-DOMEIN.BE]]/contact/bedankt/",
+    "FOUT_URL": "https://www.[[UW-DOMEIN.BE]]/contact/?fout=1"
+  }
+}

@@ -71,16 +71,17 @@ export const site = {
 
 /**
  * Contactformulier.
- *  - provider 'netlify': Netlify Forms vangt het formulier op (geen extra account nodig).
- *  - provider 'endpoint': het formulier wordt gepost naar `fallbackEndpoint`
- *    (bv. Formspree, Basin, Web3Forms) — gebruik dit op Cloudflare Pages.
+ *  - provider 'uit': geen formulier; bezoekers zien een uitnodiging om te bellen of te mailen.
+ *  - provider 'endpoint': het formulier wordt gepost naar `fallbackEndpoint`. Op Cloudflare Pages
+ *    is dat de Worker in de map worker-formulier/ (zie README), bv. 'https://apex-formulier.uwaccount.workers.dev/'.
+ *  - provider 'netlify': Netlify Forms (werkt ALLEEN als de site op Netlify gehost wordt).
  */
 export const formulier = {
-  provider: 'netlify' as 'netlify' | 'endpoint',
+  provider: 'uit' as 'uit' | 'endpoint' | 'netlify',
   /** Naam van het formulier in het Netlify-dashboard. */
   netlifyNaam: 'kennismaking',
-  /** Alternatieve URL die POST-verzoeken aanvaardt. */
-  fallbackEndpoint: 'https://formspree.io/f/[[FORMULIER-ID]]',
+  /** URL van de Worker (of een andere dienst) die het formulier ontvangt. */
+  fallbackEndpoint: 'https://apex-formulier.[[ACCOUNT]].workers.dev/',
   /** Pagina waarop de bezoeker belandt na verzenden. */
   bedanktPagina: '/contact/bedankt/',
 };

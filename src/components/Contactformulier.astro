@@ -1,9 +1,16 @@
 ---
 import { formulier, site, telHref } from '../config';
+const isUit = formulier.provider === 'uit';
 const isNetlify = formulier.provider === 'netlify';
 const action = isNetlify ? formulier.bedanktPagina : formulier.fallbackEndpoint;
 const honeypot = isNetlify ? 'bot-field' : '_gotcha';
 ---
+{isUit ? (
+  <div class="formulier-uit kaart">
+    <p class="intro">Bel ons op <a href={telHref}>{site.telefoon.weergave}</a>, of stuur een e-mail naar <a href={`mailto:${site.email}`}>{site.email}</a> met uw naam en telefoonnummer.</p>
+    <p>We bellen u binnen één werkdag terug.</p>
+  </div>
+) : (<>
 <form
   class="formulier"
   name={formulier.netlifyNaam}
@@ -78,6 +85,7 @@ const honeypot = isNetlify ? 'bot-field' : '_gotcha';
   <p class="intro">We bellen u binnen één werkdag terug.</p>
   <p>Liever meteen iemand spreken? Bel <a href={telHref}>{site.telefoon.weergave}</a>.</p>
 </div>
+</>)}
 
 <script>
   // Verstuurt het formulier zonder de pagina te verlaten en toont daarna de bedanking.
@@ -85,6 +93,8 @@ const honeypot = isNetlify ? 'bot-field' : '_gotcha';
   const form = document.querySelector<HTMLFormElement>('form.formulier');
   const bedankt = document.querySelector<HTMLElement>('.bedankt');
   const fout = form?.querySelector<HTMLElement>('.formulier__fout');
+  // Teruggestuurd na een mislukte verzending zonder JavaScript.
+  if (fout && new URLSearchParams(location.search).has('fout')) fout.hidden = false;
   if (form && bedankt && fout) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -140,5 +150,7 @@ const honeypot = isNetlify ? 'bot-field' : '_gotcha';
   .formulier .knop:disabled { opacity: 0.8; cursor: wait; }
   @media (max-width: 47.99em) { .formulier .knop { justify-self: stretch; } }
   .bedankt { max-width: 38rem; }
+  .formulier-uit { max-width: 38rem; }
+  .formulier-uit > :last-child { margin-bottom: 0; }
   .bedankt:focus { outline: none; }
 </style>
