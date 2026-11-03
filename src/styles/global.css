@@ -81,6 +81,9 @@ h1, h2, h3, h4 {
   text-wrap: balance;
 }
 h1 { font-size: clamp(2.25rem, 5.5vw, 3.75rem); letter-spacing: -0.01em; }
+/* Heel smalle schermen (± 320 px): lange woorden zoals "Privacyverklaring" mogen niet buiten beeld lopen. */
+h1, h2 { overflow-wrap: break-word; hyphens: auto; }
+@media (max-width: 22.5em) { h1 { font-size: 1.85rem; } }
 h2 { font-size: clamp(1.75rem, 3.6vw, 2.5rem); }
 h3 { font-size: clamp(1.3rem, 2.2vw, 1.55rem); }
 

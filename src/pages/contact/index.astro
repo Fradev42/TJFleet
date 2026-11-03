@@ -11,7 +11,7 @@ import { site, telHref, mailHref, vestigingRegels } from '../../config';
     <div class="wrap">
       <span class="bovenschrift">Contact</span>
       <h1>Laten we kennismaken</h1>
-      <p class="intro">Bellen is het eenvoudigst. Liever dat wij u bellen? Laat hieronder uw gegevens achter.</p>
+      <p class="intro">Bellen is het eenvoudigst. Liever dat wij u bellen? Laat ons weten hoe we u kunnen bereiken.</p>
 
       <div class="contactlijnen">
         <a class="contactlijn" href={telHref}>
@@ -20,7 +20,7 @@ import { site, telHref, mailHref, vestigingRegels } from '../../config';
         </a>
         <a class="contactlijn" href={mailHref}>
           <span class="contactlijn__label">E-mail</span>
-          <span class="contactlijn__waarde contactlijn__waarde--mail">{site.email}</span>
+          <span class="contactlijn__waarde contactlijn__waarde--mail">{site.email.split('@')[0]}@<wbr />{site.email.split('@')[1]}</span>
         </a>
       </div>
     </div>
@@ -73,7 +73,7 @@ import { site, telHref, mailHref, vestigingRegels } from '../../config';
   .contactlijn:hover .contactlijn__waarde { text-decoration: underline; text-decoration-thickness: 2px; }
   .contactlijn__label { font-size: 0.85rem; font-weight: 650; letter-spacing: 0.1em; text-transform: uppercase; color: var(--kleur-accent-2); }
   .contactlijn__waarde { font-family: var(--font-titel); font-size: clamp(1.6rem, 4vw, 2.3rem); line-height: 1.25; color: var(--kleur-accent); overflow-wrap: anywhere; }
-  .contactlijn__waarde--mail { font-size: clamp(1.3rem, 3vw, 1.8rem); }
+  .contactlijn__waarde--mail { font-size: clamp(1.3rem, 3vw, 1.8rem); overflow-wrap: normal; }
 
   .contact { display: grid; gap: 3rem; }
   @media (min-width: 56em) { .contact { grid-template-columns: 1.5fr 1fr; gap: 4rem; align-items: start; } }
