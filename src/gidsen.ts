@@ -14,5 +14,11 @@ export const gidsen = [
   { href: '/gids/oldtimer-concours-rally-voorbereiden/', titel: 'Met uw oldtimer naar een concours of rally', tekst: 'Rijklaar maken, papieren, verzekering en transport in een gesloten trailer.' },
   { href: '/gids/oldtimer-dossier-documenten/', titel: 'Het dossier van een oldtimer', tekst: 'Welke documenten u bewaart, waarom ze de waarde beschermen en hoe u ze ordent.' },
   { href: '/gids/oldtimercollectie-overdragen/', titel: 'Een oldtimercollectie overdragen', tekst: 'Schenking en nalatenschap: waardebepaling, nummerplaten, verzekering en goede afspraken.' },
+  { href: '/gids/wax-of-keramische-coating/', titel: 'Wax of keramische coating?', tekst: 'Wax, coating of beschermfolie: wat elk kost, hoe lang het beschermt en wat past bij originele lak.' },
+  { href: '/gids/youngtimer/', titel: 'Youngtimers: waar let u op?', tekst: 'Geen wettelijk statuut, wel valkuilen: verzekering, keuring en vooral de LEZ, tot de wagen 30 is.' },
+  { href: '/gids/wagen-lang-stilstaan/', titel: 'Een exclusieve wagen die weinig rijdt', tekst: 'Accu, banden, onderhoud per jaar of per kilometer, en uw garantie buiten de dealer.' },
+  { href: '/gids/leder-hout-cabriodak-verzorgen/', titel: 'Leder, hout en cabriodak verzorgen', tekst: 'Zo reinigt en beschermt u het interieur en de kap, en wat u beter aan een specialist overlaat.' },
+  { href: '/gids/diefstal-dure-wagen-voorkomen/', titel: 'Diefstal van een dure wagen voorkomen', tekst: 'Keyless diefstal, track and trace en wat uw verzekeraar eist: INCERT uitgelegd.' },
+  { href: '/gids/elektrische-wagen-lang-stilstaan/', titel: 'Een elektrische wagen lang stallen', tekst: 'Het juiste laadniveau, de vergeten 12V-accu en hybrides met twee systemen.' },
   { href: '/gids/oldtimers-na-2030/', titel: 'Oldtimers na 2030: wat verandert er?', tekst: 'LEZ, verkeersbelasting, wegenvignet en Europese regels: wat er op komst is.' },
 ];
