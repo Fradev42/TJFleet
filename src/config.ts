@@ -24,12 +24,12 @@ export const site = {
 
   telefoon: {
     /** Zoals het nummer getoond wordt. */
-    weergave: '0468 35 50 64',
+    weergave: '0473 76 09 09',
     /** Internationaal formaat zonder spaties, voor de tel:-link. Bv. '+3292345678'. */
-    link: '+32468355064',
+    link: '+32473760909',
   },
 
-  email: 'info@apexfleet.be',
+  email: 'info@apexcollectioncare.be',
 
   /**
    * Vestigingen zoals ze op de site getoond worden (zonder straat en huisnummer).
