@@ -29,7 +29,7 @@ export const fotoAlt: Record<string, string> = {
   'wax-of-keramische-coating': 'Een hand brengt met een microvezeldoek wax aan op de motorkap van een donkergroene Jaguar E-Type',
   'youngtimer': 'Een donkergrijze BMW M3 E46 in een lichte garage',
   'exclusieve-wagen-weinig-rijden': 'Een Aston Martin DB11 in een garage, met een onderhoudslader aangesloten',
-  'leder-hout-cabriodak-verzorgen': 'De lederen zetels en het houten dashboard van een Jaguar XJS Convertible worden verzorgd',
+  'leder-hout-cabriodak-verzorgen': 'Het stoffen cabriodak van een donkerblauwe Mercedes-Benz SL wordt met een zachte borstel gereinigd',
   'diefstal-dure-wagen-voorkomen': 'Een autosleutel wordt in een metalen afschermdoos gelegd',
   'elektrische-wagen-lang-stilstaan': 'Een Porsche Taycan staat aan de lader in een moderne garage',
   'reiniging-en-coating': 'Een donkergroene Porsche 356 wordt met de hand gereinigd in een privégarage',
