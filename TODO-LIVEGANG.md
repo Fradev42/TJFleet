@@ -183,7 +183,7 @@ Legende: 🔴 blokkerend voor livegang · 🟠 belangrijk · 🟢 kleiner
 ## 🟠 13. Foto's per gids en dienst (Gemini)
 
 - **Wat:** een eigen foto bovenaan elke gids en dienstpagina, die ook de deelafbeelding wordt.
-- **Geblokkeerd door:** de foto's moeten nog gemaakt en nagekeken worden (geen merklogo's, geen leesbare platen, geen gezichten).
+- **Geblokkeerd door:** de foto's moeten nog gemaakt en nagekeken worden (het model en het merklogo moeten kloppen, geen leesbare platen, geen gezichten).
 - **Al gedaan:** de plek voor de foto op elke gids en dienstpagina, de alt-teksten (`src/lib/paginafotos.ts`), en een titelkaart per pagina in `public/og/` die gebruikt wordt zolang er geen foto is. Prompts per pagina: `docs/prompt-gidsfotos.md`.
 - **Daarna:** de foto's opslaan als `src/assets/paginafotos/<slug>.jpg`, de alt-tekst nakijken, `npm run build`.
 
@@ -232,4 +232,4 @@ Dit kan ik niet zelf invullen; zodra u beslist, bouw ik het.
 ## Nog na te lopen (uit eerdere rondes)
 
 - **De gidsen** laten nalezen door iemand met vakkennis, vooral die over de LEZ, de keuring, de verkeersbelasting en het overdragen van een collectie (notaris).
-- **De sfeerfoto's** tonen herkenbare merken (Jaguar, Aston Martin, met embleem). Overweeg versies zonder logo.
+- **De sfeerfoto's** tonen herkenbare merken (Jaguar, Aston Martin). Dat mag, maar kijk na of het model en het embleem kloppen: liefhebbers zien een fout meteen.
