@@ -21,7 +21,7 @@ export const fotoAlt: Record<string, string> = {
   'oldtimer-laten-taxeren': 'Een expert met een klembord bekijkt de lak van een zilvergrijze klassieke Porsche 911 in een garage',
   'oldtimer-restauratie-kosten': 'Een Jaguar E-Type in grondverf met de motorkap open in een restauratieatelier, met een carrosseriedeel op een standaard',
   'oldtimer-winterklaar-maken': 'Een klassieke Porsche 911 onder een ademende afdekhoes in een droge garage, met een onderhoudslader aangesloten',
-  'oldtimer-onderhoud-weinig-rijden': 'Een mecanicien buigt zich over de motor van een groene MGB roadster',
+  'oldtimer-onderhoud-weinig-rijden': 'Een mecanicien buigt zich over de motor van een groene MGB roadster in een garage met bakstenen muren',
   'oldtimer-concours-rally-voorbereiden': 'Een donkerblauwe Austin-Healey 3000 wordt voor een bakstenen villa in een gesloten aanhangwagen geladen',
   'oldtimer-dossier-documenten': 'Een lederen map met facturen en een onderhoudsboekje, oude foto’s van een Citroën DS, een sleutel en een leesbril op een houten tafel',
   'oldtimercollectie-overdragen': 'Twee generaties bekijken samen een crèmekleurige Jaguar XK150 in een privégarage',

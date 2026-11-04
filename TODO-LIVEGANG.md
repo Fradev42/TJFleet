@@ -180,15 +180,10 @@ Legende: 🔴 blokkerend voor livegang · 🟠 belangrijk · 🟢 kleiner
     Strict-Transport-Security: max-age=31536000; includeSubDomains
   ```
 
-## 🟠 13. Foto's per gids en dienst (Gemini)
+## ✅ 13. Foto's per gids en dienst (afgerond op 4 november 2026)
 
-- **Wat:** een eigen foto bovenaan elke gids en dienstpagina, die ook de deelafbeelding wordt.
-- **Geblokkeerd door:** de foto's moeten nog gemaakt en nagekeken worden (het model en het merklogo moeten kloppen, geen nummerplaten, geen gezichten).
-- **Al gedaan:** de plek voor de foto op elke gids en dienstpagina, de alt-teksten (`src/lib/paginafotos.ts`), en een titelkaart per pagina in `public/og/` die gebruikt wordt zolang er geen foto is. Prompts per pagina: `docs/prompt-gidsfotos.md`.
-- **Stand op 4 november 2026:** op de site staan diefstal, elektrische wagen, cabriodak, concours, inschrijven, LEZ, verzekeren, winterklaar, oldtimers na 2030, youngtimer, transport, dossier, keuring, reiniging, exclusieve wagen, taxeren, restauratie, collectie overdragen en wax. Alleen de foto bij onderhoud van een oldtimer die weinig rijdt ontbreekt nog.
-- **Daarna:**
-  1. De laatste foto (MGB-motor, `oldtimer-onderhoud-weinig-rijden.jpg`) genereren met de prompt in `docs/prompt-gidsfotos.md`.
-  2. Telkens de alt-tekst nakijken in `src/lib/paginafotos.ts` en `npm run build`.
+- Alle 18 gidsen en de twee dienstpagina's hebben een eigen foto in `src/assets/paginafotos/`, die ook de deelafbeelding is. De alt-teksten staan in `src/lib/paginafotos.ts`.
+- Nieuwe gids of dienst? Zet een foto met de slug als naam in die map en voeg een alt-tekst toe. Prompts en controlelijst: `docs/prompt-gidsfotos.md`.
 
 ## 🟠 14. Bevestigingsmail naar de aanvrager aanzetten
 

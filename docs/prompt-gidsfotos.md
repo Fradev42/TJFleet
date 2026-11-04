@@ -1,21 +1,15 @@
-# Prompt voor Gemini: de laatste gidsfoto
+# Prompts voor Gemini: foto's voor nieuwe gidsen of diensten
 
-19 van de 20 foto's staan op de site. Alleen deze ontbreekt nog. Het blok hieronder bevat de basisprompt
-en het onderwerp: kopieer het volledig in Gemini.
+Alle 20 foto's staan op de site (`src/assets/paginafotos/`). Komt er een nieuwe gids of dienstpagina bij,
+gebruik dan deze basisprompt en zet er een onderwerp onder.
 
 ## Zo werkt u
 
-1. Kopieer het blok volledig in Gemini (afbeeldingen maken).
-2. Kijk de foto na met de **controlelijst** onderaan. Eén fout is genoeg om opnieuw te genereren, of vraag Gemini dat ene detail te verbeteren.
-3. Sla de foto op als `.jpg` met exact de bestandsnaam uit de titel van het blok, in `src/assets/paginafotos/`.
-4. Toont de foto iets anders dan de alt-tekst beschrijft? Pas dan de alt-tekst aan in `src/lib/paginafotos.ts`.
-5. `npm run build` en bekijk de pagina. De foto staat bovenaan in 16:9 en wordt voor delen bijgesneden tot 1200 × 630. Houd het onderwerp dus in het midden.
+1. Kopieer de basisprompt in Gemini en voeg eronder toe: `Onderwerp:` gevolgd door een korte beschrijving, met het exacte model en bouwjaar van de wagen. Kies bij voorkeur een zijaanzicht (geen nummerplaat) en mensen met de rug naar de camera.
+2. Kijk de foto na met de controlelijst. Eén fout is genoeg om opnieuw te genereren, of vraag Gemini dat ene detail te verbeteren ("verwijder de plaathouder onder de voorbumper, verander verder niets").
+3. Sla de foto op als `src/assets/paginafotos/<slug>.jpg`, voeg een alt-tekst toe in `src/lib/paginafotos.ts` en voer `npm run build` uit.
 
-Zolang een foto ontbreekt, gebruikt de pagina de titelkaart uit `public/og/`. De gidsen werken dus ook zonder foto.
-
-## De prompt
-
-### `oldtimer-onderhoud-weinig-rijden.jpg` (Gids: onderhoud van een oldtimer die weinig rijdt)
+## Basisprompt
 
 ```
 Maak een fotorealistische, liggende foto in 16:9 (minstens 1600 x 900 px) voor een rustige, verzorgde website voor eigenaars van klassieke en exclusieve wagens in Vlaanderen. Natuurlijk, zacht en warm licht, ingetogen kleuren, echte materialen (hout, leder, baksteen, beton). Rustige compositie met het onderwerp in het midden en ruimte rondom. Geen HDR, geen dramatische effecten. Het moet eruitzien als een foto van een goede fotograaf.
@@ -29,9 +23,6 @@ Strikt verboden:
 - andere wagens in de achtergrond.
 
 Omgeving: Belgisch of Vlaams, met bakstenen muren, eiken balken of een privégarage bij een villa.
-
-Onderwerp:
-Een MGB roadster in British racing green staat met de motorkap open in een propere, lichte garage met een bakstenen muur. Een mecanicien in een donkere overall buigt zich met de rug naar de camera over de motor, met een doek in de hand. De motor is van op afstand te zien, niet in close-up. Geen tekst op de motor, geen flessen of dozen met etiket.
 ```
 
 ## Controlelijst per foto
