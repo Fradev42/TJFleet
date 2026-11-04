@@ -27,7 +27,7 @@ export const fotoAlt: Record<string, string> = {
   'oldtimercollectie-overdragen': 'Twee generaties bekijken samen een crèmekleurige Jaguar XK150 in een privégarage',
   'oldtimers-na-2030': 'Een bordeauxrode Alfa Romeo Spider rijdt op een landweg tussen velden en bomenrijen',
   'wax-of-keramische-coating': 'Een hand brengt met een microvezeldoek wax aan op de motorkap van een donkergroene Jaguar E-Type',
-  'youngtimer': 'Een donkergrijze BMW M3 E46 in een lichte garage',
+  'youngtimer': 'Een donkergrijze BMW M3 E46 in een lichte garage, met de eigenaar bij de bestuurdersdeur',
   'exclusieve-wagen-weinig-rijden': 'Een donkergrijze Aston Martin DB11 in een garage, aangesloten op een onderhoudslader',
   'leder-hout-cabriodak-verzorgen': 'Een donkergroene Porsche 911 Cabriolet met gesloten stoffen dak in een garage, met een emmer verzorgingsproducten ernaast',
   'diefstal-dure-wagen-voorkomen': 'Een autosleutel wordt in een metalen afschermdoos gelegd',
