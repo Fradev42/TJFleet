@@ -185,9 +185,9 @@ Legende: 🔴 blokkerend voor livegang · 🟠 belangrijk · 🟢 kleiner
 - **Wat:** een eigen foto bovenaan elke gids en dienstpagina, die ook de deelafbeelding wordt.
 - **Geblokkeerd door:** de foto's moeten nog gemaakt en nagekeken worden (het model en het merklogo moeten kloppen, geen nummerplaten, geen gezichten).
 - **Al gedaan:** de plek voor de foto op elke gids en dienstpagina, de alt-teksten (`src/lib/paginafotos.ts`), en een titelkaart per pagina in `public/og/` die gebruikt wordt zolang er geen foto is. Prompts per pagina: `docs/prompt-gidsfotos.md`.
-- **Stand op 4 november 2026:** op de site staan diefstal, elektrische wagen, cabriodak, concours, inschrijven, LEZ, verzekeren, winterklaar, oldtimers na 2030, youngtimer, transport, dossier, keuring en reiniging.
+- **Stand op 4 november 2026:** op de site staan diefstal, elektrische wagen, cabriodak, concours, inschrijven, LEZ, verzekeren, winterklaar, oldtimers na 2030, youngtimer, transport, dossier, keuring, reiniging en exclusieve wagen.
 - **Daarna:**
-  1. De zes foto's die nog ontbreken opnieuw genereren met de kant-en-klare prompts in `docs/prompt-gidsfotos.md`: onderhoud (MGB-motor), exclusieve wagen (DB11), restauratie (E-Type), wax (E-Type), collectie overdragen (XK150) en taxeren (911).
+  1. De vijf foto's die nog ontbreken opnieuw genereren met de kant-en-klare prompts in `docs/prompt-gidsfotos.md`: onderhoud (MGB-motor), restauratie (E-Type), wax (E-Type), collectie overdragen (XK150) en taxeren (911).
   2. Telkens de alt-tekst nakijken in `src/lib/paginafotos.ts` en `npm run build`.
 
 ## 🟠 14. Bevestigingsmail naar de aanvrager aanzetten

@@ -1,6 +1,6 @@
-# Prompts voor Gemini: de laatste zes gidsfoto's
+# Prompts voor Gemini: de laatste vijf gidsfoto's
 
-14 van de 20 foto's staan op de site. Deze zes ontbreken nog. Elk blok hieronder bevat de basisprompt
+15 van de 20 foto's staan op de site. Deze vijf ontbreken nog. Elk blok hieronder bevat de basisprompt
 en het onderwerp: kopieer één blok volledig in Gemini.
 
 ## Zo werkt u
@@ -13,7 +13,7 @@ en het onderwerp: kopieer één blok volledig in Gemini.
 
 Zolang een foto ontbreekt, gebruikt de pagina de titelkaart uit `public/og/`. De gidsen werken dus ook zonder foto.
 
-## De zes prompts
+## De vijf prompts
 
 ### `oldtimer-onderhoud-weinig-rijden.jpg` (Gids: onderhoud van een oldtimer die weinig rijdt)
 
@@ -32,25 +32,6 @@ Omgeving: Belgisch of Vlaams, met bakstenen muren, eiken balken of een privégar
 
 Onderwerp:
 Een MGB roadster in British racing green staat met de motorkap open in een propere, lichte garage met een bakstenen muur. Een mecanicien in een donkere overall buigt zich met de rug naar de camera over de motor, met een doek in de hand. De motor is van op afstand te zien, niet in close-up. Geen tekst op de motor, geen flessen of dozen met etiket.
-```
-
-### `exclusieve-wagen-weinig-rijden.jpg` (Gids: een exclusieve wagen die weinig rijdt)
-
-```
-Maak een fotorealistische, liggende foto in 16:9 (minstens 1600 x 900 px) voor een rustige, verzorgde website voor eigenaars van klassieke en exclusieve wagens in Vlaanderen. Natuurlijk, zacht en warm licht, ingetogen kleuren, echte materialen (hout, leder, baksteen, beton). Rustige compositie met het onderwerp in het midden en ruimte rondom. Geen HDR, geen dramatische effecten. Het moet eruitzien als een foto van een goede fotograaf.
-
-De wagen is exact het genoemde model en bouwjaar, zoals het in werkelijkheid bestaat: juiste verhoudingen, carrosserielijnen, grille, koplampen, velgen, en het embleem en opschrift alleen op de plaatsen waar ze bij het echte model zitten. Originele staat, geen tuning. Liefhebbers zien elke fout: kies liever een eenvoudige compositie die klopt.
-
-Strikt verboden:
-- nummerplaten in welke vorm ook, ook geen lege plaat en geen plaathouder;
-- leesbare tekst, cijfers, jaartallen of logo's, behalve het embleem en opschrift van de wagen zelf; ook niet op papieren, dozen, flessen, gereedschap of toestellen;
-- gezichten, ook niet en profil: mensen staan volledig met de rug naar de camera, of alleen hun handen zijn in beeld;
-- andere wagens in de achtergrond.
-
-Omgeving: Belgisch of Vlaams, met bakstenen muren, eiken balken of een privégarage bij een villa.
-
-Onderwerp:
-Een Aston Martin DB11 coupé in donkergrijs staat in een rustige privégarage met bakstenen muren, volledig van opzij gezien. Op de vloer naast het voorwiel staat een effen zwarte onderhoudslader zonder logo of tekst. De kabel loopt zichtbaar van de lader naar de onderkant van de voorbumper en verdwijnt daar onder de wagen, zodat duidelijk is dat de wagen aan de lader hangt. Zacht licht, propere betonvloer.
 ```
 
 ### `oldtimer-restauratie-kosten.jpg` (Gids: een oldtimer laten restaureren)
