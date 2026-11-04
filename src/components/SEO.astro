@@ -28,10 +28,23 @@ const schema = {
   image: ogUrl,
   address: {
     '@type': 'PostalAddress',
-    postalCode: site.vestigingen[0].postcode,
-    addressLocality: site.vestigingen[0].gemeente,
+    streetAddress: site.adres.straat,
+    postalCode: site.adres.postcode,
+    addressLocality: site.adres.gemeente,
     addressCountry: site.adres.landCode,
   },
+  // Tweede vestiging, zonder straat zolang die niet bekend is.
+  location: site.vestigingen.slice(1).map((v) => ({
+    '@type': 'Place',
+    name: `${site.naam} ${v.gemeente}`,
+    address: { '@type': 'PostalAddress', postalCode: v.postcode, addressLocality: v.gemeente, addressRegion: v.provincie, addressCountry: site.adres.landCode },
+  })),
+  openingHoursSpecification: [{
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: site.openingsuren.dagen,
+    opens: site.openingsuren.van,
+    closes: site.openingsuren.tot,
+  }],
   areaServed: site.regio.map((r) => ({ '@type': 'AdministrativeArea', name: r })),
   knowsLanguage: ['nl', 'fr', 'en'],
   employee: team.map((p) => ({ '@type': 'Person', name: p.naam, sameAs: [p.linkedin] })),

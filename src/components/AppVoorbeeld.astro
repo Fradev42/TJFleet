@@ -6,13 +6,13 @@ import { team } from '../config';
 const wagens = [
   { naam: 'Roadster 2.8', jaar: 1969, status: 'Rijklaar', soort: 'ok', detail: 'Volgende keuring 14 maart 2027' },
   { naam: 'Coupé 3.8', jaar: 1964, status: 'In onderhoud', soort: 'bezig', detail: 'Terug bij u rond 14 november' },
-  { naam: 'Berline 2.4', jaar: 1959, status: 'Uw akkoord gevraagd', soort: 'vraag', detail: 'Nieuwe kap, zie hierboven' },
-  { naam: 'Spider 1600', jaar: 1971, status: 'Rijklaar', soort: 'ok', detail: 'Winterklaar gemaakt op 28 oktober' },
+  { naam: 'Spider 1600', jaar: 1971, status: 'Uw akkoord gevraagd', soort: 'vraag', detail: 'Nieuwe kap, zie hierboven' },
+  { naam: 'Berline 2.4', jaar: 1959, status: 'Rijklaar', soort: 'ok', detail: 'Winterklaar gemaakt op 28 oktober' },
 ];
 const activiteit = [
   { wanneer: 'Vandaag, 10.12 u.', wat: 'Spider 1600: batterij vervangen, 4 foto’s toegevoegd aan het dossier.' },
   { wanneer: 'Gisteren', wat: 'Roadster 2.8: gereinigd en nieuwe waxlaag aangebracht.' },
-  { wanneer: '28 oktober', wat: 'Spider 1600: winterklaar gemaakt, banden op spanning.' },
+  { wanneer: '28 oktober', wat: 'Berline 2.4: winterklaar gemaakt, banden op spanning.' },
 ];
 ---
 <figure class="app" aria-labelledby="app-bijschrift">
@@ -27,8 +27,8 @@ const activiteit = [
         <div class="app__kolom">
           <section class="app__vraag" aria-label="Voorbeeld van een toestemmingsvraag">
             <p class="app__label">Uw akkoord gevraagd</p>
-            <p class="app__titel">Berline 2.4 (1959): nieuwe kap</p>
-            <p>De kap is na 18 jaar uitgedroogd en lekt bij regen. We vroegen twee offertes en raden de goedkoopste aan: dezelfde stof, levertijd drie weken.</p>
+            <p class="app__titel">Spider 1600 (1971): nieuwe kap</p>
+            <p>De stoffen kap van deze cabrio is na 18 jaar uitgedroogd en lekt bij regen. We vroegen twee offertes en raden de goedkoopste aan: dezelfde stof, levertijd drie weken.</p>
             <dl class="app__cijfers">
               <div><dt>Offerte</dt><dd>€ 2 340</dd></div>
               <div><dt>Tweede offerte</dt><dd>€ 2 910</dd></div>

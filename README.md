@@ -23,13 +23,16 @@ npm run preview    # bekijk de gebouwde site lokaal
 | Naam, ondertitel | `site.naam`, `site.baseline` |
 | Telefoon (getoond + link) | `site.telefoon.weergave` en `site.telefoon.link` (formaat `+3292345678`) |
 | E-mail, adres, BTW-nr. | `site.email`, `site.adres`, `site.btwNummer` |
-| Openingsuren | `site.bereikbaarheid` |
+| Openingsuren (tekst / schema.org) | `site.bereikbaarheid` / `site.openingsuren` |
 | Team (naam, rol, LinkedIn) | `team` |
-| Webadres (voor sitemap en delen) | `site.url` |
-| Formulier (Netlify of ander endpoint) | `formulier` |
+| Webadres: de enige plek met het domein (canonicals, sitemap, robots, JSON-LD) | `site.url` |
+| Contactformulier aan/uit | `formulier` |
+| Getuigenissen op Home (leeg = verborgen) | `getuigenissen` |
+| Partnerlogo's op Over ons (leeg = verborgen) | `partners` |
+| Standaardauteur van de gidsen | `standaardAuteur` |
 | Plausible-statistieken (standaard uit) | `plausible` |
 
-Zoek in het hele project naar `[[` om alles te vinden wat nog ingevuld moet worden.
+Wat er nog moet gebeuren voor de livegang, staat in `TODO-LIVEGANG.md`.
 
 **Teksten** staan rechtstreeks in de pagina's, in gewone HTML:
 
@@ -68,8 +71,8 @@ Vervang het bestand met dezelfde naam. De alt-tekst staat in `site.logoAlt`.
 
 De afbeelding die verschijnt als iemand de site deelt (WhatsApp, LinkedIn, e-mail) is `public/og-image.jpg` (1200 × 630 px).
 
-Partnerlogo's: zet de bestanden in `public/partners/` en vervang in `src/pages/over-ons.astro` de tekst
-`Logo partner` door bv. `<img src="/partners/naam.svg" alt="Naam partner" />`.
+Partnerlogo's: zet de bestanden in `public/partners/` en voeg per partner een regel toe aan `partners` in
+`src/config.ts`. Het logoraster op Over ons verschijnt vanzelf zodra die lijst niet leeg is.
 
 ## 4. Online zetten op Cloudflare Pages
 
@@ -80,35 +83,29 @@ Partnerlogo's: zet de bestanden in `public/partners/` en vervang in `src/pages/o
 
 Elke wijziging die u naar GitHub pusht, zet Cloudflare automatisch online. Security-headers staan in `public/_headers`.
 
-### Het contactformulier activeren (Cloudflare Worker)
+### Het contactformulier
 
-Het formulier staat standaard **uit** (`formulier.provider: 'uit'` in `src/config.ts`): bezoekers zien dan een uitnodiging
-om te bellen of te mailen. Om het te activeren, gebruikt u de Worker in de map `worker-formulier/`. Die stuurt elke aanvraag
-als e-mail naar uw mailbox via Cloudflare Email Routing, en bewaart niets.
+Het formulier op `/contact/` post naar een **Cloudflare Pages Function** (`functions/api/kennismaking.js`).
+Die controleert de aanvraag, stuurt ze als e-mail door via de e-maildienst Resend en verwijst daarna door naar
+`/contact/bedankt/`. De inhoud wordt niet opgeslagen. Spam wordt tegengehouden met een onzichtbaar lokaasveld.
+Zonder JavaScript werkt het formulier als gewone POST; met JavaScript krijgt de bezoeker foutmeldingen per veld.
+De controleregels staan op één plek: `src/lib/formulier-logica.js` (gedeeld door de Function en de pagina).
 
-Nodig: uw eigen domein, beheerd in Cloudflare.
+Instellen in Cloudflare Pages → *Settings → Variables and Secrets*:
 
-1. **Email Routing aanzetten**: in het dashboard van uw domein → *Email → Email Routing*. Voeg uw mailbox toe als
-   **bestemmingsadres** en bevestig het via de mail die u krijgt.
-2. **De Worker instellen**: vul in `worker-formulier/wrangler.jsonc` alle waarden tussen `[[ ]]` in:
-   uw bevestigde mailbox, een afzender op uw domein (bv. `website@uwdomein.be`) en de adressen van uw site.
-3. **De Worker online zetten**:
-   ```bash
-   cd worker-formulier
-   node test.mjs          # snelle controle van de logica
-   npx wrangler login
-   npx wrangler deploy
-   ```
-   Wrangler toont daarna het adres van de Worker, bv. `https://apex-formulier.uwaccount.workers.dev`.
-   U kunt er in het dashboard ook een eigen subdomein aan koppelen, bv. `formulier.uwdomein.be`.
-4. **De site koppelen**: zet in `src/config.ts` `formulier.provider` op `'endpoint'` en `fallbackEndpoint` op het adres van de Worker.
-   Pusht u dat naar GitHub, dan staat het formulier online.
-5. **Testen**: verstuur een aanvraag en kijk of de mail binnenkomt.
+| Variabele | Waarde |
+|---|---|
+| `RESEND_API_KEY` (secret) | API-sleutel van Resend |
+| `MAIL_FROM` | afzender op een geverifieerd domein, bv. `Website APEX <website@apexcollectioncare.be>` |
+| `MAIL_TO` | ontvanger (standaard `info@apexcollectioncare.be`) |
 
-### Toch Netlify?
+Lokaal testen, zonder iets te versturen:
 
-Op Netlify werkt het formulier zonder Worker: zet `formulier.provider` op `'netlify'`. Netlify leest `netlify.toml`
-(build `npm run build`, map `dist`). Pas dan ook de privacyverklaring aan, want Netlify wordt dan webhost en verwerker.
+```bash
+npm run build
+npx wrangler pages dev dist --binding MAIL_DRYRUN=1
+npm test                 # test van de formulierlogica
+```
 
 ## 5. Statistieken (optioneel)
 

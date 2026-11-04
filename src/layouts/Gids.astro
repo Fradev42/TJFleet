@@ -4,7 +4,8 @@
  * Werk `bijgewerkt` bij telkens u een gids nakijkt.
  */
 import Base from './Base.astro';
-import { site, telHref } from '../config';
+import { site, telHref, team, standaardAuteur } from '../config';
+import { verwanteGidsen } from '../gidsen';
 
 interface Bron { titel: string; url: string; }
 interface Props {
@@ -14,12 +15,21 @@ interface Props {
   intro: string;
   /** Datum waarop de inhoud het laatst gecontroleerd werd, bv. '2026-11-02'. */
   bijgewerkt: string;
+  /** Datum van eerste publicatie, bv. '2026-11-02'. */
+  gepubliceerd: string;
+  /** Naam van de auteur, zoals in `team` in src/config.ts. Standaard: standaardAuteur. */
+  auteur?: string;
+  /** Afbeelding voor zoekmachines en delen (pad in /public). Standaard de algemene deelafbeelding. */
+  afbeelding?: string;
   bronnen: Bron[];
   /** Afsluitende uitnodiging, afgestemd op het onderwerp van de gids. */
   uitnodiging: { titel: string; tekst: string };
 }
-const { title, description, h1, intro, bijgewerkt, bronnen, uitnodiging } = Astro.props;
-const datumTekst = new Date(bijgewerkt).toLocaleDateString('nl-BE', { day: 'numeric', month: 'long', year: 'numeric' });
+const { title, description, h1, intro, bijgewerkt, gepubliceerd, auteur = standaardAuteur, afbeelding = '/og-image.jpg', bronnen, uitnodiging } = Astro.props;
+const persoon = team.find((p) => p.naam === auteur);
+if (!persoon) throw new Error(`Onbekende auteur "${auteur}" in ${Astro.url.pathname}; gebruik een naam uit team in src/config.ts.`);
+const verder = verwanteGidsen(Astro.url.pathname);
+const fmt = (d: string) => new Date(d).toLocaleDateString('nl-BE', { day: 'numeric', month: 'long', year: 'numeric' });
 const pagina = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
 
 const schema = {
@@ -28,9 +38,11 @@ const schema = {
   headline: h1,
   description,
   inLanguage: 'nl-BE',
+  datePublished: gepubliceerd,
   dateModified: bijgewerkt,
+  image: new URL(afbeelding, Astro.site ?? site.url).href,
   mainEntityOfPage: pagina,
-  author: { '@type': 'Organization', name: site.naam },
+  author: { '@type': 'Person', name: persoon.naam, sameAs: [persoon.linkedin] },
   publisher: { '@type': 'Organization', name: site.naam, legalName: site.juridischeNaam },
 };
 const kruimels = {
@@ -51,7 +63,10 @@ const kruimels = {
       </nav>
       <h1>{h1}</h1>
       <p class="intro">{intro}</p>
-      <p class="bijgewerkt">Laatst nagekeken op <time datetime={bijgewerkt}>{datumTekst}</time></p>
+      <p class="bijgewerkt">
+        Door <a href={persoon.linkedin} rel="noopener">{persoon.naam}</a> · Gepubliceerd op <time datetime={gepubliceerd}>{fmt(gepubliceerd)}</time>
+        {bijgewerkt !== gepubliceerd && <> · Laatst nagekeken op <time datetime={bijgewerkt}>{fmt(bijgewerkt)}</time></>}
+      </p>
     </div>
   </header>
 
@@ -67,6 +82,15 @@ const kruimels = {
           <a class="knop knop--tweede" href="/contact/">Kennismaking aanvragen</a>
         </div>
       </aside>
+
+      {verder.length > 0 && (
+        <nav class="gids__verder" aria-labelledby="verder-titel">
+          <h2 id="verder-titel">Verder lezen</h2>
+          <ul>
+            {verder.map((g) => <li><a href={g.href}><span class="gids__verder-titel">{g.titel}</span><span>{g.tekst}</span></a></li>)}
+          </ul>
+        </nav>
+      )}
 
       {bronnen.length > 0 && <section class="gids__bronnen" aria-labelledby="bronnen-titel">
         <h2 id="bronnen-titel">Bronnen</h2>
@@ -100,6 +124,12 @@ const kruimels = {
   .gids__uitnodiging { margin-top: 3rem; padding: 1.75rem; background: var(--kleur-vlak); border-radius: var(--radius); }
   .gids__uitnodiging-titel { font-family: var(--font-titel); font-size: 1.45rem; color: var(--kleur-accent); margin-bottom: 0.5rem; }
   .gids__bronnen { margin-top: 3rem; font-size: 0.95rem; }
+  .gids__verder { margin-top: 3rem; }
+  .gids__verder ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; }
+  .gids__verder a { display: flex; flex-direction: column; gap: 0.25rem; padding: 1rem 1.25rem; background: var(--kleur-wit); border: 1px solid var(--kleur-lijn); border-left: 3px solid var(--kleur-accent); border-radius: var(--radius); color: var(--kleur-tekst); text-decoration: none; }
+  .gids__verder a:hover { box-shadow: 0 0 0 3px var(--kleur-lijn); color: var(--kleur-tekst); }
+  .gids__verder a:hover .gids__verder-titel { text-decoration: underline; text-decoration-thickness: 2px; }
+  .gids__verder-titel { font-family: var(--font-titel); font-size: 1.2rem; color: var(--kleur-accent); }
   .gids__bronnen h2 { font-size: 1.25rem !important; }
   .gids__bronnen a { overflow-wrap: anywhere; }
 </style>

@@ -19,7 +19,8 @@ const diensten = [
     titel: 'Verzorging en altijd rijklaar',
     links: [
       { href: '/gids/wax-of-keramische-coating/', label: 'Gids: wax of keramische coating?' },
-      { href: '/gids/wagen-lang-stilstaan/', label: 'Gids: een wagen die weinig rijdt' },
+      { href: '/gids/exclusieve-wagen-weinig-rijden/', label: 'Gids: een wagen die weinig rijdt' },
+      { href: '/gids/leder-hout-cabriodak-verzorgen/', label: 'Gids: leder, hout en cabriodak verzorgen' },
     ],
     tekst: [
       'Wij reinigen uw wagens grondig, vanbinnen en vanbuiten, en beschermen de lak naar uw wens met een wax of een coating. Zo blijven ze er op hun best uitzien en zijn ze beschermd tegen vocht, vuil en uv.',
@@ -28,6 +29,7 @@ const diensten = [
   },
   {
     id: 'restauratie',
+    links: [{ href: '/gids/oldtimer-restauratie-kosten/', label: 'Gids: een oldtimer laten restaureren' }],
     titel: 'Restauratie via vaste specialisten',
     tekst: [
       'Mechanisch werk en restauraties doen wij niet zelf. Wij kiezen met u de juiste specialist uit een vaste kring die we goed kennen: mecaniciens, carrossiers, bekleders en restaurateurs.',
@@ -41,6 +43,8 @@ const diensten = [
       { href: '/gids/oldtimer-inschrijven/', label: 'Gids: een oldtimer inschrijven' },
       { href: '/gids/oldtimer-lez-gent-antwerpen-brussel/', label: 'Gids: oldtimers in de LEZ' },
       { href: '/gids/oldtimer-verzekeren/', label: 'Gids: een oldtimer verzekeren' },
+      { href: '/gids/youngtimer/', label: 'Gids: youngtimers' },
+      { href: '/gids/diefstal-dure-wagen-voorkomen/', label: 'Gids: diefstal van een dure wagen voorkomen' },
     ],
     tekst: [
       'Wij zorgen dat de papieren van elke wagen in orde zijn: de inschrijving en nummerplaat, voor een oldtimer ook de inschrijving met O-plaat, en de registratie voor de lage-emissiezones van Gent, Antwerpen en Brussel.',
@@ -49,6 +53,7 @@ const diensten = [
   },
   {
     id: 'transport',
+    links: [{ href: '/gids/oldtimer-concours-rally-voorbereiden/', label: 'Gids: met uw oldtimer naar een concours of rally' }],
     titel: 'Transport naar garage, rally en concours',
     tekst: [
       'Uw wagens blijven gewoon waar ze nu staan: bij u thuis of in uw eigen stalling. Moet een wagen naar de garage, de keuring of de restaurateur, dan regelen wij het transport heen en terug.',
@@ -96,7 +101,7 @@ const vragen = [
     antwoord: 'In heel Oost- en West-Vlaanderen, van Gent en Aalst tot Brugge, Knokke-Heist en Kortrijk. We komen bij u langs.',
   },
   {
-    vraag: 'Wat kost het?',
+    vraag: 'Hoe wordt de prijs bepaald?',
     antwoord: 'Dat hangt af van het aantal wagens en wat u uit handen wilt geven. Na een vrijblijvend kennismakingsgesprek krijgt u een voorstel op maat.',
   },
 ];
@@ -149,9 +154,9 @@ const faqSchema = {
         <Image src={werkplaats} alt="Een mecanicien stelt met een moersleutel de motor van een klassieke wagen af, in een werkplaats met gereedschap aan de wand" widths={[480, 800, 1200]} sizes="(min-width: 48em) 50vw, 100vw" />
       </div>
       <div>
-        <h2 id="prijs-titel">Op maat van uw collectie</h2>
-        <p class="nota">Prijs na een vrijblijvend gesprek.</p>
-        <p>Geen twee collecties zijn gelijk. Daarom maken we na een eerste kennismaking een voorstel dat past bij het aantal wagens, hun toestand en wat u zelf wilt blijven doen.</p>
+        <h2 id="prijs-titel">Wat kost het?</h2>
+        <p class="nota">U krijgt na de kennismaking een vaste prijs op maat, zonder verrassingen. Het eerste gesprek is kosteloos.</p>
+        <p>Geen twee collecties zijn gelijk. Daarom maken we het voorstel pas na een eerste gesprek, afgestemd op het aantal wagens, hun toestand en wat u zelf wilt blijven doen.</p>
         <p><a class="knop" href="/contact/">Kennismaking aanvragen</a></p>
       </div>
     </div>

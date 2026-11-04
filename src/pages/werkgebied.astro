@@ -6,13 +6,23 @@ import { site } from '../config';
 const gebieden = [
   {
     provincie: 'Oost-Vlaanderen',
-    plaatsen: ['Gent', 'Sint-Martens-Latem', 'Deinze', 'Aalst', 'Oudenaarde'],
-    tekst: 'Vanuit Zwijnaarde zijn we snel in Gent en de dorpen langs de Leie, en net zo makkelijk in de Vlaamse Ardennen of rond Aalst.',
+    basis: 'Zwijnaarde',
+    plaatsen: ['Gent', 'Sint-Martens-Latem', 'De Pinte', 'Deinze', 'Merelbeke', 'Aalst', 'Oudenaarde', 'Lochristi'],
+    alineas: [
+      'Vanuit Zwijnaarde, aan de rand van Gent, zijn we snel in de stad en in de groene gemeenten langs de Leie, zoals Sint-Martens-Latem, De Pinte en Deinze. Ook de Vlaamse Ardennen rond Oudenaarde en de streek rond Aalst liggen binnen handbereik.',
+      'Wij komen naar u: de kennismaking gebeurt bij u thuis of in uw eigen stalling. Daarna volgen we de wagens ter plaatse op. We reinigen ze en beschermen de lak met wax of coating, houden de batterij op peil en zorgen dat ze rijklaar staan wanneer u wilt vertrekken.',
+      'Moet een wagen naar de garage, de restaurateur of het keuringscentrum, dan regelen wij de afspraak en het vervoer heen en terug. Rijdt u met uw wagen in Gent, dan houden we ook de registratie voor de lage-emissiezone bij.',
+    ],
   },
   {
     provincie: 'West-Vlaanderen',
-    plaatsen: ['Brugge', 'Knokke-Heist', 'Kortrijk', 'Waregem', 'Roeselare'],
-    tekst: 'Vanuit Sint-Eloois-Winkel zijn we dichtbij in de streek rond Kortrijk, Roeselare en Waregem, en komen we op afspraak langs in het Brugse en aan de kust.',
+    basis: 'Sint-Eloois-Winkel',
+    plaatsen: ['Kortrijk', 'Roeselare', 'Waregem', 'Izegem', 'Brugge', 'Knokke-Heist', 'Oostende', 'Ieper'],
+    alineas: [
+      'Vanuit Sint-Eloois-Winkel, tussen Kortrijk en Roeselare, zijn we dichtbij in de streek rond Kortrijk, Waregem en Izegem. Op afspraak komen we ook langs in het Brugse, aan de kust en in de Westhoek.',
+      'Ook hier werken we bij u ter plaatse: in uw garage, uw stalling of uw tweede verblijf aan zee. Staat een wagen een deel van het jaar aan de kust, dan houden we hem ook daar in goede staat en rijklaar.',
+      'Het seizoen van toerritten, concours en rally’s brengt veel eigenaars naar de kust en verder. Wij maken de wagen vooraf rijklaar en regelen, samen met een vaste transportpartner, het vervoer in een gesloten trailer.',
+    ],
   },
 ];
 ---
@@ -28,18 +38,39 @@ const gebieden = [
     </div>
   </header>
 
-  <section class="sectie" aria-label="Provincies en gemeenten">
+  <section class="sectie" aria-labelledby="wat-titel">
+    <div class="wrap gebied-tekst">
+      <h2 id="wat-titel">Wat wij ter plaatse doen</h2>
+      <p>Uw wagens blijven waar ze nu staan: wij hebben geen eigen stalling en komen naar u. Eén van ons beiden wordt uw vaste aanspreekpunt en kent uw wagens en uw adres. Wat er ter plaatse gebeurt, stemmen we af op uw collectie:</p>
+      <ul>
+        <li><strong>Verzorging:</strong> reinigen, vanbinnen en vanbuiten, en de lak beschermen met wax of coating. Lees ook onze <a href="/gids/wax-of-keramische-coating/">gids over wax of keramische coating</a>.</li>
+        <li><strong>Rijklaar houden:</strong> batterij, banden en vloeistoffen, zeker bij wagens die weinig rijden (zie onze <a href="/gids/exclusieve-wagen-weinig-rijden/">gids over een wagen die weinig rijdt</a>).</li>
+        <li><strong>Opvolging:</strong> onderhoud en keuring op tijd, bij vaste specialisten en een erkend keuringscentrum in de buurt (zie onze <a href="/gids/oldtimerkeuring/">gids over de oldtimerkeuring</a>).</li>
+        <li><strong>Transport:</strong> naar de garage, de restaurateur, de keuring of een evenement.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sectie sectie--vlak" aria-label="Provincies en gemeenten">
     <div class="wrap raster raster--2">
       {gebieden.map((g) => (
         <article class="kaart" aria-labelledby={`gebied-${g.provincie}`}>
           <h2 id={`gebied-${g.provincie}`}>{g.provincie}</h2>
-          <p>{g.tekst}</p>
+          {g.alineas.map((t) => <p>{t}</p>)}
+          <p class="klein">Onder meer in:</p>
           <ul class="plaatsen">
             {g.plaatsen.map((p) => <li>{p}</li>)}
           </ul>
           <p class="klein">En de gemeenten daartussen.</p>
         </article>
       ))}
+    </div>
+  </section>
+
+  <section class="sectie" aria-labelledby="buiten-titel">
+    <div class="wrap gebied-tekst">
+      <h2 id="buiten-titel">Buiten Oost- en West-Vlaanderen?</h2>
+      <p>Staat een deel van uw collectie elders, bijvoorbeeld in Brussel of in de Ardennen, of rijdt u er geregeld mee? Vraag het ons gerust. Voor de lage-emissiezone van Brussel gelden eigen regels; die leest u in onze <a href="/gids/oldtimer-lez-gent-antwerpen-brussel/">gids over de lage-emissiezones</a>.</p>
     </div>
   </section>
 
@@ -71,4 +102,6 @@ const gebieden = [
   .plaatsen { list-style: none; padding: 0; margin: 0 0 0.75rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .plaatsen li { padding: 0.3rem 0.85rem; border: 1px solid var(--kleur-lijn-sterk); border-radius: 999px; background: var(--kleur-achtergrond); }
   .klein { color: var(--kleur-tekst-zacht); font-size: 0.95rem; }
+  .gebied-tekst { max-width: 46rem; }
+  .gebied-tekst li { margin-bottom: 0.6rem; }
 </style>

@@ -2,13 +2,14 @@
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import BelBlok from '../components/BelBlok.astro';
-import { site, team as teamGegevens } from '../config';
+import { site, team as teamGegevens, partners } from '../config';
 import persoon1 from '../assets/images/persoon-1.jpg';
 import persoon2 from '../assets/images/persoon-2.jpg';
 
 const fotos = [persoon1, persoon2];
+// Beide portretten met dezelfde afmetingen: de grootste maat die elk bronbestand haalt (zonder op te schalen).
+const fotoMaat = Math.min(...fotos.map((f) => Math.min(f.width, f.height)));
 const team = teamGegevens.map((p, i) => ({ ...p, foto: fotos[i % fotos.length], alt: `Portret van ${p.naam}` }));
-const partners = ['Restauratie-atelier', 'Mecanicien', 'Carrosserie', 'Bekleding', 'Verzekeraar', 'Transport'];
 ---
 <Base
   title="Over ons: onafhankelijk, aan uw kant"
@@ -31,7 +32,7 @@ const partners = ['Restauratie-atelier', 'Mecanicien', 'Carrosserie', 'Bekleding
         {team.map((p) => (
           <figure class="persoon">
             <div class="foto">
-              <Image src={p.foto} alt={p.alt} widths={[320, 480, 640, 800].filter((w) => w <= p.foto.width)} sizes="(min-width: 48em) 21rem, 100vw" />
+              <Image src={p.foto} alt={p.alt} width={fotoMaat} height={fotoMaat} widths={[320, fotoMaat]} sizes="(min-width: 48em) 21rem, 100vw" />
             </div>
             <figcaption>
               <span class="persoon__naam">{p.naam}</span>
@@ -51,8 +52,8 @@ const partners = ['Restauratie-atelier', 'Mecanicien', 'Carrosserie', 'Bekleding
   <section class="sectie sectie--vlak" aria-labelledby="verhaal-titel">
     <div class="wrap raster raster--2">
       <div>
-        <h2 id="verhaal-titel">Passie voor mooie wagens</h2>
-        <p>[[Korte persoonlijke tekst. Bijvoorbeeld:]] Mooie wagens, klassiek of recent, zijn voor ons meer dan een hobby. We groeiden op met de geur van olie en leder, reden zelf rally’s en zagen hoe veel eigenaars na een tijd meer bezig zijn met regelen dan met rijden.</p>
+        <h2 id="verhaal-titel">Waarom we begonnen</h2>
+        <p>Wie meerdere mooie wagens heeft, merkt vaak dat er na een tijd meer tijd naar regelen gaat dan naar rijden: afspraken bij de garage, keuringen, papieren, verzekeringen en transport.</p>
         <p>Daarom begonnen we {site.naam}: zodat u weer kunt doen waarvoor u die wagens ooit kocht. Er gewoon van genieten.</p>
       </div>
       <div>
@@ -67,9 +68,12 @@ const partners = ['Restauratie-atelier', 'Mecanicien', 'Carrosserie', 'Bekleding
     <div class="wrap">
       <h2 id="partners-titel">Ons netwerk van specialisten</h2>
       <p class="intro">We werken met een beperkte kring van specialisten die we persoonlijk kennen en van wie we het werk zelf opvolgen.</p>
-      <ul class="partners">
-        {partners.map((p) => <li><span class="partners__logo">Logo partner</span><span>{p}</span></li>)}
-      </ul>
+      <p>Het gaat om mecaniciens, carrossiers, bekleders, restaurateurs en een vaste transportpartner. Welke specialist we inschakelen, kiezen we per wagen, samen met u.</p>
+      {partners.length > 0 && (
+        <ul class="partners">
+          {partners.map((p) => <li><img class="partners__logo" src={p.logo} alt={p.naam} loading="lazy" /><span>{p.soort}</span></li>)}
+        </ul>
+      )}
     </div>
   </section>
 
@@ -87,9 +91,5 @@ const partners = ['Restauratie-atelier', 'Mecanicien', 'Carrosserie', 'Bekleding
   .persoon__link { display: inline-flex; align-items: center; min-height: 3rem; align-self: flex-start; font-weight: 600; }
   .partners { list-style: none; padding: 0; margin: 2rem 0 0; max-width: none; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); }
   .partners li { display: flex; flex-direction: column; gap: 0.5rem; text-align: center; font-size: 0.95rem; }
-  .partners__logo {
-    display: grid; place-items: center; height: 5.5rem;
-    border: 1.5px dashed var(--kleur-lijn-sterk); border-radius: var(--radius);
-    color: var(--kleur-tekst-zacht); font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
-  }
+  .partners__logo { height: 5.5rem; width: 100%; object-fit: contain; }
 </style>

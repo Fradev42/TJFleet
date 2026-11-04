@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Contactformulier from '../../components/Contactformulier.astro';
-import { site, telHref, mailHref, vestigingRegels } from '../../config';
+import { site, telHref, mailHref, vestigingRegels, zetelTekst } from '../../config';
 ---
 <Base
   title="Contact en kennismaking"
@@ -36,7 +36,7 @@ import { site, telHref, mailHref, vestigingRegels } from '../../config';
         <div class="kaart">
           <h2 class="contact__kop">Vestigingen</h2>
           <address>
-            {site.juridischeNaam}<br />
+            {site.naam}<br />
             {vestigingRegels.map((r) => <>{r}<br /></>)}
           </address>
           <p class="klein">Wij komen bij u langs, bij u thuis of in uw stalling.</p>
@@ -50,7 +50,12 @@ import { site, telHref, mailHref, vestigingRegels } from '../../config';
           <p>Heel Oost- en West-Vlaanderen, van Gent, Aalst en Oudenaarde tot Brugge, Knokke-Heist en Kortrijk. <a href="/werkgebied/">Bekijk ons werkgebied</a>.</p>
 
           <h2 class="contact__kop">Gegevens</h2>
-          <p>Ondernemingsnummer {site.btwNummer}</p>
+          <address>
+            {site.naam} is een handelsnaam van {site.juridischeNaam}<br />
+            Maatschappelijke zetel: {zetelTekst}<br />
+            Ondernemingsnummer {site.btwNummer}<br />
+            <a href={mailHref}>{site.email}</a>
+          </address>
         </div>
       </aside>
     </div>

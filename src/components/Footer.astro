@@ -1,5 +1,5 @@
 ---
-import { site, telHref, mailHref, vestigingRegels, menu } from '../config';
+import { site, telHref, mailHref, vestigingRegels, menu, zetelTekst } from '../config';
 const jaar = new Date().getFullYear();
 ---
 <footer class="sitefooter">
@@ -28,7 +28,7 @@ const jaar = new Date().getFullYear();
       </nav>
     </div>
     <p class="sitefooter__klein">
-      © {jaar} {site.naam} is een handelsnaam van {site.juridischeNaam} · Ondernemingsnummer {site.btwNummer} · <a href="/privacy/">Privacyverklaring</a> · Deze website gebruikt geen cookies.
+      © {jaar} {site.naam} is een handelsnaam van {site.juridischeNaam}, maatschappelijke zetel {zetelTekst} · Ondernemingsnummer {site.btwNummer} · <a href={mailHref}>{site.email}</a> · <a href="/privacy/">Privacyverklaring</a> · Deze website gebruikt geen cookies.
     </p>
   </div>
 </footer>
