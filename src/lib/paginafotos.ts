@@ -14,26 +14,26 @@ import { join } from 'node:path';
 const bestanden = import.meta.glob<ImageMetadata>('../assets/paginafotos/*.{jpg,jpeg,png,webp}', { eager: true, import: 'default' });
 
 export const fotoAlt: Record<string, string> = {
-  'oldtimer-lez-gent-antwerpen-brussel': 'Een donkergroene Mercedes-Benz 280 SL Pagode rijdt door een rustige straat met kasseien in een Vlaamse binnenstad',
+  'oldtimer-lez-gent-antwerpen-brussel': 'Een donkergroene Mercedes-Benz 280 SL Pagode in een rustige straat met kasseien, met fietsen tegen een bakstenen gevel',
   'oldtimer-inschrijven': 'Inschrijvingspapieren en een oude autosleutel op een houten tafel, met een Citroën DS op de achtergrond',
   'oldtimerkeuring': 'Een bordeauxrode Alfa Romeo Giulia GT Junior in de keuringslijn van een keuringscentrum',
-  'oldtimer-verzekeren': 'Een eigenaar bekijkt een verzekeringsdossier aan tafel, met een groene MGB roadster op de achtergrond',
-  'oldtimer-laten-taxeren': 'Een expert bekijkt met een klembord de flank van een zilvergrijze klassieke Porsche 911',
+  'oldtimer-verzekeren': 'Een oudere man bladert in een map met documenten, met een groene MGB roadster op de achtergrond',
+  'oldtimer-laten-taxeren': 'Een expert controleert met een lakdiktemeter de lak van een zilvergrijze klassieke Porsche 911',
   'oldtimer-restauratie-kosten': 'Een Jaguar E-Type in grondverf in een restauratieatelier, met de deuren ernaast op standaards',
   'oldtimer-winterklaar-maken': 'Een klassieke Porsche 911 onder een ademende afdekhoes in een droge garage, met een onderhoudslader aangesloten',
   'oldtimer-onderhoud-weinig-rijden': 'Een mecanicien controleert het oliepeil in de motorruimte van een MGB',
-  'oldtimer-concours-rally-voorbereiden': 'Een donkerblauwe Austin-Healey 3000 wordt voorzichtig in een gesloten aanhangwagen gereden',
+  'oldtimer-concours-rally-voorbereiden': 'Een donkerblauwe Austin-Healey 3000 wordt voor een bakstenen villa in een gesloten aanhangwagen geladen',
   'oldtimer-dossier-documenten': 'Een geordend dossier met facturen, een onderhoudsboekje en oude foto’s van een Citroën DS',
   'oldtimercollectie-overdragen': 'Twee generaties bekijken samen een crèmekleurige Jaguar XK150 in een privégarage',
-  'oldtimers-na-2030': 'Een bordeauxrode Alfa Romeo Spider Duetto rijdt op een landweg in de Vlaamse Ardennen',
+  'oldtimers-na-2030': 'Een bordeauxrode Alfa Romeo Spider rijdt op een landweg tussen velden en bomenrijen',
   'wax-of-keramische-coating': 'Een hand brengt met een microvezeldoek wax aan op de motorkap van een donkergroene Jaguar E-Type',
   'youngtimer': 'Een donkergrijze BMW M3 E46 in een lichte garage',
-  'exclusieve-wagen-weinig-rijden': 'Een Aston Martin DB11 in een garage, met een onderhoudslader aangesloten',
-  'leder-hout-cabriodak-verzorgen': 'Een donkergroene Porsche 911 Cabriolet met gesloten stoffen dak in een garage, met een emmer en een zachte borstel ernaast',
+  'exclusieve-wagen-weinig-rijden': 'Een grijze Aston Martin DB11 in een garage met bakstenen muren, met een onderhoudslader op een plank',
+  'leder-hout-cabriodak-verzorgen': 'Een donkergroene Porsche 911 Cabriolet met gesloten stoffen dak in een garage, met een emmer verzorgingsproducten ernaast',
   'diefstal-dure-wagen-voorkomen': 'Een autosleutel wordt in een metalen afschermdoos gelegd',
-  'elektrische-wagen-lang-stilstaan': 'Een Porsche Taycan staat aan de lader in een moderne garage',
-  'reiniging-en-coating': 'Een donkergroene Porsche 356 wordt met de hand gereinigd in een privégarage',
-  'transport': 'Een gesloten aanhangwagen met een crèmekleurige Mercedes-Benz 190 SL erin, klaar voor vertrek',
+  'elektrische-wagen-lang-stilstaan': 'Een zilvergrijze Porsche Taycan staat aan de laadpaal voor een garage',
+  'reiniging-en-coating': 'Een donkergroene Porsche 356 wordt met de hand afgedroogd in een privégarage',
+  'transport': 'Een crèmekleurige Mercedes-Benz 190 SL staat vastgezet in een gesloten aanhangwagen voor een bakstenen huis',
 };
 
 export interface Paginafoto { foto: ImageMetadata; alt: string; og: string }
