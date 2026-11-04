@@ -23,6 +23,25 @@ Legende: 🔴 blokkerend voor livegang · 🟠 belangrijk · 🟢 kleiner
   4. Een eigendom aanmaken in **Google Search Console** en `https://www.apexcollectioncare.be/sitemap.xml` indienen.
   5. Verandert het domein toch, dan enkel `site.url` in `src/config.ts` aanpassen.
 
+## 🔴 1b. Noindex op pages.dev vervangen door een 301-redirect
+
+- **Wat:** na de koppeling het noindex-blok voor pages.dev vervangen door een 301-redirect van `https://apex-classic-car-care.pages.dev/*` naar `https://www.apexcollectioncare.be/:splat`.
+- **Geblokkeerd door:** het domein is nog niet gekoppeld (DNS en custom domain in Cloudflare Pages, zie taak 1).
+- **Deblokkeren:** de eigenaars, in het Cloudflare-dashboard.
+- **Al gedaan:** bovenaan `public/_headers` staat een blok dat enkel voor de pages.dev-host `X-Robots-Tag: noindex` meestuurt:
+  ```
+  https://:project.pages.dev/*
+    X-Robots-Tag: noindex
+  ```
+  robots.txt blijft open (geen `Disallow`), zodat Google de noindex kan lezen. Er staat geen `<meta name="robots">` in de HTML, omdat die na de koppeling ook op het eigen domein zou gelden.
+- **Waar:**
+  - `public/_headers`: het blok hierboven, met de drie commentaarregels erboven, verwijderen.
+  - De redirect toevoegen. Bij voorkeur gebeurt dat met een **Bulk Redirect** in het Cloudflare-dashboard (*Rules → Redirect Rules* of *Bulk Redirects*): bron `apex-classic-car-care.pages.dev`, doel `https://www.apexcollectioncare.be`, 301, met pad en querystring behouden. `public/_redirects` werkt alleen voor paden op de host zelf, niet voor een andere hostnaam.
+- **Daarna:**
+  1. `curl -I https://apex-classic-car-care.pages.dev/gids/oldtimer-verzekeren/` geeft `301` met `location: https://www.apexcollectioncare.be/gids/oldtimer-verzekeren/`.
+  2. `curl -sI https://www.apexcollectioncare.be/ | grep -i x-robots-tag` geeft **niets**.
+  3. De sitemap `https://www.apexcollectioncare.be/sitemap.xml` indienen in Google Search Console.
+
 ## 🔴 2. Contactformulier: e-maildienst instellen
 
 - **Wat:** het formulier op `/contact/` stuurt aanvragen als e-mail naar info@apexcollectioncare.be.

@@ -1,3 +1,9 @@
+# Tot het eigen domein gekoppeld is: de pages.dev-host niet laten indexeren.
+# Geldt ALLEEN voor apex-classic-car-care.pages.dev, niet voor www.apexcollectioncare.be.
+# Na de koppeling dit blok verwijderen en pages.dev doorverwijzen (zie TODO-LIVEGANG.md).
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
