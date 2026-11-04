@@ -1,0 +1,197 @@
+---
+/**
+ * Cookiebanner met Google Consent Mode v2.
+ * Wordt enkel opgenomen als `cookies.googleTagId` ingevuld is (zie src/config.ts).
+ *
+ * - Vóór een keuze: alle Google-toestemmingen staan op "denied" en de Google-code wordt NIET geladen.
+ * - "Alles weigeren" en "Alles aanvaarden" zijn even groot en even zichtbaar; niets staat vooraf aangevinkt.
+ * - De keuze wordt in de browser bewaard (localStorage) en na `bewaarDagen` opnieuw gevraagd.
+ * - Via de knop "Cookie-instellingen" in de footer kan de bezoeker zijn keuze altijd wijzigen of intrekken.
+ */
+import { cookies } from '../config';
+const keuzes = cookies.categorieen.filter((c) => !c.altijdAan);
+const instellingen = { id: cookies.googleTagId.trim(), dagen: cookies.bewaarDagen, versie: cookies.versie };
+---
+<script is:inline define:vars={{ instellingen }}>
+  // Consent Mode v2: standaard alles geweigerd, vóór er ook maar iets van Google geladen wordt.
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { window.dataLayer.push(arguments); };
+  window.gtag('consent', 'default', {
+    ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+    analytics_storage: 'denied', functionality_storage: 'denied', personalization_storage: 'denied',
+    security_storage: 'granted', wait_for_update: 500,
+  });
+  window.__apexCookies = instellingen;
+</script>
+
+<section class="cookiebanner" id="cookiebanner" aria-labelledby="cookiebanner-titel" hidden>
+  <div class="cookiebanner__binnen">
+    <h2 class="cookiebanner__titel" id="cookiebanner-titel" tabindex="-1">Cookies op deze website</h2>
+    <p>
+      Wij willen met cookies meten hoe onze website gebruikt wordt en of onze advertenties werken.
+      Dat doen we alleen als u dat goedvindt. Noodzakelijke opslag gebruiken we altijd.
+      Meer uitleg in ons <a href="/cookiebeleid/">cookiebeleid</a>.
+    </p>
+
+    <form class="cookiebanner__keuzes" id="cookiebanner-keuzes" hidden>
+      <fieldset>
+        <legend class="visueel-verborgen">Kies welke cookies u toestaat</legend>
+        <label class="cookiebanner__optie">
+          <input type="checkbox" checked disabled />
+          <span><strong>Noodzakelijk</strong>: altijd aan</span>
+        </label>
+        {keuzes.map((c) => (
+          <label class="cookiebanner__optie">
+            <input type="checkbox" name={c.sleutel} />
+            <span><strong>{c.titel}</strong>: {c.uitleg}</span>
+          </label>
+        ))}
+      </fieldset>
+    </form>
+
+    <div class="cookiebanner__knoppen">
+      <button type="button" class="knop" data-keuze="weigeren">Alles weigeren</button>
+      <button type="button" class="knop" data-keuze="aanvaarden">Alles aanvaarden</button>
+      <button type="button" class="knop knop--tweede" data-keuze="instellingen" aria-expanded="false" aria-controls="cookiebanner-keuzes">Zelf kiezen</button>
+      <button type="button" class="knop knop--tweede" data-keuze="opslaan" hidden>Mijn keuze opslaan</button>
+    </div>
+  </div>
+</section>
+
+<script>
+  type Keuze = { versie: number; datum: number; statistieken: boolean; marketing: boolean };
+  const SLEUTEL = 'apex-cookiekeuze';
+  const cfg = (window as any).__apexCookies as { id: string; dagen: number; versie: number };
+  const gtag = (...args: unknown[]) => (window as any).gtag(...args);
+  const banner = document.getElementById('cookiebanner') as HTMLElement;
+  const keuzesForm = document.getElementById('cookiebanner-keuzes') as HTMLFormElement;
+  const knopInstellingen = banner.querySelector<HTMLButtonElement>('[data-keuze="instellingen"]')!;
+  const knopOpslaan = banner.querySelector<HTMLButtonElement>('[data-keuze="opslaan"]')!;
+  let geladen = false;
+
+  const lees = (): Keuze | null => {
+    try {
+      const k = JSON.parse(localStorage.getItem(SLEUTEL) || 'null') as Keuze | null;
+      if (!k || k.versie !== cfg.versie) return null;
+      if (Date.now() - k.datum > cfg.dagen * 864e5) return null;
+      return k;
+    } catch { return null; }
+  };
+
+  const laadGoogle = () => {
+    if (geladen || !cfg.id) return;
+    geladen = true;
+    const s = document.createElement('script');
+    s.async = true;
+    if (cfg.id.startsWith('GTM-')) {
+      (window as any).dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+      s.src = `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(cfg.id)}`;
+    } else {
+      s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(cfg.id)}`;
+      gtag('js', new Date());
+      gtag('config', cfg.id);
+    }
+    document.head.appendChild(s);
+  };
+
+  /** Verwijdert Google-cookies van dit domein, bij het intrekken van toestemming. */
+  const wisGoogleCookies = () => {
+    const domeinen = ['', location.hostname, '.' + location.hostname.replace(/^www\./, '')];
+    for (const c of document.cookie.split(';')) {
+      const naam = c.split('=')[0].trim();
+      if (!/^(_ga|_gid|_gat|_gcl_)/.test(naam)) continue;
+      for (const d of domeinen) document.cookie = `${naam}=; Max-Age=0; path=/${d ? '; domain=' + d : ''}`;
+    }
+  };
+
+  const pasToe = (k: Keuze) => {
+    gtag('consent', 'update', {
+      analytics_storage: k.statistieken ? 'granted' : 'denied',
+      ad_storage: k.marketing ? 'granted' : 'denied',
+      ad_user_data: k.marketing ? 'granted' : 'denied',
+      ad_personalization: k.marketing ? 'granted' : 'denied',
+    });
+    if (k.statistieken || k.marketing) laadGoogle();
+  };
+
+  const toonKeuzes = (open: boolean) => {
+    keuzesForm.hidden = !open;
+    knopOpslaan.hidden = !open;
+    knopInstellingen.hidden = open;
+    knopInstellingen.setAttribute('aria-expanded', String(open));
+  };
+
+  const bewaar = (statistieken: boolean, marketing: boolean) => {
+    const vorige = lees();
+    const k: Keuze = { versie: cfg.versie, datum: Date.now(), statistieken, marketing };
+    try { localStorage.setItem(SLEUTEL, JSON.stringify(k)); } catch { /* privémodus: keuze geldt voor dit bezoek */ }
+    banner.hidden = true;
+    // Toestemming ingetrokken nadat Google al geladen was: cookies wissen en de pagina opnieuw laden zonder Google.
+    const ingetrokken = (vorige?.statistieken && !statistieken) || (vorige?.marketing && !marketing);
+    if (ingetrokken && geladen) { wisGoogleCookies(); location.reload(); return; }
+    if (ingetrokken) wisGoogleCookies();
+    pasToe(k);
+  };
+
+  const open = () => {
+    const k = lees();
+    for (const naam of ['statistieken', 'marketing']) {
+      const vak = keuzesForm.elements.namedItem(naam) as HTMLInputElement | null;
+      if (vak) vak.checked = Boolean(k && (k as any)[naam]);
+    }
+    toonKeuzes(Boolean(k));
+    banner.hidden = false;
+    banner.querySelector<HTMLElement>('h2')?.focus();
+  };
+
+  banner.addEventListener('click', (e) => {
+    const knop = (e.target as HTMLElement).closest<HTMLButtonElement>('[data-keuze]');
+    if (!knop) return;
+    const keuze = knop.dataset.keuze;
+    if (keuze === 'weigeren') bewaar(false, false);
+    else if (keuze === 'aanvaarden') bewaar(true, true);
+    else if (keuze === 'instellingen') { toonKeuzes(true); (keuzesForm.querySelector('input:not([disabled])') as HTMLElement)?.focus(); }
+    else if (keuze === 'opslaan') {
+      const v = (n: string) => (keuzesForm.elements.namedItem(n) as HTMLInputElement | null)?.checked ?? false;
+      bewaar(v('statistieken'), v('marketing'));
+    }
+  });
+
+  // Knop "Cookie-instellingen" (footer en cookiebeleid): de banner opnieuw openen.
+  document.querySelectorAll<HTMLButtonElement>('[data-cookie-instellingen]').forEach((b) => {
+    b.hidden = false;
+    b.addEventListener('click', open);
+  });
+
+  const bestaand = lees();
+  if (bestaand) pasToe(bestaand);
+  else banner.hidden = false;
+</script>
+
+<style>
+  .cookiebanner {
+    position: fixed; z-index: 60; left: 1rem; right: 1rem; bottom: 1rem;
+    max-width: 44rem; margin-inline: auto;
+    background: var(--kleur-wit); color: var(--kleur-tekst);
+    border: 1px solid var(--kleur-lijn-sterk); border-top: 4px solid var(--kleur-accent); border-radius: var(--radius);
+    box-shadow: 0 10px 30px rgba(30, 30, 30, 0.18);
+    max-height: calc(100vh - 2rem); overflow-y: auto;
+  }
+  .cookiebanner[hidden] { display: none; }
+  .cookiebanner__binnen { padding: 1.25rem 1.5rem; }
+  .cookiebanner__binnen p { margin: 0 0 1rem; max-width: none; }
+  .cookiebanner__titel { font-size: 1.35rem; margin: 0 0 0.5rem; }
+  .cookiebanner__titel:focus { outline: none; }
+  .cookiebanner fieldset { border: 0; margin: 0 0 1rem; padding: 0; display: grid; gap: 0.75rem; }
+  .cookiebanner__optie { display: flex; gap: 0.75rem; align-items: flex-start; font-weight: 400; cursor: pointer; }
+  .cookiebanner__optie input { width: 1.5rem; height: 1.5rem; margin-top: 0.15rem; flex: none; accent-color: var(--kleur-accent); }
+  .cookiebanner__knoppen { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .cookiebanner__knoppen .knop { min-height: 3rem; }
+  @media (max-width: 47.99em) {
+    /* Boven de vaste balk "Bel ons / Contact". */
+    .cookiebanner { left: 0.5rem; right: 0.5rem; bottom: calc(var(--mobiele-balk) + env(safe-area-inset-bottom) + 0.5rem); max-height: calc(100vh - var(--mobiele-balk) - 2rem); }
+    .cookiebanner__binnen { padding: 1rem 1.1rem; }
+    .cookiebanner__knoppen .knop { flex: 1 1 100%; }
+  }
+  @media print { .cookiebanner { display: none !important; } }
+</style>

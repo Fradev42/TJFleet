@@ -134,6 +134,57 @@ export const getuigenissen: { citaat: string; naam: string; omschrijving: string
  */
 export const partners: { naam: string; soort: string; logo: string }[] = [];
 
+/**
+ * Cookies en Google-tag.
+ * ZOLANG `googleTagId` LEEG IS: geen cookies, geen banner, geen Google-code. De site belooft dan "geen cookies".
+ * Vult u een ID in, dan verschijnen automatisch de cookiebanner, de knop "Cookie-instellingen" in de footer
+ * en de cookietabel op /cookiebeleid/. Google wordt pas geladen NA toestemming (Consent Mode v2, standaard alles geweigerd).
+ *  - 'G-XXXXXXXXXX'  = Google Analytics 4 (gtag.js)
+ *  - 'AW-XXXXXXXXX'  = Google Ads (gtag.js)
+ *  - 'GTM-XXXXXXX'   = Google Tag Manager
+ * Werk na het invullen ook de cookietabel hieronder bij met de cookies die de tag echt plaatst (zie TODO-LIVEGANG.md).
+ */
+export const cookies = {
+  googleTagId: '',
+  /** Na hoeveel dagen we de bezoeker opnieuw om toestemming vragen. */
+  bewaarDagen: 180,
+  /** Verhoog dit getal als de categorieën of het beleid wezenlijk veranderen: iedereen krijgt de vraag dan opnieuw. */
+  versie: 1,
+  /** Cookietabel voor /cookiebeleid/, per categorie. */
+  categorieen: [
+    {
+      sleutel: 'noodzakelijk',
+      titel: 'Noodzakelijk',
+      uitleg: 'Nodig om de site te laten werken en uw cookiekeuze te onthouden. Hiervoor vragen we geen toestemming.',
+      altijdAan: true,
+      items: [
+        { naam: 'apex-cookiekeuze', aanbieder: 'APEX Collection Care', doel: 'Onthoudt uw cookiekeuze (opgeslagen in uw browser, niet als cookie, en niet naar ons verstuurd).', duur: '180 dagen' },
+      ],
+    },
+    {
+      sleutel: 'statistieken',
+      titel: 'Statistieken',
+      uitleg: 'Helpen ons begrijpen hoe bezoekers de site gebruiken, zodat we ze kunnen verbeteren. Enkel met uw toestemming.',
+      altijdAan: false,
+      items: [
+        { naam: '_ga', aanbieder: 'Google (Google Analytics)', doel: 'Onderscheidt bezoekers voor bezoekersstatistieken.', duur: '2 jaar' },
+        { naam: '_ga_<ID>', aanbieder: 'Google (Google Analytics)', doel: 'Bewaart de status van uw bezoek voor statistieken.', duur: '2 jaar' },
+      ],
+    },
+    {
+      sleutel: 'marketing',
+      titel: 'Marketing',
+      uitleg: 'Meten of onze advertenties werken en tonen u relevantere advertenties. Enkel met uw toestemming.',
+      altijdAan: false,
+      items: [
+        { naam: '_gcl_au', aanbieder: 'Google (Google Ads)', doel: 'Meet welke advertentie tot een bezoek of aanvraag leidde.', duur: '90 dagen' },
+      ],
+    },
+  ],
+};
+/** Staan er Google-cookies op de site? Afgeleid; hier niets aanpassen. */
+export const cookiesActief = cookies.googleTagId.trim() !== '';
+
 /** Standaardauteur van de gidsen (sleutel = naam in `team`). Per gids te overschrijven met de prop `auteur`. */
 export const standaardAuteur = 'Jasper Descamps';
 

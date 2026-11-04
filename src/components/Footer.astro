@@ -1,5 +1,5 @@
 ---
-import { site, telHref, mailHref, vestigingRegels, menu, zetelTekst } from '../config';
+import { site, telHref, mailHref, vestigingRegels, menu, zetelTekst, cookiesActief } from '../config';
 const jaar = new Date().getFullYear();
 ---
 <footer class="sitefooter">
@@ -24,11 +24,13 @@ const jaar = new Date().getFullYear();
           {menu.map((i) => <li><a href={i.href}>{i.label}</a></li>)}
           <li><a href="/werkgebied/">Werkgebied</a></li>
           <li><a href="/privacy/">Privacyverklaring</a></li>
+          <li><a href="/cookiebeleid/">Cookiebeleid</a></li>
+          {cookiesActief && <li><button type="button" class="sitefooter__cookieknop" data-cookie-instellingen hidden>Cookie-instellingen</button></li>}
         </ul>
       </nav>
     </div>
     <p class="sitefooter__klein">
-      © {jaar} {site.naam} is een handelsnaam van {site.juridischeNaam}, maatschappelijke zetel {zetelTekst} · Ondernemingsnummer {site.btwNummer} · <a href={mailHref}>{site.email}</a> · <a href="/privacy/">Privacyverklaring</a> · Deze website gebruikt geen cookies.
+      © {jaar} {site.naam} is een handelsnaam van {site.juridischeNaam}, maatschappelijke zetel {zetelTekst} · Ondernemingsnummer {site.btwNummer} · <a href={mailHref}>{site.email}</a> · <a href="/privacy/">Privacyverklaring</a> · {cookiesActief ? <>Cookies enkel met uw toestemming (<a href="/cookiebeleid/">cookiebeleid</a>).</> : 'Deze website gebruikt geen cookies.'}
     </p>
   </div>
 </footer>
@@ -51,5 +53,7 @@ const jaar = new Date().getFullYear();
   address { font-style: normal; line-height: 1.9; }
   ul { list-style: none; padding: 0; margin: 0; }
   li a { display: inline-block; padding-block: 0.3rem; }
+  .sitefooter__cookieknop { font: inherit; color: var(--kleur-accent); background: none; border: 0; padding: 0.3rem 0; min-height: 2.75rem; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; cursor: pointer; }
+  .sitefooter__cookieknop:hover { color: var(--kleur-accent-2); text-decoration-thickness: 2px; }
   .sitefooter__klein { border-top: 1px solid var(--kleur-lijn); color: var(--kleur-tekst-zacht); padding-top: 1.5rem; margin: 0; max-width: none; font-size: 0.95rem; }
 </style>

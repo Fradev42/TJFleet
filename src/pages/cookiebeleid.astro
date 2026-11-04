@@ -1,0 +1,77 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, cookies, cookiesActief, mailHref } from '../config';
+const tagId = cookies.googleTagId.trim();
+---
+<Base
+  title="Cookiebeleid"
+  description={`Welke cookies ${site.naam} gebruikt, waarvoor, hoe lang ze bewaard worden en hoe u uw toestemming op elk moment wijzigt of intrekt.`}
+>
+  <header class="paginakop">
+    <div class="wrap">
+      <span class="bovenschrift">Privacy</span>
+      <h1>Cookiebeleid</h1>
+      <p class="intro">Discretie geldt ook voor uw bezoek aan onze website. Hieronder leest u precies wat er in uw browser opgeslagen wordt, en wat niet.</p>
+    </div>
+  </header>
+
+  <section class="sectie">
+    <div class="wrap beleid">
+      <h2>Wat zijn cookies?</h2>
+      <p>Cookies zijn kleine tekstbestanden die een website in uw browser bewaart. Sommige zijn nodig om een site te laten werken. Andere worden gebruikt om bezoeken te meten of advertenties af te stemmen; daarvoor vragen we eerst uw toestemming.</p>
+
+      {cookiesActief ? (
+        <>
+          <h2>Welke cookies gebruiken wij?</h2>
+          <p>Wij gebruiken een Google-tag ({tagId.startsWith('GTM-') ? 'Google Tag Manager' : tagId.startsWith('AW-') ? 'Google Ads' : 'Google Analytics'}). Die wordt pas geladen nadat u toestemming gaf. Zonder uw toestemming plaatsen wij geen cookies voor statistieken of marketing en wordt er niets van Google geladen.</p>
+          {cookies.categorieen.map((c) => (
+            <>
+              <h3>{c.titel}{c.altijdAan ? ' (altijd aan)' : ' (enkel met uw toestemming)'}</h3>
+              <p>{c.uitleg}</p>
+              <div class="tabel">
+                <table>
+                  <thead><tr><th scope="col">Naam</th><th scope="col">Aanbieder</th><th scope="col">Doel</th><th scope="col">Bewaartermijn</th></tr></thead>
+                  <tbody>
+                    {c.items.map((i) => <tr><td><code>{i.naam}</code></td><td>{i.aanbieder}</td><td>{i.doel}</td><td>{i.duur}</td></tr>)}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          ))}
+
+          <h2>Uw keuze wijzigen of intrekken</h2>
+          <p>Bij uw eerste bezoek kiest u zelf: alles weigeren, alles aanvaarden of per soort kiezen. Weigeren is even eenvoudig als aanvaarden, en niets staat vooraf aangevinkt. Uw keuze bewaren we {cookies.bewaarDagen} dagen in uw browser; daarna vragen we het opnieuw.</p>
+          <p>U kunt uw keuze op elk moment wijzigen of intrekken:</p>
+          <p><button type="button" class="knop knop--tweede" data-cookie-instellingen hidden>Cookie-instellingen openen</button></p>
+          <p>Trekt u uw toestemming in, dan verwijderen wij de Google-cookies van deze website. U kunt cookies ook altijd zelf wissen in de instellingen van uw browser.</p>
+
+          <h2>Google</h2>
+          <p>Voor statistieken en advertenties is Google Ireland Limited een afzonderlijke verwerkingsverantwoordelijke. Google kan gegevens ook buiten de Europese Unie verwerken, met de wettelijke waarborgen. Meer informatie vindt u in het <a href="https://policies.google.com/privacy?hl=nl" rel="noopener">privacybeleid van Google</a> en in de uitleg over <a href="https://policies.google.com/technologies/partner-sites?hl=nl" rel="noopener">hoe Google gegevens gebruikt van sites die zijn diensten gebruiken</a>.</p>
+        </>
+      ) : (
+        <>
+          <h2>Welke cookies gebruiken wij?</h2>
+          <p><strong>Geen.</strong> Deze website plaatst op dit moment geen cookies en gebruikt geen trackers, statistieken of advertentienetwerken. Lettertypes en afbeeldingen komen van onze eigen server. Daarom ziet u ook geen cookiebanner.</p>
+          <p>Gaan we in de toekomst bezoeken meten of advertenties gebruiken, dan vragen we daar eerst uw toestemming voor, en passen we dit cookiebeleid aan.</p>
+        </>
+      )}
+
+      <h2>Vragen?</h2>
+      <p>Mail ons op <a href={mailHref}>{site.email}</a>. Meer over hoe wij met uw gegevens omgaan, leest u in onze <a href="/privacy/">privacyverklaring</a>.</p>
+
+      <p class="bijgewerkt">Laatst bijgewerkt: 4 november 2026.</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .beleid h2 { font-size: clamp(1.35rem, 2.4vw, 1.65rem); margin-top: 2.25rem; }
+  .beleid h2:first-child { margin-top: 0; }
+  .beleid h3 { font-size: 1.2rem; margin-top: 1.75rem; }
+  .tabel { overflow-x: auto; margin-bottom: 1.25rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 1rem; min-width: 32rem; }
+  th, td { text-align: left; vertical-align: top; padding: 0.6rem 0.75rem 0.6rem 0; border-bottom: 1px solid var(--kleur-lijn); }
+  th { font-weight: 650; border-bottom: 1.5px solid var(--kleur-lijn-sterk); }
+  code { font-size: 0.95em; overflow-wrap: anywhere; }
+  .bijgewerkt { margin-top: 2.5rem; color: var(--kleur-tekst-zacht); }
+</style>

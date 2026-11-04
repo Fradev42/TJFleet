@@ -30,6 +30,7 @@ npm run preview    # bekijk de gebouwde site lokaal
 | Getuigenissen op Home (leeg = verborgen) | `getuigenissen` |
 | Partnerlogo's op Over ons (leeg = verborgen) | `partners` |
 | Standaardauteur van de gidsen | `standaardAuteur` |
+| Google-tag en cookiebanner (leeg = geen cookies, geen banner) | `cookies` |
 | Plausible-statistieken (standaard uit) | `plausible` |
 
 Wat er nog moet gebeuren voor de livegang, staat in `TODO-LIVEGANG.md`.
@@ -107,10 +108,12 @@ npx wrangler pages dev dist --binding MAIL_DRYRUN=1
 npm test                 # test van de formulierlogica
 ```
 
-## 5. Statistieken (optioneel)
+## 5. Cookies en Google-tag (optioneel)
 
-Plausible meet bezoekers zonder cookies, dus een cookiebanner blijft overbodig. Maak een account op plausible.io en zet
-in `src/config.ts` `plausible.ingeschakeld` op `true` met uw domein. Vermeld het dan ook in de privacyverklaring.
+Standaard plaatst de site **geen cookies** en toont ze geen banner. Vult u in `src/config.ts` bij `cookies` een
+`googleTagId` in (`G-…`, `AW-…` of `GTM-…`), dan verschijnen automatisch de cookiebanner, de knop "Cookie-instellingen"
+in de footer en de cookietabel op `/cookiebeleid/`. Google wordt pas geladen na toestemming (Consent Mode v2).
+Zie `TODO-LIVEGANG.md`, taak 9b, voor de stappen daarna.
 
 ## Kwaliteit
 

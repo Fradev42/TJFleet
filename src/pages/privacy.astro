@@ -1,8 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
-import { site, mailHref, telHref, adresRegels } from '../config';
+import { site, mailHref, telHref, adresRegels, cookiesActief } from '../config';
 ---
-<Base title="Privacyverklaring" description={`Hoe ${site.naam} omgaat met de gegevens uit het contactformulier: wat we bewaren, hoe lang, wie ze verwerkt en uw rechten. Geen cookies.`}>
+<Base title="Privacyverklaring" description={`Hoe ${site.naam} omgaat met de gegevens uit het contactformulier: wat we bewaren, hoe lang, wie ze verwerkt en welke rechten u hebt.`}>
   <header class="paginakop">
     <div class="wrap">
       <span class="bovenschrift">Privacy</span>
@@ -30,7 +30,11 @@ import { site, mailHref, telHref, adresRegels } from '../config';
       <p>Vult u het contactformulier in, dan controleert een kleine toepassing op Cloudflare (Cloudflare Pages Functions) uw aanvraag en stuurt ze via een e-maildienst als e-mail door naar onze mailbox. De inhoud van het formulier wordt daarbij niet op de website bewaard. Het formulier is beschermd tegen spam zonder cookies of trackers.</p>
 
       <h2>Cookies en statistieken</h2>
-      <p>Deze website plaatst geen cookies en gebruikt geen trackers of advertentienetwerken. Lettertypes worden van onze eigen server geladen, niet via Google. Wij meten geen bezoekersaantallen.</p>
+      {cookiesActief ? (
+        <p>Wij plaatsen enkel cookies voor statistieken en marketing (Google) als u daar uitdrukkelijk toestemming voor geeft. Google is daarbij een afzonderlijke verwerkingsverantwoordelijke en kan gegevens buiten de Europese Unie verwerken. Welke cookies dat zijn, hoe lang ze bewaard worden en hoe u uw keuze wijzigt, leest u in ons <a href="/cookiebeleid/">cookiebeleid</a>. Lettertypes worden van onze eigen server geladen, niet via Google.</p>
+      ) : (
+        <p>Deze website plaatst geen cookies en gebruikt geen trackers of advertentienetwerken. Lettertypes worden van onze eigen server geladen, niet via Google. Wij meten geen bezoekersaantallen. Meer in ons <a href="/cookiebeleid/">cookiebeleid</a>.</p>
+      )}
 
       <h2>Uw rechten</h2>
       <p>U mag uw gegevens altijd inkijken, laten verbeteren of laten wissen, en u kunt bezwaar maken tegen het gebruik ervan. Stuur ons daarvoor een e-mail. Bent u niet tevreden over ons antwoord, dan kunt u klacht indienen bij de Gegevensbeschermingsautoriteit, Drukpersstraat 35, 1000 Brussel, <a href="https://www.gegevensbeschermingsautoriteit.be">www.gegevensbeschermingsautoriteit.be</a>.</p>

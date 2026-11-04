@@ -6,7 +6,8 @@ import SEO from '../components/SEO.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import MobileBar from '../components/MobileBar.astro';
-import { plausible } from '../config';
+import CookieBanner from '../components/CookieBanner.astro';
+import { plausible, cookiesActief } from '../config';
 // Preload van de Latijnse lettertypebestanden: voorkomt verspringende tekst bij het laden.
 import sansWoff2 from '@fontsource-variable/source-sans-3/files/source-sans-3-latin-wght-normal.woff2?url';
 import serifWoff2 from '@fontsource/libre-caslon-text/files/libre-caslon-text-latin-400-normal.woff2?url';
@@ -37,6 +38,7 @@ const { title, description, noindex } = Astro.props;
   </head>
   <body>
     <a class="skiplink" href="#inhoud">Naar de inhoud</a>
+    {cookiesActief && <CookieBanner />}
     <Header />
     <main id="inhoud" tabindex="-1">
       <slot />

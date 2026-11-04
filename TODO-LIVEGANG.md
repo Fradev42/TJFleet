@@ -119,6 +119,27 @@ Legende: 🔴 blokkerend voor livegang · 🟠 belangrijk · 🟢 kleiner
 - **Geblokkeerd door:** wie welke gids schreef of nalas, weten enkel de eigenaars.
 - **Daarna:** per gids de prop `auteur="Thomas Vancoillie"` toevoegen waar dat klopt (in `src/pages/gids/*.astro`), of `standaardAuteur` aanpassen.
 
+## 🟠 9b. Google-tag toevoegen (cookiebanner aanzetten)
+
+- **Wat:** een Google-tag (Google Analytics 4, Google Ads of Tag Manager) op de site zetten, met de cookiebanner.
+- **Geblokkeerd door:** er is nog geen tag-ID, en de keuze welke Google-dienst er komt is nog niet gemaakt.
+- **Deblokkeren:** de eigenaars (account bij Google Analytics, Google Ads of Tag Manager).
+- **Al gedaan:**
+  - Cookiebanner (`src/components/CookieBanner.astro`) met Google Consent Mode v2: alles staat standaard op "geweigerd", en Google wordt pas geladen **na** toestemming.
+  - De knoppen "Alles weigeren" en "Alles aanvaarden" zijn even groot, en "Zelf kiezen" laat per categorie kiezen (statistieken, marketing). Niets staat vooraf aangevinkt.
+  - De keuze wordt 180 dagen bewaard; bij intrekking worden de Google-cookies gewist.
+  - Een knop "Cookie-instellingen" in de footer en op het cookiebeleid.
+  - Een cookiebeleid op `/cookiebeleid/`, en de privacyverklaring past zich vanzelf aan.
+  - Getest met een test-ID: geen Google-aanvraag vóór toestemming of na weigeren, wel na aanvaarden, intrekken werkt, een verlopen keuze wordt opnieuw gevraagd, op mobiel staat de banner boven de vaste balk, en zonder JavaScript is er niets.
+  - Zolang de ID leeg is, staat er niets van dit alles op de site, en blijft de site "zonder cookies".
+- **Daarna:**
+  1. In `src/config.ts` bij `cookies` de `googleTagId` invullen (`G-…`, `AW-…` of `GTM-…`).
+  2. Bij Tag Manager: in de container **Consent Mode** gebruiken, zodat tags de toestemmingssignalen volgen. De banner geeft die door via `gtag('consent', 'update', …)`.
+  3. Na het live zetten met een cookiescanner, of met de ontwikkelaarstools van de browser, nakijken welke cookies de tag echt plaatst. Werk dan de tabel `cookies.categorieen` in `src/config.ts` bij: namen, aanbieder en bewaartermijn. De huidige tabel bevat de standaardcookies van GA4 en Google Ads. Wordt een categorie niet gebruikt (bv. geen Google Ads), haal ze dan uit de lijst.
+  4. In de **privacyverklaring** (`src/pages/privacy.astro`) Google als ontvanger vermelden, met het doel en de rechtsgrond (toestemming). Pas de datum aan in de privacyverklaring en in `src/pages/cookiebeleid.astro`.
+  5. Overwegen in Google Analytics de **IP-anonimisering** en de bewaartermijn op het minimum te zetten, en **Google Signals** uit te laten, tenzij u dat nodig hebt.
+  6. Verandert de cookiebanner wezenlijk (een nieuwe categorie of dienst), verhoog dan `cookies.versie`. Iedereen krijgt de vraag dan opnieuw.
+
 ## 🟢 10. Nieuwe teamfoto's
 
 - **Wat:** twee portretten in dezelfde stijl en resolutie.

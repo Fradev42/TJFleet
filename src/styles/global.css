@@ -105,6 +105,9 @@ a:hover { text-decoration-thickness: 2px; color: var(--kleur-accent-2); }
   border-radius: 2px;
 }
 
+/* Het attribuut hidden moet altijd winnen, ook van klassen zoals .knop die display instellen. */
+[hidden] { display: none !important; }
+
 /* ── Toegankelijkheid ─────────────────────────────────────── */
 .skiplink {
   position: absolute;
