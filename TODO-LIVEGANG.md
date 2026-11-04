@@ -183,7 +183,7 @@ Legende: 🔴 blokkerend voor livegang · 🟠 belangrijk · 🟢 kleiner
 ## 🟠 13. Foto's per gids en dienst (Gemini)
 
 - **Wat:** een eigen foto bovenaan elke gids en dienstpagina, die ook de deelafbeelding wordt.
-- **Geblokkeerd door:** de foto's moeten nog gemaakt en nagekeken worden (het model en het merklogo moeten kloppen, geen leesbare platen, geen gezichten).
+- **Geblokkeerd door:** de foto's moeten nog gemaakt en nagekeken worden (het model en het merklogo moeten kloppen, geen nummerplaten, geen gezichten).
 - **Al gedaan:** de plek voor de foto op elke gids en dienstpagina, de alt-teksten (`src/lib/paginafotos.ts`), en een titelkaart per pagina in `public/og/` die gebruikt wordt zolang er geen foto is. Prompts per pagina: `docs/prompt-gidsfotos.md`.
 - **Daarna:** de foto's opslaan als `src/assets/paginafotos/<slug>.jpg`, de alt-tekst nakijken, `npm run build`.
 

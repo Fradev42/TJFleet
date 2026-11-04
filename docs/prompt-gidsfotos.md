@@ -35,7 +35,8 @@ juiste vorm voor dat bouwjaar. Liefhebbers zien elke fout, dus liever een eenvou
 een spectaculaire die niet klopt. Toon de wagen in originele staat, zonder tuning of moderne aanpassingen.
 
 Verboden:
-- nummerplaten met leesbare letters of cijfers. Toon een lege Belgische plaat (wit met rode rand) of laat ze weg;
+- nummerplaten, in welke vorm ook: geen plaat met tekst, geen lege of onscherpe plaat, geen plaathouder. De wagen
+  heeft vooraan en achteraan gewoon geen plaat, zoals een wagen op een concours of in een showroom;
 - andere leesbare tekst, schermen met tekst, watermerken, handtekeningen. Het merklogo en het typeplaatje van
   de wagen zelf mogen wel;
 - herkenbare gezichten. Mensen mogen alleen van achteren, van opzij zonder gezicht, of als handen in beeld komen;
@@ -53,7 +54,7 @@ dan ziet u ook zelf meteen of de foto klopt. Pas in dat geval de alt-tekst aan i
 | Bestandsnaam | Pagina | Prompt (na de basisprompt plakken) |
 |---|---|---|
 | `oldtimer-lez-gent-antwerpen-brussel.jpg` | Gids: oldtimers in de LEZ | Een donkergroene Mercedes-Benz 280 SL "Pagode" (W113, eind jaren zestig) met de kap open rijdt langzaam door een rustige straat met kasseien in een Vlaamse binnenstad, met bakstenen gevels en een paar fietsen tegen een muur. Ochtendlicht, geen andere wagens, geen verkeersborden met tekst. |
-| `oldtimer-inschrijven.jpg` | Gids: een oldtimer inschrijven | Van dichtbij, op een houten tafel: een stapeltje papieren zonder leesbare tekst, een lege Belgische nummerplaat, een oude autosleutel aan een lederen sleutelhanger en een vulpen. Op de achtergrond, onscherp, de neus van een crèmekleurige Citroën DS in een garage. |
+| `oldtimer-inschrijven.jpg` | Gids: een oldtimer inschrijven | Van dichtbij, op een houten tafel: een stapeltje papieren zonder leesbare tekst, een oude autosleutel aan een lederen sleutelhanger en een vulpen. Op de achtergrond, onscherp, de neus van een crèmekleurige Citroën DS in een garage. |
 | `oldtimerkeuring.jpg` | Gids: de oldtimerkeuring | Een bordeauxrode Alfa Romeo Giulia GT Junior (Bertone-coupé, jaren zeventig) staat in een propere keuringshal met een rollenbank, gezien van schuin voor. Een keurder in werkkledij, van achteren gezien, met een zaklamp bij het voorwiel. Geen schermen of borden met tekst. |
 | `oldtimer-verzekeren.jpg` | Gids: een oldtimer verzekeren | Een oudere man, van achteren of van opzij zonder gezicht, zit aan een houten tafel in een lichte privégarage en bladert in een map met documenten zonder leesbare tekst. Op de achtergrond een MGB roadster in British racing green, met de kap open. |
 | `oldtimer-laten-taxeren.jpg` | Gids: een oldtimer laten taxeren | Een expert in een donkere trui, van opzij zonder gezicht, bekijkt met een klembord en een lakdiktemeter de flank van een zilvergrijze Porsche 911 uit de late jaren zestig (korte wielbasis, ronde koplampen, Fuchs-velgen). Lichte garage, zacht zijlicht. |
@@ -78,7 +79,8 @@ dan ziet u ook zelf meteen of de foto klopt. Pas in dat geval de alt-tekst aan i
 - [ ] Het model klopt: carrosserielijnen, grille, koplampen, velgen, spiegels en interieur horen bij dat model en bouwjaar. Leg de foto naast een echte foto van het model.
 - [ ] Het embleem en het merklogo zijn scherp, juist gespeld en staan op de juiste plaats. Een vervormd of verzonnen logo verraadt meteen een AI-beeld.
 - [ ] Geen logo's van andere bedrijven (garages, dealers, verzekeraars, evenementen).
-- [ ] Geen leesbare nummerplaat, tekst, cijfers of watermerk. Kijk ook naar papieren, schermen en meters.
+- [ ] Geen nummerplaat, ook geen lege, onscherpe of half zichtbare plaat. Kijk vooraan, achteraan en in spiegelingen.
+- [ ] Geen leesbare tekst, cijfers of watermerk. Kijk ook naar papieren, schermen en meters.
 - [ ] Geen herkenbaar gezicht.
 - [ ] Geen rare details: vervormde handen, wielen die niet rond zijn, spiegels of deurgrepen op vreemde plaatsen.
 - [ ] De foto klopt met de pagina en met de alt-tekst in `src/lib/paginafotos.ts`.

@@ -15,7 +15,7 @@ const bestanden = import.meta.glob<ImageMetadata>('../assets/paginafotos/*.{jpg,
 
 export const fotoAlt: Record<string, string> = {
   'oldtimer-lez-gent-antwerpen-brussel': 'Een donkergroene Mercedes-Benz 280 SL Pagode rijdt door een rustige straat met kasseien in een Vlaamse binnenstad',
-  'oldtimer-inschrijven': 'Inschrijvingspapieren, een lege nummerplaat en een oude autosleutel op een houten tafel, met een Citroën DS op de achtergrond',
+  'oldtimer-inschrijven': 'Inschrijvingspapieren en een oude autosleutel op een houten tafel, met een Citroën DS op de achtergrond',
   'oldtimerkeuring': 'Een bordeauxrode Alfa Romeo Giulia GT Junior in de keuringslijn van een keuringscentrum',
   'oldtimer-verzekeren': 'Een eigenaar bekijkt een verzekeringsdossier aan tafel, met een groene MGB roadster op de achtergrond',
   'oldtimer-laten-taxeren': 'Een expert bekijkt met een klembord de flank van een zilvergrijze klassieke Porsche 911',
