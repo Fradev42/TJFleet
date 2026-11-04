@@ -113,11 +113,12 @@ Legende: 🔴 blokkerend voor livegang · 🟠 belangrijk · 🟢 kleiner
 - **Al gedaan:** de vestiging staat al als `Place` in de JSON-LD, met postcode en gemeente.
 - **Daarna:** in `src/config.ts` bij `vestigingen` een `straat` toevoegen, en in `src/components/SEO.astro` (`location` → `address`) `streetAddress: v.straat` toevoegen.
 
-## 🟠 9. Auteur per gids bevestigen
+## ✅ 9. Auteur per gids (afgerond op 4 november 2026)
 
-- **Wat:** elke gids heeft nu Jasper Descamps als auteur (`standaardAuteur` in `src/config.ts`), zichtbaar en in de JSON-LD.
-- **Geblokkeerd door:** wie welke gids schreef of nalas, weten enkel de eigenaars.
-- **Daarna:** per gids de prop `auteur="Thomas Vancoillie"` toevoegen waar dat klopt (in `src/pages/gids/*.astro`), of `standaardAuteur` aanpassen.
+- De 18 gidsen zijn 9/9 verdeeld, met de auteur expliciet in elke gids (prop `auteur` in `src/pages/gids/*.astro`):
+  - **Thomas Vancoillie** (lak, rijklaar houden en technische verzorging): wax of keramische coating, exclusieve wagen die weinig rijdt, winterklaar maken, concours en rally, elektrische wagen lang stallen, oldtimer die weinig rijdt, leder/hout/cabriodak, restauratie, oldtimerkeuring.
+  - **Jasper Descamps** (regels, papieren en waarde): LEZ, inschrijven, verzekeren, taxeren, dossier, collectie overdragen, oldtimers na 2030, youngtimers, diefstal voorkomen.
+- Nieuwe gids? Zet `auteur="…"` erbij; zonder die prop geldt `standaardAuteur` in `src/config.ts`.
 
 ## 🟠 9b. Google-tag toevoegen (cookiebanner aanzetten)
 
