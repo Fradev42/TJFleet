@@ -3,6 +3,10 @@ import Base from '../../layouts/Base.astro';
 import BelBlok from '../../components/BelBlok.astro';
 import { gidsen } from '../../gidsen';
 import { site } from '../../config';
+import { Image } from 'astro:assets';
+import { paginafoto } from '../../lib/paginafotos';
+
+const fotos = Object.fromEntries(await Promise.all(gidsen.map(async (g) => [g.href, await paginafoto(g.href.split('/').filter(Boolean).pop()!)])));
 
 const basis = Astro.site ?? site.url;
 const schema = {
@@ -34,11 +38,16 @@ const schema = {
   <section class="sectie" aria-label="Alle gidsen">
     <div class="wrap">
       <ul class="gidsen">
-        {gidsen.map((g) => (
+        {gidsen.map((g, i) => (
           <li>
             <a href={g.href}>
-              <span class="gidsen__titel">{g.titel}</span>
-              <span>{g.tekst}</span>
+              {fotos[g.href] && (
+                <Image class="gidsen__foto" src={fotos[g.href].foto} alt={fotos[g.href].alt} widths={[400, 640, 800].filter((w) => w <= fotos[g.href].foto.width)} sizes="(min-width: 75em) 34rem, (min-width: 48em) 46vw, 100vw" loading={i < 2 ? 'eager' : 'lazy'} />
+              )}
+              <span class="gidsen__tekst">
+                <span class="gidsen__titel">{g.titel}</span>
+                <span>{g.tekst}</span>
+              </span>
             </a>
           </li>
         ))}
@@ -55,13 +64,15 @@ const schema = {
   .gidsen { list-style: none; padding: 0; margin: 0; max-width: none; display: grid; gap: 1.25rem; }
   @media (min-width: 48em) { .gidsen { grid-template-columns: repeat(2, 1fr); } }
   .gidsen a {
-    display: flex; flex-direction: column; gap: 0.5rem; height: 100%;
-    padding: 1.5rem 1.75rem; background: var(--kleur-wit);
+    display: flex; flex-direction: column; height: 100%; overflow: hidden;
+    background: var(--kleur-wit);
     border: 1px solid var(--kleur-lijn); border-top: 3px solid var(--kleur-accent); border-radius: var(--radius);
     color: var(--kleur-tekst); text-decoration: none;
   }
   .gidsen a:hover { box-shadow: 0 0 0 3px var(--kleur-lijn); color: var(--kleur-tekst); }
   .gidsen a:hover .gidsen__titel { text-decoration: underline; text-decoration-thickness: 2px; }
+  .gidsen__foto { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+  .gidsen__tekst { display: flex; flex-direction: column; gap: 0.5rem; padding: 1.5rem 1.75rem; }
   .gidsen__titel { font-family: var(--font-titel); font-size: 1.4rem; line-height: 1.25; color: var(--kleur-accent); }
-  .gidsen__titel::after { content: ' →'; }
+  .gidsen__titel::after { content: '\00a0→'; }
 </style>

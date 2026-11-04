@@ -17,10 +17,11 @@ interface Props {
   description: string;
   noindex?: boolean;
   ogImage?: string;
+  ogImageAlt?: string;
   ogType?: 'website' | 'article';
   artikel?: { gepubliceerd: string; bijgewerkt: string };
 }
-const { title, description, noindex, ogImage, ogType, artikel } = Astro.props;
+const { title, description, noindex, ogImage, ogImageAlt, ogType, artikel } = Astro.props;
 ---
 <!doctype html>
 <html lang="nl-BE">
@@ -34,7 +35,7 @@ const { title, description, noindex, ogImage, ogType, artikel } = Astro.props;
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <script is:inline>document.documentElement.classList.add('js');try{if(localStorage.getItem('tekstgrootte')==='groot')document.documentElement.classList.add('tekst-groot');}catch(e){}</script>
-    <SEO title={title} description={description} noindex={noindex} ogImage={ogImage} ogType={ogType} artikel={artikel} />
+    <SEO title={title} description={description} noindex={noindex} ogImage={ogImage} ogImageAlt={ogImageAlt} ogType={ogType} artikel={artikel} />
     {plausible.ingeschakeld && (
       <script is:inline defer data-domain={plausible.domein} src={plausible.script}></script>
     )}

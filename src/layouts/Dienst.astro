@@ -54,7 +54,7 @@ const faq = vragen.length ? {
   mainEntity: vragen.map((v) => ({ '@type': 'Question', name: v.vraag, acceptedAnswer: { '@type': 'Answer', text: v.antwoord } })),
 } : null;
 ---
-<Base title={title} description={description} ogImage={afbeelding}>
+<Base title={title} description={description} ogImage={afbeelding} ogImageAlt={foto?.alt || undefined}>
   <header class="paginakop">
     <div class="wrap">
       <nav aria-label="Kruimelpad" class="kruimelpad">
