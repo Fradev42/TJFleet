@@ -20,30 +20,17 @@ Maak liever een paar foto's goed dan alle twintig half. De gidsen werken ook zon
 ## Basisprompt (altijd eerst plakken)
 
 ```
-Maak een fotorealistische, liggende foto in 16:9, geschikt als hoofdfoto op een rustige, verzorgde website
-voor eigenaars van klassieke en exclusieve wagens in Vlaanderen.
+Maak een fotorealistische, liggende foto in 16:9 (minstens 1600 x 900 px) voor een rustige, verzorgde website voor eigenaars van klassieke en exclusieve wagens in Vlaanderen. Natuurlijk, zacht en warm licht, ingetogen kleuren, echte materialen (hout, leder, baksteen, beton). Rustige compositie met het onderwerp in het midden en ruimte rondom. Geen HDR, geen dramatische effecten. Het moet eruitzien als een foto van een goede fotograaf.
 
-Stijl: natuurlijk licht, zacht en warm, ingetogen kleuren. Crème, warm beige, diepgroen en een accent van
-donker bordeauxrood passen goed. Echte materialen: hout, leder, beton, baksteen. Rustige compositie met het
-onderwerp in het midden en wat ruimte rondom, zodat de foto bijgesneden kan worden. Geen dramatische effecten,
-geen neonlicht, geen overdreven glans, geen HDR-look. Ziet eruit als een foto van een goede fotograaf, niet als
-een render of een reclame.
+De wagen is exact het genoemde model en bouwjaar, zoals het in werkelijkheid bestaat: juiste verhoudingen, carrosserielijnen, grille, koplampen, velgen, en het embleem en opschrift alleen op de plaatsen waar ze bij het echte model zitten. Originele staat, geen tuning. Liefhebbers zien elke fout: kies liever een eenvoudige compositie die klopt.
 
-Het model: maak exact het model dat ik hieronder noem, zoals het in de echte wereld bestaat. Juiste
-verhoudingen, carrosserielijnen, grille, koplampen, velgen, embleem en merklogo op de juiste plaats en in de
-juiste vorm voor dat bouwjaar. Liefhebbers zien elke fout, dus liever een eenvoudige compositie die klopt dan
-een spectaculaire die niet klopt. Toon de wagen in originele staat, zonder tuning of moderne aanpassingen.
+Strikt verboden:
+- nummerplaten in welke vorm ook, ook geen lege plaat en geen plaathouder;
+- leesbare tekst, cijfers, jaartallen of logo's, behalve het embleem en opschrift van de wagen zelf; ook niet op papieren, dozen, flessen, gereedschap of toestellen;
+- gezichten, ook niet en profil: mensen staan volledig met de rug naar de camera, of alleen hun handen zijn in beeld;
+- andere wagens in de achtergrond.
 
-Verboden:
-- nummerplaten, in welke vorm ook: geen plaat met tekst, geen lege of onscherpe plaat, geen plaathouder. De wagen
-  heeft vooraan en achteraan gewoon geen plaat, zoals een wagen op een concours of in een showroom;
-- andere leesbare tekst, schermen met tekst, watermerken, handtekeningen. Het merklogo en het typeplaatje van
-  de wagen zelf mogen wel;
-- herkenbare gezichten. Mensen mogen alleen van achteren, van opzij zonder gezicht, of als handen in beeld komen;
-- logo's van garages, dealers, verzekeraars, evenementen of andere bedrijven;
-- bekende gebouwen of plaatsen die u kunt herkennen.
-
-De omgeving voelt Belgisch of Vlaams aan: bakstenen gevels, een privégarage bij een villa, landwegen met bomen.
+Omgeving: Belgisch of Vlaams, met bakstenen muren, eiken balken of een privégarage bij een villa.
 ```
 
 ## Prompt per pagina
@@ -55,24 +42,199 @@ dan ziet u ook zelf meteen of de foto klopt. Pas in dat geval de alt-tekst aan i
 |---|---|---|
 | `oldtimer-lez-gent-antwerpen-brussel.jpg` | Gids: oldtimers in de LEZ | Een donkergroene Mercedes-Benz 280 SL "Pagode" (W113, eind jaren zestig) met de kap open rijdt langzaam door een rustige straat met kasseien in een Vlaamse binnenstad, met bakstenen gevels en een paar fietsen tegen een muur. Ochtendlicht, geen andere wagens, geen verkeersborden met tekst. |
 | `oldtimer-inschrijven.jpg` | Gids: een oldtimer inschrijven | Van dichtbij, op een houten tafel: een stapeltje papieren zonder leesbare tekst, een oude autosleutel aan een lederen sleutelhanger en een vulpen. Op de achtergrond, onscherp, de neus van een crèmekleurige Citroën DS in een garage. |
-| `oldtimerkeuring.jpg` | Gids: de oldtimerkeuring | Een bordeauxrode Alfa Romeo Giulia GT Junior (Bertone-coupé, jaren zeventig) staat in een propere keuringshal met een rollenbank, gezien van schuin voor. Een keurder in werkkledij, van achteren gezien, met een zaklamp bij het voorwiel. Geen schermen of borden met tekst. |
+| `oldtimerkeuring.jpg` | Gids: de oldtimerkeuring | Een bordeauxrode Alfa Romeo Giulia GT Junior (Bertone-coupé, begin jaren zeventig) staat in een propere, lichte keuringshal op een rollenbank, volledig van opzij gezien. Geen nummerplaat vooraan of achteraan. Een keurder in donkere werkkledij hurkt met de rug naar de camera bij het voorwiel en schijnt met een zaklamp op de remmen. Geen schermen, borden of andere wagens. |
 | `oldtimer-verzekeren.jpg` | Gids: een oldtimer verzekeren | Een oudere man, van achteren of van opzij zonder gezicht, zit aan een houten tafel in een lichte privégarage en bladert in een map met documenten zonder leesbare tekst. Op de achtergrond een MGB roadster in British racing green, met de kap open. |
-| `oldtimer-laten-taxeren.jpg` | Gids: een oldtimer laten taxeren | Een expert in een donkere trui, van opzij zonder gezicht, bekijkt met een klembord en een lakdiktemeter de flank van een zilvergrijze Porsche 911 uit de late jaren zestig (korte wielbasis, ronde koplampen, Fuchs-velgen). Lichte garage, zacht zijlicht. |
-| `oldtimer-restauratie-kosten.jpg` | Gids: een oldtimer laten restaureren | Een Jaguar E-Type Series 1 coupé in een verzorgd restauratieatelier, met de carrosserie deels in grijze grondverf, de lange motorkap open en de deuren ernaast op standaards. Gereedschap netjes aan de wand, warm licht. Geen mensen of alleen handen. |
+| `oldtimer-laten-taxeren.jpg` | Gids: een oldtimer laten taxeren | Een zilvergrijze Porsche 911 uit de late jaren zestig (korte wielbasis, ronde koplampen, Fuchs-velgen) staat in een lichte garage, volledig van opzij gezien. Een expert in een donkere trui staat met de rug naar de camera bij het achterwiel en houdt een kleine lakdiktemeter tegen het achterscherm, met een klembord in de andere hand. Zacht zijlicht. |
+| `oldtimer-restauratie-kosten.jpg` | Gids: een oldtimer laten restaureren | Een Jaguar E-Type Series 1 coupé in een verzorgd restauratieatelier, met de carrosserie volledig in lichtgrijze grondverf, de lange motorkap omhoog en één deur ernaast op een standaard. Gereedschap hangt netjes aan de wand. Geen dozen, borden, posters of verpakkingen met tekst of logo’s. Geen mensen. Warm licht door hoge ramen. |
 | `oldtimer-winterklaar-maken.jpg` | Gids: een oldtimer winterklaar maken | Een klassieke Porsche 911 onder een crèmekleurige, ademende afdekhoes op maat, zodat alleen de vorm en de wielen te zien zijn, in een droge, propere garage met een bakstenen muur. Een onderhoudslader met een dunne kabel naar de voorkant. Door een raam valt winters licht binnen. |
-| `oldtimer-onderhoud-weinig-rijden.jpg` | Gids: onderhoud van een oldtimer die weinig rijdt | Van dichtbij: handen in werkhandschoenen trekken de oliepeilstok uit de motor van een MGB roadster. Een propere, originele motorruimte. Zacht licht, ondiepe scherptediepte. |
+| `oldtimer-onderhoud-weinig-rijden.jpg` | Gids: onderhoud van een oldtimer die weinig rijdt | Een MGB roadster in British racing green staat met de motorkap open in een propere, lichte garage met een bakstenen muur. Een mecanicien in een donkere overall buigt zich met de rug naar de camera over de motor, met een doek in de hand. De motor is van op afstand te zien, niet in close-up. Geen tekst op de motor, geen flessen of dozen met etiket. |
 | `oldtimer-concours-rally-voorbereiden.jpg` | Gids: naar een concours of rally | Een glanzende, donkerblauwe Austin-Healey 3000 roadster wordt voorzichtig via de oprijplaat een gesloten, donkergroene autotrailer in gereden, op een grindpad voor een landhuis. Vroeg ochtendlicht. Geen tekst op de trailer. |
-| `oldtimer-dossier-documenten.jpg` | Gids: het dossier van een oldtimer | Bovenaanzicht van een houten tafel met een geordend dossier: een lederen map, oude zwart-witfoto's van een Citroën DS, een onderhoudsboekje en enkele facturen, allemaal zonder leesbare tekst. Een autosleutel en een leesbril ernaast. |
-| `oldtimercollectie-overdragen.jpg` | Gids: een collectie overdragen | Een oudere man en een jongere vrouw, van achteren gezien, staan samen voor een crèmekleurige Jaguar XK150 in een ruime privégarage met houten balken. De man legt een hand op de motorkap. Warm avondlicht. |
+| `oldtimer-dossier-documenten.jpg` | Gids: het dossier van een oldtimer | Bovenaanzicht van een oude houten tafel met een geordend dossier: een open lederen map met vergeelde facturen en een klein onderhoudsboekje, waarop alleen onleesbaar handschrift en vage lijnen staan. Ernaast drie oude zwart-witfoto’s van een Citroën DS-sedan (geen break) op een landweg. Verder een oude autosleutel met een effen lederen sleutelhanger zonder opdruk, een leesbril en een potlood. Nergens leesbare woorden, cijfers of jaartallen. |
+| `oldtimercollectie-overdragen.jpg` | Gids: een collectie overdragen | Een crèmekleurige Jaguar XK150 roadster staat in een ruime privégarage met eiken balken en bakstenen muren. Geen nummerplaat en geen plaathouder onder de voorbumper. Een oudere man en een jongere vrouw staan naast elkaar voor de wagen, allebei volledig met de rug naar de camera. De man legt een hand op de motorkap. Warm avondlicht. |
 | `oldtimers-na-2030.jpg` | Gids: oldtimers na 2030 | Een bordeauxrode Alfa Romeo Spider "Duetto" (jaren zestig, ronde achterkant) met de kap open rijdt op een smalle landweg tussen glooiende velden en bomenrijen, zoals in de Vlaamse Ardennen. Van ver, in de late namiddag. Geen andere wagens. |
-| `wax-of-keramische-coating.jpg` | Gids: wax of keramische coating | Van dichtbij: een hand met een microvezeldoek brengt wax aan op de lange motorkap van een donkergroene Jaguar E-Type. In de diepe, glanzende lak spiegelt zacht het licht van de garage. |
+| `wax-of-keramische-coating.jpg` | Gids: wax of keramische coating | Close-up van de lange, glanzende motorkap van een donkergroene Jaguar E-Type Series 1. Eén rechterhand van één persoon brengt met een beige microvezeldoek in kleine cirkels wax aan. Alleen die ene hand en een stukje mouw zijn in beeld. In de diepe lak spiegelt zacht het licht van de garage. |
 | `youngtimer.jpg` | Gids: youngtimers | Een BMW M3 (E46, begin jaren 2000) in donkergrijs metaal in een lichte, moderne garage met een betonvloer. Gezien van schuin voor, in originele staat. |
-| `exclusieve-wagen-weinig-rijden.jpg` | Gids: een exclusieve wagen die weinig rijdt | Een Aston Martin DB11 in donkergrijs staat in een rustige privégarage, met een onderhoudslader op een plank en een dunne kabel naar de wagen. Zacht licht, propere betonvloer. |
+| `exclusieve-wagen-weinig-rijden.jpg` | Gids: een exclusieve wagen die weinig rijdt | Een Aston Martin DB11 coupé in donkergrijs staat in een rustige privégarage met bakstenen muren, volledig van opzij gezien. Op de vloer naast het voorwiel staat een effen zwarte onderhoudslader zonder logo of tekst. De kabel loopt zichtbaar van de lader naar de onderkant van de voorbumper en verdwijnt daar onder de wagen, zodat duidelijk is dat de wagen aan de lader hangt. Zacht licht, propere betonvloer. |
 | `leder-hout-cabriodak-verzorgen.jpg` | Gids: leder, hout en cabriodak | Een donkergroene Porsche 911 Cabriolet (type 964, begin jaren negentig) met het zwarte stoffen dak gesloten, perfect van opzij gezien, in een lichte, lege garage met een betonvloer en een witte muur. Naast het voorwiel staan op de vloer een emmer en een zachte borstel. Geen mensen. Zacht daglicht. Het stoffen dak is scherp, met zijn fijne structuur en naden. |
 | `diefstal-dure-wagen-voorkomen.jpg` | Gids: diefstal voorkomen | Van dichtbij: een moderne Porsche-sleutel wordt in een kleine, matte metalen doos gelegd, op een kast in een hal. Op de achtergrond, onscherp, een voordeur. Rustig avondlicht. |
 | `elektrische-wagen-lang-stilstaan.jpg` | Gids: een elektrische wagen die lang stilstaat | Een Porsche Taycan in een lichte metaalkleur staat aan een laadpaal aan de muur van een moderne garage. De laadkabel is goed zichtbaar. Geen schermen met tekst. |
-| `reiniging-en-coating.jpg` | Dienst: reiniging en lakbescherming | Een donkergroene Porsche 356 coupé in een privégarage wordt met de hand gereinigd: een persoon, van achteren gezien, droogt het dak af met een grote microvezeldoek. Een emmer en zachte borstels op de vloer. Warm licht. |
+| `reiniging-en-coating.jpg` | Dienst: reiniging en lakbescherming | Een donkergroene Porsche 356 A coupé (eind jaren vijftig) staat in een privégarage met een eiken werkbank, volledig van opzij gezien. Zoals bij de echte 356 staat vooraan op de kofferklep alleen het Porsche-wapenschild, en staat het opschrift Porsche achteraan op de motorklep. Een persoon met de rug naar de camera droogt het dak af met een grote microvezeldoek. Op de vloer een emmer en een zachte borstel zonder opdruk. Warm licht. |
 | `transport.jpg` | Dienst: transport | Een gesloten, donkergroene autotrailer met de laadklep open staat op een oprit voor een Vlaamse villa. In de trailer staat een crèmekleurige Mercedes-Benz 190 SL, vastgezet aan de wielen. Geen tekst of logo op de trailer. |
+
+## Kant-en-klaar: opnieuw te maken (basisprompt inbegrepen)
+
+Deze foto’s moeten opnieuw. Kopieer één blok volledig in Gemini.
+
+### `oldtimerkeuring.jpg` (Gids: de oldtimerkeuring)
+
+```
+Maak een fotorealistische, liggende foto in 16:9 (minstens 1600 x 900 px) voor een rustige, verzorgde website voor eigenaars van klassieke en exclusieve wagens in Vlaanderen. Natuurlijk, zacht en warm licht, ingetogen kleuren, echte materialen (hout, leder, baksteen, beton). Rustige compositie met het onderwerp in het midden en ruimte rondom. Geen HDR, geen dramatische effecten. Het moet eruitzien als een foto van een goede fotograaf.
+
+De wagen is exact het genoemde model en bouwjaar, zoals het in werkelijkheid bestaat: juiste verhoudingen, carrosserielijnen, grille, koplampen, velgen, en het embleem en opschrift alleen op de plaatsen waar ze bij het echte model zitten. Originele staat, geen tuning. Liefhebbers zien elke fout: kies liever een eenvoudige compositie die klopt.
+
+Strikt verboden:
+- nummerplaten in welke vorm ook, ook geen lege plaat en geen plaathouder;
+- leesbare tekst, cijfers, jaartallen of logo's, behalve het embleem en opschrift van de wagen zelf; ook niet op papieren, dozen, flessen, gereedschap of toestellen;
+- gezichten, ook niet en profil: mensen staan volledig met de rug naar de camera, of alleen hun handen zijn in beeld;
+- andere wagens in de achtergrond.
+
+Omgeving: Belgisch of Vlaams, met bakstenen muren, eiken balken of een privégarage bij een villa.
+
+Onderwerp:
+Een bordeauxrode Alfa Romeo Giulia GT Junior (Bertone-coupé, begin jaren zeventig) staat in een propere, lichte keuringshal op een rollenbank, volledig van opzij gezien. Geen nummerplaat vooraan of achteraan. Een keurder in donkere werkkledij hurkt met de rug naar de camera bij het voorwiel en schijnt met een zaklamp op de remmen. Geen schermen, borden of andere wagens.
+```
+
+### `oldtimer-dossier-documenten.jpg` (Gids: het dossier van een oldtimer)
+
+```
+Maak een fotorealistische, liggende foto in 16:9 (minstens 1600 x 900 px) voor een rustige, verzorgde website voor eigenaars van klassieke en exclusieve wagens in Vlaanderen. Natuurlijk, zacht en warm licht, ingetogen kleuren, echte materialen (hout, leder, baksteen, beton). Rustige compositie met het onderwerp in het midden en ruimte rondom. Geen HDR, geen dramatische effecten. Het moet eruitzien als een foto van een goede fotograaf.
+
+De wagen is exact het genoemde model en bouwjaar, zoals het in werkelijkheid bestaat: juiste verhoudingen, carrosserielijnen, grille, koplampen, velgen, en het embleem en opschrift alleen op de plaatsen waar ze bij het echte model zitten. Originele staat, geen tuning. Liefhebbers zien elke fout: kies liever een eenvoudige compositie die klopt.
+
+Strikt verboden:
+- nummerplaten in welke vorm ook, ook geen lege plaat en geen plaathouder;
+- leesbare tekst, cijfers, jaartallen of logo's, behalve het embleem en opschrift van de wagen zelf; ook niet op papieren, dozen, flessen, gereedschap of toestellen;
+- gezichten, ook niet en profil: mensen staan volledig met de rug naar de camera, of alleen hun handen zijn in beeld;
+- andere wagens in de achtergrond.
+
+Omgeving: Belgisch of Vlaams, met bakstenen muren, eiken balken of een privégarage bij een villa.
+
+Onderwerp:
+Bovenaanzicht van een oude houten tafel met een geordend dossier: een open lederen map met vergeelde facturen en een klein onderhoudsboekje, waarop alleen onleesbaar handschrift en vage lijnen staan. Ernaast drie oude zwart-witfoto’s van een Citroën DS-sedan (geen break) op een landweg. Verder een oude autosleutel met een effen lederen sleutelhanger zonder opdruk, een leesbril en een potlood. Nergens leesbare woorden, cijfers of jaartallen.
+```
+
+### `oldtimer-onderhoud-weinig-rijden.jpg` (Gids: onderhoud van een oldtimer die weinig rijdt)
+
+```
+Maak een fotorealistische, liggende foto in 16:9 (minstens 1600 x 900 px) voor een rustige, verzorgde website voor eigenaars van klassieke en exclusieve wagens in Vlaanderen. Natuurlijk, zacht en warm licht, ingetogen kleuren, echte materialen (hout, leder, baksteen, beton). Rustige compositie met het onderwerp in het midden en ruimte rondom. Geen HDR, geen dramatische effecten. Het moet eruitzien als een foto van een goede fotograaf.
+
+De wagen is exact het genoemde model en bouwjaar, zoals het in werkelijkheid bestaat: juiste verhoudingen, carrosserielijnen, grille, koplampen, velgen, en het embleem en opschrift alleen op de plaatsen waar ze bij het echte model zitten. Originele staat, geen tuning. Liefhebbers zien elke fout: kies liever een eenvoudige compositie die klopt.
+
+Strikt verboden:
+- nummerplaten in welke vorm ook, ook geen lege plaat en geen plaathouder;
+- leesbare tekst, cijfers, jaartallen of logo's, behalve het embleem en opschrift van de wagen zelf; ook niet op papieren, dozen, flessen, gereedschap of toestellen;
+- gezichten, ook niet en profil: mensen staan volledig met de rug naar de camera, of alleen hun handen zijn in beeld;
+- andere wagens in de achtergrond.
+
+Omgeving: Belgisch of Vlaams, met bakstenen muren, eiken balken of een privégarage bij een villa.
+
+Onderwerp:
+Een MGB roadster in British racing green staat met de motorkap open in een propere, lichte garage met een bakstenen muur. Een mecanicien in een donkere overall buigt zich met de rug naar de camera over de motor, met een doek in de hand. De motor is van op afstand te zien, niet in close-up. Geen tekst op de motor, geen flessen of dozen met etiket.
+```
+
+### `reiniging-en-coating.jpg` (Dienst: reiniging en lakbescherming)
+
+```
+Maak een fotorealistische, liggende foto in 16:9 (minstens 1600 x 900 px) voor een rustige, verzorgde website voor eigenaars van klassieke en exclusieve wagens in Vlaanderen. Natuurlijk, zacht en warm licht, ingetogen kleuren, echte materialen (hout, leder, baksteen, beton). Rustige compositie met het onderwerp in het midden en ruimte rondom. Geen HDR, geen dramatische effecten. Het moet eruitzien als een foto van een goede fotograaf.
+
+De wagen is exact het genoemde model en bouwjaar, zoals het in werkelijkheid bestaat: juiste verhoudingen, carrosserielijnen, grille, koplampen, velgen, en het embleem en opschrift alleen op de plaatsen waar ze bij het echte model zitten. Originele staat, geen tuning. Liefhebbers zien elke fout: kies liever een eenvoudige compositie die klopt.
+
+Strikt verboden:
+- nummerplaten in welke vorm ook, ook geen lege plaat en geen plaathouder;
+- leesbare tekst, cijfers, jaartallen of logo's, behalve het embleem en opschrift van de wagen zelf; ook niet op papieren, dozen, flessen, gereedschap of toestellen;
+- gezichten, ook niet en profil: mensen staan volledig met de rug naar de camera, of alleen hun handen zijn in beeld;
+- andere wagens in de achtergrond.
+
+Omgeving: Belgisch of Vlaams, met bakstenen muren, eiken balken of een privégarage bij een villa.
+
+Onderwerp:
+Een donkergroene Porsche 356 A coupé (eind jaren vijftig) staat in een privégarage met een eiken werkbank, volledig van opzij gezien. Zoals bij de echte 356 staat vooraan op de kofferklep alleen het Porsche-wapenschild, en staat het opschrift Porsche achteraan op de motorklep. Een persoon met de rug naar de camera droogt het dak af met een grote microvezeldoek. Op de vloer een emmer en een zachte borstel zonder opdruk. Warm licht.
+```
+
+### `exclusieve-wagen-weinig-rijden.jpg` (Gids: een exclusieve wagen die weinig rijdt)
+
+```
+Maak een fotorealistische, liggende foto in 16:9 (minstens 1600 x 900 px) voor een rustige, verzorgde website voor eigenaars van klassieke en exclusieve wagens in Vlaanderen. Natuurlijk, zacht en warm licht, ingetogen kleuren, echte materialen (hout, leder, baksteen, beton). Rustige compositie met het onderwerp in het midden en ruimte rondom. Geen HDR, geen dramatische effecten. Het moet eruitzien als een foto van een goede fotograaf.
+
+De wagen is exact het genoemde model en bouwjaar, zoals het in werkelijkheid bestaat: juiste verhoudingen, carrosserielijnen, grille, koplampen, velgen, en het embleem en opschrift alleen op de plaatsen waar ze bij het echte model zitten. Originele staat, geen tuning. Liefhebbers zien elke fout: kies liever een eenvoudige compositie die klopt.
+
+Strikt verboden:
+- nummerplaten in welke vorm ook, ook geen lege plaat en geen plaathouder;
+- leesbare tekst, cijfers, jaartallen of logo's, behalve het embleem en opschrift van de wagen zelf; ook niet op papieren, dozen, flessen, gereedschap of toestellen;
+- gezichten, ook niet en profil: mensen staan volledig met de rug naar de camera, of alleen hun handen zijn in beeld;
+- andere wagens in de achtergrond.
+
+Omgeving: Belgisch of Vlaams, met bakstenen muren, eiken balken of een privégarage bij een villa.
+
+Onderwerp:
+Een Aston Martin DB11 coupé in donkergrijs staat in een rustige privégarage met bakstenen muren, volledig van opzij gezien. Op de vloer naast het voorwiel staat een effen zwarte onderhoudslader zonder logo of tekst. De kabel loopt zichtbaar van de lader naar de onderkant van de voorbumper en verdwijnt daar onder de wagen, zodat duidelijk is dat de wagen aan de lader hangt. Zacht licht, propere betonvloer.
+```
+
+### `oldtimer-restauratie-kosten.jpg` (Gids: een oldtimer laten restaureren)
+
+```
+Maak een fotorealistische, liggende foto in 16:9 (minstens 1600 x 900 px) voor een rustige, verzorgde website voor eigenaars van klassieke en exclusieve wagens in Vlaanderen. Natuurlijk, zacht en warm licht, ingetogen kleuren, echte materialen (hout, leder, baksteen, beton). Rustige compositie met het onderwerp in het midden en ruimte rondom. Geen HDR, geen dramatische effecten. Het moet eruitzien als een foto van een goede fotograaf.
+
+De wagen is exact het genoemde model en bouwjaar, zoals het in werkelijkheid bestaat: juiste verhoudingen, carrosserielijnen, grille, koplampen, velgen, en het embleem en opschrift alleen op de plaatsen waar ze bij het echte model zitten. Originele staat, geen tuning. Liefhebbers zien elke fout: kies liever een eenvoudige compositie die klopt.
+
+Strikt verboden:
+- nummerplaten in welke vorm ook, ook geen lege plaat en geen plaathouder;
+- leesbare tekst, cijfers, jaartallen of logo's, behalve het embleem en opschrift van de wagen zelf; ook niet op papieren, dozen, flessen, gereedschap of toestellen;
+- gezichten, ook niet en profil: mensen staan volledig met de rug naar de camera, of alleen hun handen zijn in beeld;
+- andere wagens in de achtergrond.
+
+Omgeving: Belgisch of Vlaams, met bakstenen muren, eiken balken of een privégarage bij een villa.
+
+Onderwerp:
+Een Jaguar E-Type Series 1 coupé in een verzorgd restauratieatelier, met de carrosserie volledig in lichtgrijze grondverf, de lange motorkap omhoog en één deur ernaast op een standaard. Gereedschap hangt netjes aan de wand. Geen dozen, borden, posters of verpakkingen met tekst of logo’s. Geen mensen. Warm licht door hoge ramen.
+```
+
+### `wax-of-keramische-coating.jpg` (Gids: wax of keramische coating)
+
+```
+Maak een fotorealistische, liggende foto in 16:9 (minstens 1600 x 900 px) voor een rustige, verzorgde website voor eigenaars van klassieke en exclusieve wagens in Vlaanderen. Natuurlijk, zacht en warm licht, ingetogen kleuren, echte materialen (hout, leder, baksteen, beton). Rustige compositie met het onderwerp in het midden en ruimte rondom. Geen HDR, geen dramatische effecten. Het moet eruitzien als een foto van een goede fotograaf.
+
+De wagen is exact het genoemde model en bouwjaar, zoals het in werkelijkheid bestaat: juiste verhoudingen, carrosserielijnen, grille, koplampen, velgen, en het embleem en opschrift alleen op de plaatsen waar ze bij het echte model zitten. Originele staat, geen tuning. Liefhebbers zien elke fout: kies liever een eenvoudige compositie die klopt.
+
+Strikt verboden:
+- nummerplaten in welke vorm ook, ook geen lege plaat en geen plaathouder;
+- leesbare tekst, cijfers, jaartallen of logo's, behalve het embleem en opschrift van de wagen zelf; ook niet op papieren, dozen, flessen, gereedschap of toestellen;
+- gezichten, ook niet en profil: mensen staan volledig met de rug naar de camera, of alleen hun handen zijn in beeld;
+- andere wagens in de achtergrond.
+
+Omgeving: Belgisch of Vlaams, met bakstenen muren, eiken balken of een privégarage bij een villa.
+
+Onderwerp:
+Close-up van de lange, glanzende motorkap van een donkergroene Jaguar E-Type Series 1. Eén rechterhand van één persoon brengt met een beige microvezeldoek in kleine cirkels wax aan. Alleen die ene hand en een stukje mouw zijn in beeld. In de diepe lak spiegelt zacht het licht van de garage.
+```
+
+### `oldtimercollectie-overdragen.jpg` (Gids: een collectie overdragen)
+
+```
+Maak een fotorealistische, liggende foto in 16:9 (minstens 1600 x 900 px) voor een rustige, verzorgde website voor eigenaars van klassieke en exclusieve wagens in Vlaanderen. Natuurlijk, zacht en warm licht, ingetogen kleuren, echte materialen (hout, leder, baksteen, beton). Rustige compositie met het onderwerp in het midden en ruimte rondom. Geen HDR, geen dramatische effecten. Het moet eruitzien als een foto van een goede fotograaf.
+
+De wagen is exact het genoemde model en bouwjaar, zoals het in werkelijkheid bestaat: juiste verhoudingen, carrosserielijnen, grille, koplampen, velgen, en het embleem en opschrift alleen op de plaatsen waar ze bij het echte model zitten. Originele staat, geen tuning. Liefhebbers zien elke fout: kies liever een eenvoudige compositie die klopt.
+
+Strikt verboden:
+- nummerplaten in welke vorm ook, ook geen lege plaat en geen plaathouder;
+- leesbare tekst, cijfers, jaartallen of logo's, behalve het embleem en opschrift van de wagen zelf; ook niet op papieren, dozen, flessen, gereedschap of toestellen;
+- gezichten, ook niet en profil: mensen staan volledig met de rug naar de camera, of alleen hun handen zijn in beeld;
+- andere wagens in de achtergrond.
+
+Omgeving: Belgisch of Vlaams, met bakstenen muren, eiken balken of een privégarage bij een villa.
+
+Onderwerp:
+Een crèmekleurige Jaguar XK150 roadster staat in een ruime privégarage met eiken balken en bakstenen muren. Geen nummerplaat en geen plaathouder onder de voorbumper. Een oudere man en een jongere vrouw staan naast elkaar voor de wagen, allebei volledig met de rug naar de camera. De man legt een hand op de motorkap. Warm avondlicht.
+```
+
+### `oldtimer-laten-taxeren.jpg` (Gids: een oldtimer laten taxeren)
+
+```
+Maak een fotorealistische, liggende foto in 16:9 (minstens 1600 x 900 px) voor een rustige, verzorgde website voor eigenaars van klassieke en exclusieve wagens in Vlaanderen. Natuurlijk, zacht en warm licht, ingetogen kleuren, echte materialen (hout, leder, baksteen, beton). Rustige compositie met het onderwerp in het midden en ruimte rondom. Geen HDR, geen dramatische effecten. Het moet eruitzien als een foto van een goede fotograaf.
+
+De wagen is exact het genoemde model en bouwjaar, zoals het in werkelijkheid bestaat: juiste verhoudingen, carrosserielijnen, grille, koplampen, velgen, en het embleem en opschrift alleen op de plaatsen waar ze bij het echte model zitten. Originele staat, geen tuning. Liefhebbers zien elke fout: kies liever een eenvoudige compositie die klopt.
+
+Strikt verboden:
+- nummerplaten in welke vorm ook, ook geen lege plaat en geen plaathouder;
+- leesbare tekst, cijfers, jaartallen of logo's, behalve het embleem en opschrift van de wagen zelf; ook niet op papieren, dozen, flessen, gereedschap of toestellen;
+- gezichten, ook niet en profil: mensen staan volledig met de rug naar de camera, of alleen hun handen zijn in beeld;
+- andere wagens in de achtergrond.
+
+Omgeving: Belgisch of Vlaams, met bakstenen muren, eiken balken of een privégarage bij een villa.
+
+Onderwerp:
+Een zilvergrijze Porsche 911 uit de late jaren zestig (korte wielbasis, ronde koplampen, Fuchs-velgen) staat in een lichte garage, volledig van opzij gezien. Een expert in een donkere trui staat met de rug naar de camera bij het achterwiel en houdt een kleine lakdiktemeter tegen het achterscherm, met een klembord in de andere hand. Zacht zijlicht.
+```
 
 ## Controlelijst per foto
 
