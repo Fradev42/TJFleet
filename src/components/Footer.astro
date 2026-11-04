@@ -29,13 +29,36 @@ const jaar = new Date().getFullYear();
         </ul>
       </nav>
     </div>
+    <p class="sitefooter__tekstknop">
+      <button type="button" class="sitefooter__cookieknop" data-tekstgrootte hidden>Tekst groter</button>
+    </p>
     <p class="sitefooter__klein">
       © {jaar} {site.naam} is een handelsnaam van {site.juridischeNaam}, maatschappelijke zetel {zetelTekst} · Ondernemingsnummer {site.btwNummer} · <a href={mailHref}>{site.email}</a> · <a href="/privacy/">Privacyverklaring</a> · {cookiesActief ? <>Cookies enkel met uw toestemming (<a href="/cookiebeleid/">cookiebeleid</a>).</> : 'Deze website gebruikt geen cookies.'}
     </p>
   </div>
 </footer>
 
+<script>
+  // Knop "Tekst groter": vergroot alle tekst met 15 procent en onthoudt de keuze op dit toestel.
+  const knop = document.querySelector<HTMLButtonElement>('[data-tekstgrootte]');
+  if (knop) {
+    const html = document.documentElement;
+    const toon = () => {
+      const groot = html.classList.contains('tekst-groot');
+      knop.textContent = groot ? 'Tekst normaal' : 'Tekst groter';
+    };
+    knop.hidden = false;
+    toon();
+    knop.addEventListener('click', () => {
+      html.classList.toggle('tekst-groot');
+      try { localStorage.setItem('tekstgrootte', html.classList.contains('tekst-groot') ? 'groot' : 'normaal'); } catch {}
+      toon();
+    });
+  }
+</script>
+
 <style>
+  .sitefooter__tekstknop { margin: -1rem 0 1rem; max-width: none; }
   .sitefooter {
     background: var(--kleur-achtergrond);
     color: var(--kleur-tekst);

@@ -81,6 +81,7 @@ import { site, telHref, mailHref, vestigingRegels, zetelTekst } from '../../conf
   .contactlijn__waarde--mail { font-size: clamp(1.3rem, 3vw, 1.8rem); overflow-wrap: normal; }
 
   .contact { display: grid; gap: 3rem; }
+  .contact > * { min-width: 0; }
   @media (min-width: 56em) { .contact { grid-template-columns: 1.5fr 1fr; gap: 4rem; align-items: start; } }
   .contact__kop { font-family: var(--font-tekst); font-size: 0.9rem; font-weight: 650; letter-spacing: 0.1em; text-transform: uppercase; color: var(--kleur-tekst); margin: 1.75rem 0 0.5rem; }
   .contact__kop:first-child { margin-top: 0; }

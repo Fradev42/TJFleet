@@ -10,6 +10,11 @@ import Gids from '../../layouts/Gids.astro';
   gepubliceerd="2026-11-03"
   auteur="Thomas Vancoillie"
   uitnodiging={{ titel: 'Een wagen die altijd klaarstaat?', tekst: 'Wij zorgen dat uw wagens te allen tijde rijklaar staan: de batterij geladen, de banden op spanning en het onderhoud op tijd bij een vaste specialist.' }}
+  vragen={[
+    { vraag: 'Hoe lang mag een wagen stilstaan zonder te rijden?', antwoord: 'Een vaste termijn bestaat niet. Enkele weken is voor de meeste wagens geen probleem als de batterij aan een onderhoudslader hangt. Bij maanden stilstand hebt u ook aandacht nodig voor banden, remmen en vloeistoffen.' },
+    { vraag: 'Moet een wagen die weinig rijdt toch jaarlijks naar onderhoud?', antwoord: 'Meestal wel. Fabrikanten schrijven onderhoud voor na een aantal kilometers of maanden, naargelang wat eerst komt. Bij weinig kilometers is dat bijna altijd de tijd.' },
+    { vraag: 'Verlies ik mijn garantie als ik niet bij de dealer onderhoud laat doen?', antwoord: 'Volgens de Europese regels niet, als het onderhoud gebeurt volgens de voorschriften van de fabrikant en met geschikte onderdelen. Vraag een factuur waarop dat staat.' },
+  ]}
   bronnen={[
     { titel: 'Europese Commissie: veelgestelde vragen over de mededingingsregels in de motorvoertuigensector', url: 'https://competition-policy.ec.europa.eu/system/files/2021-09/FAQ_application_of_EU_antitrust_rules_in_the_motor_vehicle_sector_nl.pdf' },
     { titel: 'EUR-Lex: groepsvrijstelling motorvoertuigen (Verordening 461/2010)', url: 'https://eur-lex.europa.eu/NL/legal-content/summary/motor-vehicles-block-exemption-from-european-union-competition-law.html' },

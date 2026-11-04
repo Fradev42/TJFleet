@@ -10,6 +10,11 @@ import Gids from '../../layouts/Gids.astro';
   gepubliceerd="2026-11-02"
   auteur="Thomas Vancoillie"
   uitnodiging={{ titel: 'Alleen nog rijden, of genieten?', tekst: 'Wij maken de wagen vooraf rijklaar, kijken papieren en verzekering na en regelen met onze vaste transportpartner het vervoer in een gesloten trailer.' }}
+  vragen={[
+    { vraag: 'Is mijn oldtimer verzekerd tijdens een rally?', antwoord: 'Een toerrit of concours valt vaak onder de polis, een rit met tijdopname of op een circuit vaak niet. Vraag het vooraf na bij uw verzekeraar, liefst schriftelijk.' },
+    { vraag: 'Welke papieren neem ik mee naar een evenement?', antwoord: 'Het inschrijvingsbewijs, het keuringsbewijs, het verzekeringsbewijs, de inschrijving voor het evenement en eventueel de LEZ-registratie van de steden waar u doorrijdt.' },
+    { vraag: 'Rijd ik zelf naar het evenement of laat ik de wagen brengen?', antwoord: 'Voor waardevolle wagens of verre bestemmingen kiezen veel eigenaars voor een gesloten trailer. De wagen komt dan schoon en uitgerust aan, en bij pech onderweg is het evenement niet voorbij.' },
+  ]}
   bronnen={[
     { titel: 'RACB: veiligheidsvoorschriften VHRS (historische regelmatigheid)', url: 'https://app-cdn.sportity.com/83331fc9-2570-4632-97d8-15c97aa0726d/ce2fb5d5-11a2-4e75-a2e0-84847c1a678e_2025%20-%20VHRS%20-%20Veiligheidsvoorschriften.pdf' },
     { titel: 'Classic Motorsports: how to prepare a car for its first concours', url: 'https://classicmotorsports.com/articles/how-prepare-car-its-first-concours' },
@@ -52,5 +57,5 @@ import Gids from '../../layouts/Gids.astro';
   <p>Laat de wagen na een rally of lange rit kort nakijken, en noteer het evenement en eventuele prijzen in het dossier. Deelname aan bekende evenementen hoort bij de historiek van een wagen en kan bijdragen aan de waarde.</p>
 
   <h2>Hoe wij dit voor u opvolgen</h2>
-  <p>Wij maken de wagen vooraf rijklaar bij uw vaste specialist, kijken de papieren en de verzekering na en regelen, samen met een vaste transportpartner, het vervoer in een gesloten trailer heen en terug. U hoeft alleen nog te rijden, of te genieten.</p>
+  <p>Wij maken de wagen vooraf rijklaar bij uw vaste specialist, kijken de papieren en de verzekering na en regelen, samen met een vaste transportpartner, het <a href="/diensten/transport/">vervoer in een gesloten trailer</a> heen en terug. U hoeft alleen nog te rijden, of te genieten.</p>
 </Gids>

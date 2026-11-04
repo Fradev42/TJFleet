@@ -10,6 +10,11 @@ import Gids from '../../layouts/Gids.astro';
   gepubliceerd="2026-11-02"
   auteur="Thomas Vancoillie"
   uitnodiging={{ titel: 'Liever dat iemand de keuringen voor u plant?', tekst: 'Wij houden de vervaldatum van elke wagen bij, maken de afspraak, regelen het vervoer en bewaren het keuringsbewijs in het dossier.' }}
+  vragen={[
+    { vraag: 'Hoe vaak moet een oldtimer naar de keuring?', antwoord: 'Een wagen van 30 tot en met 49 jaar om de 2 jaar, vanaf 50 jaar om de 5 jaar. De datum op uw laatste keuringsbewijs blijft de leidraad.' },
+    { vraag: 'Wat kost een oldtimerkeuring?', antwoord: 'De periodieke oldtimerkeuring kost evenveel als de periodieke keuring van een gewone personenwagen. De actuele tarieven vindt u op vlaanderen.be.' },
+    { vraag: 'Wat gebeurt er als mijn oldtimer afgekeurd wordt?', antwoord: 'U krijgt een termijn om de wagen te laten herstellen en opnieuw aan te bieden.' },
+  ]}
   bronnen={[
     { titel: 'Vlaanderen.be: periodieke oldtimerkeuring', url: 'https://www.vlaanderen.be/periodieke-oldtimerkeuring' },
     { titel: 'Vlaanderen.be: tarieven technische keuring', url: 'https://www.vlaanderen.be/technische-keuring-van-voertuigen/tarieven-technische-keuring' },

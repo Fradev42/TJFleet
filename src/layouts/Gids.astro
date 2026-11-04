@@ -6,6 +6,8 @@
 import Base from './Base.astro';
 import { site, telHref, team, standaardAuteur } from '../config';
 import { verwanteGidsen } from '../gidsen';
+import { Image } from 'astro:assets';
+import { paginafoto, deelafbeelding } from '../lib/paginafotos';
 
 interface Bron { titel: string; url: string; }
 interface Props {
@@ -19,13 +21,16 @@ interface Props {
   gepubliceerd: string;
   /** Naam van de auteur, zoals in `team` in src/config.ts. Standaard: standaardAuteur. */
   auteur?: string;
-  /** Afbeelding voor zoekmachines en delen (pad in /public). Standaard de algemene deelafbeelding. */
-  afbeelding?: string;
+  /** Veelgestelde vragen: zichtbaar onderaan de gids en als FAQPage-schema. */
+  vragen?: { vraag: string; antwoord: string }[];
   bronnen: Bron[];
   /** Afsluitende uitnodiging, afgestemd op het onderwerp van de gids. */
   uitnodiging: { titel: string; tekst: string };
 }
-const { title, description, h1, intro, bijgewerkt, gepubliceerd, auteur = standaardAuteur, afbeelding = '/og-image.jpg', bronnen, uitnodiging } = Astro.props;
+const { title, description, h1, intro, bijgewerkt, gepubliceerd, auteur = standaardAuteur, vragen = [], bronnen, uitnodiging } = Astro.props;
+const slug = Astro.url.pathname.split('/').filter(Boolean).pop()!;
+const foto = await paginafoto(slug);
+const afbeelding = await deelafbeelding(slug);
 const persoon = team.find((p) => p.naam === auteur);
 if (!persoon) throw new Error(`Onbekende auteur "${auteur}" in ${Astro.url.pathname}; gebruik een naam uit team in src/config.ts.`);
 const verder = verwanteGidsen(Astro.url.pathname);
@@ -45,6 +50,11 @@ const schema = {
   author: { '@type': 'Person', name: persoon.naam, sameAs: [persoon.linkedin] },
   publisher: { '@type': 'Organization', name: site.naam, legalName: site.juridischeNaam },
 };
+const faq = vragen.length ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: vragen.map((v) => ({ '@type': 'Question', name: v.vraag, acceptedAnswer: { '@type': 'Answer', text: v.antwoord } })),
+} : null;
 const kruimels = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -55,7 +65,7 @@ const kruimels = {
   ],
 };
 ---
-<Base title={title} description={description}>
+<Base title={title} description={description} ogImage={afbeelding} ogType="article" artikel={{ gepubliceerd, bijgewerkt }}>
   <header class="paginakop">
     <div class="wrap">
       <nav aria-label="Kruimelpad" class="kruimelpad">
@@ -70,9 +80,24 @@ const kruimels = {
     </div>
   </header>
 
+  {foto && (
+    <div class="wrap gids__foto">
+      <Image src={foto.foto} alt={foto.alt} widths={[480, 800, 1200, 1600].filter((w) => w <= foto.foto.width)} sizes="(min-width: 75em) 72rem, 100vw" loading="eager" fetchpriority="high" />
+    </div>
+  )}
+
   <article class="sectie">
     <div class="wrap"><div class="gids">
       <slot />
+
+      {vragen.length > 0 && (
+        <section class="gids__faq" aria-labelledby="faq-titel">
+          <h2 id="faq-titel">Veelgestelde vragen</h2>
+          <dl>
+            {vragen.map((v) => <div><dt>{v.vraag}</dt><dd>{v.antwoord}</dd></div>)}
+          </dl>
+        </section>
+      )}
 
       <aside class="gids__uitnodiging" aria-label="Hulp bij uw collectie">
         <p class="gids__uitnodiging-titel">{uitnodiging.titel}</p>
@@ -105,6 +130,7 @@ const kruimels = {
 
 <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 <script type="application/ld+json" set:html={JSON.stringify(kruimels)} />
+{faq && <script type="application/ld+json" set:html={JSON.stringify(faq)} />}
 
 <style>
   .kruimelpad { font-size: 0.95rem; margin-bottom: 1.25rem; color: var(--kleur-tekst-zacht); }
@@ -124,6 +150,14 @@ const kruimels = {
   .gids__uitnodiging { margin-top: 3rem; padding: 1.75rem; background: var(--kleur-vlak); border-radius: var(--radius); }
   .gids__uitnodiging-titel { font-family: var(--font-titel); font-size: 1.45rem; color: var(--kleur-accent); margin-bottom: 0.5rem; }
   .gids__bronnen { margin-top: 3rem; font-size: 0.95rem; }
+  .gids__foto { margin-top: 2rem; }
+  .gids__foto :global(img) { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--radius); }
+  .gids__faq { margin-top: 3rem; }
+  .gids__faq dl { margin: 0; max-width: none; }
+  .gids__faq dl > div { padding-block: 1rem; border-top: 1px solid var(--kleur-lijn); }
+  .gids__faq dl > div:last-child { border-bottom: 1px solid var(--kleur-lijn); }
+  .gids__faq dt { font-family: var(--font-titel); font-size: 1.2rem; color: var(--kleur-accent); margin-bottom: 0.35rem; }
+  .gids__faq dd { margin: 0; }
   .gids__verder { margin-top: 3rem; }
   .gids__verder ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; }
   .gids__verder a { display: flex; flex-direction: column; gap: 0.25rem; padding: 1rem 1.25rem; background: var(--kleur-wit); border: 1px solid var(--kleur-lijn); border-left: 3px solid var(--kleur-accent); border-radius: var(--radius); color: var(--kleur-tekst); text-decoration: none; }

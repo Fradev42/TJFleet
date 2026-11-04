@@ -10,6 +10,11 @@ import Gids from '../../layouts/Gids.astro';
   gepubliceerd="2026-11-03"
   auteur="Jasper Descamps"
   uitnodiging={{ titel: 'Weet u wat uw polis eist?', tekst: 'Wij kijken met u en uw makelaar na welke beveiliging uw verzekeraar per wagen vraagt, en bewaren de attesten in het dossier van de wagen.' }}
+  vragen={[
+    { vraag: 'Helpt een metalen doos echt tegen keyless diefstal?', antwoord: 'Ja, als ze het signaal van de sleutel goed afschermt. Test het: met de sleutel in de doos mag de wagen niet opengaan als u ernaast staat.' },
+    { vraag: 'Dekt mijn BA-verzekering diefstal?', antwoord: 'Nee. Burgerlijke aansprakelijkheid dekt alleen schade aan anderen. Voor diefstal hebt u een (mini-)omnium of een diefstalwaarborg nodig.' },
+    { vraag: 'Wat is een INCERT-systeem?', antwoord: 'INCERT is het Belgische kwaliteitslabel voor elektronische anti- en na-diefstalsystemen en hun installateurs. Veel verzekeraars eisen het voor dure wagens. Het bewijs is de conformiteitsverklaring van de installateur.' },
+  ]}
   bronnen={[
     { titel: 'INCERT: beveiliging voertuigen', url: 'https://www.incert.be/nl/sector/10/beveiliging-voertuigen' },
     { titel: 'INCERT: wat is de beste antidiefstalbeveiliging voor mijn voertuig?', url: 'https://www.incert.be/nl/wat-de-beste-antidiefstalbeveiliging-voor-mijn-voertuig' },

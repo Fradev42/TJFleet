@@ -2,6 +2,21 @@
 import Base from '../../layouts/Base.astro';
 import BelBlok from '../../components/BelBlok.astro';
 import { gidsen } from '../../gidsen';
+import { site } from '../../config';
+
+const basis = Astro.site ?? site.url;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Gidsen voor eigenaars van klassieke en exclusieve wagens',
+  url: new URL('/gids/', basis).href,
+  inLanguage: 'nl-BE',
+  isPartOf: { '@id': `${site.url}/#website` },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: gidsen.map((g, i) => ({ '@type': 'ListItem', position: i + 1, name: g.titel, url: new URL(g.href, basis).href })),
+  },
+};
 
 ---
 <Base
@@ -33,6 +48,8 @@ import { gidsen } from '../../gidsen';
 
   <BelBlok />
 </Base>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
 <style>
   .gidsen { list-style: none; padding: 0; margin: 0; max-width: none; display: grid; gap: 1.25rem; }

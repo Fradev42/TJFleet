@@ -1,0 +1,121 @@
+---
+/**
+ * Opmaak voor een aparte dienstpagina (bv. /diensten/transport/): kop met kruimelpad, tekst, vragen en uitnodiging.
+ * Voegt Service-, BreadcrumbList- en FAQPage-schema toe.
+ */
+import Base from './Base.astro';
+import { site, telHref } from '../config';
+import { Image } from 'astro:assets';
+import { paginafoto, deelafbeelding } from '../lib/paginafotos';
+
+interface Props {
+  title: string;
+  description: string;
+  h1: string;
+  intro: string;
+  /** Korte naam van de dienst voor het schema, bv. 'Reiniging en lakbescherming'. */
+  dienst: string;
+  vragen?: { vraag: string; antwoord: string }[];
+  uitnodiging: { titel: string; tekst: string };
+}
+const { title, description, h1, intro, dienst, vragen = [], uitnodiging } = Astro.props;
+const basis = Astro.site ?? site.url;
+const slug = Astro.url.pathname.split('/').filter(Boolean).pop()!;
+const foto = await paginafoto(slug);
+const afbeelding = await deelafbeelding(slug);
+const pagina = new URL(Astro.url.pathname, basis).href;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: dienst,
+  serviceType: dienst,
+  description,
+  url: pagina,
+  image: new URL(afbeelding, basis).href,
+  provider: { '@id': `${site.url}/#bedrijf` },
+  areaServed: [
+    { '@type': 'AdministrativeArea', name: 'Oost-Vlaanderen' },
+    { '@type': 'AdministrativeArea', name: 'West-Vlaanderen' },
+  ],
+};
+const kruimels = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', basis).href },
+    { '@type': 'ListItem', position: 2, name: 'Diensten', item: new URL('/diensten/', basis).href },
+    { '@type': 'ListItem', position: 3, name: h1, item: pagina },
+  ],
+};
+const faq = vragen.length ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: vragen.map((v) => ({ '@type': 'Question', name: v.vraag, acceptedAnswer: { '@type': 'Answer', text: v.antwoord } })),
+} : null;
+---
+<Base title={title} description={description} ogImage={afbeelding}>
+  <header class="paginakop">
+    <div class="wrap">
+      <nav aria-label="Kruimelpad" class="kruimelpad">
+        <a href="/">Home</a> <span aria-hidden="true">›</span> <a href="/diensten/">Diensten</a>
+      </nav>
+      <h1>{h1}</h1>
+      <p class="intro">{intro}</p>
+    </div>
+  </header>
+
+  {foto && (
+    <div class="wrap dienst__foto">
+      <Image src={foto.foto} alt={foto.alt} widths={[480, 800, 1200, 1600].filter((w) => w <= foto.foto.width)} sizes="(min-width: 75em) 72rem, 100vw" loading="eager" fetchpriority="high" />
+    </div>
+  )}
+
+  <article class="sectie">
+    <div class="wrap"><div class="dienst">
+      <slot />
+
+      {vragen.length > 0 && (
+        <section class="dienst__faq" aria-labelledby="faq-titel">
+          <h2 id="faq-titel">Veelgestelde vragen</h2>
+          <dl>
+            {vragen.map((v) => <div><dt>{v.vraag}</dt><dd>{v.antwoord}</dd></div>)}
+          </dl>
+        </section>
+      )}
+
+      <aside class="dienst__uitnodiging" aria-label="Kennismaking">
+        <p class="dienst__uitnodiging-titel">{uitnodiging.titel}</p>
+        <p>{uitnodiging.tekst}</p>
+        <div class="knoppen">
+          <a class="knop" href={telHref}>Bel ons</a>
+          <a class="knop knop--tweede" href="/contact/">Kennismaking aanvragen</a>
+        </div>
+      </aside>
+    </div></div>
+  </article>
+</Base>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+<script type="application/ld+json" set:html={JSON.stringify(kruimels)} />
+{faq && <script type="application/ld+json" set:html={JSON.stringify(faq)} />}
+
+<style>
+  .kruimelpad { font-size: 0.95rem; margin-bottom: 1.25rem; color: var(--kleur-tekst-zacht); }
+  .kruimelpad a { display: inline-block; padding-block: 0.4rem; }
+  .dienst { max-width: 46rem; }
+  .dienst :global(h2) { font-size: clamp(1.45rem, 2.6vw, 1.85rem); margin-top: 2.5rem; }
+  .dienst :global(h2:first-child) { margin-top: 0; }
+  .dienst :global(ul) { padding-left: 1.25rem; }
+  .dienst :global(li) { margin-bottom: 0.5rem; }
+  .dienst__foto { margin-top: 2rem; }
+  .dienst__foto :global(img) { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--radius); }
+  .dienst__faq { margin-top: 3rem; }
+  .dienst__faq dl { margin: 0; max-width: none; }
+  .dienst__faq dl > div { padding-block: 1rem; border-top: 1px solid var(--kleur-lijn); }
+  .dienst__faq dl > div:last-child { border-bottom: 1px solid var(--kleur-lijn); }
+  .dienst__faq dt { font-family: var(--font-titel); font-size: 1.2rem; color: var(--kleur-accent); margin-bottom: 0.35rem; }
+  .dienst__faq dd { margin: 0; }
+  .dienst__uitnodiging { margin-top: 3rem; padding: 1.75rem; background: var(--kleur-vlak); border-radius: var(--radius); }
+  .dienst__uitnodiging-titel { font-family: var(--font-titel); font-size: 1.45rem; color: var(--kleur-accent); margin-bottom: 0.5rem; }
+</style>

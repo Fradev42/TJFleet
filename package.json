@@ -8,7 +8,10 @@
     "build": "astro build",
     "preview": "astro preview",
     "test": "node tests/formulier.test.mjs",
-    "dev:functions": "npm run build && wrangler pages dev dist --binding MAIL_DRYRUN=1"
+    "dev:functions": "npm run build && wrangler pages dev dist --binding MAIL_DRYRUN=1",
+    "og": "node scripts/og-kaarten.mjs",
+    "controle": "node scripts/controle.mjs",
+    "links:extern": "node scripts/links-extern.mjs"
   },
   "dependencies": {
     "@fontsource-variable/source-sans-3": "^5.3.1",

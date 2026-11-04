@@ -70,3 +70,29 @@ export function bouwEmail(g) {
     antwoordAan: g.email ? eenRegel(g.email) : undefined,
   };
 }
+
+/**
+ * Bevestiging voor de aanvrager. Bewust zonder de ingevulde naam of boodschap:
+ * zo kan het formulier niet misbruikt worden om eigen tekst naar een vreemd adres te sturen.
+ */
+export function bouwBevestiging(g, { naam, telefoon, email }) {
+  if (!g.email || !emailGeldig(g.email)) return undefined;
+  return {
+    aan: eenRegel(g.email),
+    onderwerp: `Uw aanvraag bij ${naam} is goed ontvangen`,
+    tekst: [
+      'Goedendag,',
+      '',
+      `Hartelijk dank voor uw aanvraag via de website van ${naam}. We hebben ze goed ontvangen en bellen u binnen één werkdag terug.`,
+      '',
+      `Liever meteen iemand spreken? Bel ons op ${telefoon}.`,
+      '',
+      'Hebt u deze aanvraag niet zelf gedaan? Dan mag u deze e-mail negeren. We bewaren uw gegevens niet langer dan nodig.',
+      '',
+      'Met vriendelijke groeten,',
+      naam,
+      email,
+      '',
+    ].join('\n'),
+  };
+}

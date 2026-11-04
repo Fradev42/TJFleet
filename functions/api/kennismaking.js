@@ -8,9 +8,10 @@
  *   RESEND_API_KEY   (secret)  API-sleutel van de e-maildienst (Resend, https://resend.com)
  *   MAIL_FROM                  afzender op een geverifieerd domein, bv. "Website APEX <website@apexcollectioncare.be>"
  *   MAIL_TO                    ontvanger, standaard info@apexcollectioncare.be
+ *   MAIL_BEVESTIGING = "1"     ook een korte bevestiging sturen naar de aanvrager, als die een e-mailadres opgaf
  *   MAIL_DRYRUN = "1"          alleen voor lokaal testen: niets versturen, wel "gelukt" antwoorden
  */
-import { leesFormulier, controleer, isSpam, bouwEmail, FOUTMELDINGEN } from '../../src/lib/formulier-logica.js';
+import { leesFormulier, controleer, isSpam, bouwEmail, bouwBevestiging, FOUTMELDINGEN } from '../../src/lib/formulier-logica.js';
 
 const BEDANKT = '/contact/bedankt/';
 const TELEFOON = '0473 76 09 09';
@@ -41,21 +42,34 @@ function antwoord(request, { ok, fouten = [], status }) {
   return foutPagina('Het verzenden is niet gelukt', [], status);
 }
 
-async function verstuur(env, mail) {
+async function stuurMail(env, bericht) {
   if (env.MAIL_DRYRUN === '1') return;
   if (!env.RESEND_API_KEY || !env.MAIL_FROM) throw new Error('e-maildienst niet ingesteld');
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      from: env.MAIL_FROM,
-      to: [env.MAIL_TO || STANDAARD_ONTVANGER],
-      subject: mail.onderwerp,
-      text: mail.tekst,
-      ...(mail.antwoordAan ? { reply_to: mail.antwoordAan } : {}),
-    }),
+    body: JSON.stringify({ from: env.MAIL_FROM, ...bericht }),
   });
   if (!res.ok) throw new Error(`e-maildienst antwoordde ${res.status}`);
+}
+
+const verstuur = (env, mail) => stuurMail(env, {
+  to: [env.MAIL_TO || STANDAARD_ONTVANGER],
+  subject: mail.onderwerp,
+  text: mail.tekst,
+  ...(mail.antwoordAan ? { reply_to: mail.antwoordAan } : {}),
+});
+
+/** Bevestiging naar de aanvrager; een fout hierbij laat de aanvraag zelf niet mislukken. */
+async function bevestig(env, gegevens) {
+  if (env.MAIL_BEVESTIGING !== '1') return;
+  const b = bouwBevestiging(gegevens, { naam: 'APEX Collection Care', telefoon: TELEFOON, email: env.MAIL_TO || STANDAARD_ONTVANGER });
+  if (!b) return;
+  try {
+    await stuurMail(env, { to: [b.aan], subject: b.onderwerp, text: b.tekst, reply_to: env.MAIL_TO || STANDAARD_ONTVANGER });
+  } catch (fout) {
+    console.error('Bevestiging niet verstuurd:', fout instanceof Error ? fout.message : 'onbekend');
+  }
 }
 
 export async function onRequestPost({ request, env }) {
@@ -77,6 +91,7 @@ export async function onRequestPost({ request, env }) {
 
   try {
     await verstuur(env, bouwEmail(gegevens));
+    await bevestig(env, gegevens);
     return antwoord(request, { ok: true, status: 200 });
   } catch (fout) {
     // Nooit de inhoud van het formulier loggen, enkel de technische oorzaak.

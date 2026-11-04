@@ -141,6 +141,22 @@ Legende: 🔴 blokkerend voor livegang · 🟠 belangrijk · 🟢 kleiner
   5. Overwegen in Google Analytics de **IP-anonimisering** en de bewaartermijn op het minimum te zetten, en **Google Signals** uit te laten, tenzij u dat nodig hebt.
   6. Verandert de cookiebanner wezenlijk (een nieuwe categorie of dienst), verhoog dan `cookies.versie`. Iedereen krijgt de vraag dan opnieuw.
 
+## 🟠 9c. SEO buiten de site (Search Console, Bedrijfsprofiel, gidsen)
+
+- **Wat:** de site aanmelden bij Google Search Console en Bing Webmaster Tools, een Google Bedrijfsprofiel aanmaken, Bing Places en Apple Business Connect invullen, en het bedrijf vermelden in bedrijvengidsen en bij vakorganisaties, overal met exact dezelfde gegevens.
+- **Geblokkeerd door:** de site moet eerst live staan op het eigen domein (taak 1). Inloggen, verificatiecodes, DNS-records en het aanvaarden van voorwaarden kunnen alleen de eigenaars.
+- **Deblokkeren:** de eigenaars, met de Claude-extensie in Chrome als hulp.
+- **Al gedaan:**
+  - Een volledige prompt voor de Claude-extensie in Chrome: `docs/prompt-seo-buitenaf.md`. Die werkt de stappen in volgorde af (Search Console, Bing, Bedrijfsprofiel, Bing Places en Apple, gidsen, consistentiecontrole), stopt telkens als u iets moet doen, en geeft op het einde een logboek.
+  - Op de site zelf: sitemap op `/sitemap.xml`, `robots.txt`, canonical-URL's, LocalBusiness-, WebSite-, Article-, Service-, FAQPage- en BreadcrumbList-schema, en een deelafbeelding per pagina.
+- **Daarna:**
+  1. Open Chrome, log in op het zakelijke Google-account en plak de prompt vanaf "Je taak" in de Claude-extensie. Houd uw telefoon en het Cloudflare-dashboard bij de hand.
+  2. Zet de DNS-records die Google en Bing vragen in Cloudflare (de extensie geeft de exacte waarde).
+  3. Dien in Search Console en Bing de sitemap in: `https://www.apexcollectioncare.be/sitemap.xml`.
+  4. Wacht op de briefkaart of videoverificatie van het Google Bedrijfsprofiel en rond die af.
+  5. Bewaar het logboek van de extensie, met per dienst de link en de inloggegevens (in uw wachtwoordbeheerder, niet in de repository).
+  6. Een maand later: in Search Console nakijken of alle pagina's geïndexeerd zijn, en bij "Verbeteringen" of de FAQ- en kruimelpadgegevens zonder fouten gelezen worden.
+
 ## 🟢 10. Nieuwe teamfoto's
 
 - **Wat:** twee portretten in dezelfde stijl en resolutie.
@@ -163,6 +179,55 @@ Legende: 🔴 blokkerend voor livegang · 🟠 belangrijk · 🟢 kleiner
   ```
     Strict-Transport-Security: max-age=31536000; includeSubDomains
   ```
+
+## 🟠 13. Foto's per gids en dienst (Gemini)
+
+- **Wat:** een eigen foto bovenaan elke gids en dienstpagina, die ook de deelafbeelding wordt.
+- **Geblokkeerd door:** de foto's moeten nog gemaakt en nagekeken worden (geen merklogo's, geen leesbare platen, geen gezichten).
+- **Al gedaan:** de plek voor de foto op elke gids en dienstpagina, de alt-teksten (`src/lib/paginafotos.ts`), en een titelkaart per pagina in `public/og/` die gebruikt wordt zolang er geen foto is. Prompts per pagina: `docs/prompt-gidsfotos.md`.
+- **Daarna:** de foto's opslaan als `src/assets/paginafotos/<slug>.jpg`, de alt-tekst nakijken, `npm run build`.
+
+## 🟠 14. Bevestigingsmail naar de aanvrager aanzetten
+
+- **Wat:** wie het formulier invult met een e-mailadres, krijgt een korte bevestiging ("We bellen u binnen één werkdag terug").
+- **Geblokkeerd door:** het formulier moet eerst werken (taak 2), en u beslist of u dit wilt.
+- **Al gedaan:** de bevestiging is gebouwd en getest. Ze bevat bewust geen ingevulde tekst, zodat het formulier niet misbruikt kan worden om berichten naar vreemden te sturen. Een fout bij de bevestiging laat de aanvraag zelf niet mislukken.
+- **Daarna:** in Cloudflare Pages de variabele `MAIL_BEVESTIGING` op `1` zetten. Belooft u "binnen één werkdag", hou u er dan ook aan; anders past u de tekst aan in `bouwBevestiging` in `src/lib/formulier-logica.js` en op `/contact/bedankt/`.
+
+## 🟠 15. Automatische controle in GitHub
+
+- **Wat:** bij elke push de build, de formuliertests en de SEO- en linkcontrole, en elke maand de externe bronlinks.
+- **Al gedaan:** `.github/workflows/controle.yml`, `scripts/controle.mjs` en `scripts/links-extern.mjs` (ook lokaal: `npm run controle`, `npm run links:extern`).
+- **Daarna:**
+  1. Op GitHub bij **Actions** nakijken of de eerste run groen is. Staat Actions uit voor de repository, zet het dan aan.
+  2. Onder uw GitHub-profiel → *Settings → Notifications → Actions* nakijken dat u een e-mail krijgt als een run faalt.
+  3. Overweeg een vaste productiebranch (`main`) in Cloudflare Pages, met de andere branches als preview. Zo ziet u een wijziging eerst op een previewadres voordat ze live gaat. Zet in GitHub dan een *branch protection rule* op `main` die een groene controle vraagt.
+
+## 🟢 16. Monitoring van de site en het formulier
+
+- **Wat:** een melding krijgen als de site of het formulier niet werkt.
+- **Geblokkeerd door:** de site moet live staan (taak 1), en een account bij een monitoringdienst kunnen alleen de eigenaars aanmaken.
+- **Daarna:** een gratis account bij bv. UptimeRobot of Better Stack, met een controle op `https://www.apexcollectioncare.be/` (elke 5 minuten) en een melding per e-mail of sms. Verstuur daarnaast elke maand zelf een testaanvraag via het formulier.
+
+## 🟢 17. Meten wat werkt (conversies)
+
+- **Wat:** klikken op "Bel ons", op het e-mailadres en verstuurde formulieren meten als conversie.
+- **Geblokkeerd door:** de Google-tag (taak 9b).
+- **Al gedaan:** zodra de tag er is en de bezoeker toestemming gaf, stuurt de site de gebeurtenissen `telefoon_klik`, `email_klik` en `generate_lead` (na het formulier) door.
+- **Daarna:** in Google Analytics `generate_lead` en `telefoon_klik` als **belangrijke gebeurtenis** (conversie) markeren. Bij Tag Manager: triggers op die gebeurtenissen maken.
+
+## 🟢 18. Beslissingen en inhoud van de eigenaars
+
+Dit kan ik niet zelf invullen; zodra u beslist, bouw ik het.
+
+- **WhatsApp-knop** naast "Bel ons". Nodig: het nummer dat u daarvoor wilt gebruiken, en of iemand er ook op antwoordt.
+- **Afspraak via een online agenda** (bv. Cal.com of Calendly) bij "Kennismaking aanvragen". Nodig: de dienst en de link. Vraagt een aanpassing van de CSP en mogelijk van het cookiebeleid.
+- **Concrete garanties**, bv. "offerte binnen 5 werkdagen", "elke wagen verzekerd tijdens transport", "maandelijks opzegbaar". Nodig: wat u echt kunt beloven.
+- **Korte video** (± 1 minuut) waarin jullie je voorstellen, zonder automatisch afspelen. Nodig: de video. Bij YouTube of Vimeo: CSP en cookiebeleid aanpassen, of de video zelf hosten.
+- **Echte screenshots of een rondleiding van de app**, zodra die werkt, in plaats van het nagebouwde voorbeeld.
+- **Algemene voorwaarden** voor de dienstverlening. Die horen in uw offerte; een link op de site kan daarna.
+- **Een test met twee of drie mensen uit de doelgroep:** laat ze een gids zoeken en een aanvraag doen, en kijk mee zonder te helpen.
+- **Jaarlijkse controle van de gidsen**, elk jaar in januari, met `docs/controle-gidsen.md`. Zet een herinnering in uw agenda.
 
 ## Nog na te lopen (uit eerdere rondes)
 

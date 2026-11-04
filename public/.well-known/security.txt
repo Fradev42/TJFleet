@@ -1,0 +1,5 @@
+# Een beveiligingsprobleem gevonden op deze website? Laat het ons weten.
+Contact: mailto:info@apexcollectioncare.be
+Expires: 2027-11-04T00:00:00.000Z
+Preferred-Languages: nl, en, fr
+Canonical: https://www.apexcollectioncare.be/.well-known/security.txt

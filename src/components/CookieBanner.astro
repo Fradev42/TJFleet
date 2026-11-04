@@ -163,6 +163,17 @@ const instellingen = { id: cookies.googleTagId.trim(), dagen: cookies.bewaarDage
     b.addEventListener('click', open);
   });
 
+  // Conversies meten. Zonder toestemming wordt Google niet geladen en blijven deze gebeurtenissen lokaal.
+  document.addEventListener('click', (e) => {
+    const link = (e.target as HTMLElement).closest<HTMLAnchorElement>('a[href^="tel:"], a[href^="mailto:"]');
+    if (!link) return;
+    const tel = link.href.startsWith('tel:');
+    gtag('event', tel ? 'telefoon_klik' : 'email_klik', { link_url: link.href, pagina: location.pathname });
+  });
+  if (location.pathname === '/contact/bedankt/' && document.referrer.includes('/contact')) {
+    gtag('event', 'generate_lead', { formulier: 'kennismaking' });
+  }
+
   const bestaand = lees();
   if (bestaand) pasToe(bestaand);
   else banner.hidden = false;

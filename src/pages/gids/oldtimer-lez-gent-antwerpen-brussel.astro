@@ -10,6 +10,11 @@ import Gids from '../../layouts/Gids.astro';
   gepubliceerd="2026-11-02"
   auteur="Jasper Descamps"
   uitnodiging={{ titel: 'Liever dat iemand de registraties voor u bijhoudt?', tekst: 'Wij houden per wagen bij waar hij geregistreerd is, regelen nieuwe registraties en laten het u weten als de regels veranderen.' }}
+  vragen={[
+    { vraag: 'Mag een oldtimer de LEZ van Gent en Antwerpen in?', antwoord: 'Ja, als de wagen 30 jaar of ouder is, als oldtimer ingeschreven is met een O-plaat, 1-O-plaat of gepersonaliseerde plaat, en u hem gratis registreert bij de stad.' },
+    { vraag: 'Geldt een registratie in Gent ook in Antwerpen?', antwoord: 'Ja, dat bevestigt de stad Gent zelf. Voor Brussel gelden aparte regels.' },
+    { vraag: 'Mag een oldtimer in de Brusselse LEZ?', antwoord: 'Voorlopig is er een uitzondering voor oldtimers van 30 jaar of ouder met een Belgische O-plaat. Kijk per wagen na op lez.brussels of u ze moet aanvragen.' },
+  ]}
   bronnen={[
     { titel: 'Stad Gent: registratie LEZ voor oldtimers', url: 'https://stad.gent/nl/mobiliteit-openbare-werken/lage-emissiezone/niet-toegelaten-de-lage-emissiezone-dit-zijn-je-opties/registratie-lez-oldtimer-ouder-dan-30-jaar' },
     { titel: 'Vlaanderen.be: lage-emissiezones (LEZ)', url: 'https://www.vlaanderen.be/lez' },

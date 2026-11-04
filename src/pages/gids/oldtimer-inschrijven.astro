@@ -10,6 +10,11 @@ import Gids from '../../layouts/Gids.astro';
   gepubliceerd="2026-11-02"
   auteur="Jasper Descamps"
   uitnodiging={{ titel: 'Wordt een van uw wagens binnenkort 30 jaar?', tekst: 'Wij plannen de oldtimerkeuring, regelen de inschrijving met uw makelaar en registreren de wagen in de lage-emissiezones waar u rijdt.' }}
+  vragen={[
+    { vraag: 'Vanaf wanneer is een wagen een oldtimer in België?', antwoord: 'Een personenwagen kan sinds 1 januari 2023 als oldtimer ingeschreven worden zodra hij 30 jaar oud is, gerekend vanaf de eerste inschrijving. Voor motorfietsen blijft het 25 jaar.' },
+    { vraag: 'Mag ik met een O-plaat naar het werk rijden?', antwoord: 'Nee. Een O-plaat is voor recreatief gebruik. Woon-werkverkeer, ritten naar school en beroepsmatig gebruik zijn niet toegelaten. Op weekdagen en ’s avonds rijden mag wel.' },
+    { vraag: 'Moet een oldtimer eerst gekeurd worden?', antwoord: 'Ja. Voordat u de wagen als oldtimer inschrijft, moet hij een eerste oldtimerkeuring doorstaan in een erkend keuringscentrum.' },
+  ]}
   bronnen={[
     { titel: 'div-info.be (informatiesite, geen overheidssite): O-plaat (oldtimer)', url: 'https://div-info.be/nl/nummerplaat/o-plaat-oldtimer/' },
     { titel: 'Vlaamse Belastingdienst: oldtimers, regels voor keuring en verkeersbelasting', url: 'https://belastingen.vlaanderen.be/oldtimers-regels-keuring-en-verkeersbelasting' },

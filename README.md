@@ -1,6 +1,6 @@
 # Website — beheer van klassieke wagens
 
-Kleine statische website (Astro, geen JavaScript-framework). Vijf pagina's plus privacy, bedankt en 404.
+Kleine statische website (Astro, geen JavaScript-framework): Home, Diensten (met aparte pagina's voor reiniging en transport), Werkwijze, Werkgebied, 18 gidsen, Over ons, Contact, privacy en cookiebeleid.
 Geen cookies, geen tracking, lettertypes worden van de eigen server geladen.
 
 ## 1. Lokaal starten
@@ -72,6 +72,22 @@ Vervang het bestand met dezelfde naam. De alt-tekst staat in `site.logoAlt`.
 
 De afbeelding die verschijnt als iemand de site deelt (WhatsApp, LinkedIn, e-mail) is `public/og-image.jpg` (1200 × 630 px).
 
+### Foto per gids of dienstpagina
+
+Elke gids en de dienstpagina's onder `/diensten/` hebben een plek voor een eigen foto. Zet een liggende foto (16:9, min. 1600 × 900 px)
+in `src/assets/paginafotos/` met de slug als naam, bv. `youngtimer.jpg` of `transport.jpg`. Ze verschijnt dan bovenaan
+de pagina en wordt de deelafbeelding. De alt-teksten staan in `src/lib/paginafotos.ts`. Prompts om ze met Gemini te maken:
+`docs/prompt-gidsfotos.md`.
+
+Zonder eigen foto gebruikt een pagina een **titelkaart** uit `public/og/` (logo en titel op crème). Die maakt u opnieuw
+na een nieuwe of gewijzigde titel:
+
+```bash
+npm run build && npm run og && npm run build
+```
+
+(`npm run og` gebruikt Playwright; lokaal eenmalig `npm i -g playwright && npx playwright install chromium`.)
+
 Partnerlogo's: zet de bestanden in `public/partners/` en voeg per partner een regel toe aan `partners` in
 `src/config.ts`. Het logoraster op Over ons verschijnt vanzelf zodra die lijst niet leeg is.
 
@@ -99,6 +115,7 @@ Instellen in Cloudflare Pages → *Settings → Variables and Secrets*:
 | `RESEND_API_KEY` (secret) | API-sleutel van Resend |
 | `MAIL_FROM` | afzender op een geverifieerd domein, bv. `Website APEX <website@apexcollectioncare.be>` |
 | `MAIL_TO` | ontvanger (standaard `info@apexcollectioncare.be`) |
+| `MAIL_BEVESTIGING` | `1` om de aanvrager ook een korte bevestiging te sturen (alleen als die een e-mailadres opgaf; zonder de ingevulde tekst) |
 
 Lokaal testen, zonder iets te versturen:
 
@@ -116,6 +133,19 @@ in de footer en de cookietabel op `/cookiebeleid/`. Google wordt pas geladen na 
 Zie `TODO-LIVEGANG.md`, taak 9b, voor de stappen daarna.
 
 ## Kwaliteit
+
+```bash
+npm test                  # formulierlogica
+npm run build
+npm run controle          # titles, descriptions, één H1, canonical, JSON-LD, alt-teksten, interne links, sitemap
+npm run links:extern      # externe bronlinks in de gidsen (sommige sites weigeren automatische aanvragen)
+```
+
+GitHub Actions (`.github/workflows/controle.yml`) doet de eerste drie bij elke push, en de externe links elke eerste
+maandag van de maand. De gidsen kijkt u best elk jaar na met `docs/controle-gidsen.md`.
+
+Security-headers, waaronder een Content-Security-Policy, staan in `public/_headers`. Komt er een externe dienst bij
+(een agenda, een video, een kaart), voeg dan haar domein toe aan de CSP, anders wordt ze geblokkeerd.
 
 Getest op 375, 768 en 1280 px breed. Lighthouse (lokaal, mobiel en desktop): 99–100 voor Performance en 100 voor
 Accessibility, Best Practices en SEO op alle pagina's — met de placeholderfoto's. Controleer na het plaatsen van echte

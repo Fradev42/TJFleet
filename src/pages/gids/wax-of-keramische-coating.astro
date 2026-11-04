@@ -9,7 +9,12 @@ import Gids from '../../layouts/Gids.astro';
   bijgewerkt="2026-11-03"
   gepubliceerd="2026-11-03"
   auteur="Thomas Vancoillie"
-  uitnodiging={{ titel: 'Liever dat wij de lak verzorgen?', tekst: 'Wij reinigen uw wagens en beschermen de lak naar uw wens met wax of een coating, afgestemd op de leeftijd en het gebruik van elke wagen.' }}
+  uitnodiging={{ titel: 'Liever dat wij de lak verzorgen?', tekst: 'Wij <a href="/diensten/reiniging-en-coating/">reinigen uw wagens</a> en beschermen de lak naar uw wens met wax of een coating, afgestemd op de leeftijd en het gebruik van elke wagen.' }}
+  vragen={[
+    { vraag: 'Hoe lang gaat een keramische coating mee?', antwoord: 'Ongeveer 1 tot 5 jaar, afhankelijk van het product en het onderhoud. Wax beschermt enkele weken tot enkele maanden.' },
+    { vraag: 'Is een keramische coating goed voor een oldtimer?', antwoord: 'Niet altijd. De lak wordt meestal eerst gepolijst, en dat neemt telkens wat lak weg. Bij originele lak kiezen veel eigenaars daarom voor wax: zacht en omkeerbaar.' },
+    { vraag: 'Beschermt een coating tegen steenslag?', antwoord: 'Nee. Tegen steenslag en kleine krassen helpt alleen een beschermfolie (PPF).' },
+  ]}
   bronnen={[
     { titel: 'Coatings.be: keramische autocoating in België', url: 'https://coatings.be/keramische-auto-coating-belgie/' },
     { titel: 'GM Detailing: keramische coating, prijs en wat de kostprijs bepaalt', url: 'https://gm-detailing.be/nl/keramische-coating-auto-prijs-wat-bepaalt/' },

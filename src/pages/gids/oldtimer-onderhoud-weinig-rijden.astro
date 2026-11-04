@@ -10,6 +10,11 @@ import Gids from '../../layouts/Gids.astro';
   gepubliceerd="2026-11-02"
   auteur="Thomas Vancoillie"
   uitnodiging={{ titel: 'Liever dat iemand het onderhoud voor u plant?', tekst: 'Wij plannen het jaarlijkse onderhoud bij een vaste specialist die uw type kent, regelen het vervoer en houden het onderhoudsboek bij.' }}
+  vragen={[
+    { vraag: 'Hoe vaak moet een oldtimer naar onderhoud?', antwoord: 'Minstens één keer per jaar, ook als hij nauwelijks gereden heeft. Olie, remvloeistof, koelvloeistof, banden en rubbers verouderen met de tijd, niet met de kilometers.' },
+    { vraag: 'Is af en toe starten genoeg?', antwoord: 'Nee. Een korte rit of stationair draaien doet eerder kwaad dan goed. Laat de wagen een rit van minstens een halfuur maken, zodat motor en versnellingsbak goed op temperatuur komen.' },
+    { vraag: 'Moet ik de olie verversen als ik weinig rijd?', antwoord: 'Ja. Olie neemt ook zonder kilometers vocht en zuren op. Bij weinig gebruik is jaarlijks verversen gebruikelijk; volg de voorschriften voor uw motor.' },
+  ]}
   bronnen={[
     { titel: 'Liqui Moly: onderhoud van old- en youngtimers', url: 'https://www.liqui-moly.com/nl/be/producten/tips-en-onderwerpen/onderhoud-van-old-en-youngtimers-verjongingskuur-voor-uw-favoriet.html' },
     { titel: 'AutoScout24: auto in winterstalling', url: 'https://www.autoscout24.be/nl/informeren/advies/auto-onderhoud/auto-in-de-winterstalling/' },

@@ -10,6 +10,11 @@ import Gids from '../../layouts/Gids.astro';
   gepubliceerd="2026-11-03"
   auteur="Thomas Vancoillie"
   uitnodiging={{ titel: 'Liever dat wij het interieur verzorgen?', tekst: 'Wij reinigen uw wagens ook vanbinnen, en verzorgen leder, hout en kap met middelen die passen bij de leeftijd en de afwerking van elke wagen.' }}
+  vragen={[
+    { vraag: 'Hoe vaak verzorg ik lederen autozetels?', antwoord: 'Voor de meeste wagens volstaan enkele beurten per jaar. Een wagen die veel in de zon staat, vraagt vaker verzorging dan een wagen in een donkere garage.' },
+    { vraag: 'Mag ik afwasmiddel gebruiken op autoleder?', antwoord: 'Liever niet. Huishoudproducten zijn te agressief en kunnen het leder uitdrogen. Gebruik een milde lederreiniger en test die eerst op een verborgen plek.' },
+    { vraag: 'Hoe vaak impregneer ik een stoffen cabriodak?', antwoord: 'Voor veel wagens is eens per jaar of per seizoen gebruikelijk, afhankelijk van hoeveel de wagen buiten staat. Volg het advies van de fabrikant van het dak.' },
+  ]}
   bronnen={[]}
 >
   <div class="kort">
@@ -61,5 +66,5 @@ import Gids from '../../layouts/Gids.astro';
   </ul>
 
   <h2>Hoe wij dit voor u opvolgen</h2>
-  <p>Wij reinigen en verzorgen het interieur van uw wagens, inclusief leder en kap, met middelen die bij elke wagen passen. Herstellingen laten we uitvoeren door een vaste bekleder of specialist, nadat u het voorstel goedgekeurd hebt.</p>
+  <p>Wij <a href="/diensten/reiniging-en-coating/">reinigen en verzorgen</a> het interieur van uw wagens, inclusief leder en kap, met middelen die bij elke wagen passen. Herstellingen laten we uitvoeren door een vaste bekleder of specialist, nadat u het voorstel goedgekeurd hebt.</p>
 </Gids>
