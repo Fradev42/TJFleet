@@ -8,23 +8,18 @@ Legende: 🔴 blokkerend voor livegang · 🟠 belangrijk · 🟢 kleiner
 
 ---
 
-## 🔴 1. Doorverwijzingen naar www instellen
+## ✅ 1. Eigen domein en doorverwijzingen (afgerond op 5 november 2026)
 
-- **Stand op 5 november 2026:** `https://www.apexcollectioncare.be` is gekoppeld en live, met de laatste versie van de site. Live nagekeken: canonical, robots.txt, sitemap (29 pagina's), 404-pagina, de 301 van `/gids/wagen-lang-stilstaan/`, de security-headers en het formulier (alleen met een spamtest, er is geen e-mail verstuurd).
-- **Wat nog moet:** `https://apexcollectioncare.be` (zonder www) en `https://apex-classic-car-care.pages.dev` geven allebei **200** en tonen dezelfde site. Dat is dubbele inhoud. Beide moeten permanent (301) doorverwijzen naar `https://www.apexcollectioncare.be`, met behoud van pad en querystring. De canonical wijst wel al naar www, dus het risico is klein, maar een redirect is de nette oplossing.
-- **Geblokkeerd door:** dit kan niet vanuit de repository. `public/_redirects` werkt niet over hostnamen heen, en een Pages Function zou bij elk bezoek aan elke pagina draaien.
-- **Deblokkeren:** de eigenaars, in het Cloudflare-dashboard:
-  1. **Zonder www:** in de zone `apexcollectioncare.be` → *Rules → Redirect Rules → Create rule*. Kies het sjabloon **"Redirect from root to WWW"**, of zelf: als *Hostname equals* `apexcollectioncare.be`, dan *Dynamic redirect* naar `concat("https://www.apexcollectioncare.be", http.request.uri.path)`, statuscode **301**, *Preserve query string* aan.
-  2. **pages.dev:** *Rules → Bulk Redirects*: een lijst maken met bron `apex-classic-car-care.pages.dev` en doel `https://www.apexcollectioncare.be`, statuscode **301**, en aanvinken: *Preserve query string*, *Subpath matching*, *Preserve path suffix* en *Include subdomains* **uit** (anders worden ook de previews van andere branches doorverwezen). Daarna een Bulk Redirect Rule maken die deze lijst gebruikt.
-- **Daarna:** zeg het mij, dan kijk ik het live na (taak 1b).
+- `https://www.apexcollectioncare.be` is live. Nagekeken: canonical, robots.txt, sitemap (29 pagina's), 404-pagina, de 301 van `/gids/wagen-lang-stilstaan/`, de security-headers en het formulier (alleen een spamtest).
+- In het Cloudflare-dashboard staan twee doorverwijzingen, allebei 301 met behoud van pad en querystring:
+  - Redirect Rule **"Root naar www (301)"**: `apexcollectioncare.be` → `https://www.apexcollectioncare.be`;
+  - Bulk Redirect **"pages.dev naar www (301)"** (lijst `apex_pages_dev_naar_www`): `apex-classic-car-care.pages.dev` → `https://www.apexcollectioncare.be`, zonder subdomeinen, zodat previews van andere branches blijven werken.
+- Live nagekeken: `https://apex-classic-car-care.pages.dev/gids/oldtimer-verzekeren/?a=1` en `https://apexcollectioncare.be/gids/youngtimer/?a=1` geven 301 naar dezelfde pagina op www, en www zelf geeft 200.
+- Verandert het domein toch, pas dan `site.url` in `src/config.ts` en beide doorverwijzingen aan.
 
-## 🔴 1b. Noindex-blok voor pages.dev opruimen
+## ✅ 1b. Noindex-blok voor pages.dev opgeruimd (5 november 2026)
 
-- **Wat:** het blok met `X-Robots-Tag: noindex` voor de pages.dev-host bovenaan `public/_headers` verwijderen.
-- **Geblokkeerd door:** de 301 van pages.dev naar www (taak 1). Live nagekeken op 5 november 2026: pages.dev stuurt nog `x-robots-tag: noindex`, www niet. Dat is juist zo. Het blok blijft staan tot de redirect werkt, zodat Google pages.dev intussen niet indexeert.
-- **Daarna:** het blok en de drie commentaarregels erboven verwijderen, en nakijken:
-  1. `curl -I https://apex-classic-car-care.pages.dev/gids/oldtimer-verzekeren/` geeft `301` met `location: https://www.apexcollectioncare.be/gids/oldtimer-verzekeren/`;
-  2. `curl -I https://apexcollectioncare.be/` geeft `301` naar `https://www.apexcollectioncare.be/`.
+- Het blok met `X-Robots-Tag: noindex` voor de pages.dev-host is uit `public/_headers` gehaald, want pages.dev verwijst nu door naar www. Nakijken na de volgende deploy: `curl -sI https://www.apexcollectioncare.be/ | grep -i x-robots-tag` geeft niets.
 
 ## 🔴 2. Contactformulier: e-maildienst instellen
 

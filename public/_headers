@@ -1,8 +1,5 @@
-# Tot het eigen domein gekoppeld is: de pages.dev-host niet laten indexeren.
-# Geldt ALLEEN voor apex-classic-car-care.pages.dev, niet voor www.apexcollectioncare.be.
-# Na de koppeling dit blok verwijderen en pages.dev doorverwijzen (zie TODO-LIVEGANG.md).
-https://:project.pages.dev/*
-  X-Robots-Tag: noindex
+# apexcollectioncare.be en apex-classic-car-care.pages.dev verwijzen met 301 door naar www
+# via een Redirect Rule en een Bulk Redirect in het Cloudflare-dashboard (zie TODO-LIVEGANG.md, taak 1).
 
 /*
   # HSTS: browsers gebruiken voortaan altijd HTTPS. Zonder includeSubDomains, zolang niet zeker is dat elk subdomein HTTPS heeft.
