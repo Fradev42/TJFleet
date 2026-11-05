@@ -1,13 +1,13 @@
 # Automatische controle van de site.
 # - Bij elke push en pull request: build, formuliertests en de SEO-/linkcontrole (npm run controle).
-# - Elke eerste maandag van de maand: ook de externe bronlinks in de gidsen. Faalt die, dan krijgt u een e-mail van GitHub.
+# - Elke 1e van de maand: ook de externe bronlinks in de gidsen. Faalt die, dan krijgt u een e-mail van GitHub.
 name: Controle
 
 on:
   push:
   pull_request:
   schedule:
-    - cron: '17 6 1-7 * 1'
+    - cron: '17 6 1 * *'
   workflow_dispatch:
 
 permissions:

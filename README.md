@@ -140,8 +140,8 @@ npm run controle          # titles, descriptions, één H1, canonical, JSON-LD, 
 npm run links:extern      # externe bronlinks in de gidsen (sommige sites weigeren automatische aanvragen)
 ```
 
-GitHub Actions (`.github/workflows/controle.yml`) doet de eerste drie bij elke push, en de externe links elke eerste
-maandag van de maand. De gidsen kijkt u best elk jaar na met `docs/controle-gidsen.md`.
+GitHub Actions (`.github/workflows/controle.yml`) doet de eerste drie bij elke push, en de externe links elke 1e van
+de maand. De gidsen kijkt u best elk jaar na met `docs/controle-gidsen.md`.
 
 Security-headers, waaronder een Content-Security-Policy, staan in `public/_headers`. Komt er een externe dienst bij
 (een agenda, een video, een kaart), voeg dan haar domein toe aan de CSP, anders wordt ze geblokkeerd.
