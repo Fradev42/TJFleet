@@ -33,7 +33,7 @@ const jaar = new Date().getFullYear();
       <button type="button" class="sitefooter__cookieknop" data-tekstgrootte hidden>Tekst groter</button>
     </p>
     <p class="sitefooter__klein">
-      © {jaar} {site.naam} is een handelsnaam van {site.juridischeNaam}, maatschappelijke zetel {zetelTekst} · Ondernemingsnummer {site.btwNummer} · <a href={mailHref}>{site.email}</a> · <a href="/privacy/">Privacyverklaring</a> · {cookiesActief ? <>Cookies enkel met uw toestemming (<a href="/cookiebeleid/">cookiebeleid</a>).</> : 'Deze website gebruikt geen cookies.'}
+      © {jaar} {site.naam} is een handelsnaam van {site.juridischeNaam}, maatschappelijke zetel {zetelTekst} · Ondernemingsnummer {site.btwNummer} · {site.rpr} · <a href={mailHref}>{site.email}</a> · <a href="/privacy/">Privacyverklaring</a> · {cookiesActief ? <>Cookies enkel met uw toestemming (<a href="/cookiebeleid/">cookiebeleid</a>).</> : 'Deze website gebruikt geen cookies.'}
     </p>
   </div>
 </footer>

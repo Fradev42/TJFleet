@@ -61,6 +61,8 @@ export const site = {
 
   /** Ondernemingsnummer, bv. 'BE 0123.456.789'. */
   btwNummer: 'BE 1022.876.282',
+  /** Rechtspersonenregister (WER): de ondernemingsrechtbank van de maatschappelijke zetel. */
+  rpr: 'RPR Gent, afdeling Gent',
   /**
    * Officiële profielen van het bedrijf elders, voor schema.org (sameAs). Helpt Google om site en profielen te koppelen.
    * Vul aan zodra ze bestaan, bv. de LinkedIn-bedrijfspagina of de link "Delen" van het Google Bedrijfsprofiel.

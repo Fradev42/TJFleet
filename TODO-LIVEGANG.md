@@ -33,6 +33,7 @@ Legende: 🔴 blokkerend voor livegang · 🟠 belangrijk · 🟢 kleiner
   - Lokaal getest met `wrangler pages dev` (met en zonder JS, foutmeldingen, spam, vreemde herkomst, doorverwijzing).
   - Controleregels: `src/lib/formulier-logica.js`; tests: `npm test`.
 - **Gekozen dienst: Resend** (eenvoudige HTTP-API). Een andere dienst kan ook: alleen de functie `verstuur()` in `functions/api/kennismaking.js` aanpassen.
+- **Prompt voor de Claude-extensie in Chrome:** `docs/prompt-formulier-email.md`. Die kijkt eerst na of info@apexcollectioncare.be mail kan ontvangen, en zet daarna Resend, de DNS-records en de variabelen in Cloudflare Pages op, met een test op de live site.
 - **Daarna:**
   1. Account aanmaken bij Resend en het domein `apexcollectioncare.be` verifiëren. Resend geeft SPF- en DKIM-records die u in Cloudflare DNS toevoegt.
   2. In Cloudflare Pages → *Settings → Variables and Secrets* (Production):
@@ -78,12 +79,10 @@ Legende: 🔴 blokkerend voor livegang · 🟠 belangrijk · 🟢 kleiner
 - **Al gedaan:** het raster met "LOGO PARTNER" is verborgen; de tekst over het netwerk van specialisten blijft.
 - **Daarna:** de logo's in `public/partners/` zetten en per partner een item toevoegen aan `partners` in `src/config.ts`: `{ naam: '…', soort: 'Carrosserie', logo: '/partners/naam.svg' }`.
 
-## 🟠 7. RPR-vermelding nakijken
+## ✅ 7. RPR-vermelding (5 november 2026)
 
-- **Wat:** de vermelding "RPR Gent, afdeling Gent" bij de ondernemingsgegevens (WER).
-- **Geblokkeerd door:** de juiste rechtbank en afdeling bevestigen, bv. in de KBO of de oprichtingsakte van Frades BV.
-- **Al gedaan:** het volledige adres van de maatschappelijke zetel (Eedstraat 42A, 9052 Zwijnaarde), Frades BV, het ondernemingsnummer en het e-mailadres staan in de footer en op /contact/.
-- **Daarna:** de RPR toevoegen aan de zetelregel. Het makkelijkst is `zetelTekst` uit te breiden in `src/config.ts`, of een veld `rpr` toe te voegen en dat te tonen in `src/components/Footer.astro` (regel `sitefooter__klein`) en in `src/pages/contact/index.astro` (blok "Gegevens").
+- "RPR Gent, afdeling Gent" staat nu in de footer, op /contact/ (blok "Gegevens") en in de privacyverklaring. De waarde staat op één plek: `site.rpr` in `src/config.ts`.
+- Afgeleid uit de maatschappelijke zetel in Zwijnaarde (Gent). Wijkt de KBO of de oprichtingsakte af, pas dan alleen `site.rpr` aan.
 
 ## 🟠 8. Straatadres van de vestiging in Sint-Eloois-Winkel
 
