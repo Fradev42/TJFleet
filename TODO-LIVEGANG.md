@@ -176,7 +176,6 @@ Legende: 🔴 blokkerend voor livegang · 🟠 belangrijk · 🟢 kleiner
 ## 🟢 16. Monitoring van de site en het formulier
 
 - **Planning:** komt later (beslist op 5 november 2026).
-
 - **Wat:** een melding krijgen als de site of het formulier niet werkt.
 - **Geblokkeerd door:** alleen nog een account bij een monitoringdienst, dat kunnen alleen de eigenaars aanmaken. De site staat live.
 - **Daarna:** een gratis account bij bv. UptimeRobot of Better Stack, met een controle op `https://www.apexcollectioncare.be/` (elke 5 minuten) en een melding per e-mail of sms. Verstuur daarnaast elke maand zelf een testaanvraag via het formulier.
