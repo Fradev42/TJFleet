@@ -204,6 +204,14 @@ Dit kan ik niet zelf invullen; zodra u beslist, bouw ik het.
 - **Een test met twee of drie mensen uit de doelgroep:** laat ze een gids zoeken en een aanvraag doen, en kijk mee zonder te helpen.
 - **Jaarlijkse controle van de gidsen**, elk jaar in januari, met `docs/controle-gidsen.md`. Zet een herinnering in uw agenda.
 
+## 🟠 19. Cloudflare Web Analytics: uitzetten of toelaten
+
+- **Wat:** in het Cloudflare Pages-project staat **Web Analytics** aan. Cloudflare voegt daarom op elke pagina een script van `static.cloudflareinsights.com` toe.
+- **Probleem:** de Content-Security-Policy in `public/_headers` blokkeert dat script. Er wordt dus niets gemeten, de browser toont een fout in de console, en Lighthouse geeft live 92 in plaats van 100 voor Best Practices (nagekeken op 5 november 2026). De privacyverklaring en het cookiebeleid zeggen bovendien: "Wij meten geen bezoekersaantallen" en "geen trackers, statistieken".
+- **Beslissing van de eigenaars:**
+  - **Uitzetten (aanbevolen, tenzij u de cijfers echt gebruikt):** *Workers & Pages → project → Metrics → Web Analytics* uitschakelen. De teksten kloppen dan, en Best Practices wordt weer 100.
+  - **Toelaten:** zeg het mij. Dan voeg ik `https://static.cloudflareinsights.com` toe aan `script-src` en `https://cloudflareinsights.com` aan `connect-src`, en pas ik de privacyverklaring en het cookiebeleid aan. Cloudflare Web Analytics plaatst geen cookies en maakt geen profielen, dus er is geen cookiebanner voor nodig, maar u moet het wel vermelden.
+
 ## Nog na te lopen (uit eerdere rondes)
 
 - **De gidsen** laten nalezen door iemand met vakkennis, vooral die over de LEZ, de keuring, de verkeersbelasting en het overdragen van een collectie (notaris).
