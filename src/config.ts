@@ -61,6 +61,11 @@ export const site = {
 
   /** Ondernemingsnummer, bv. 'BE 0123.456.789'. */
   btwNummer: 'BE 1022.876.282',
+  /**
+   * Officiële profielen van het bedrijf elders, voor schema.org (sameAs). Helpt Google om site en profielen te koppelen.
+   * Vul aan zodra ze bestaan, bv. de LinkedIn-bedrijfspagina of de link "Delen" van het Google Bedrijfsprofiel.
+   */
+  profielen: [] as string[],
 
   /** Openingsuren voor schema.org (zaterdag op afspraak hoort hier bewust niet bij). */
   openingsuren: { dagen: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], van: '09:00', tot: '18:00' },

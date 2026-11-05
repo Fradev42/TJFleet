@@ -120,21 +120,28 @@ Legende: 🔴 blokkerend voor livegang · 🟠 belangrijk · 🟢 kleiner
   5. Overwegen in Google Analytics de **IP-anonimisering** en de bewaartermijn op het minimum te zetten, en **Google Signals** uit te laten, tenzij u dat nodig hebt.
   6. Verandert de cookiebanner wezenlijk (een nieuwe categorie of dienst), verhoog dan `cookies.versie`. Iedereen krijgt de vraag dan opnieuw.
 
-## 🟠 9c. SEO buiten de site (Search Console, Bedrijfsprofiel, gidsen)
+## 🟠 9c. SEO buiten de site
 
-- **Wat:** de site aanmelden bij Google Search Console en Bing Webmaster Tools, een Google Bedrijfsprofiel aanmaken, Bing Places en Apple Business Connect invullen, en het bedrijf vermelden in bedrijvengidsen en bij vakorganisaties, overal met exact dezelfde gegevens.
-- **Geblokkeerd door:** niets meer op de site: ze staat live op het eigen domein (5 november 2026). Inloggen, verificatiecodes, DNS-records en het aanvaarden van voorwaarden kunnen alleen de eigenaars. Richt Search Console liefst in als **domeineigendom** (`apexcollectioncare.be`, via een DNS-record in Cloudflare): dan telt het voor www, zonder www en http samen.
-- **Deblokkeren:** de eigenaars, met de Claude-extensie in Chrome als hulp.
-- **Al gedaan:**
-  - Een volledige prompt voor de Claude-extensie in Chrome: `docs/prompt-seo-buitenaf.md`. Die werkt de stappen in volgorde af (Search Console, Bing, Bedrijfsprofiel, Bing Places en Apple, gidsen, consistentiecontrole), stopt telkens als u iets moet doen, en geeft op het einde een logboek.
-  - Op de site zelf: sitemap op `/sitemap.xml`, `robots.txt`, canonical-URL's, LocalBusiness-, WebSite-, Article-, Service-, FAQPage- en BreadcrumbList-schema, en een deelafbeelding per pagina.
-- **Daarna:**
-  1. Open Chrome, log in op het zakelijke Google-account en plak de prompt vanaf "Je taak" in de Claude-extensie. Houd uw telefoon en het Cloudflare-dashboard bij de hand.
-  2. Zet de DNS-records die Google en Bing vragen in Cloudflare (de extensie geeft de exacte waarde).
-  3. Dien in Search Console en Bing de sitemap in: `https://www.apexcollectioncare.be/sitemap.xml`.
-  4. Wacht op de briefkaart of videoverificatie van het Google Bedrijfsprofiel en rond die af.
-  5. Bewaar het logboek van de extensie, met per dienst de link en de inloggegevens (in uw wachtwoordbeheerder, niet in de repository).
-  6. Een maand later: in Search Console nakijken of alle pagina's geïndexeerd zijn, en bij "Verbeteringen" of de FAQ- en kruimelpadgegevens zonder fouten gelezen worden.
+- **Stand op 5 november 2026** (verslag van de Chrome-extensie):
+
+  | Dienst | Stand |
+  |---|---|
+  | Google Search Console | ✅ domeineigendom geverifieerd via DNS (TXT-record op `@`, niet verwijderen), sitemap ingediend (29 pagina's), indexering gevraagd voor de 6 kernpagina's. Nog niets geïndexeerd, normaal voor een nieuwe site. |
+  | Bing Webmaster Tools | ✅ geïmporteerd uit Google, sitemap ingediend. |
+  | Google Bedrijfsprofiel | ⏳ wacht op videoverificatie. Servicegebiedbedrijf (Oost- en West-Vlaanderen), adres verborgen, ma–vr 9–18 u, zaterdag op afspraak. Dat klopt met de site. |
+  | Bing Places | ⏳ na de Google-verificatie importeren. |
+  | Apple Business Connect | ⏳ nog te doen. |
+  | Classics Online | ⏳ account nodig, kosten nakijken. |
+  | Oldtimerweb.be (€180/jaar), BEHVA Professional Member (€250/jaar), Gouden Gids (adres verplicht publiek) | ✋ niet gedaan, beslissing van de eigenaars. |
+
+- **Te doen door de eigenaars:**
+  1. **Deze week:** de verificatievideo voor het Google Bedrijfsprofiel opnemen (Google Maps-app → APEX Collection Care → Verifiëren → Video). Zonder verificatie is het profiel onzichtbaar.
+  2. **Na de verificatie:** logo en foto's toevoegen, Bing Places importeren uit Google, en Apple Business Connect invullen met dezelfde gegevens.
+  3. **LinkedIn:** een bedrijfspagina voor APEX Collection Care maken, en APEX Collection Care met de website vermelden bij beide oprichters (nu staat er "Frades").
+  4. **Over 1 à 2 weken:** in Search Console → Pagina's nakijken of de kernpagina's geïndexeerd zijn. Zo niet, opnieuw indexering aanvragen.
+  5. **Beslissen** over één betaalde vermelding bij een vakorganisatie: BEHVA (nu 3 maanden gratis) of Oldtimerweb. En eventueel contact met de oldtimerclubs uit het verslag.
+  6. **Om over na te denken:** hetzelfde telefoonnummer staat ook op apexworkshop.be. Twee merken op één nummer kan Google doen twijfelen. Niet dringend.
+- **Daarna, voor mij:** geef me de link van de LinkedIn-bedrijfspagina en de deellink van het Google Bedrijfsprofiel. Ik zet ze in `site.profielen` in `src/config.ts`, zodat ze als `sameAs` in de gegevens voor Google komen.
 
 ## ✅ 10. Teamfoto's (vervallen op 5 november 2026)
 

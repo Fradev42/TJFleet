@@ -65,6 +65,7 @@ const schema = {
   areaServed: site.regio.map((r) => ({ '@type': 'AdministrativeArea', name: r })),
   knowsLanguage: ['nl', 'fr', 'en'],
   employee: team.map((p) => ({ '@type': 'Person', name: p.naam, sameAs: [p.linkedin] })),
+  ...(site.profielen.length ? { sameAs: site.profielen } : {}),
 };
 ---
 <title>{volledigeTitel}</title>
