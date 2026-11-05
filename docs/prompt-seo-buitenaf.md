@@ -68,8 +68,9 @@ bedrijf komt bij de klant thuis of in diens stalling. Er is **geen winkel of wer
 
 1. Open https://www.apexcollectioncare.be en controleer of de site van APEX Collection Care verschijnt, met een slotje (https).
 2. Open https://www.apexcollectioncare.be/sitemap.xml en https://www.apexcollectioncare.be/robots.txt. Beide moeten laden.
-3. **Is de site nog niet bereikbaar op dat domein?** Stop dan met de stappen 1 en 2: die hebben geen zin op het tijdelijke
-   adres apex-classic-car-care.pages.dev, dat bewust op noindex staat. Meld het aan de eigenaar en ga verder met stap 3.
+3. Open https://apexcollectioncare.be en https://apex-classic-car-care.pages.dev. Beide moeten doorverwijzen naar
+   https://www.apexcollectioncare.be. Gebruik in alle stappen hieronder alleen het adres met www.
+4. **Laadt de site niet op www?** Stop dan met de stappen 1 en 2, meld het aan de eigenaar en ga verder met stap 3.
 
 ### Stap 1: Google Search Console
 
