@@ -8,39 +8,23 @@ Legende: 🔴 blokkerend voor livegang · 🟠 belangrijk · 🟢 kleiner
 
 ---
 
-## 🔴 1. Eigen domein koppelen en doorverwijzen
+## 🔴 1. Doorverwijzingen naar www instellen
 
-- **Wat:** `www.apexcollectioncare.be` koppelen aan het Cloudflare Pages-project, en de pages.dev-host en de versie zonder www permanent (301) doorverwijzen naar `https://www.apexcollectioncare.be`.
-- **Geblokkeerd door:** het domein is nog niet aan Cloudflare Pages gekoppeld.
-- **Deblokkeren:** de eigenaars, in het Cloudflare-dashboard.
-- **Al gedaan:** de basis-URL staat op één plek: `site.url` in `src/config.ts` (= `https://www.apexcollectioncare.be`). Canonicals, `og:url`, `og:image`, sitemap, robots.txt en JSON-LD worden daaruit opgebouwd. In de build staat `example.be` nergens meer.
-- **Daarna:**
-  1. *Workers & Pages → project → Custom domains*: `www.apexcollectioncare.be` en `apexcollectioncare.be` toevoegen; de DNS-records laat Cloudflare zelf aanmaken.
-  2. Doorverwijzingen instellen met **Bulk Redirects** of een **Redirect Rule** in het dashboard (`public/_redirects` kan geen hostnamen omleiden):
-     - `apexcollectioncare.be/*` → `https://www.apexcollectioncare.be/$1` (301)
-     - `apex-classic-car-care.pages.dev/*` → `https://www.apexcollectioncare.be/$1` (301)
-  3. Controleren: `curl -I https://www.apexcollectioncare.be/` geeft 200, en de canonical in de bron klopt.
-  4. Een eigendom aanmaken in **Google Search Console** en `https://www.apexcollectioncare.be/sitemap.xml` indienen.
-  5. Verandert het domein toch, dan enkel `site.url` in `src/config.ts` aanpassen.
+- **Stand op 5 november 2026:** `https://www.apexcollectioncare.be` is gekoppeld en live, met de laatste versie van de site. Live nagekeken: canonical, robots.txt, sitemap (29 pagina's), 404-pagina, de 301 van `/gids/wagen-lang-stilstaan/`, de security-headers en het formulier (alleen met een spamtest, er is geen e-mail verstuurd).
+- **Wat nog moet:** `https://apexcollectioncare.be` (zonder www) en `https://apex-classic-car-care.pages.dev` geven allebei **200** en tonen dezelfde site. Dat is dubbele inhoud. Beide moeten permanent (301) doorverwijzen naar `https://www.apexcollectioncare.be`, met behoud van pad en querystring. De canonical wijst wel al naar www, dus het risico is klein, maar een redirect is de nette oplossing.
+- **Geblokkeerd door:** dit kan niet vanuit de repository. `public/_redirects` werkt niet over hostnamen heen, en een Pages Function zou bij elk bezoek aan elke pagina draaien.
+- **Deblokkeren:** de eigenaars, in het Cloudflare-dashboard:
+  1. **Zonder www:** in de zone `apexcollectioncare.be` → *Rules → Redirect Rules → Create rule*. Kies het sjabloon **"Redirect from root to WWW"**, of zelf: als *Hostname equals* `apexcollectioncare.be`, dan *Dynamic redirect* naar `concat("https://www.apexcollectioncare.be", http.request.uri.path)`, statuscode **301**, *Preserve query string* aan.
+  2. **pages.dev:** *Rules → Bulk Redirects*: een lijst maken met bron `apex-classic-car-care.pages.dev` en doel `https://www.apexcollectioncare.be`, statuscode **301**, en aanvinken: *Preserve query string*, *Subpath matching*, *Preserve path suffix* en *Include subdomains* **uit** (anders worden ook de previews van andere branches doorverwezen). Daarna een Bulk Redirect Rule maken die deze lijst gebruikt.
+- **Daarna:** zeg het mij, dan kijk ik het live na (taak 1b).
 
-## 🔴 1b. Noindex op pages.dev vervangen door een 301-redirect
+## 🔴 1b. Noindex-blok voor pages.dev opruimen
 
-- **Wat:** na de koppeling het noindex-blok voor pages.dev vervangen door een 301-redirect van `https://apex-classic-car-care.pages.dev/*` naar `https://www.apexcollectioncare.be/:splat`.
-- **Geblokkeerd door:** het domein is nog niet gekoppeld (DNS en custom domain in Cloudflare Pages, zie taak 1).
-- **Deblokkeren:** de eigenaars, in het Cloudflare-dashboard.
-- **Al gedaan:** bovenaan `public/_headers` staat een blok dat enkel voor de pages.dev-host `X-Robots-Tag: noindex` meestuurt:
-  ```
-  https://:project.pages.dev/*
-    X-Robots-Tag: noindex
-  ```
-  robots.txt blijft open (geen `Disallow`), zodat Google de noindex kan lezen. Er staat geen `<meta name="robots">` in de HTML, omdat die na de koppeling ook op het eigen domein zou gelden.
-- **Waar:**
-  - `public/_headers`: het blok hierboven, met de drie commentaarregels erboven, verwijderen.
-  - De redirect toevoegen. Bij voorkeur gebeurt dat met een **Bulk Redirect** in het Cloudflare-dashboard (*Rules → Redirect Rules* of *Bulk Redirects*): bron `apex-classic-car-care.pages.dev`, doel `https://www.apexcollectioncare.be`, 301, met pad en querystring behouden. `public/_redirects` werkt alleen voor paden op de host zelf, niet voor een andere hostnaam.
-- **Daarna:**
-  1. `curl -I https://apex-classic-car-care.pages.dev/gids/oldtimer-verzekeren/` geeft `301` met `location: https://www.apexcollectioncare.be/gids/oldtimer-verzekeren/`.
-  2. `curl -sI https://www.apexcollectioncare.be/ | grep -i x-robots-tag` geeft **niets**.
-  3. De sitemap `https://www.apexcollectioncare.be/sitemap.xml` indienen in Google Search Console.
+- **Wat:** het blok met `X-Robots-Tag: noindex` voor de pages.dev-host bovenaan `public/_headers` verwijderen.
+- **Geblokkeerd door:** de 301 van pages.dev naar www (taak 1). Live nagekeken op 5 november 2026: pages.dev stuurt nog `x-robots-tag: noindex`, www niet. Dat is juist zo. Het blok blijft staan tot de redirect werkt, zodat Google pages.dev intussen niet indexeert.
+- **Daarna:** het blok en de drie commentaarregels erboven verwijderen, en nakijken:
+  1. `curl -I https://apex-classic-car-care.pages.dev/gids/oldtimer-verzekeren/` geeft `301` met `location: https://www.apexcollectioncare.be/gids/oldtimer-verzekeren/`;
+  2. `curl -I https://apexcollectioncare.be/` geeft `301` naar `https://www.apexcollectioncare.be/`.
 
 ## 🔴 2. Contactformulier: e-maildienst instellen
 
@@ -144,7 +128,7 @@ Legende: 🔴 blokkerend voor livegang · 🟠 belangrijk · 🟢 kleiner
 ## 🟠 9c. SEO buiten de site (Search Console, Bedrijfsprofiel, gidsen)
 
 - **Wat:** de site aanmelden bij Google Search Console en Bing Webmaster Tools, een Google Bedrijfsprofiel aanmaken, Bing Places en Apple Business Connect invullen, en het bedrijf vermelden in bedrijvengidsen en bij vakorganisaties, overal met exact dezelfde gegevens.
-- **Geblokkeerd door:** de site moet eerst live staan op het eigen domein (taak 1). Inloggen, verificatiecodes, DNS-records en het aanvaarden van voorwaarden kunnen alleen de eigenaars.
+- **Geblokkeerd door:** niets meer op de site: ze staat live op het eigen domein (5 november 2026). Inloggen, verificatiecodes, DNS-records en het aanvaarden van voorwaarden kunnen alleen de eigenaars. Richt Search Console liefst in als **domeineigendom** (`apexcollectioncare.be`, via een DNS-record in Cloudflare): dan telt het voor www, zonder www en http samen.
 - **Deblokkeren:** de eigenaars, met de Claude-extensie in Chrome als hulp.
 - **Al gedaan:**
   - Een volledige prompt voor de Claude-extensie in Chrome: `docs/prompt-seo-buitenaf.md`. Die werkt de stappen in volgorde af (Search Console, Bing, Bedrijfsprofiel, Bing Places en Apple, gidsen, consistentiecontrole), stopt telkens als u iets moet doen, en geeft op het einde een logboek.
@@ -168,14 +152,10 @@ Legende: 🔴 blokkerend voor livegang · 🟠 belangrijk · 🟢 kleiner
 - **Al gedaan:** op /diensten/ staat de sectie "Wat kost het?" zonder bedragen: "U krijgt na de kennismaking een vaste prijs op maat, zonder verrassingen. Het eerste gesprek is kosteloos."
 - **Daarna:** het bedrag toevoegen in `src/pages/diensten.astro`, sectie `prijs-titel`.
 
-## 🟢 12. HSTS-header
+## ✅ 12. HSTS-header (5 november 2026)
 
-- **Wat:** `Strict-Transport-Security: max-age=31536000; includeSubDomains` toevoegen.
-- **Geblokkeerd door:** het eigen domein moet eerst met HTTPS live zijn (taak 1). Met `includeSubDomains` moeten ook alle subdomeinen HTTPS hebben.
-- **Daarna:** in `public/_headers`, onder `/*`, de regel toevoegen:
-  ```
-    Strict-Transport-Security: max-age=31536000; includeSubDomains
-  ```
+- In `public/_headers` staat nu `Strict-Transport-Security: max-age=31536000`, voor alle pagina's.
+- Bewust **zonder** `includeSubDomains`: dat dwingt HTTPS af op elk subdomein van apexcollectioncare.be, ook op subdomeinen voor e-mail of andere diensten die u later toevoegt. Weet u zeker dat elk subdomein HTTPS heeft, dan kunt u `; includeSubDomains` toevoegen. Voeg `preload` alleen toe als u het domein ook op hstspreload.org wilt laten opnemen; dat is moeilijk terug te draaien.
 
 ## ✅ 13. Foto's per gids en dienst (afgerond op 4 november 2026)
 
@@ -201,7 +181,7 @@ Legende: 🔴 blokkerend voor livegang · 🟠 belangrijk · 🟢 kleiner
 ## 🟢 16. Monitoring van de site en het formulier
 
 - **Wat:** een melding krijgen als de site of het formulier niet werkt.
-- **Geblokkeerd door:** de site moet live staan (taak 1), en een account bij een monitoringdienst kunnen alleen de eigenaars aanmaken.
+- **Geblokkeerd door:** alleen nog een account bij een monitoringdienst, dat kunnen alleen de eigenaars aanmaken. De site staat live.
 - **Daarna:** een gratis account bij bv. UptimeRobot of Better Stack, met een controle op `https://www.apexcollectioncare.be/` (elke 5 minuten) en een melding per e-mail of sms. Verstuur daarnaast elke maand zelf een testaanvraag via het formulier.
 
 ## 🟢 17. Meten wat werkt (conversies)
