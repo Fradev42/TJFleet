@@ -1,15 +1,7 @@
 ---
-import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import BelBlok from '../components/BelBlok.astro';
-import { site, team as teamGegevens, partners } from '../config';
-import persoon1 from '../assets/images/persoon-1.jpg';
-import persoon2 from '../assets/images/persoon-2.jpg';
-
-const fotos = [persoon1, persoon2];
-// Beide portretten met dezelfde afmetingen: de grootste maat die elk bronbestand haalt (zonder op te schalen).
-const fotoMaat = Math.min(...fotos.map((f) => Math.min(f.width, f.height)));
-const team = teamGegevens.map((p, i) => ({ ...p, foto: fotos[i % fotos.length], alt: `Portret van ${p.naam}` }));
+import { site, partners } from '../config';
 ---
 <Base
   title="Over ons: onafhankelijk, aan uw kant"
@@ -23,31 +15,6 @@ const team = teamGegevens.map((p, i) => ({ ...p, foto: fotos[i % fotos.length], 
       <p>{site.naam} is een handelsnaam van {site.juridischeNaam}, ondernemingsnummer {site.btwNummer}.</p>
     </div>
   </header>
-
-  <section class="sectie" aria-labelledby="team-titel">
-    <div class="wrap">
-      <h2 id="team-titel">Wie uw vaste aanspreekpunt wordt</h2>
-      <p class="intro">U spreekt altijd met een van ons beiden. Na de kennismaking wordt één van ons uw vaste aanspreekpunt.</p>
-      <div class="raster raster--2 team">
-        {team.map((p) => (
-          <figure class="persoon">
-            <div class="foto">
-              <Image src={p.foto} alt={p.alt} width={fotoMaat} height={fotoMaat} widths={[320, fotoMaat]} sizes="(min-width: 48em) 21rem, 100vw" />
-            </div>
-            <figcaption>
-              <span class="persoon__naam">{p.naam}</span>
-              <span class="persoon__rol">{p.rol}</span>
-              {p.linkedin && (
-                <a class="persoon__link" href={p.linkedin} rel="noopener">
-                  LinkedIn-profiel<span class="visueel-verborgen"> van {p.naam}</span>
-                </a>
-              )}
-            </figcaption>
-          </figure>
-        ))}
-      </div>
-    </div>
-  </section>
 
   <section class="sectie sectie--vlak" aria-labelledby="verhaal-titel">
     <div class="wrap raster raster--2">
@@ -81,14 +48,6 @@ const team = teamGegevens.map((p, i) => ({ ...p, foto: fotos[i % fotos.length], 
 </Base>
 
 <style>
-  .team { margin-top: 2rem; max-width: 46rem; }
-  .persoon { margin: 0; }
-  .persoon .foto { aspect-ratio: 1 / 1; }
-  .persoon .foto :global(img) { object-position: center top; }
-  .persoon figcaption { margin-top: 1rem; display: flex; flex-direction: column; }
-  .persoon__naam { font-family: var(--font-titel); font-size: 1.4rem; color: var(--kleur-accent); }
-  .persoon__rol { color: var(--kleur-tekst-zacht); }
-  .persoon__link { display: inline-flex; align-items: center; min-height: 3rem; align-self: flex-start; font-weight: 600; }
   .partners { list-style: none; padding: 0; margin: 2rem 0 0; max-width: none; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); }
   .partners li { display: flex; flex-direction: column; gap: 0.5rem; text-align: center; font-size: 0.95rem; }
   .partners__logo { height: 5.5rem; width: 100%; object-fit: contain; }

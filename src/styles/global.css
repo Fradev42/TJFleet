@@ -284,3 +284,6 @@ html.tekst-groot { font-size: calc(var(--maat-tekst) * 1.15); }
   img { max-height: 9cm; object-fit: cover; }
   .sitefooter { border-top: 1px solid #999; padding-block: 1rem 0; }
 }
+
+/* Lange e-mailadressen mogen afbreken op smalle schermen of met grote tekst */
+a[href^="mailto:"] { overflow-wrap: anywhere; }

@@ -24,7 +24,7 @@ npm run preview    # bekijk de gebouwde site lokaal
 | Telefoon (getoond + link) | `site.telefoon.weergave` en `site.telefoon.link` (formaat `+3292345678`) |
 | E-mail, adres, BTW-nr. | `site.email`, `site.adres`, `site.btwNummer` |
 | Openingsuren (tekst / schema.org) | `site.bereikbaarheid` / `site.openingsuren` |
-| Team (naam, rol, LinkedIn) | `team` |
+| Team (naam, rol, LinkedIn): auteurs van de gidsen, niet getoond op Over ons | `team` |
 | Webadres: de enige plek met het domein (canonicals, sitemap, robots, JSON-LD) | `site.url` |
 | Contactformulier aan/uit | `formulier` |
 | Getuigenissen op Home (leeg = verborgen) | `getuigenissen` |
@@ -43,7 +43,7 @@ Wat er nog moet gebeuren voor de livegang, staat in `TODO-LIVEGANG.md`.
 | Diensten | `src/pages/diensten.astro` (de vier blokken staan bovenaan in een lijstje) |
 | Werkwijze | `src/pages/werkwijze.astro` |
 | Voorbeeld van de app (Werkwijze) | `src/components/AppVoorbeeld.astro` |
-| Over ons (tekst, partners) | `src/pages/over-ons.astro` (teamleden staan in `src/config.ts`) |
+| Over ons (tekst, partners) | `src/pages/over-ons.astro` |
 | Contact / bedankt | `src/pages/contact/index.astro`, `src/pages/contact/bedankt.astro` |
 | Formuliervelden | `src/components/Contactformulier.astro` |
 | Groen belblok onderaan | `src/components/BelBlok.astro` |
@@ -62,7 +62,6 @@ De foto's staan in `src/assets/images/`. Vervang een bestand door uw eigen foto 
 | `hero.jpg` | grote foto bovenaan Home | liggend, min. 2400 × 1350 px, onderwerp liefst rechts |
 | `werkplaats.jpg` | Diensten | liggend, min. 1600 × 1000 px |
 | `kennismaking.jpg` | Werkwijze | liggend, min. 1600 × 1000 px |
-| `persoon-1.jpg`, `persoon-2.jpg` | Over ons (zelfde volgorde als `team` in `src/config.ts`) | vierkant, liefst min. 800 × 800 px |
 
 Astro maakt er bij het bouwen automatisch kleinere WebP-versies van; u hoeft niets te verkleinen.
 Pas daarna de **alt-tekst** (korte beschrijving voor blinde bezoekers en Google) aan in de pagina waar de foto staat (`alt="..."`).

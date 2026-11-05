@@ -157,12 +157,9 @@ Legende: 🔴 blokkerend voor livegang · 🟠 belangrijk · 🟢 kleiner
   5. Bewaar het logboek van de extensie, met per dienst de link en de inloggegevens (in uw wachtwoordbeheerder, niet in de repository).
   6. Een maand later: in Search Console nakijken of alle pagina's geïndexeerd zijn, en bij "Verbeteringen" of de FAQ- en kruimelpadgegevens zonder fouten gelezen worden.
 
-## 🟢 10. Nieuwe teamfoto's
+## ✅ 10. Teamfoto's (vervallen op 5 november 2026)
 
-- **Wat:** twee portretten in dezelfde stijl en resolutie.
-- **Geblokkeerd door:** `persoon-2.jpg` (Jasper) is maar 400 × 400 px, tegenover 800 × 800 px voor persoon-1. Er is geen beter bronbestand.
-- **Al gedaan:** beide worden nu met dezelfde afmetingen (400 × 400), dezelfde beeldverhouding (1:1) en dezelfde object-position getoond.
-- **Daarna:** nieuwe foto's van minstens 800 × 800 px, met dezelfde achtergrond en hetzelfde licht, opslaan als `src/assets/images/persoon-1.jpg` en `persoon-2.jpg`. De weergavemaat past zich vanzelf aan.
+- Het blok met namen, LinkedIn en foto's is van Over ons gehaald, en de portretten zijn verwijderd. Er zijn dus geen teamfoto's meer nodig.
 
 ## 🟢 11. Prijsindicatie
 

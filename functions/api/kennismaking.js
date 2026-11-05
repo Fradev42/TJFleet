@@ -14,7 +14,7 @@
 import { leesFormulier, controleer, isSpam, bouwEmail, bouwBevestiging, FOUTMELDINGEN } from '../../src/lib/formulier-logica.js';
 
 const BEDANKT = '/contact/bedankt/';
-const TELEFOON = '0473 76 09 09';
+const TELEFOON = '+32 473 76 09 09';
 const TEL_LINK = 'tel:+32473760909';
 const STANDAARD_ONTVANGER = 'info@apexcollectioncare.be';
 

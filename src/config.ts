@@ -28,7 +28,7 @@ export const site = {
 
   telefoon: {
     /** Zoals het nummer getoond wordt. */
-    weergave: '0473 76 09 09',
+    weergave: '+32 473 76 09 09',
     /** Internationaal formaat zonder spaties, voor de tel:-link. Bv. '+3292345678'. */
     link: '+32473760909',
   },
@@ -105,8 +105,8 @@ export const plausible = {
 };
 
 /**
- * Team, getoond op de pagina Over ons.
- * Foto's: src/assets/images/persoon-1.jpg en persoon-2.jpg (zelfde volgorde als hieronder).
+ * Team: de auteurs van de gidsen (naam en LinkedIn bij elke gids) en de medewerkers in de gegevens voor Google.
+ * Niet meer getoond op Over ons.
  */
 export const team = [
   {

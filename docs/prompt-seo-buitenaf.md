@@ -41,7 +41,7 @@ Werk rustig, één stap tegelijk. Lukt iets niet, beschrijf dan wat je ziet en g
 | Juridische naam | Frades BV (APEX Collection Care is een handelsnaam van Frades BV) |
 | Ondernemingsnummer / btw | BE 1022.876.282 |
 | Website | https://www.apexcollectioncare.be |
-| Telefoon | 0473 76 09 09 (internationaal: +32 473 76 09 09) |
+| Telefoon | +32 473 76 09 09 (zo overal invullen; in een veld dat alleen nationale nummers aanvaardt: 0473 76 09 09) |
 | E-mail | info@apexcollectioncare.be |
 | Maatschappelijke zetel | Eedstraat 42A, 9052 Zwijnaarde, België |
 | Tweede vestiging | 8880 Sint-Eloois-Winkel (geen straatadres publiceren) |
@@ -135,7 +135,7 @@ aangevraagd wordt. Vul de gegevens uit de tabel en de korte beschrijving in, en 
 
 ### Stap 6: consistentie nakijken
 
-1. Zoek in Google op `"APEX Collection Care"`, op `"0473 76 09 09"` en op `"Frades BV"`.
+1. Zoek in Google op `"APEX Collection Care"`, op `"+32 473 76 09 09"`, op `"0473 76 09 09"` en op `"Frades BV"`.
 2. Noteer elke vermelding met afwijkende gegevens: een oude naam, een ander telefoonnummer of een ander adres.
    Oude namen waren onder meer "APEX Fleet Management" en "APEX Classic Car Care"; het oude e-mailadres was info@apexfleet.be.
 3. Kijk ook de LinkedIn-profielen van de oprichters na: staat het bedrijf er met de juiste naam en website? Zo niet,

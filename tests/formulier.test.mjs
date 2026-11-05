@@ -18,7 +18,7 @@ const m = bouwEmail(leesFormulier(fd({ naam: 'Eve\r\nBcc: x@y.z', telefoon: '047
 assert.equal(m.onderwerp, 'Kennismaking aangevraagd: Eve Bcc: x@y.z');
 assert.equal(m.antwoordAan, 'a@b.be');
 assert.match(m.tekst, /Beste belmoment: -/);
-const info = { naam: 'APEX Collection Care', telefoon: '0473 76 09 09', email: 'info@apexcollectioncare.be' };
+const info = { naam: 'APEX Collection Care', telefoon: '+32 473 76 09 09', email: 'info@apexcollectioncare.be' };
 assert.equal(bouwBevestiging(leesFormulier(fd({ naam: 'A', telefoon: '0470123456' })), info), undefined, 'geen e-mail, geen bevestiging');
 const b = bouwBevestiging(leesFormulier(fd({ naam: 'Spam tekst http://x', telefoon: '0470123456', email: 'a@b.be', boodschap: 'koop nu' })), info);
 assert.equal(b.aan, 'a@b.be');
