@@ -176,7 +176,7 @@ Legende: 🔴 blokkerend voor livegang · 🟠 belangrijk · 🟢 kleiner
 - **Wat:** bij elke push de build, de formuliertests en de SEO- en linkcontrole, en elke maand de externe bronlinks.
 - **Al gedaan:** `.github/workflows/controle.yml`, `scripts/controle.mjs` en `scripts/links-extern.mjs` (ook lokaal: `npm run controle`, `npm run links:extern`).
 - **Daarna:**
-  1. Op GitHub bij **Actions** nakijken of de eerste run groen is. Staat Actions uit voor de repository, zet het dan aan.
+  1. ✅ Actions staat aan: de workflow "Controle" draaide al 24 keer, de laatste runs allemaal groen (nagekeken op 5 november 2026). De maandelijkse controle van de externe links loopt voor het eerst op maandag 7 december 2026.
   2. Onder uw GitHub-profiel → *Settings → Notifications → Actions* nakijken dat u een e-mail krijgt als een run faalt.
   3. Overweeg een vaste productiebranch (`main`) in Cloudflare Pages, met de andere branches als preview. Zo ziet u een wijziging eerst op een previewadres voordat ze live gaat. Zet in GitHub dan een *branch protection rule* op `main` die een groene controle vraagt.
 
