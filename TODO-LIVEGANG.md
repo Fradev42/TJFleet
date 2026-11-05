@@ -177,6 +177,7 @@ Legende: 🔴 blokkerend voor livegang · 🟠 belangrijk · 🟢 kleiner
 - **Al gedaan:** `.github/workflows/controle.yml`, `scripts/controle.mjs` en `scripts/links-extern.mjs` (ook lokaal: `npm run controle`, `npm run links:extern`).
 - **Daarna:**
   1. ✅ Actions staat aan: de workflow "Controle" draaide al 24 keer, de laatste runs allemaal groen (nagekeken op 5 november 2026). De maandelijkse controle van de externe links loopt elke 1e van de maand, voor het eerst op 1 december 2026.
+  Voor de stappen 2 en 3 is er een prompt voor de Claude-extensie in Chrome: `docs/prompt-github-controle.md` (deel A: meldingen, deel B: productiebranch `main`, optioneel).
   2. Onder uw GitHub-profiel → *Settings → Notifications → Actions* nakijken dat u een e-mail krijgt als een run faalt.
   3. Overweeg een vaste productiebranch (`main`) in Cloudflare Pages, met de andere branches als preview. Zo ziet u een wijziging eerst op een previewadres voordat ze live gaat. Zet in GitHub dan een *branch protection rule* op `main` die een groene controle vraagt.
 
