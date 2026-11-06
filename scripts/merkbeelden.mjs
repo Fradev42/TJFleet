@@ -1,10 +1,10 @@
 /**
- * Maakt de algemene deelafbeelding (public/og-image.jpg, 1200 × 630) en het app-icoon
+ * Maakt de algemene deelafbeelding (src/assets/og-image.jpg en een kopie in public/og-image.jpg, 1200 × 630) en het app-icoon
  * (public/apple-touch-icon.png, 180 × 180) opnieuw uit de logobestanden in public/logo/.
  * Gebruik: npm run merkbeelden   (daarna eventueel npm run build && npm run og voor de titelkaarten)
  */
 import { createRequire } from 'node:module';
-import { readFileSync } from 'node:fs';
+import { readFileSync, copyFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 
 const { chromium } = createRequire(import.meta.url)('playwright');
@@ -28,7 +28,8 @@ await page.setContent(`<!doctype html><html><head><meta charset="utf-8"><style>
   <div class="band"></div>
 </body></html>`, { waitUntil: 'load' });
 await page.evaluate(() => document.fonts.ready);
-await page.screenshot({ path: join(root, 'public', 'og-image.jpg'), type: 'jpeg', quality: 88 });
+await page.screenshot({ path: join(root, 'src', 'assets', 'og-image.jpg'), type: 'jpeg', quality: 88 });
+copyFileSync(join(root, 'src', 'assets', 'og-image.jpg'), join(root, 'public', 'og-image.jpg'));
 
 // App-icoon: volledig vlak (iOS rondt de hoeken zelf af), monogram in crème op racegroen.
 await page.setViewportSize({ width: 180, height: 180 });

@@ -72,7 +72,8 @@ Het **logo** staat in `public/logo/`: `logo.svg` (liggend, kop op tablet en desk
 app-icoon `public/apple-touch-icon.png` opnieuw; daarna `npm run build && npm run og && npm run build` voor de titelkaarten.
 Vervang het bestand met dezelfde naam. De alt-tekst staat in `site.logoAlt`.
 
-De afbeelding die verschijnt als iemand de site deelt (WhatsApp, LinkedIn, e-mail) is `public/og-image.jpg` (1200 × 630 px).
+De afbeelding die verschijnt als iemand de site deelt (WhatsApp, LinkedIn, e-mail) is `src/assets/og-image.jpg` (1200 × 630 px).
+Astro geeft ze een adres met een hash, zodat sociale media een nieuwe versie meteen ophalen. `public/og-image.jpg` is een kopie voor oude links.
 
 ### Foto per gids of dienstpagina
 
