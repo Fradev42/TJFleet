@@ -6,7 +6,7 @@ const jaar = new Date().getFullYear();
   <div class="wrap">
     <div class="sitefooter__raster">
       <div>
-        <img class="sitefooter__logo" src="/logo/logo.svg" alt={site.logoAlt} width="196" height="52" loading="lazy" />
+        <img class="sitefooter__logo" src="/logo/logo.svg" alt={site.logoAlt} width="339" height="27" loading="lazy" />
         <p>{site.baseline} in {site.regioTekst}.</p>
       </div>
       <div>
@@ -70,7 +70,7 @@ const jaar = new Date().getFullYear();
   .sitefooter a:hover { color: var(--kleur-accent-2); text-decoration-thickness: 2px; }
   .sitefooter__raster { display: grid; gap: 2rem; margin-bottom: 2.5rem; }
   @media (min-width: 48em) { .sitefooter__raster { grid-template-columns: 1.3fr 1fr 1fr; } }
-  .sitefooter__logo { height: 3.25rem; width: auto; max-width: 100%; object-fit: contain; margin-bottom: 1rem; }
+  .sitefooter__logo { height: 1.45rem; width: auto; max-width: 100%; object-fit: contain; margin-bottom: 1rem; }
   .sitefooter__naam { font-family: var(--font-titel); font-size: 1.4rem; color: var(--kleur-accent); margin-bottom: 0.4rem; }
   .sitefooter__kop { font-family: var(--font-tekst); font-size: 0.85rem; font-weight: 650; letter-spacing: 0.12em; text-transform: uppercase; color: var(--kleur-accent-2); margin-bottom: 0.75rem; }
   address { font-style: normal; line-height: 1.9; }

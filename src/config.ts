@@ -12,7 +12,8 @@ export const site = {
 
   /**
    * Tekst van het logo, voor schermlezers en zoekmachines.
-   * Het logo zelf staat in public/logo/logo.svg (kop en footer).
+   * Het logo staat in public/logo/: logo.svg (liggend, kop op tablet/desktop en footer), apex-2-gestapeld-kleur.svg (kop op smartphone),
+   * de monogrammen (app-voorbeeld) en de crème/groene varianten. Favicon: public/favicon.svg. Na een nieuw logo: npm run merkbeelden.
    */
   logoAlt: 'APEX Collection Care',
 
