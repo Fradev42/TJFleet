@@ -11,7 +11,8 @@
     "dev:functions": "npm run build && wrangler pages dev dist --binding MAIL_DRYRUN=1",
     "og": "node scripts/og-kaarten.mjs",
     "controle": "node scripts/controle.mjs",
-    "links:extern": "node scripts/links-extern.mjs"
+    "links:extern": "node scripts/links-extern.mjs",
+    "merkbeelden": "node scripts/merkbeelden.mjs"
   },
   "dependencies": {
     "@fontsource-variable/source-sans-3": "^5.3.1",

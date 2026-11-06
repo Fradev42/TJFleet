@@ -39,7 +39,7 @@ for (const p of paginas) {
     @font-face { font-family: Sans; src: url(${font('@fontsource-variable/source-sans-3/files/source-sans-3-latin-wght-normal.woff2')}); font-weight: 200 900; }
     * { margin: 0; box-sizing: border-box; }
     body { width: 1200px; height: 630px; background: #F7F4EE; color: #1E1E1E; font-family: Sans; display: flex; flex-direction: column; justify-content: space-between; padding: 64px 80px 0; position: relative; }
-    .logo svg { height: 64px; width: auto; display: block; }
+    .logo svg { height: 36px; width: auto; display: block; }
     .label { font-size: 26px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; color: #6B1E24; margin-bottom: 18px; }
     h1 { font-family: Caslon; font-weight: 400; font-size: 66px; line-height: 1.12; color: #1F3A2E; max-width: 1000px; hyphens: manual; }
     h1.lang { font-size: 56px; }

@@ -6,7 +6,10 @@ const isHuidig = (href: string) => (href === '/' ? pad === '/' : pad.startsWith(
 <header class="sitekop">
   <div class="wrap sitekop__binnen">
     <a class="logo" href="/">
-      <img class="logo__beeld" src="/logo/logo.svg" alt={site.logoAlt} width="226" height="60" />
+      <picture>
+        <source media="(max-width: 47.99em)" srcset="/logo/apex-2-gestapeld-kleur.svg" width="148" height="54" />
+        <img class="logo__beeld" src="/logo/logo.svg" alt={site.logoAlt} width="389" height="31" />
+      </picture>
     </a>
 
     <button class="menuknop" type="button" aria-expanded="false" aria-controls="hoofdmenu">
@@ -57,7 +60,9 @@ const isHuidig = (href: string) => (href === '/' ? pad === '/' : pad.startsWith(
     padding-block: 0.75rem;
   }
   .logo { display: flex; align-items: center; text-decoration: none; padding-block: 0.25rem; }
-  .logo__beeld { height: 3.75rem; width: auto; max-width: 100%; object-fit: contain; }
+  .logo picture { display: block; max-width: 100%; }
+  /* Liggend logo (verhouding 12,5 : 1) op tablet en desktop, gestapeld logo op smartphone. */
+  .logo__beeld { display: block; height: 1.55rem; width: auto; max-width: 100%; object-fit: contain; }
 
   .hoofdmenu ul { list-style: none; margin: 0; padding: 0; max-width: none; }
   .hoofdmenu a { text-decoration: none; color: var(--kleur-tekst); }
@@ -111,7 +116,7 @@ const isHuidig = (href: string) => (href === '/' ? pad === '/' : pad.startsWith(
   @media (max-width: 47.99em) {
     .sitekop__binnen { column-gap: 0.75rem; flex-wrap: wrap; }
     .logo { flex: 1 1 0; min-width: 0; }
-    .logo__beeld { height: 2.75rem; }
+    .logo__beeld { height: 3.2rem; }
     :global(html.js) .menuknop { display: inline-flex; align-items: center; justify-content: center; }
     .hoofdmenu { flex-basis: 100%; }
     :global(html.js) .hoofdmenu { display: none; }

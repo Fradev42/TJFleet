@@ -66,7 +66,10 @@ De foto's staan in `src/assets/images/`. Vervang een bestand door uw eigen foto 
 Astro maakt er bij het bouwen automatisch kleinere WebP-versies van; u hoeft niets te verkleinen.
 Pas daarna de **alt-tekst** (korte beschrijving voor blinde bezoekers en Google) aan in de pagina waar de foto staat (`alt="..."`).
 
-Het **logo** staat in `public/logo/logo.svg` en wordt in de kop en de footer gebruikt.
+Het **logo** staat in `public/logo/`: `logo.svg` (liggend, kop op tablet en desktop, footer), `apex-2-gestapeld-kleur.svg`
+(kop op smartphone), de monogrammen en de crème- en groene varianten voor drukwerk en sociale media. Het favicon is
+`public/favicon.svg`. Na een nieuw logo maakt `npm run merkbeelden` de deelafbeelding `public/og-image.jpg` en het
+app-icoon `public/apple-touch-icon.png` opnieuw; daarna `npm run build && npm run og && npm run build` voor de titelkaarten.
 Vervang het bestand met dezelfde naam. De alt-tekst staat in `site.logoAlt`.
 
 De afbeelding die verschijnt als iemand de site deelt (WhatsApp, LinkedIn, e-mail) is `public/og-image.jpg` (1200 × 630 px).

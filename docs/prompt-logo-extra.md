@@ -55,4 +55,4 @@ Rules:
 
 - **Controleer elke versie:** is de spelling juist ("COLLECTION CARE", niet "COLLECTIONS")? Zijn er geen kleurverlopen of schaduwen? En is het monogram nog herkenbaar als u de afbeelding klein bekijkt?
 - **Vraag gerust bij:** "Maak versie 2 met een serif in de stijl van Libre Caslon Text" of "Toon het monogram op 16 × 16 px".
-- **Kiest u een ontwerp,** stuur het dan naar Claude Code of een ontwerper om het als zuivere SVG op te bouwen. Een AI-beeldtool levert meestal een pixelafbeelding, geen vectorbestand. De bestanden komen in `public/logo/` (logo.svg, logo-licht.svg, logo-zwart.svg) en `public/favicon.svg`. Daarna moeten de deelafbeelding `public/og-image.jpg` en de titelkaarten (`npm run og`) opnieuw gemaakt worden.
+- **Kiest u een ontwerp,** stuur het dan naar Claude Code of een ontwerper om het als zuivere SVG op te bouwen. Een AI-beeldtool levert meestal een pixelafbeelding, geen vectorbestand. De bestanden komen in `public/logo/` en `public/favicon.svg`. Daarna maken `npm run merkbeelden` en `npm run og` de deelafbeeldingen en het app-icoon opnieuw.
