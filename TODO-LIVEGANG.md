@@ -145,8 +145,9 @@ Legende: 🔴 blokkerend voor livegang · 🟠 belangrijk · 🟢 kleiner
 ## 🟠 14. Bevestigingsmail naar de aanvrager aanzetten
 
 - **Wat:** wie het formulier invult met een e-mailadres, krijgt een korte bevestiging ("We bellen u binnen één werkdag terug").
-- **Geblokkeerd door:** het formulier moet eerst werken (taak 2), en u beslist of u dit wilt.
+- **Geblokkeerd door:** niets meer: het formulier werkt (taak 2, 6 november 2026). Alleen de instelling in Cloudflare ontbreekt.
 - **Al gedaan:** de bevestiging is gebouwd en getest. Ze bevat bewust geen ingevulde tekst, zodat het formulier niet misbruikt kan worden om berichten naar vreemden te sturen. Een fout bij de bevestiging laat de aanvraag zelf niet mislukken.
+- **Prompt voor de Claude-extensie in Chrome:** `docs/prompt-bevestigingsmail.md`.
 - **Daarna:** in Cloudflare Pages de variabele `MAIL_BEVESTIGING` op `1` zetten. Belooft u "binnen één werkdag", hou u er dan ook aan; anders past u de tekst aan in `bouwBevestiging` in `src/lib/formulier-logica.js` en op `/contact/bedankt/`.
 
 ## 🟠 15. Automatische controle in GitHub
