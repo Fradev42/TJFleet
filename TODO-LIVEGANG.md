@@ -21,40 +21,19 @@ Legende: 🔴 blokkerend voor livegang · 🟠 belangrijk · 🟢 kleiner
 
 - Het blok met `X-Robots-Tag: noindex` voor de pages.dev-host is uit `public/_headers` gehaald, want pages.dev verwijst nu door naar www. Nakijken na de volgende deploy: `curl -sI https://www.apexcollectioncare.be/ | grep -i x-robots-tag` geeft niets.
 
-## 🔴 2. Contactformulier: e-maildienst instellen
+## ✅ 2. Contactformulier: e-maildienst ingesteld (6 november 2026)
 
-- **Wat:** het formulier op `/contact/` stuurt aanvragen als e-mail naar info@apexcollectioncare.be.
-- **Geblokkeerd door:** het versturen heeft een e-maildienst en een API-sleutel nodig, en DNS-records (SPF/DKIM) op het eigen domein (zie taak 1).
-- **Deblokkeren:** de eigenaars (account bij de e-maildienst) en wie het DNS beheert.
-- **Al gedaan:**
-  - Een Cloudflare Pages Function in `functions/api/kennismaking.js`. Ze controleert de velden, weert spam met een onzichtbaar lokaasveld, stuurt de mail en verwijst door naar `/contact/bedankt/`.
-  - Zonder JavaScript werkt het als gewone POST, met foutmeldingen op een eenvoudige pagina. Met JavaScript verschijnen meldingen per veld.
-  - De inhoud wordt niet opgeslagen of gelogd.
-  - Lokaal getest met `wrangler pages dev` (met en zonder JS, foutmeldingen, spam, vreemde herkomst, doorverwijzing).
-  - Controleregels: `src/lib/formulier-logica.js`; tests: `npm test`.
-- **Gekozen dienst: Resend** (eenvoudige HTTP-API). Een andere dienst kan ook: alleen de functie `verstuur()` in `functions/api/kennismaking.js` aanpassen.
-- **Prompt voor de Claude-extensie in Chrome:** `docs/prompt-formulier-email.md`. Die kijkt eerst na of info@apexcollectioncare.be mail kan ontvangen, en zet daarna Resend, de DNS-records en de variabelen in Cloudflare Pages op, met een test op de live site.
-- **Daarna:**
-  1. Account aanmaken bij Resend en het domein `apexcollectioncare.be` verifiëren. Resend geeft SPF- en DKIM-records die u in Cloudflare DNS toevoegt.
-  2. In Cloudflare Pages → *Settings → Variables and Secrets* (Production):
-     - `RESEND_API_KEY` (type *secret*)
-     - `MAIL_FROM` = `Website APEX <website@apexcollectioncare.be>`
-     - `MAIL_TO` = `info@apexcollectioncare.be` (optioneel, dat is de standaard)
-  3. Opnieuw deployen, en een testaanvraag versturen op de live site.
-- ⚠️ **Tot dit gebeurd is**, krijgt wie het formulier op de live site verstuurt de melding "Het verzenden is niet gelukt", met het telefoonnummer. Er gaan geen aanvragen verloren zonder dat de bezoeker het weet, maar ze komen ook niet binnen. Wilt u het formulier tot dan verbergen: zet `formulier.actief` op `false` in `src/config.ts`.
-- **Optioneel:** Cloudflare Turnstile als extra spambescherming. Pas toevoegen nadat is nagekeken dat het geen cookies plaatst, want de privacyverklaring belooft "geen cookies".
+- Het formulier op `/contact/` verstuurt aanvragen via **Resend** naar info@apexcollectioncare.be. Live getest op 6 november 2026: de functie aanvaardde een echte testaanvraag ("Test website (controle door Claude)") en gaf `ok` terug. Zonder ingestelde sleutel zou ze een fout geven.
+- Code: `functions/api/kennismaking.js`, regels in `src/lib/formulier-logica.js`, tests met `npm test`. Spam wordt geweerd met een onzichtbaar lokaasveld; de inhoud wordt niet opgeslagen of gelogd.
+- **Nakijken door de eigenaars:** kwam de testmail aan in de mailbox (ook in de spam kijken)? Staat in Cloudflare Pages geen variabele `MAIL_DRYRUN`? Die mag alleen lokaal bestaan, anders wordt er niets verstuurd.
+- Een andere e-maildienst kan ook: alleen `stuurMail()` in `functions/api/kennismaking.js` aanpassen, en de privacyverklaring.
+- **Optioneel:** Cloudflare Turnstile als extra spambescherming, pas na nakijken dat het geen cookies plaatst.
 
-## 🔴 3. Privacyverklaring: verwerkers bij naam noemen
+## ✅ 3. Privacyverklaring: verwerkers bij naam (6 november 2026)
 
-- **Wat:** de e-maildienst (taak 2) en de provider van de mailbox info@apexcollectioncare.be als verwerker vermelden.
-- **Geblokkeerd door:** die zijn nog niet definitief gekozen of bevestigd.
-- **Deblokkeren:** de eigenaars.
-- **Al gedaan:**
-  - De placeholder is weg.
-  - De tekst beschrijft het formulier correct (Cloudflare Pages Functions, doorgestuurd via een e-maildienst, inhoud niet bewaard, spambescherming zonder cookies).
-  - De zin over Plausible is geschrapt.
-  - De datum staat op 4 november 2026.
-- **Daarna:** in `src/pages/privacy.astro`, sectie "Wie verwerkt ze nog?", de zin "…stuurt ze via een e-maildienst…" aanvullen met de naam en het land (Resend is een Amerikaans bedrijf: vermeld de waarborgen). Voeg ook een zin toe over de mailboxprovider (bv. Microsoft of Google). Pas "Laatst bijgewerkt" aan.
+- In `src/pages/privacy.astro`, onder "Wie verwerkt ze nog?", staan nu Cloudflare (hosting en formulier), **Resend** (Resend, Inc., Verenigde Staten) voor het versturen van de formuliermail, en **Zoho** (Zoho Mail) voor de mailbox, met de waarborgen bij verwerking buiten de EU. Datum: 6 november 2026.
+- Verandert u van e-maildienst of mailbox, pas dan deze alinea en de datum aan.
+- Wilt u het nauwkeuriger: kijk in Zoho na of uw account in het Europese datacentrum staat (adres `mail.zoho.eu`). Dan kan de zin over verwerking buiten de EU voor Zoho weg.
 
 ## 🟠 4. Getuigenis van een klant
 
@@ -166,8 +145,9 @@ Legende: 🔴 blokkerend voor livegang · 🟠 belangrijk · 🟢 kleiner
 ## 🟠 14. Bevestigingsmail naar de aanvrager aanzetten
 
 - **Wat:** wie het formulier invult met een e-mailadres, krijgt een korte bevestiging ("We bellen u binnen één werkdag terug").
-- **Geblokkeerd door:** het formulier moet eerst werken (taak 2), en u beslist of u dit wilt.
+- **Geblokkeerd door:** niets meer: het formulier werkt (taak 2, 6 november 2026). Alleen de instelling in Cloudflare ontbreekt.
 - **Al gedaan:** de bevestiging is gebouwd en getest. Ze bevat bewust geen ingevulde tekst, zodat het formulier niet misbruikt kan worden om berichten naar vreemden te sturen. Een fout bij de bevestiging laat de aanvraag zelf niet mislukken.
+- **Prompt voor de Claude-extensie in Chrome:** `docs/prompt-bevestigingsmail.md`.
 - **Daarna:** in Cloudflare Pages de variabele `MAIL_BEVESTIGING` op `1` zetten. Belooft u "binnen één werkdag", hou u er dan ook aan; anders past u de tekst aan in `bouwBevestiging` in `src/lib/formulier-logica.js` en op `/contact/bedankt/`.
 
 ## 🟠 15. Automatische controle in GitHub
