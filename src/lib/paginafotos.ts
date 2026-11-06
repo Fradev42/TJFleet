@@ -10,6 +10,7 @@ import type { ImageMetadata } from 'astro';
 import { getImage } from 'astro:assets';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { standaardDeelafbeelding } from './deelafbeelding';
 
 const bestanden = import.meta.glob<ImageMetadata>('../assets/paginafotos/*.{jpg,jpeg,png,webp}', { eager: true, import: 'default' });
 
@@ -52,5 +53,5 @@ export async function deelafbeelding(slug: string): Promise<string> {
   const f = await paginafoto(slug);
   if (f) return f.og;
   if (existsSync(join(process.cwd(), 'public', 'og', `${slug}.jpg`))) return `/og/${slug}.jpg`;
-  return '/og-image.jpg';
+  return standaardDeelafbeelding;
 }

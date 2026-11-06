@@ -1,5 +1,6 @@
 ---
 import { site, team } from '../config';
+import { standaardDeelafbeelding } from '../lib/deelafbeelding';
 
 interface Props {
   /** Onderwerp van de pagina; de merknaam wordt er automatisch achter gezet. Samen liefst ± 60 tekens. */
@@ -15,7 +16,7 @@ interface Props {
   artikel?: { gepubliceerd: string; bijgewerkt: string };
   noindex?: boolean;
 }
-const { title, description, ogImage = '/og-image.jpg', ogImageAlt, ogType = 'website', artikel, noindex = false } = Astro.props;
+const { title, description, ogImage = standaardDeelafbeelding, ogImageAlt, ogType = 'website', artikel, noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
 const ogUrl = new URL(ogImage, Astro.site ?? site.url).href;
 const volledigeTitel = `${title} | ${site.naam}`;
@@ -42,7 +43,7 @@ const schema = {
   telephone: site.telefoon.link,
   email: site.email,
   vatID: site.btwNummer,
-  image: new URL('/og-image.jpg', Astro.site ?? site.url).href,
+  image: new URL(standaardDeelafbeelding, Astro.site ?? site.url).href,
   address: {
     '@type': 'PostalAddress',
     streetAddress: site.adres.straat,
